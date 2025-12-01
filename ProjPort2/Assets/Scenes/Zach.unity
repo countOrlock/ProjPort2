@@ -285,8 +285,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7621786007939436162, guid: 0e8d9441e5a219f42a5fcb0c26d4337c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 318877220}
   m_SourcePrefab: {fileID: 100100000, guid: 0e8d9441e5a219f42a5fcb0c26d4337c, type: 3}
+--- !u!1 &318877215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7621786007939436162, guid: 0e8d9441e5a219f42a5fcb0c26d4337c, type: 3}
+  m_PrefabInstance: {fileID: 231108007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &318877220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318877215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d238044335d3848a5e0feada648e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::cameraController
+  sens: 420
+  maxUP: 90
+  maxDOWN: -90
+  invert: 0
 --- !u!1 &919029241
 GameObject:
   m_ObjectHideFlags: 0

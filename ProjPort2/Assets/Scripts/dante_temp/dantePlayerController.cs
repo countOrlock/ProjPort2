@@ -92,7 +92,7 @@ public class dantePlayerController : MonoBehaviour
         {
             Debug.Log(hit.collider.name);
 
-            danteIDamage dmg = hit.collider.GetComponent<danteIDamage>();
+            IDamage dmg = hit.collider.GetComponent<IDamage>();
 
             if (dmg != null)
             {

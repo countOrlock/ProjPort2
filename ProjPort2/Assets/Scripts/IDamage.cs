@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface danteIDamage
+public interface IDamage
 {
     void takeDamage(int amount);
 }

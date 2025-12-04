@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-public class enemyAI : MonoBehaviour
+public class enemyAI : MonoBehaviour, danteIDamage
 {
     [SerializeField] NavMeshAgent agent;
 
@@ -54,6 +54,16 @@ public class enemyAI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+        }
+    }
+
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+
+        if (HP <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

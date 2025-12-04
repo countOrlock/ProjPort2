@@ -49,7 +49,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerController
   controller: {fileID: 1014922733057474107}
-  speed: 2
+  wSpeed: 1
+  rSpeed: 1
+  jumpSpeed: 1
+  gravity: 0
+  jumpCount: 0
 --- !u!143 &1014922733057474107
 CharacterController:
   m_ObjectHideFlags: 0

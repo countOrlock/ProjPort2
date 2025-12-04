@@ -17,6 +17,7 @@ public class enemyAI : MonoBehaviour, IDamage
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        gameManager.instance.updateGameGoal(1);
     }
 
     // Update is called once per frame
@@ -65,6 +66,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
+            gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
     }

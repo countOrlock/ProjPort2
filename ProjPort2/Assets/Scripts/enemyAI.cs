@@ -7,8 +7,6 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int HP;
     [SerializeField] bool scaredOfPlayer;
 
-    GameObject player;
-
     bool playerInRange;
 
     Vector3 playerDir;
@@ -16,7 +14,7 @@ public class enemyAI : MonoBehaviour, IDamage
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+
     }
 
     // Update is called once per frame
@@ -24,18 +22,18 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         if (playerInRange && !scaredOfPlayer)
         {
-            agent.SetDestination(player.transform.position);
+            agent.SetDestination(gameManager.instance.player.transform.position);
         }
         else if (playerInRange && scaredOfPlayer)
         {
-            playerDir = player.transform.position - transform.position;
+            playerDir = gameManager.instance.player.transform.position - transform.position;
 
 
             float xVectorSwapNum = 2 / Mathf.Abs(playerDir.x) + 1;
             float zVectorSwapNum = 2 / Mathf.Abs(playerDir.z) + 1;
 
-            float oppositePlayerX = player.transform.position.x - (xVectorSwapNum * playerDir.x);
-            float oppositePlayerZ = player.transform.position.z - (zVectorSwapNum * playerDir.z);
+            float oppositePlayerX = gameManager.instance.player.transform.position.x - (xVectorSwapNum * playerDir.x);
+            float oppositePlayerZ = gameManager.instance.player.transform.position.z - (zVectorSwapNum * playerDir.z);
 
             Debug.Log(oppositePlayerX);
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-public class enemyAI : MonoBehaviour, danteIDamage
+public class enemyAI : MonoBehaviour, IDamage
 {
     [SerializeField] NavMeshAgent agent;
 
@@ -30,13 +30,15 @@ public class enemyAI : MonoBehaviour, danteIDamage
         {
             playerDir = player.transform.position - transform.position;
 
-            Debug.Log(playerDir);
 
             float xVectorSwapNum = 2 / Mathf.Abs(playerDir.x) + 1;
             float zVectorSwapNum = 2 / Mathf.Abs(playerDir.z) + 1;
 
             float oppositePlayerX = player.transform.position.x - (xVectorSwapNum * playerDir.x);
             float oppositePlayerZ = player.transform.position.z - (zVectorSwapNum * playerDir.z);
+
+            Debug.Log(oppositePlayerX);
+
             agent.SetDestination(new Vector3(oppositePlayerX, transform.position.y, oppositePlayerZ));
         }
     }

@@ -54,6 +54,12 @@ MonoBehaviour:
   jumpSpeed: 1
   gravity: 0
   jumpCount: 0
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  shootDamage: 0
+  shootDist: 0
+  shootRate: 0
 --- !u!143 &1014922733057474107
 CharacterController:
   m_ObjectHideFlags: 0

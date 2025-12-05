@@ -7,6 +7,8 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int HP;
     [SerializeField] bool scaredOfPlayer;
 
+    [SerializeField] SphereCollider playerTrigger;
+
     bool playerInRange;
 
     Vector3 playerDir;
@@ -28,16 +30,12 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerDir = gameManager.instance.player.transform.position - transform.position;
 
+            float oppositePlayerX = transform.position.x - playerDir.x;
+            float oppositePlayerZ = transform.position.z - playerDir.z;
 
-            float xVectorSwapNum = 2 / Mathf.Abs(playerDir.x) + 1;
-            float zVectorSwapNum = 2 / Mathf.Abs(playerDir.z) + 1;
+            Vector3 targetPos = new Vector3(oppositePlayerX, transform.position.y, oppositePlayerZ);
 
-            float oppositePlayerX = gameManager.instance.player.transform.position.x - (xVectorSwapNum * playerDir.x);
-            float oppositePlayerZ = gameManager.instance.player.transform.position.z - (zVectorSwapNum * playerDir.z);
-
-            Debug.Log(oppositePlayerX);
-
-            agent.SetDestination(new Vector3(oppositePlayerX, transform.position.y, oppositePlayerZ));
+            agent.SetDestination(targetPos);
         }
     }
 

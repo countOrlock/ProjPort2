@@ -8,8 +8,17 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [SerializeField] int HP;
     [SerializeField] bool scaredOfPlayer;
+    [SerializeField] bool shootsProjectile;
+
+
+    [Header("----- If Shoots Projectile -----")]
+    [SerializeField] GameObject bullet;
+    [SerializeField] float shootRate;
+    [SerializeField] Transform shootPos;
 
     Color colorOrig;
+
+    float shootTimer;
 
     bool playerInRange;
 
@@ -25,21 +34,37 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange && !scaredOfPlayer)
+        shootTimer += Time.deltaTime;
+
+        if (playerInRange)
         {
-            agent.SetDestination(gameManager.instance.player.transform.position);
+            if (!scaredOfPlayer)
+            {
+                agent.SetDestination(gameManager.instance.player.transform.position);
+            }
+            else
+            {
+                playerDir = gameManager.instance.player.transform.position - transform.position;
+
+                float oppositePlayerX = transform.position.x - playerDir.x;
+                float oppositePlayerZ = transform.position.z - playerDir.z;
+
+                Vector3 targetPos = new Vector3(oppositePlayerX, transform.position.y, oppositePlayerZ);
+
+                agent.SetDestination(targetPos);
+            }
+
+            if (shootsProjectile && shootTimer >= shootRate)
+            {
+                shoot();
+            }
         }
-        else if (playerInRange && scaredOfPlayer)
-        {
-            playerDir = gameManager.instance.player.transform.position - transform.position;
+    }
 
-            float oppositePlayerX = transform.position.x - playerDir.x;
-            float oppositePlayerZ = transform.position.z - playerDir.z;
-
-            Vector3 targetPos = new Vector3(oppositePlayerX, transform.position.y, oppositePlayerZ);
-
-            agent.SetDestination(targetPos);
-        }
+    void shoot()
+    {
+        shootTimer = 0;
+        Instantiate(bullet, shootPos.position, transform.rotation);
     }
 
     private void OnTriggerEnter(Collider other)

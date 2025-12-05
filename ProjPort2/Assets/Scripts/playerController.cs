@@ -13,20 +13,23 @@ public class playerController : MonoBehaviour, IPickup
 
     Vector3 moveDir;
     Vector2 walkDir;
+    Vector3 recoilSpeed;
 
     float jumpMod;
     int speedMod;
     int maxJump;
 
     [Header("----- Gun Fields -----")]
+    [SerializeField] GameObject gunModel;
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
+    [SerializeField] int recoil;
     float shootTimer;
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     int gunListPos;
-    [SerializeField] GameObject gunModel;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -81,6 +84,16 @@ public class playerController : MonoBehaviour, IPickup
             speedMod = wSpeed;
         }
 
+        if (recoilSpeed.magnitude > 0.1f)
+        {
+            controller.Move(recoilSpeed * Time.deltaTime);
+            recoilSpeed = Vector3.Lerp(recoilSpeed, Vector3.zero, 5f * Time.deltaTime);
+        }
+        else
+        {
+            recoilSpeed = Vector3.zero;
+        }
+
         //movement execution
         walkDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         moveDir = walkDir.x * transform.right * speedMod + walkDir.y * transform.forward * speedMod + jumpMod * transform.up;
@@ -90,6 +103,8 @@ public class playerController : MonoBehaviour, IPickup
     void shoot()
     {
         shootTimer = 0;
+
+        recoilSpeed += -Camera.main.transform.forward * recoil;
 
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))

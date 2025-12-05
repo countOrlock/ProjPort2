@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
+  m_Name: Bow
+  m_EditorClassIdentifier: Assembly-CSharp::gunStats
+  gunModel: {fileID: 2083537937460915243, guid: 6ec731aa0d2dd5e4882f9517540083e5, type: 3}
+  Bullet: {fileID: 3429663345579946508, guid: 8a031845954676e46aa2ea9c65e19e01, type: 3}
+  shootDamage: 0
+  shootDist: 0
+  shootRate: 1.07
+  recoil: 0

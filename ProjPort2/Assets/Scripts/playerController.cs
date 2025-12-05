@@ -30,6 +30,7 @@ public class playerController : MonoBehaviour, IPickup
     float shootTimer;
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     int gunListPos;
+    GameObject Bullet = null;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -109,18 +110,26 @@ public class playerController : MonoBehaviour, IPickup
 
         recoilSpeed += -Camera.main.transform.forward * recoil;
 
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
+        if (Bullet == null)
         {
-            Debug.Log(hit.collider.name);
-
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
-
-            if (dmg != null)
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
             {
-                dmg.takeDamage(shootDamage);
+                Debug.Log(hit.collider.name);
+
+                IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+                if (dmg != null)
+                {
+                    dmg.takeDamage(shootDamage);
+                }
             }
         }
+        else
+        {
+            Instantiate(Bullet, gunModel.transform.position, transform.rotation);
+        }
+
     }
 
     public void getGunStats(gunStats gun)
@@ -140,6 +149,9 @@ public class playerController : MonoBehaviour, IPickup
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        Bullet = gunList[gunListPos].Bullet;
+
     }
 
     void selectGun()

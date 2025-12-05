@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
-  m_Name: Shotgun
+  m_Name: Bow
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunModel: {fileID: 7945995653468186085, guid: 2f7837c2a182a184bb0eddd66eca6b68, type: 3}
-  Bullet: {fileID: 0}
-  shootDamage: 2
-  shootDist: 15
-  shootRate: 1.34
-  recoil: 20
+  gunModel: {fileID: 2083537937460915243, guid: 6ec731aa0d2dd5e4882f9517540083e5, type: 3}
+  Bullet: {fileID: 3429663345579946508, guid: 8a031845954676e46aa2ea9c65e19e01, type: 3}
+  shootDamage: 0
+  shootDist: 0
+  shootRate: 1.07
+  recoil: 0

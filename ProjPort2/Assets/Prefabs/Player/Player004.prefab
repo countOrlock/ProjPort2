@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerController
   controller: {fileID: 7174832327420152129}
+  HP: 10
   wSpeed: 5
   rSpeed: 10
   jumpSpeed: 10

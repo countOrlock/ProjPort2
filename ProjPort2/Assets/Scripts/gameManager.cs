@@ -10,9 +10,12 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] TMP_Text gameGoalCountText;
 
     public GameObject player;
     public playerController playerScript;
+    public Image playerHPBar;
+    public GameObject playerDamageScreen;
 
     public bool isPaused;
 
@@ -68,8 +71,9 @@ public class gameManager : MonoBehaviour
     public void updateGameGoal(int amount)
     {
         gameGoalCount += amount;
+        gameGoalCountText.text = gameGoalCount.ToString("F0");
 
-        if(gameGoalCount <= 0)
+        if (gameGoalCount <= 0)
         {
             statePause();
             menuActive = menuWin;

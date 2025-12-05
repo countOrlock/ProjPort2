@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, IPickup
 {
     [SerializeField] CharacterController controller;
 
@@ -23,6 +24,9 @@ public class playerController : MonoBehaviour
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
     float shootTimer;
+    [SerializeField] List<gunStats> gunList = new List<gunStats>();
+    int gunListPos;
+    [SerializeField] GameObject gunModel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -100,4 +104,37 @@ public class playerController : MonoBehaviour
             }
         }
     }
+
+    public void getGunStats(gunStats gun)
+    {
+        gunList.Add(gun);
+        gunListPos = gunList.Count - 1;
+
+        changeGun();
+    }
+
+    void changeGun()
+    {
+        shootDamage = gunList[gunListPos].shootDamage;
+        shootDist = gunList[gunListPos].shootDist;
+        shootRate = gunList[gunListPos].shootRate;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    }
+
+    void selectGun()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
+        {
+            gunListPos++;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
+        {
+            gunListPos--;
+            changeGun();
+        }
+    }
+
 }

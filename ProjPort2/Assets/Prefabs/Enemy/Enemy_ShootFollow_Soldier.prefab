@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2710485856084164888}
   - component: {fileID: 2035744808108374491}
   - component: {fileID: 5897487985625711192}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_ShootFollow_Soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,8 @@ MonoBehaviour:
   model: {fileID: 8627322882810979914}
   agent: {fileID: 2710485856084164888}
   HP: 10
-  faceTargetSpeed: 400
+  faceTargetSpeed: 10
+  FOV: 120
   scaredOfPlayer: 0
   shootsProjectile: 1
   attacksMelee: 0
@@ -84,7 +85,7 @@ MonoBehaviour:
   shootPos: {fileID: 6514122192872004435}
   enemyIgnoreLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   meleeDamage: 0
   meleeRange: 0
   meleeRate: 0
@@ -102,7 +103,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 600
+  m_AngularSpeed: 300
   m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
@@ -131,9 +132,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.5
+  m_Height: 1.75
   m_Direction: 1
-  m_Center: {x: 0, y: 1.25, z: 0}
+  m_Center: {x: 0, y: 1.64, z: 0}
 --- !u!135 &5897487985625711192
 SphereCollider:
   m_ObjectHideFlags: 0

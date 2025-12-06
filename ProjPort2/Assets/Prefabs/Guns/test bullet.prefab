@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6926949624140025151}
+  - component: {fileID: -4645749946000060659}
   - component: {fileID: 6985818987911019355}
   - component: {fileID: 930071371831865323}
   - component: {fileID: 5881760817106114688}
@@ -37,6 +38,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4645749946000060659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3429663345579946508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b16befbbc4fe0d4e87a2dd39ff27dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::damage
+  type: 0
+  rb: {fileID: 8441271649034794655}
+  damageAmount: 1
+  damageRate: 1
+  speed: 5
+  destroyTime: 5
 --- !u!33 &6985818987911019355
 MeshFilter:
   m_ObjectHideFlags: 0

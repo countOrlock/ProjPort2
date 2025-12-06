@@ -32,6 +32,37 @@ Transform:
   - {fileID: 7713525229023233667}
   m_Father: {fileID: 4016405674458402345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &98789007475578820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5400148329440010590}
+  m_Layer: 0
+  m_Name: Melee Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5400148329440010590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98789007475578820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000002955839, y: -0.5246975, z: -0.8512888, w: -0.0000036422796}
+  m_LocalPosition: {x: 0, y: -0.146, z: 0.166}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7297079768742568748}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &317464029258289767
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +824,8 @@ Transform:
   m_LocalPosition: {x: 0.000000030993988, y: 0.48402974, z: -0.11670011}
   m_LocalScale: {x: 1, y: 0.99999934, z: 1.0000001}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5400148329440010590}
   m_Father: {fileID: 8931924902862258136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5773887990198380969
@@ -1067,14 +1099,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad51e8fc124d7740acbbf28200c80b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
-  model: {fileID: 0}
+  model: {fileID: 8027187008175842045}
   agent: {fileID: 2721853113809910448}
+  enemyIgnoreLayer:
+    serializedVersion: 2
+    m_Bits: 64
   HP: 4
+  faceTargetSpeed: 10
   scaredOfPlayer: 0
   shootsProjectile: 0
+  attacksMelee: 1
   bullet: {fileID: 0}
   shootRate: 0
   shootPos: {fileID: 0}
+  meleeDamage: 1
+  meleeRange: 2
+  meleeRate: 1
+  attackPos: {fileID: 5400148329440010590}
 --- !u!195 &2721853113809910448
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1086,10 +1127,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5000001
   m_Speed: 6
-  m_Acceleration: 8
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 600
-  m_StoppingDistance: 3
+  m_AngularSpeed: 300
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -1116,8 +1157,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.74, y: 1, z: 2.09}
-  m_Center: {x: 0, y: 0.67, z: 0.2}
+  m_Size: {x: 0.74, y: 1, z: 2.51}
+  m_Center: {x: 0, y: 0.87, z: 0.15}
 --- !u!135 &1498038248242088522
 SphereCollider:
   m_ObjectHideFlags: 0

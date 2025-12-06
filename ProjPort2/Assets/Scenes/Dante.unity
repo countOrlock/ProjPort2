@@ -2283,6 +2283,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9040643028741707549, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
+      propertyPath: faceTargetSpeed
+      value: 400
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3520,40 +3524,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2721853113809910448, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
-      propertyPath: m_Speed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2721853113809910448, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
-      propertyPath: m_Acceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2721853113809910448, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2721853113809910448, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7039625661349652223, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
       propertyPath: m_Name
       value: Enemy_MeleeFollow_Tiger
       objectReference: {fileID: 0}
-    - target: {fileID: 9125500056977835846, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
-      propertyPath: model
-      value: 
-      objectReference: {fileID: 7115410079606454368}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
---- !u!137 &7115410079606454368 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8027187008175842045, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
-  m_PrefabInstance: {fileID: 4174080369206922334}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

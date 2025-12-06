@@ -1101,17 +1101,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
   model: {fileID: 8027187008175842045}
   agent: {fileID: 2721853113809910448}
-  enemyIgnoreLayer:
-    serializedVersion: 2
-    m_Bits: 64
   HP: 4
-  faceTargetSpeed: 10
+  faceTargetSpeed: 2
+  FOV: 120
   scaredOfPlayer: 0
   shootsProjectile: 0
   attacksMelee: 1
   bullet: {fileID: 0}
   shootRate: 0
   shootPos: {fileID: 0}
+  enemyIgnoreLayer:
+    serializedVersion: 2
+    m_Bits: 64
   meleeDamage: 1
   meleeRange: 2
   meleeRate: 1
@@ -1127,10 +1128,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5000001
   m_Speed: 6
-  m_Acceleration: 10
+  m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 300
-  m_StoppingDistance: 4
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1

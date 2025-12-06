@@ -8,6 +8,9 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [SerializeField] int HP;
     [SerializeField] float faceTargetSpeed;
+    [SerializeField] int FOV;
+
+    [Header("----- Toggles -----")]
     [SerializeField] bool scaredOfPlayer;
     [SerializeField] bool shootsProjectile;
     [SerializeField] bool attacksMelee;
@@ -30,8 +33,9 @@ public class enemyAI : MonoBehaviour, IDamage
     float shootTimer;
     float meleeTimer;
 
+    float angleToPlayer;
+
     bool playerInRange;
-    bool playerInMeleeRange;
 
     Vector3 playerDir;
 
@@ -48,40 +52,56 @@ public class enemyAI : MonoBehaviour, IDamage
         shootTimer += Time.deltaTime;
         meleeTimer += Time.deltaTime;
 
-        if (playerInRange)
+        if (playerInRange && canSeePlayer())
         {
-            if (!scaredOfPlayer)
+            Debug.Log("Player is visible");
+        }
+        Debug.DrawRay(transform.position, playerDir * 10, Color.coral);
+    }
+
+    bool canSeePlayer()
+    {
+        playerDir = gameManager.instance.player.transform.position - transform.position;
+        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, playerDir, out hit))
+        {
+            if (angleToPlayer <= FOV && hit.collider.CompareTag("Player"))
             {
-                agent.SetDestination(gameManager.instance.player.transform.position);
-            }
-            else
-            {
-                playerDir = gameManager.instance.player.transform.position - transform.position;
+                if (!scaredOfPlayer)
+                {
+                    agent.SetDestination(gameManager.instance.player.transform.position);
+                }
+                else if (scaredOfPlayer)
+                {
+                    float oppositePlayerX = transform.position.x - playerDir.x;
+                    float oppositePlayerZ = transform.position.z - playerDir.z;
 
-                float oppositePlayerX = transform.position.x - playerDir.x;
-                float oppositePlayerZ = transform.position.z - playerDir.z;
+                    Vector3 targetPos = new Vector3(oppositePlayerX, transform.position.y, oppositePlayerZ);
 
-                Vector3 targetPos = new Vector3(oppositePlayerX, transform.position.y, oppositePlayerZ);
+                    agent.SetDestination(targetPos);
+                }
 
-                agent.SetDestination(targetPos);
-            }
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
 
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                playerDir = gameManager.instance.player.transform.position - transform.position;
-                faceTarget();
-            }
+                if (shootsProjectile && shootTimer >= shootRate)
+                {
+                    shoot();
+                }
 
-            if (shootsProjectile && shootTimer >= shootRate)
-            {
-                shoot();
-            }
+                if (attacksMelee && meleeTimer >= meleeRate && inMeleeRange())
+                {
+                    Debug.DrawRay(attackPos.position, transform.forward * meleeRange, Color.purple);
+                }
 
-            if (attacksMelee && meleeTimer >= meleeRate && inMeleeRange())
-            {
-                Debug.DrawRay(attackPos.position, transform.forward * meleeRange, Color.purple);
+                return true;
             }
         }
+        return false;
     }
 
     bool inMeleeRange()
@@ -89,13 +109,17 @@ public class enemyAI : MonoBehaviour, IDamage
         RaycastHit hit;
         Physics.Raycast(attackPos.position, transform.forward, out hit, meleeRange, ~enemyIgnoreLayer);
 
+        Debug.Log(hit.collider);
 
-        if (hit.collider.CompareTag("Player"))
+        if (hit.collider != null)
         {
-            Debug.Log(hit.collider);
-            meleeAttack();
-            return true;
+            if (hit.collider.CompareTag("Player"))
+            {
+                meleeAttack();
+                return true;
+            }
         }
+
 
         return false;
     }
@@ -139,6 +163,10 @@ public class enemyAI : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
+        if (!scaredOfPlayer)
+        {
+            agent.SetDestination(gameManager.instance.player.transform.position);
+        }
 
         if (HP <= 0)
         {

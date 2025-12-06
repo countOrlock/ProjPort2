@@ -75,7 +75,7 @@ MonoBehaviour:
   model: {fileID: 8627322882810979914}
   agent: {fileID: 2710485856084164888}
   HP: 10
-  faceTargetSpeed: 0
+  faceTargetSpeed: 400
   scaredOfPlayer: 0
   shootsProjectile: 1
   attacksMelee: 0

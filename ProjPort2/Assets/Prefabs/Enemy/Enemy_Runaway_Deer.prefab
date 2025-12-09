@@ -269,9 +269,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad51e8fc124d7740acbbf28200c80b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
+  model: {fileID: 2430589557128174119}
   agent: {fileID: 2669145947589364705}
-  HP: 3
+  HP: 6
+  faceTargetSpeed: 0
+  FOV: 270
   scaredOfPlayer: 1
+  shootsProjectile: 0
+  attacksMelee: 0
+  bullet: {fileID: 0}
+  shootRate: 0
+  shootPos: {fileID: 0}
+  enemyIgnoreLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  meleeDamage: 0
+  meleeRange: 0
+  meleeRate: 0
+  attackPos: {fileID: 0}
 --- !u!195 &2669145947589364705
 NavMeshAgent:
   m_ObjectHideFlags: 0

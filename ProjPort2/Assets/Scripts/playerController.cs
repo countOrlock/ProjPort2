@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 
-public class playerController : MonoBehaviour, IPickup
+public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] CharacterController controller;
 
+    [Range(1, 10)][SerializeField] int HP;
     [Range(1, 10)][SerializeField] int wSpeed;
     [Range(1, 10)][SerializeField] int rSpeed;
     [Range(1, 20)][SerializeField] int jumpSpeed;
@@ -19,6 +20,7 @@ public class playerController : MonoBehaviour, IPickup
     float jumpMod;
     int speedMod;
     int maxJump;
+    int HPOrig;
 
     [Header("----- Gun Fields -----")]
     [SerializeField] GameObject gunModel;
@@ -36,6 +38,9 @@ public class playerController : MonoBehaviour, IPickup
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        HPOrig = HP;
+        updatePlayerUI();
+
         jumpMod = 0f;
         speedMod = wSpeed;
         maxJump = jumpCount;
@@ -166,6 +171,30 @@ public class playerController : MonoBehaviour, IPickup
             gunListPos--;
             changeGun();
         }
+    }
+
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+        updatePlayerUI();
+        StartCoroutine(flashRed());
+
+        if (HP <= 0)
+        {
+            gameManager.instance.youLose();
+        }
+    }
+
+    public void updatePlayerUI()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+    }
+
+    IEnumerator flashRed()
+    {
+        gameManager.instance.playerDamageScreen.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.playerDamageScreen.SetActive(false);
     }
 
 }

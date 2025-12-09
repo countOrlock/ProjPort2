@@ -49,17 +49,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerController
   controller: {fileID: 1014922733057474107}
+  HP: 1
   wSpeed: 1
   rSpeed: 1
   jumpSpeed: 1
   gravity: 0
   jumpCount: 0
+  gunModel: {fileID: 0}
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 0
   shootDamage: 0
   shootDist: 0
   shootRate: 0
+  recoil: 0
+  gunList: []
 --- !u!143 &1014922733057474107
 CharacterController:
   m_ObjectHideFlags: 0

@@ -1,13 +1,39 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 public class enemyAI : MonoBehaviour, IDamage
 {
+    [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
 
     [SerializeField] int HP;
-    [SerializeField] bool scaredOfPlayer;
+    [SerializeField] float faceTargetSpeed;
+    [SerializeField] int FOV;
 
-    GameObject player;
+    [Header("----- Toggles -----")]
+    [SerializeField] bool scaredOfPlayer;
+    [SerializeField] bool shootsProjectile;
+    [SerializeField] bool attacksMelee;
+
+
+    [Header("----- If Shoots Projectile -----")]
+    [SerializeField] GameObject bullet;
+    [SerializeField] float shootRate;
+    [SerializeField] Transform shootPos;
+
+    [Header("----- If Attacks Melee -----")]
+    [SerializeField] LayerMask enemyIgnoreLayer;
+    [SerializeField] int meleeDamage;
+    [SerializeField] int meleeRange;
+    [SerializeField] float meleeRate;
+    [SerializeField] Transform attackPos;
+
+    Color colorOrig;
+
+    float shootTimer;
+    float meleeTimer;
+
+    float angleToPlayer;
 
     bool playerInRange;
 
@@ -16,32 +42,99 @@ public class enemyAI : MonoBehaviour, IDamage
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        colorOrig = model.material.color;
         gameManager.instance.updateGameGoal(1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange && !scaredOfPlayer)
+        shootTimer += Time.deltaTime;
+        meleeTimer += Time.deltaTime;
+
+        if (playerInRange && canSeePlayer())
         {
-            agent.SetDestination(player.transform.position);
+            Debug.Log("Player is visible");
         }
-        else if (playerInRange && scaredOfPlayer)
+        Debug.DrawRay(transform.position, playerDir * 10, Color.coral);
+    }
+
+    bool canSeePlayer()
+    {
+        playerDir = gameManager.instance.player.transform.position - transform.position;
+        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, playerDir, out hit))
         {
-            playerDir = player.transform.position - transform.position;
+            if (angleToPlayer <= FOV && hit.collider.CompareTag("Player"))
+            {
+                if (!scaredOfPlayer)
+                {
+                    agent.SetDestination(gameManager.instance.player.transform.position);
+                }
+                else if (scaredOfPlayer)
+                {
+                    float oppositePlayerX = transform.position.x - playerDir.x;
+                    float oppositePlayerZ = transform.position.z - playerDir.z;
 
+                    Vector3 targetPos = new Vector3(oppositePlayerX, transform.position.y, oppositePlayerZ);
 
-            float xVectorSwapNum = 2 / Mathf.Abs(playerDir.x) + 1;
-            float zVectorSwapNum = 2 / Mathf.Abs(playerDir.z) + 1;
+                    agent.SetDestination(targetPos);
+                }
 
-            float oppositePlayerX = player.transform.position.x - (xVectorSwapNum * playerDir.x);
-            float oppositePlayerZ = player.transform.position.z - (zVectorSwapNum * playerDir.z);
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
 
-            Debug.Log(oppositePlayerX);
+                if (shootsProjectile && shootTimer >= shootRate)
+                {
+                    shoot();
+                }
 
-            agent.SetDestination(new Vector3(oppositePlayerX, transform.position.y, oppositePlayerZ));
+                if (attacksMelee && meleeTimer >= meleeRate && inMeleeRange())
+                {
+                    Debug.DrawRay(attackPos.position, transform.forward * meleeRange, Color.purple);
+                }
+
+                return true;
+            }
         }
+        return false;
+    }
+
+    bool inMeleeRange()
+    {
+        RaycastHit hit;
+        Physics.Raycast(attackPos.position, transform.forward, out hit, meleeRange, ~enemyIgnoreLayer);
+
+        Debug.Log(hit.collider);
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                meleeAttack();
+                return true;
+            }
+        }
+
+
+        return false;
+    }
+
+    void shoot()
+    {
+        shootTimer = 0;
+        Instantiate(bullet, shootPos.position, transform.rotation);
+    }
+
+    void meleeAttack()
+    {
+        meleeTimer = 0;
+        IDamage dmg = gameManager.instance.player.GetComponent<IDamage>();
+        dmg.takeDamage(meleeDamage);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,14 +153,36 @@ public class enemyAI : MonoBehaviour, IDamage
         }
     }
 
+    void faceTarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
+    }
+
+
     public void takeDamage(int amount)
     {
         HP -= amount;
+        if (!scaredOfPlayer)
+        {
+            agent.SetDestination(gameManager.instance.player.transform.position);
+        }
 
         if (HP <= 0)
         {
             gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
+        else
+        {
+            StartCoroutine(flashRed());
+        }
+    }
+
+    IEnumerator flashRed()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.material.color = colorOrig;
     }
 }

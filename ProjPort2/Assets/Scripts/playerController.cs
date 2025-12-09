@@ -1,19 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
+    public enum stanceType { sprinting, standing, crouching, prone};
+    public stanceType stance;
     [SerializeField] CharacterController controller;
+    [SerializeField] GameObject playerCam;
 
     [Range(1, 10)][SerializeField] int HP;
     [Range(1, 10)][SerializeField] int wSpeed;
     [Range(1, 10)][SerializeField] int rSpeed;
     [Range(1, 20)][SerializeField] int jumpSpeed;
-    [Range(0f, 2f)][SerializeField] float cHeight;
-    [Range(0f, 2f)][SerializeField] float pHeight;
+    [Range(0f, 1f)][SerializeField] float cHeight;
+    [Range(0f, 1f)][SerializeField] float pHeight;
     [SerializeField] float gravity;
     [SerializeField] int jumpCount;
+    [SerializeField] float stanceChangeSpeed;
+
+    
 
     Vector3 moveDir;
     Vector2 walkDir;
@@ -24,6 +31,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int maxJump;
     int HPOrig;
     float heightOrig;
+    float targetHeight;
 
     [Header("----- Gun Fields -----")]
     [SerializeField] GameObject gunModel;
@@ -47,7 +55,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         jumpMod = 0f;
         speedMod = wSpeed;
         maxJump = jumpCount;
-        heightOrig = controller.height;
+        heightOrig = playerCam.transform.localPosition.y;
+        targetHeight = heightOrig;
+        stance = stanceType.standing;
     }
 
     // Update is called once per frame
@@ -75,10 +85,40 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         selectGun();
 
+        //crouch/prone
+        stanceChange();
+
         //movement execution
         walkDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         moveDir = walkDir.x * transform.right * speedMod + walkDir.y * transform.forward * speedMod + jumpMod * transform.up;
         controller.Move(moveDir * Time.deltaTime);
+    }
+
+    void stanceChange()
+    {
+        if(Input.GetButtonDown("Crouch"))
+        {
+            targetHeight = cHeight;
+            stance = stanceType.crouching;
+        }
+
+        if(Input.GetButtonDown("Prone"))
+        {
+            targetHeight = pHeight;
+            stance = stanceType.prone;
+        }
+
+        if(playerCam.transform.localPosition.y != targetHeight)
+        {
+            float newHeight = Mathf.Lerp(playerCam.transform.localPosition.y, targetHeight, stanceChangeSpeed * Time.deltaTime);
+            float heightChange = newHeight - playerCam.transform.localPosition.y;
+            playerCam.transform.Translate(0, heightChange, 0);
+
+            if (playerCam.transform.localPosition.y <= targetHeight + 0.005f && playerCam.transform.localPosition.y >= targetHeight - 0.005f)
+            {
+                playerCam.transform.localPosition = new Vector3(playerCam.transform.localPosition.x, targetHeight, playerCam.transform.localPosition.z);
+            }
+        }
     }
 
     void sprint()
@@ -117,8 +157,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         if (Input.GetButtonDown("Jump") && jumpCount > 0)
         {
-            jumpMod = jumpSpeed;
-            jumpCount--;
+            if (stance == stanceType.crouching || stance == stanceType.prone)
+            {
+                stance = stanceType.standing;
+                targetHeight = heightOrig;
+            }
+            else
+            {
+                jumpMod = jumpSpeed;
+                jumpCount--;
+            }
         }
     }
 

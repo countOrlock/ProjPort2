@@ -11,6 +11,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text gameGoalCountText;
+    [SerializeField] TMP_Text currentAmmoCountText;
+    [SerializeField] TMP_Text maxAmmoCountText;
+    [SerializeField] TMP_Text totalMagCountText;
 
     public GameObject player;
     public playerController playerScript;
@@ -21,6 +24,9 @@ public class gameManager : MonoBehaviour
 
     float timeScaleOrig;
     int gameGoalCount;
+    int currentAmmoCount;
+    int maxAmmoCount;
+    int totalMagCount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -80,6 +86,8 @@ public class gameManager : MonoBehaviour
             menuActive.SetActive(true);
         }
     }
+
+    //methods for updateAmmoCount and updateTotalMagCount placeholder
 
     public void youLose()
     {

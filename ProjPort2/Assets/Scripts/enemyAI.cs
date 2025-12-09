@@ -15,7 +15,6 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] bool shootsProjectile;
     [SerializeField] bool attacksMelee;
 
-
     [Header("----- If Shoots Projectile -----")]
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
@@ -28,8 +27,14 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] float meleeRate;
     [SerializeField] Transform attackPos;
 
+    [Header("----- Roaming -----")]
+    [SerializeField] int roamDist;
+    [SerializeField] int roamPauseTimer;
+    float stoppingDistOrig;
+
     Color colorOrig;
 
+    float roamTimer;
     float shootTimer;
     float meleeTimer;
 
@@ -38,12 +43,15 @@ public class enemyAI : MonoBehaviour, IDamage
     bool playerInRange;
 
     Vector3 playerDir;
+    Vector3 startingPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         colorOrig = model.material.color;
         gameManager.instance.updateGameGoal(1);
+        startingPos = transform.position;
+        stoppingDistOrig = agent.stoppingDistance;
     }
 
     // Update is called once per frame
@@ -52,11 +60,20 @@ public class enemyAI : MonoBehaviour, IDamage
         shootTimer += Time.deltaTime;
         meleeTimer += Time.deltaTime;
 
-        if (playerInRange && canSeePlayer())
+        if (agent.remainingDistance < 0.01)
         {
-            Debug.Log("Player is visible");
+            roamTimer += Time.deltaTime;
         }
-        Debug.DrawRay(transform.position, playerDir * 10, Color.coral);
+
+        if (playerInRange && !canSeePlayer())
+        {
+            checkRoam();
+        }
+        else if (!playerInRange)
+        {
+            checkRoam();
+        }
+            Debug.DrawRay(transform.position, playerDir * 10, Color.coral);
     }
 
     bool canSeePlayer()
@@ -98,9 +115,12 @@ public class enemyAI : MonoBehaviour, IDamage
                     Debug.DrawRay(attackPos.position, transform.forward * meleeRange, Color.purple);
                 }
 
+                Debug.Log("Player is visible");
+                agent.stoppingDistance = stoppingDistOrig;
                 return true;
             }
         }
+        agent.stoppingDistance = 0;
         return false;
     }
 
@@ -149,8 +169,30 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         if (other.CompareTag("Player"))
         {
+            agent.stoppingDistance = 0;
             playerInRange = false;
         }
+    }
+
+    void checkRoam()
+    {
+        if (agent.remainingDistance < 0.01f && roamTimer >= roamPauseTimer)
+        {
+            roam();
+        }
+    }
+
+    void roam()
+    {
+        roamTimer = 0;
+        agent.stoppingDistance = 0;
+        
+        Vector3 ranPos = Random.insideUnitSphere * roamDist;
+        ranPos += startingPos;
+
+        NavMeshHit hit;
+        NavMesh.SamplePosition(ranPos, out hit, roamDist, 1);
+        agent.SetDestination(hit.position);
     }
 
     void faceTarget()

@@ -90,6 +90,8 @@ MonoBehaviour:
   meleeRange: 0
   meleeRate: 0
   attackPos: {fileID: 0}
+  roamDist: 3
+  roamPauseTimer: 1
 --- !u!195 &2710485856084164888
 NavMeshAgent:
   m_ObjectHideFlags: 0

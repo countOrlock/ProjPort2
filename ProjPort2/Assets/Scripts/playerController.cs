@@ -10,6 +10,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [Range(1, 10)][SerializeField] int wSpeed;
     [Range(1, 10)][SerializeField] int rSpeed;
     [Range(1, 20)][SerializeField] int jumpSpeed;
+    [Range(0f, 2f)][SerializeField] float cHeight;
+    [Range(0f, 2f)][SerializeField] float pHeight;
     [SerializeField] float gravity;
     [SerializeField] int jumpCount;
 
@@ -21,6 +23,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int speedMod;
     int maxJump;
     int HPOrig;
+    float heightOrig;
 
     [Header("----- Gun Fields -----")]
     [SerializeField] GameObject gunModel;
@@ -44,6 +47,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         jumpMod = 0f;
         speedMod = wSpeed;
         maxJump = jumpCount;
+        heightOrig = controller.height;
     }
 
     // Update is called once per frame
@@ -64,24 +68,21 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     void movement()
     {
         //jumping and gravity
-
-        if (!controller.isGrounded)
-        {
-            jumpMod = jumpMod - gravity;
-        }
-        else
-        {
-            jumpMod = 0;
-            jumpCount = maxJump;
-        }
-
-        if (Input.GetButtonDown("Jump") && jumpCount > 0)
-        {
-            jumpMod = jumpSpeed;
-            jumpCount--;
-        }
+        jump();
 
         //sprinting
+        sprint();
+
+        selectGun();
+
+        //movement execution
+        walkDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        moveDir = walkDir.x * transform.right * speedMod + walkDir.y * transform.forward * speedMod + jumpMod * transform.up;
+        controller.Move(moveDir * Time.deltaTime);
+    }
+
+    void sprint()
+    {
         if (Input.GetButton("Sprint"))
         {
             speedMod = rSpeed;
@@ -100,13 +101,25 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             recoilSpeed = Vector3.zero;
         }
+    }
 
-        selectGun();
+    void jump()
+    {
+        if (!controller.isGrounded)
+        {
+            jumpMod = jumpMod - gravity;
+        }
+        else
+        {
+            jumpMod = 0;
+            jumpCount = maxJump;
+        }
 
-        //movement execution
-        walkDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        moveDir = walkDir.x * transform.right * speedMod + walkDir.y * transform.forward * speedMod + jumpMod * transform.up;
-        controller.Move(moveDir * Time.deltaTime);
+        if (Input.GetButtonDown("Jump") && jumpCount > 0)
+        {
+            jumpMod = jumpSpeed;
+            jumpCount--;
+        }
     }
 
     void shoot()

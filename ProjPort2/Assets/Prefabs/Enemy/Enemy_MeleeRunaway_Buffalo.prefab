@@ -183,7 +183,7 @@ PrefabInstance:
     - target: {fileID: 828222652728742695, guid: c26f0cc1bf901ca4ea70f131606488e8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 3e750ada6c31f5b4797029fbee3b52c8, type: 2}
+      objectReference: {fileID: 2100000, guid: b6e53dd960302b14c8f42373b7ac3442, type: 2}
     - target: {fileID: 919132149155446097, guid: c26f0cc1bf901ca4ea70f131606488e8, type: 3}
       propertyPath: m_Name
       value: Buffalo_A1

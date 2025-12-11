@@ -73,7 +73,6 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             checkRoam();
         }
-            Debug.DrawRay(transform.position, playerDir * 10, Color.coral);
     }
 
     bool canSeePlayer()
@@ -82,7 +81,7 @@ public class enemyAI : MonoBehaviour, IDamage
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, playerDir, out hit))
+        if (Physics.Raycast(transform.position, playerDir, out hit, Mathf.Infinity, ~enemyIgnoreLayer))
         {
             if (angleToPlayer <= FOV && hit.collider.CompareTag("Player"))
             {
@@ -112,10 +111,8 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 if (attacksMelee && meleeTimer >= meleeRate && inMeleeRange())
                 {
-                    Debug.DrawRay(attackPos.position, transform.forward * meleeRange, Color.purple);
                 }
 
-                Debug.Log("Player is visible");
                 agent.stoppingDistance = stoppingDistOrig;
                 return true;
             }
@@ -127,12 +124,12 @@ public class enemyAI : MonoBehaviour, IDamage
     bool inMeleeRange()
     {
         RaycastHit hit;
-        Physics.Raycast(attackPos.position, transform.forward, out hit, meleeRange, ~enemyIgnoreLayer);
-
-        Debug.Log(hit.collider);
+        Physics.Raycast(transform.position, playerDir, out hit, meleeRange, ~enemyIgnoreLayer);
 
         if (hit.collider != null)
         {
+            Debug.Log(hit.collider);
+
             if (hit.collider.CompareTag("Player"))
             {
                 meleeAttack();

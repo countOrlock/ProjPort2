@@ -71,7 +71,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.white);
 
-        if (Input.GetButton("Fire1") && shootTimer >= shootRate)
+        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= shootRate)
         {
             shoot();
         }
@@ -200,6 +200,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     void shoot()
     {
         shootTimer = 0;
+
+        gunList[gunListPos].ammoCur--;
 
         recoilSpeed += -Camera.main.transform.forward * recoil;
 

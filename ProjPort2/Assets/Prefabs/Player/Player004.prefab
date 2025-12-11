@@ -350,15 +350,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fae6c06e568aa4885dc62435ad8c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerController
+  stance: 0
   controller: {fileID: 7174832327420152129}
+  playerCam: {fileID: 8000944031630460299}
   HP: 10
   wSpeed: 5
   rSpeed: 10
+  cSpeed: 3
+  pSpeed: 1
   jumpSpeed: 10
-  cHeight: 0
-  pHeight: 0
+  cHeight: 0.5
+  pHeight: 0.2
   gravity: 0.2
   jumpCount: 2
+  stanceChangeSpeed: 3
   gunModel: {fileID: 6504785613829033627}
   ignoreLayer:
     serializedVersion: 2

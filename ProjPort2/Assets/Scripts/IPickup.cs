@@ -4,5 +4,5 @@ public interface IPickup
 {
     public void getGunStats(gunStats gun);
 
-    // public void getQuestInfo(questInfo quest);
+    public void getQuestInfo(questInfo quest);
 }

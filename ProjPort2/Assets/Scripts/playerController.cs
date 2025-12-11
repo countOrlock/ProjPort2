@@ -46,7 +46,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     int gunListPos;
     GameObject Bullet = null;
-    
+
+
+    [Header("----- Quest Fields -----")]
+    [SerializeField] List<questInfo> questList = new List<questInfo>();
+    [SerializeField] string questName;
+    [SerializeField] string questObjective;
+    [SerializeField] int itemsForQuest;
+
+    int questListPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -259,6 +267,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             gunListPos--;
             changeGun();
         }
+    }
+
+    public void getQuestInfo(questInfo quest)
+    {
+
+    }
+
+    void assignQuest()
+    {
+
     }
 
     public void takeDamage(int amount)

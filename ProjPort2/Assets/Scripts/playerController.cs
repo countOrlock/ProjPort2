@@ -50,10 +50,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     [Header("----- Quest Fields -----")]
     [SerializeField] List<questInfo> questList = new List<questInfo>();
-    [SerializeField] string questName;
-    [SerializeField] string questObjective;
-    [SerializeField] int itemsForQuest;
-
+    GameObject[] objectsToAdd = GameObject.FindGameObjectsWithTag("Quest");
+    string questName;
+    string questObjective;
+    int itemsForQuest;
     int questListPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -271,7 +271,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void getQuestInfo(questInfo quest)
     {
-
+        assignQuest();
     }
 
     void assignQuest()

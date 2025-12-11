@@ -8,8 +8,8 @@ public class questInfo : ScriptableObject
 
     public string questName;
     public string questObjective;
-    public int itemsForQuest;
-    [Range (0, 2)]public int questStatus;
+    [Range(0, 10)] public int itemsForQuest; // lowest is 0 for now for testing purposes till the quest system if fully set up
+    [Range (0, 2)] public int questStatus;
     public enum questID
     {
         Completed, // 0

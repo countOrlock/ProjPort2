@@ -953,33 +953,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &476026897 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1137559336392939175, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
-  m_PrefabInstance: {fileID: 1989200304836163893}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &476026903
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476026897}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c02a8ad89172e9e46bd97ced402f3daf, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &600460161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,10 +1075,6 @@ PrefabInstance:
     - target: {fileID: 3199249875144518678, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
       propertyPath: m_Name
       value: Enemy_Runaway_Deer
-      objectReference: {fileID: 0}
-    - target: {fileID: 3199249875144518678, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4688625932857137481, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1314,10 +1283,6 @@ PrefabInstance:
     - target: {fileID: 8492705691287836685, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
       propertyPath: m_Name
       value: Enemy_MeleeFollow_Hyena
-      objectReference: {fileID: 0}
-    - target: {fileID: 8492705691287836685, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2176,10 +2141,6 @@ PrefabInstance:
     - target: {fileID: 869472922463874160, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
       propertyPath: m_Name
       value: Enemy_ShootFollow_Soldier
-      objectReference: {fileID: 0}
-    - target: {fileID: 869472922463874160, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 925641363528481766, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3519,14 +3480,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_MeleeFollow_Leopard
       objectReference: {fileID: 0}
-    - target: {fileID: 1137559336392939175, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4490082621547151456, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
-      propertyPath: m_Speed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4575846368380958931, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.8
@@ -3567,21 +3520,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8248336998848634443, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 476026903}
-    - target: {fileID: 8248336998848634443, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
-      propertyPath: animTranSpeed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1137559336392939175, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 476026903}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
 --- !u!1001 &2020222560771700070
 PrefabInstance:
@@ -3634,14 +3576,6 @@ PrefabInstance:
     - target: {fileID: 5018127689058175712, guid: e971a018f0b1ef94cbe25e8d1ac75b31, type: 3}
       propertyPath: m_Name
       value: Enemy_Runaway_Chicken
-      objectReference: {fileID: 0}
-    - target: {fileID: 5018127689058175712, guid: e971a018f0b1ef94cbe25e8d1ac75b31, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6534202915002379537, guid: e971a018f0b1ef94cbe25e8d1ac75b31, type: 3}
-      propertyPath: animTranSpeed
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3700,10 +3634,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_MeleeFollow_Tiger
       objectReference: {fileID: 0}
-    - target: {fileID: 7039625661349652223, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3760,10 +3690,6 @@ PrefabInstance:
     - target: {fileID: 6158128402956509859, guid: bee18005cee24d043b594071a416a6a0, type: 3}
       propertyPath: m_Name
       value: Enemy_MeleeRunaway_Buffalo
-      objectReference: {fileID: 0}
-    - target: {fileID: 6158128402956509859, guid: bee18005cee24d043b594071a416a6a0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

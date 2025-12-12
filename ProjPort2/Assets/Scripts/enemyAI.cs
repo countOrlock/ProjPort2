@@ -144,7 +144,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
             if (hit.collider.CompareTag("Player"))
             {
-                meleeAttack();
+                anim.SetTrigger("Melee");
                 return true;
             }
         }

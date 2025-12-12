@@ -1284,13 +1284,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3095907002570438161, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
+      propertyPath: m_Name
+      value: Enemy_MeleeFollow_Hyena2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879251290532961145, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1389815351}
+    - target: {fileID: 4879251290532961145, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
+      propertyPath: animTranSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8492705691287836685, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
       propertyPath: m_Name
       value: Enemy_MeleeFollow_Hyena
       objectReference: {fileID: 0}
     - target: {fileID: 8492705691287836685, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1963,6 +1975,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!95 &1389815351 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3881644054643074998, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
+  m_PrefabInstance: {fileID: 847368428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1412587939
 GameObject:
   m_ObjectHideFlags: 0
@@ -3200,11 +3217,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!95 &1984469798 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5445488931976673302, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
-  m_PrefabInstance: {fileID: 4174080369206922334}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2115695218
 GameObject:
   m_ObjectHideFlags: 0
@@ -3665,15 +3677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7039625661349652223, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9125500056977835846, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 1984469798}
-    - target: {fileID: 9125500056977835846, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
-      propertyPath: animTranSpeed
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

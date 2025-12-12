@@ -953,11 +953,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &438293580 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7195272989878766171, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
-  m_PrefabInstance: {fileID: 709299257}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &600460161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,17 +1072,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2669145947589364705, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
-      propertyPath: m_Speed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3199249875144518678, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
       propertyPath: m_Name
       value: Enemy_Runaway_Deer
       objectReference: {fileID: 0}
     - target: {fileID: 3199249875144518678, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4688625932857137481, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1128,14 +1119,6 @@ PrefabInstance:
     - target: {fileID: 4688625932857137481, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800210183843199339, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 438293580}
-    - target: {fileID: 5800210183843199339, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
-      propertyPath: animTranSpeed
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3217,6 +3200,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!95 &1984469798 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5445488931976673302, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
+  m_PrefabInstance: {fileID: 4174080369206922334}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2115695218
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,7 +3665,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7039625661349652223, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125500056977835846, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1984469798}
+    - target: {fileID: 9125500056977835846, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
+      propertyPath: animTranSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3752,11 +3748,11 @@ SceneRoots:
   - {fileID: 1577207861}
   - {fileID: 2118305798}
   - {fileID: 2140961188}
-  - {fileID: 4174080369206922334}
   - {fileID: 1989200304836163893}
   - {fileID: 847368428}
-  - {fileID: 709299257}
   - {fileID: 7356233230815051394}
+  - {fileID: 4174080369206922334}
+  - {fileID: 709299257}
   - {fileID: 2020222560771700070}
   - {fileID: 1547472544}
   - {fileID: 215621428}

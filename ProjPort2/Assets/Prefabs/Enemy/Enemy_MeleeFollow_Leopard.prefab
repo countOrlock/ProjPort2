@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 4575846368380958931}
   - component: {fileID: 8248336998848634443}
   - component: {fileID: 4490082621547151456}
-  - component: {fileID: 1528817098492687739}
+  - component: {fileID: 8108003286006481391}
   - component: {fileID: 1771358972412564230}
   - component: {fileID: 8180422027079964205}
   m_Layer: 6
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad51e8fc124d7740acbbf28200c80b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
-  anim: {fileID: 1528817098492687739}
+  anim: {fileID: 8108003286006481391}
   model: {fileID: 3430541391056549333}
   agent: {fileID: 4490082621547151456}
   HP: 4
@@ -349,7 +349,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!95 &1528817098492687739
+--- !u!95 &8108003286006481391
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0

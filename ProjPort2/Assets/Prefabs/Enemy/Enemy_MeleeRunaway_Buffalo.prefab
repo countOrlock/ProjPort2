@@ -48,11 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad51e8fc124d7740acbbf28200c80b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
+  anim: {fileID: 7608370349214238635}
   model: {fileID: 1482399929929171313}
   agent: {fileID: 901076682692079991}
   HP: 6
   faceTargetSpeed: 0
   FOV: 270
+  animTranSpeed: 10
   scaredOfPlayer: 1
   shootsProjectile: 0
   attacksMelee: 1

@@ -269,11 +269,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad51e8fc124d7740acbbf28200c80b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
+  anim: {fileID: 7195272989878766171}
   model: {fileID: 2430589557128174119}
   agent: {fileID: 2669145947589364705}
   HP: 6
   faceTargetSpeed: 0
   FOV: 270
+  animTranSpeed: 10
   scaredOfPlayer: 1
   shootsProjectile: 0
   attacksMelee: 0
@@ -299,7 +301,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 600

@@ -953,6 +953,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &476026897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1137559336392939175, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
+  m_PrefabInstance: {fileID: 1989200304836163893}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &476026903
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476026897}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c02a8ad89172e9e46bd97ced402f3daf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &600460161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,25 +1311,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3095907002570438161, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
-      propertyPath: m_Name
-      value: Enemy_MeleeFollow_Hyena2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4879251290532961145, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 1389815351}
-    - target: {fileID: 4879251290532961145, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
-      propertyPath: animTranSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8492705691287836685, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
       propertyPath: m_Name
       value: Enemy_MeleeFollow_Hyena
       objectReference: {fileID: 0}
     - target: {fileID: 8492705691287836685, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1975,11 +1990,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!95 &1389815351 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3881644054643074998, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
-  m_PrefabInstance: {fileID: 847368428}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1412587939
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,7 +3521,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137559336392939175, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490082621547151456, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
+      propertyPath: m_Speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4575846368380958931, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3553,10 +3567,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8248336998848634443, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 476026903}
+    - target: {fileID: 8248336998848634443, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
+      propertyPath: animTranSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1137559336392939175, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 476026903}
   m_SourcePrefab: {fileID: 100100000, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
 --- !u!1001 &2020222560771700070
 PrefabInstance:

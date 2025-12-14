@@ -222,7 +222,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
         else
         {
-            Instantiate(Bullet, gunModel.transform.position, transform.rotation);
+            Instantiate(Bullet, playerCam.transform.position, playerCam.transform.rotation);
         }
 
     }

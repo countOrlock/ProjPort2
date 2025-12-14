@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 930071371831865323}
   - component: {fileID: 5881760817106114688}
   - component: {fileID: 6180588837740158265}
-  - component: {fileID: 2685560700876483937}
   - component: {fileID: 8441271649034794655}
   m_Layer: 7
-  m_Name: test bullet
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +53,7 @@ MonoBehaviour:
   rb: {fileID: 8441271649034794655}
   damageAmount: 1
   damageRate: 1
-  speed: 5
+  speed: 20
   destroyTime: 5
 --- !u!33 &6985818987911019355
 MeshFilter:
@@ -243,24 +242,6 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!114 &2685560700876483937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3429663345579946508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b16befbbc4fe0d4e87a2dd39ff27dd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::damage
-  type: 0
-  rb: {fileID: 8441271649034794655}
-  damageAmount: 1
-  damageRate: 0
-  speed: 20
-  destroyTime: 5
 --- !u!54 &8441271649034794655
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -271,7 +252,7 @@ Rigidbody:
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0.005
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

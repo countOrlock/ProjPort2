@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2083537937460915243
+--- !u!1 &8857141392854641044
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,61 +8,61 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5991890315315990633}
-  - component: {fileID: 35035781334745502}
-  - component: {fileID: 2058597344824636909}
-  - component: {fileID: 4168577480670764139}
-  - component: {fileID: 7081932209360119979}
+  - component: {fileID: 8603982246009519023}
+  - component: {fileID: 9112041375742255561}
+  - component: {fileID: 5696676025928975780}
+  - component: {fileID: 1159689995786254603}
+  - component: {fileID: 1339916888227690141}
   m_Layer: 0
-  m_Name: Pick Up object shooter test
+  m_Name: Pick Up bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5991890315315990633
+--- !u!4 &8603982246009519023
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083537937460915243}
+  m_GameObject: {fileID: 8857141392854641044}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9217, y: 1.54, z: -3.9687}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.905947, y: 1.3852078, z: 1.4880321}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &35035781334745502
+--- !u!114 &9112041375742255561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083537937460915243}
+  m_GameObject: {fileID: 8857141392854641044}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58693eaea4aee6149a65fafdaeb18749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gunPickup
   gun: {fileID: 11400000, guid: 3d9b399d25b8ce14ba13f3f5d71da1a3, type: 2}
---- !u!33 &2058597344824636909
+--- !u!33 &5696676025928975780
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083537937460915243}
-  m_Mesh: {fileID: -6642371431653917376, guid: e23ab8f095718425c967ae1e8ad24cf5, type: 3}
---- !u!23 &4168577480670764139
+  m_GameObject: {fileID: 8857141392854641044}
+  m_Mesh: {fileID: -7430157396012386394, guid: 2bd589253e58cb945b23de96481a2540, type: 3}
+--- !u!23 &1159689995786254603
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083537937460915243}
+  m_GameObject: {fileID: 8857141392854641044}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,7 +81,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a3f8898e8f9af43a3b665c72458d32e9, type: 2}
+  - {fileID: 2100000, guid: 5acce1f2b51a9c64baa41fe711e3f321, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,13 +104,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7081932209360119979
+--- !u!135 &1339916888227690141
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083537937460915243}
+  m_GameObject: {fileID: 8857141392854641044}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -123,5 +123,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.3826311
-  m_Center: {x: 0.016660038, y: -0.24138336, z: -0.04827386}
+  m_Radius: 0.7327898
+  m_Center: {x: -0.09768063, y: 0.00019210577, z: -0.012072451}

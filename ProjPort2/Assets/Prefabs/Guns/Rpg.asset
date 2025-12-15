@@ -22,6 +22,7 @@ MonoBehaviour:
   ammoCur: 0
   ammoMax: 1
   magsCur: 5
+  magsMax: 5
   hitEffect: {fileID: 0}
   shootSound: []
   shootSoundVol: 0

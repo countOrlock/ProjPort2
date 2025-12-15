@@ -21,7 +21,8 @@ MonoBehaviour:
   recoil: 0
   ammoCur: 1
   ammoMax: 1
-  magsCur: 50
+  magsCur: 30
+  magsMax: 30
   hitEffect: {fileID: 0}
   shootSound: []
   shootSoundVol: 0

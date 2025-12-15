@@ -235,6 +235,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void getGunStats(gunStats gun)
     {
+        for (int i = 0; i < gunList.Count; i++)
+        {
+            if (gunList[i] == gun)
+            {
+                
+                gunList[i].magsCur = gunList[i].magsMax;
+                return;
+            }
+        }
+
         gunList.Add(gun);
         gunListPos = gunList.Count - 1;
 

@@ -15,6 +15,7 @@ public class gunStats : ScriptableObject
     public int ammoCur;
     [Range(1, 200)] public int ammoMax;
     public int magsCur;
+    [Range(1, 70)] public int magsMax;
 
 
     public ParticleSystem hitEffect;

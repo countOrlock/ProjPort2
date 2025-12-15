@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
   gunModel: {fileID: 8857141392854641044, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
-  Bullet: {fileID: 640929130221536815, guid: 8a031845954676e46aa2ea9c65e19e01, type: 3}
+  Bullet: {fileID: 5160407153299701334, guid: 13fd4b827e9486b4591bc8135d13a546, type: 3}
   shootDamage: 0
   shootDist: 0
   shootRate: 2
   recoil: 0
-  ammoCur: 13
+  ammoCur: 12
   ammoMax: 1
   magsCur: 50
   hitEffect: {fileID: 0}

@@ -17,8 +17,9 @@ MonoBehaviour:
   shootDamage: 0
   shootDist: 0
   shootRate: 4
+  reloadRate: 5
   recoil: 10
-  ammoCur: 151
+  ammoCur: 0
   ammoMax: 1
   magsCur: 5
   hitEffect: {fileID: 0}

@@ -60,6 +60,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] AudioClip[] hurtSound;
     [Range(0, 1f)][SerializeField] float hurtVol;
 
+    bool isPlayingStep;
+
 
     [Header("----- Quest Fields -----")]
     [SerializeField] List<questInfo> questList = new List<questInfo>();
@@ -135,6 +137,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         //movement execution
         walkDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+
+        if (walkDir.magnitude > 0.3f && !isPlayingStep && controller.isGrounded)
+            StartCoroutine(playStep());
+
         moveDir = walkDir.x * transform.right * speedMod + walkDir.y * transform.forward * speedMod + jumpMod * transform.up;
         controller.Move(moveDir * Time.deltaTime);
     }
@@ -202,6 +208,17 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
 
         
+    }
+
+    IEnumerator playStep()
+    {
+        isPlayingStep = true;
+        aud.PlayOneShot(stepSound[Random.Range(0, stepSound.Length)], stepVol);
+        if (stance == stanceType.sprinting)
+            yield return new WaitForSeconds(0.3f);
+        else
+            yield return new WaitForSeconds(0.5f);
+        isPlayingStep = false;
     }
 
     void jump()

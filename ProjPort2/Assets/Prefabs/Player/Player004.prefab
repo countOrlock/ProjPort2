@@ -456,7 +456,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da7f5f454d5825843a0403fc6a6bfb59, type: 3}
   - {fileID: 8300000, guid: 828bacc0d163baf49badec9a6382c312, type: 3}
   - {fileID: 8300000, guid: 247bf7ac38612b645ab7ac7e95eb2fcf, type: 3}
-  stepVol: 0.5
+  stepVol: 0.1
   jumpSound:
   - {fileID: 8300000, guid: 9d788ce5eedc8de499bc6660e25f56dd, type: 3}
   - {fileID: 8300000, guid: eb0b6deef36f5f243a1851a9052be8e5, type: 3}

@@ -83,7 +83,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         jumpMod = 0f;
         speedMod = wSpeed;
         maxJump = jumpCount;
-        heightOrig = playerCam.transform.localPosition.y;
+        heightOrig = controller.height;
         controllerHeightOrig = controller.center.y;
         targetHeight = heightOrig;
         stance = stanceType.standing;
@@ -227,6 +227,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             {
                 jumpMod = jumpSpeed;
                 jumpCount--;
+                aud.PlayOneShot(jumpSound[Random.Range(0, jumpSound.Length)], jumpVol);
             }
         }
     }
@@ -346,6 +347,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         HP -= amount;
         updatePlayerUI();
         StartCoroutine(flashRed());
+        aud.PlayOneShot(hurtSound[Random.Range(0, hurtSound.Length)], hurtVol);
 
         if (HP <= 0)
         {

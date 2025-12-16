@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] CharacterController controller;
     [SerializeField] GameObject playerCam;
 
+    [Header("----- Player Stats -----")]
     [Range(1, 10)][SerializeField] int HP;
     [Range(1, 10)][SerializeField] int wSpeed;
     [Range(1, 10)][SerializeField] int rSpeed;
@@ -49,12 +50,17 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
 
     [Header("----- Quest Fields -----")]
-    [SerializeField] List<questInfo> questList = new List<questInfo>();
-    [SerializeField] string questName;
-    [SerializeField] string questObjective;
-    [SerializeField] int itemsForQuest;
+    [SerializeField] List<GameObject> questList = new List<GameObject>();
+    string questName;
+    string questObjective;
+    int questItems;
 
-    int questListPos;
+    public enum questID
+    {
+        Completed, // 0
+        In_Progress, // 1
+        Not_Accepted // 2
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -271,12 +277,30 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void getQuestInfo(questInfo quest)
     {
-
+        assignQuest(quest);
     }
 
-    void assignQuest()
+    void assignQuest(questInfo quest)
     {
+        // all of the quest for the player should initially be set to Not_Accepted
 
+        //then the if statements should be checking for if the status' of the quest
+        // if the quest is completed the player shouldn't be able to activate/get it again until the game restarts
+        // if the quest wasn't accepted yet it should change the status of the quest and change the necessary stats on the player
+        // if the quest is in progress it should check to see if the player has completed the quest and if they did change the status of the quest to completed
+
+        if (quest.questStatus == (int)questID.In_Progress)
+        {
+            if(quest.itemsForQuest == questItems)
+            {
+                quest.questStatus = (int)questID.Completed;
+            }
+        }
+        else
+        {
+            quest.questStatus = (int)questID.In_Progress;
+            
+        }
     }
 
     public void takeDamage(int amount)

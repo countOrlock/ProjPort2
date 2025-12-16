@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
+using System.Linq;
 
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
@@ -254,6 +255,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootTimer = 0;
 
         gunList[gunListPos].ammoCur--;
+
+        if (gunList[gunListPos].shootSound.Length > 0)
+            aud.PlayOneShot(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
 
         recoilSpeed += -Camera.main.transform.forward * recoil;
 

@@ -254,6 +254,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3089147108083938880, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089147108083938880, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3199249875144518678, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
       propertyPath: m_Name
       value: Enemy_Runaway_Deer
@@ -404,6 +412,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+--- !u!1001 &1167290337
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.192
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252920690474927148, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
+      propertyPath: m_Name
+      value: Pick Up Rifle (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
 --- !u!1001 &1392268080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -451,10 +516,6 @@ PrefabInstance:
     - target: {fileID: 6503316508990841740, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6733809912943536547, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8726352775847767780, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
       propertyPath: m_Name
@@ -877,6 +938,7 @@ SceneRoots:
   - {fileID: 1392268080}
   - {fileID: 435107891}
   - {fileID: 3158294006201598826}
+  - {fileID: 1167290337}
   - {fileID: 8872336742289851676}
   - {fileID: 258459101}
   - {fileID: 1656787653}

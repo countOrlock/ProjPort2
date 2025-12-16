@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunModel: {fileID: 7945995653468186085, guid: 2f7837c2a182a184bb0eddd66eca6b68, type: 3}
+  gunModel: {fileID: 5494625650325380441, guid: 944f765b84e4c4012876d61f4dfc7b5a, type: 3}
   Bullet: {fileID: 0}
   shootDamage: 2
   shootDist: 15
-  shootRate: 1.34
+  shootRate: 1
+  reloadRate: 2
   recoil: 20
+  ammoCur: 2
+  ammoMax: 2
+  magsCur: 10
+  magsMax: 20
+  hitEffect: {fileID: 0}
+  shootSound: []
+  shootSoundVol: 0

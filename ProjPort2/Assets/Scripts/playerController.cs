@@ -16,8 +16,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [Range(1, 10)][SerializeField] int cSpeed;
     [Range(1, 10)][SerializeField] int pSpeed;
     [Range(1, 20)][SerializeField] int jumpSpeed;
-    [Range(0f, 1f)][SerializeField] float cHeight;
-    [Range(0f, 1f)][SerializeField] float pHeight;
+    [Range(0f, 3f)][SerializeField] float cHeight;
+    [Range(0f, 3f)][SerializeField] float pHeight;
     [SerializeField] float gravity;
     [SerializeField] int jumpCount;
     [SerializeField] float stanceChangeSpeed;
@@ -33,6 +33,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int maxJump;
     int HPOrig;
     float heightOrig;
+    float controllerHeightOrig;
     float targetHeight;
 
     [Header("----- Gun Fields -----")]
@@ -46,6 +47,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     int gunListPos;
     GameObject Bullet = null;
+    bool reloading = false;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -58,6 +60,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         speedMod = wSpeed;
         maxJump = jumpCount;
         heightOrig = playerCam.transform.localPosition.y;
+        controllerHeightOrig = controller.center.y;
         targetHeight = heightOrig;
         stance = stanceType.standing;
     }
@@ -71,7 +74,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.white);
 
-        if (Input.GetButton("Fire1") && shootTimer >= shootRate)
+        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= shootRate && reloading == false)
         {
             shoot();
         }
@@ -99,6 +102,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         else
         {
             recoilSpeed = Vector3.zero;
+        }
+
+        if(Input.GetButtonDown("Reload Gun") && gunList.Count > 0 && reloading == false && gunList[gunListPos].magsCur > 0 && gunList[gunListPos].ammoCur < gunList[gunListPos].ammoMax)
+        {
+            StartCoroutine(Reload());
         }
 
         //movement execution
@@ -146,11 +154,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             setStance();
         }
 
-        if(playerCam.transform.localPosition.y != targetHeight)
+        if(controller.height != targetHeight)
         {
-            float newHeight = Mathf.MoveTowards(playerCam.transform.localPosition.y, targetHeight, stanceChangeSpeed * Time.deltaTime);
-            float heightChange = newHeight - playerCam.transform.localPosition.y;
-            playerCam.transform.Translate(0, heightChange, 0);
+            float newHeight = Mathf.MoveTowards(controller.height, targetHeight, stanceChangeSpeed * Time.deltaTime);
+            float heightChange = newHeight - controller.height;
+            playerCam.transform.Translate(0, heightChange, 0, Space.World);
+            controller.height += heightChange;
+            controller.center = new Vector3(0, controller.center.y + (heightChange / heightOrig) * controllerHeightOrig, 0);
         }
     }
 
@@ -201,6 +211,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         shootTimer = 0;
 
+        gunList[gunListPos].ammoCur--;
+
         recoilSpeed += -Camera.main.transform.forward * recoil;
 
         if (Bullet == null)
@@ -220,13 +232,23 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
         else
         {
-            Instantiate(Bullet, gunModel.transform.position, transform.rotation);
+            Instantiate(Bullet, playerCam.transform.position, playerCam.transform.rotation);
         }
 
     }
 
     public void getGunStats(gunStats gun)
     {
+        for (int i = 0; i < gunList.Count; i++)
+        {
+            if (gunList[i] == gun)
+            {
+                
+                gunList[i].magsCur = gunList[i].magsMax;
+                return;
+            }
+        }
+
         gunList.Add(gun);
         gunListPos = gunList.Count - 1;
 
@@ -249,12 +271,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     void selectGun()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1 && reloading == false)
         {
             gunListPos++;
             changeGun();
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0 && reloading == false)
         {
             gunListPos--;
             changeGun();
@@ -283,6 +305,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gameManager.instance.playerDamageScreen.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         gameManager.instance.playerDamageScreen.SetActive(false);
+    }
+
+    IEnumerator Reload()
+    {
+        gunList[gunListPos].magsCur--;
+        reloading = true;
+        yield return new WaitForSeconds(gunList[gunListPos].reloadRate);
+        gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+        reloading = false;
     }
 
 }

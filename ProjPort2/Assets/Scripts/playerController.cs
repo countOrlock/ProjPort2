@@ -48,7 +48,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int gunListPos;
     GameObject Bullet = null;
     bool reloading = false;
-    
+
+    [Header("----- Audio -----")]
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip[] stepSound;
+    [Range(0, 1f)][SerializeField] float stepVol;
+    [SerializeField] AudioClip[] jumpSound;
+    [Range(0, 1f)][SerializeField] float jumpVol; 
+    [SerializeField] AudioClip[] hurtSound;
+    [Range(0, 1f)][SerializeField] float hurtVol;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

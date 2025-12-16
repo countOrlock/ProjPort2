@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4782403151323784118}
-  - component: {fileID: 1384884963723929660}
   - component: {fileID: 5436180946371492431}
   - component: {fileID: 8380687962037717448}
   m_Layer: 8
@@ -35,22 +34,6 @@ Transform:
   - {fileID: 2235588913390618875}
   m_Father: {fileID: 6071646225770469010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1384884963723929660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6171382480255209084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14d238044335d3848a5e0feada648e41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::cameraController
-  sens: 420
-  maxUP: 90
-  maxDOWN: -90
-  invert: 0
 --- !u!20 &5436180946371492431
 Camera:
   m_ObjectHideFlags: 0

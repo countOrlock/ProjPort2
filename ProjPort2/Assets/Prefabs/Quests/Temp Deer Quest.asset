@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f483dae09952141a730b88d3f83a1a, type: 3}
+  m_Name: Temp Deer Quest
+  m_EditorClassIdentifier: Assembly-CSharp::questInfo
+  questObject: {fileID: 7051320939021718015, guid: 023c1833a449bbb48aed1b8122a15754, type: 3}
+  questName: Deer Quest
+  questObjective: Hunt the Deer!
+  itemsForQuest: 1
+  questStatus: 0

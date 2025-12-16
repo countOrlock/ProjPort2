@@ -62,7 +62,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
 
     [Header("----- Quest Fields -----")]
-    [SerializeField] List<GameObject> questList = new List<GameObject>();
+    [SerializeField] List<questInfo> questList = new List<questInfo>();
     string questName;
     string questObjective;
     int questItems;
@@ -257,6 +257,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                 if (dmg != null)
                 {
                     dmg.takeDamage(shootDamage);
+                }
+
+                IGiveQuest questGiver = hit.collider.GetComponent<IGiveQuest>();
+
+                if (questGiver != null && questList.Count < 1)
+                {
+                    questList.Add(questGiver.giveQuest());
                 }
             }
         }

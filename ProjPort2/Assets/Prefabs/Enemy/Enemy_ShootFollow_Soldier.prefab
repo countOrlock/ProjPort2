@@ -82,7 +82,7 @@ MonoBehaviour:
   scaredOfPlayer: 0
   shootsProjectile: 1
   attacksMelee: 0
-  bullet: {fileID: 3429663345579946508, guid: 8a031845954676e46aa2ea9c65e19e01, type: 3}
+  bullet: {fileID: 3562899515304451690, guid: 8d26ffcac9bd9cd4cbc04dc84af35253, type: 3}
   shootRate: 1
   shootPos: {fileID: 6514122192872004435}
   enemyIgnoreLayer:

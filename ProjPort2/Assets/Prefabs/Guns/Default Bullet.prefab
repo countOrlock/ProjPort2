@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4016398906100653}
   - component: {fileID: 3680485759073927824}
   m_Layer: 7
-  m_Name: danteTempTestBullet
+  m_Name: Default Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

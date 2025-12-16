@@ -51,8 +51,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     [Header("----- Quest Fields -----")]
     [SerializeField] List<GameObject> questList = new List<GameObject>();
-    string _questName;
-    string _questObjective;
+    string questName;
+    string questObjective;
     int questItems;
     int questStatus;
 
@@ -300,7 +300,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         else
         {
             quest.questStatus = (int)questID.In_Progress;
-
+            que
         }
     }
 

@@ -54,7 +54,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     string questName;
     string questObjective;
     int questItems;
-    int questStatus;
 
     public enum questID
     {
@@ -300,7 +299,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         else
         {
             quest.questStatus = (int)questID.In_Progress;
-            que
+            
         }
     }
 

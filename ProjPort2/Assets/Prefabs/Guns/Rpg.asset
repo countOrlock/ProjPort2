@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
   m_Name: Rpg
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunModel: {fileID: 1629991622876518009, guid: 9bb2700571656574c8811da194246551, type: 3}
+  gunModel: {fileID: 1411512464560164, guid: 02baef62b1bfedf40bb369fb7542b9e7, type: 3}
   Bullet: {fileID: 1141838910390786918, guid: 57e314d01606ee14e9dd2f16de2291ae, type: 3}
   shootDamage: 0
   shootDist: 0
-  shootRate: 4
-  reloadRate: 5
+  shootRate: 0.1
+  reloadRate: 0.1
   recoil: 10
-  ammoCur: 0
-  ammoMax: 1
-  magsCur: 5
+  ammoCur: 184
+  ammoMax: 200
+  magsCur: 0
   magsMax: 5
   hitEffect: {fileID: 0}
   shootSound: []

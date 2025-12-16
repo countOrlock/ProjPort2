@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunModel: {fileID: 8857141392854641044, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
-  Bullet: {fileID: 5160407153299701334, guid: 13fd4b827e9486b4591bc8135d13a546, type: 3}
+  gunModel: {fileID: 5160407153299701334, guid: 13fd4b827e9486b4591bc8135d13a546, type: 3}
+  Bullet: {fileID: 640929130221536815, guid: 8a031845954676e46aa2ea9c65e19e01, type: 3}
   shootDamage: 0
   shootDist: 0
-  shootRate: 1
-  reloadRate: 3
+  shootRate: 0.1
+  reloadRate: 0.1
   recoil: 0
-  ammoCur: 1
-  ammoMax: 1
-  magsCur: 30
+  ammoCur: 147
+  ammoMax: 200
+  magsCur: 22
   magsMax: 30
   hitEffect: {fileID: 0}
   shootSound: []

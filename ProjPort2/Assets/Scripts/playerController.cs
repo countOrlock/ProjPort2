@@ -282,7 +282,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         gunList.Add(gun);
         gunListPos = gunList.Count - 1;
-
+        gunList[gunListPos].magsCur = gunList[gunListPos].magsMax;
+        gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
         changeGun();
     }
 

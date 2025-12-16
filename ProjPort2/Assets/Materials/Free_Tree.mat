@@ -146,7 +146,7 @@ Material:
     - _SubsurfaceIndirect: 0.25
     - _SubsurfaceKwToggle: 0
     - _Surface: 0
-    - _TwoSided: 2
+    - _TwoSided: 0
     - _UVSec: 0
     - _WINDQUALITY: 4
     - _WIND_BRANCH1: 0

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7286991606022308852}
+  - component: {fileID: 5756310071740394162}
   - component: {fileID: 4636125765219550725}
   - component: {fileID: 1797477117668287011}
   m_Layer: 0
@@ -16,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7286991606022308852
 Transform:
@@ -33,6 +34,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7848137436663458402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5756310071740394162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204213808411553950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d84e7fe940ecd40bac717eefa10ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::billboard
+  billboardType: 0
+  lockX: 1
+  lockY: 0
+  lockZ: 0
 --- !u!33 &4636125765219550725
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -104,7 +121,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7848137436663458402
 Transform:
@@ -139,11 +156,11 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.29094845
+  - screenRelativeHeight: 0.53074884
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2950058707496196717}
-  - screenRelativeHeight: 0.14144532
+  - screenRelativeHeight: 0.1845056
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3072468156435411840}
@@ -169,7 +186,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2690647046662997648
 Transform:
@@ -258,7 +275,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2759392945866864075
 Transform:
@@ -346,6 +363,10 @@ PrefabInstance:
     - target: {fileID: 192044, guid: 19682540d8a014522a319b1cf788aee2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 192044, guid: 19682540d8a014522a319b1cf788aee2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 471828, guid: 19682540d8a014522a319b1cf788aee2, type: 3}
       propertyPath: m_LocalPosition.x

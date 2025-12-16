@@ -447,8 +447,8 @@ MonoBehaviour:
   cSpeed: 3
   pSpeed: 1
   jumpSpeed: 10
-  cHeight: 0.5
-  pHeight: 0.2
+  cHeight: 1.5
+  pHeight: 1
   gravity: 0.2
   jumpCount: 2
   stanceChangeSpeed: 3

@@ -16,8 +16,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [Range(1, 10)][SerializeField] int cSpeed;
     [Range(1, 10)][SerializeField] int pSpeed;
     [Range(1, 20)][SerializeField] int jumpSpeed;
-    [Range(0f, 1f)][SerializeField] float cHeight;
-    [Range(0f, 1f)][SerializeField] float pHeight;
+    [Range(0f, 3f)][SerializeField] float cHeight;
+    [Range(0f, 3f)][SerializeField] float pHeight;
     [SerializeField] float gravity;
     [SerializeField] int jumpCount;
     [SerializeField] float stanceChangeSpeed;
@@ -33,6 +33,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int maxJump;
     int HPOrig;
     float heightOrig;
+    float controllerHeightOrig;
     float targetHeight;
 
     [Header("----- Gun Fields -----")]
@@ -59,6 +60,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         speedMod = wSpeed;
         maxJump = jumpCount;
         heightOrig = playerCam.transform.localPosition.y;
+        controllerHeightOrig = controller.center.y;
         targetHeight = heightOrig;
         stance = stanceType.standing;
     }
@@ -152,11 +154,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             setStance();
         }
 
-        if(playerCam.transform.localPosition.y != targetHeight)
+        if(controller.height != targetHeight)
         {
-            float newHeight = Mathf.MoveTowards(playerCam.transform.localPosition.y, targetHeight, stanceChangeSpeed * Time.deltaTime);
-            float heightChange = newHeight - playerCam.transform.localPosition.y;
-            playerCam.transform.Translate(0, heightChange, 0);
+            float newHeight = Mathf.MoveTowards(controller.height, targetHeight, stanceChangeSpeed * Time.deltaTime);
+            float heightChange = newHeight - controller.height;
+            playerCam.transform.Translate(0, heightChange, 0, Space.World);
+            controller.height += heightChange;
+            controller.center = new Vector3(0, controller.center.y + (heightChange / heightOrig) * controllerHeightOrig, 0);
         }
     }
 

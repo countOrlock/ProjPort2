@@ -4,7 +4,7 @@ public class spawner : MonoBehaviour
 {
     [SerializeField] GameObject objectToSpawn;
     [SerializeField] int spawnAmount;
-    [SerializeField] int spawnRate;
+    [SerializeField] float spawnRate;
 
     int spawnCount;
     float spawnTimer;

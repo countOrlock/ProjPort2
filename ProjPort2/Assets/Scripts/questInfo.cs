@@ -9,11 +9,11 @@ public class questInfo : ScriptableObject
     public string questName;
     public string questObjective;
     [Range(0, 10)] public int itemsForQuest; // lowest is 0 for now for testing purposes till the quest system if fully set up
-    [Range (0, 2)] public int questStatus;
+    [Range (1, 3)] public int questStatus;
     public enum questID
     {
-        Completed, // 0
-        In_Progress, // 1
-        Not_Accepted // 2
+        Completed = 1,
+        In_Progress, // 2
+        Not_Accepted // 3
     }
 }

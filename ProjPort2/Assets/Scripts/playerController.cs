@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] CharacterController controller;
     [SerializeField] GameObject playerCam;
 
+    [Header("----- Player Stats -----")]
     [Range(1, 10)][SerializeField] int HP;
     [Range(1, 10)][SerializeField] int wSpeed;
     [Range(1, 10)][SerializeField] int rSpeed;
@@ -49,8 +50,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
 
     [Header("----- Quest Fields -----")]
-    [SerializeField] List<questInfo> questList = new List<questInfo>();
-    GameObject[] objectsToAdd = GameObject.FindGameObjectsWithTag("Quest");
+    [SerializeField] List<GameObject> questList = new List<GameObject>();
     string questName;
     string questObjective;
     int itemsForQuest;

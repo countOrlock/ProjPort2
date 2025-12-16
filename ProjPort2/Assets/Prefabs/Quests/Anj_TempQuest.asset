@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f483dae09952141a730b88d3f83a1a, type: 3}
   m_Name: Anj_TempQuest
   m_EditorClassIdentifier: Assembly-CSharp::questInfo
-  questPaper: {fileID: 0}
+  questObject: {fileID: 0}
   questName: 
   questObjective: 
-  itemCount: 0
+  itemsForQuest: 0
+  questStatus: 2

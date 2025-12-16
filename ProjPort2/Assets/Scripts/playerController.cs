@@ -46,6 +46,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     int gunListPos;
     GameObject Bullet = null;
+    bool reloading = false;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -71,7 +72,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.white);
 
-        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= shootRate)
+        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= shootRate && reloading == false)
         {
             shoot();
         }
@@ -99,6 +100,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         else
         {
             recoilSpeed = Vector3.zero;
+        }
+
+        if(Input.GetButtonDown("Reload Gun") && gunList.Count > 0 && reloading == false && gunList[gunListPos].magsCur > 0 && gunList[gunListPos].ammoCur < gunList[gunListPos].ammoMax)
+        {
+            StartCoroutine(Reload());
         }
 
         //movement execution
@@ -222,13 +228,23 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
         else
         {
-            Instantiate(Bullet, gunModel.transform.position, transform.rotation);
+            Instantiate(Bullet, playerCam.transform.position, playerCam.transform.rotation);
         }
 
     }
 
     public void getGunStats(gunStats gun)
     {
+        for (int i = 0; i < gunList.Count; i++)
+        {
+            if (gunList[i] == gun)
+            {
+                
+                gunList[i].magsCur = gunList[i].magsMax;
+                return;
+            }
+        }
+
         gunList.Add(gun);
         gunListPos = gunList.Count - 1;
 
@@ -251,12 +267,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     void selectGun()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1 && reloading == false)
         {
             gunListPos++;
             changeGun();
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0 && reloading == false)
         {
             gunListPos--;
             changeGun();
@@ -285,6 +301,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gameManager.instance.playerDamageScreen.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         gameManager.instance.playerDamageScreen.SetActive(false);
+    }
+
+    IEnumerator Reload()
+    {
+        gunList[gunListPos].magsCur--;
+        reloading = true;
+        yield return new WaitForSeconds(gunList[gunListPos].reloadRate);
+        gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+        reloading = false;
     }
 
 }

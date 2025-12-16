@@ -83,7 +83,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         jumpMod = 0f;
         speedMod = wSpeed;
         maxJump = jumpCount;
-        heightOrig = playerCam.transform.localPosition.y;
+        heightOrig = controller.height;
         controllerHeightOrig = controller.center.y;
         targetHeight = heightOrig;
         stance = stanceType.standing;
@@ -227,6 +227,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             {
                 jumpMod = jumpSpeed;
                 jumpCount--;
+                aud.PlayOneShot(jumpSound[Random.Range(0, jumpSound.Length)], jumpVol);
             }
         }
     }
@@ -320,31 +321,32 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
     }
 
-    public void getQuestInfo(questInfo quest)
+    public void getQuestItem(questInfo quest)
     {
-        assignQuest(quest);
+        questItems++;
     }
 
     void assignQuest(questInfo quest)
     {
         // all of the quest for the player should initially be set to Not_Accepted
 
-        //then the if statements should be checking for if the status' of the quest
-        // if the quest is completed the player shouldn't be able to activate/get it again until the game restarts
+        switch(quest.questStatus)
+        {
+            case (int)questID.Not_Accepted: 
         // if the quest wasn't accepted yet it should change the status of the quest and change the necessary stats on the player
+
+                break;
+
+            case (int)questID.In_Progress:
         // if the quest is in progress it should check to see if the player has completed the quest and if they did change the status of the quest to completed
 
-        if (quest.questStatus == (int)questID.In_Progress)
-        {
-            if(quest.itemsForQuest == questItems)
-            {
-                quest.questStatus = (int)questID.Completed;
-            }
-        }
-        else
-        {
-            quest.questStatus = (int)questID.In_Progress;
-            
+                break;
+
+            case (int)questID.Completed:
+        // if the quest is completed the player shouldn't be able to activate/get it again until the game restarts
+
+                break;
+
         }
     }
 
@@ -353,6 +355,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         HP -= amount;
         updatePlayerUI();
         StartCoroutine(flashRed());
+        aud.PlayOneShot(hurtSound[Random.Range(0, hurtSound.Length)], hurtVol);
 
         if (HP <= 0)
         {

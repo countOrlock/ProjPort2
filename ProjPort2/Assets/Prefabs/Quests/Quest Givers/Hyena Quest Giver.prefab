@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 231fa5d6b9a3faa4ea7c74223f6eece4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::questGiver
-  quest: {fileID: 11400000, guid: e4b767b678abac842856289f148be957, type: 2}
+  quest: {fileID: 11400000, guid: 98bba4f51b5a1ed43b44c01ecf3cbf08, type: 2}
 --- !u!65 &372956389502707001
 BoxCollider:
   m_ObjectHideFlags: 0

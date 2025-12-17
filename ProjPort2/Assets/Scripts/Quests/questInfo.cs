@@ -5,6 +5,7 @@ using UnityEngine;
 public class questInfo : ScriptableObject
 {
     public GameObject questObject;
+    public GameObject animal;
 
     public int reward;
     public string questName;

@@ -38,6 +38,21 @@ public class spawner : MonoBehaviour
         Instantiate(objectToSpawn, transform.position, Quaternion.identity);
     }
 
+    public void questCall(GameObject animal, int amount = 1)
+    {
+        if (objectToSpawn != animal)
+        {
+            objectToSpawn = animal;
+        }
+
+        if (spawnAmount != amount)
+        {
+            spawnAmount = amount;
+        }
+
+        spawn();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

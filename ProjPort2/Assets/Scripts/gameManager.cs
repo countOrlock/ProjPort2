@@ -14,7 +14,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text currentAmmoCountText;
     [SerializeField] TMP_Text maxAmmoCountText;
     [SerializeField] TMP_Text totalMagCountText;
-
+    
     public GameObject player;
     public playerController playerScript;
     public Image playerHPBar;
@@ -87,7 +87,21 @@ public class gameManager : MonoBehaviour
         }
     }
 
-    //methods for updateAmmoCount and updateTotalMagCount placeholder
+    public void updateAmmoCount()
+    {
+        currentAmmoCount = playerScript.currentAmmo;
+        currentAmmoCountText.text = currentAmmoCount.ToString("F0");
+
+        maxAmmoCount = playerScript.maxAmmo;
+        maxAmmoCountText.text = maxAmmoCount.ToString("F0");
+    }
+
+    public void updateMagCount()
+    {
+        totalMagCount = playerScript.currentMags;
+        totalMagCountText.text = totalMagCount.ToString("F0");
+
+    }
 
     public void youLose()
     {

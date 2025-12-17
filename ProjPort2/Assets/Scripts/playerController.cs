@@ -48,6 +48,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     int gunListPos;
     GameObject Bullet = null;
+    public int currentAmmo;
+    public int maxAmmo;
+    public int currentMags;
+    public int maxMags;
+
 
     bool reloading = false;
 
@@ -237,6 +242,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootTimer = 0;
 
         gunList[gunListPos].ammoCur--;
+        gameManager.instance.updateAmmoCount();
 
         recoilSpeed += -Camera.main.transform.forward * recoil;
 
@@ -299,6 +305,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootDist = gunList[gunListPos].shootDist;
         shootRate = gunList[gunListPos].shootRate;
         recoil = gunList[gunListPos].recoil;
+        currentAmmo = gunList[gunListPos].ammoCur;
+        maxAmmo = gunList[gunListPos].ammoMax;
+        currentMags = gunList[gunListPos].magsCur;
+        maxMags = gunList[gunListPos].magsMax;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -324,30 +334,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public void getQuestItem(questInfo quest)
     {
         questItems++;
-    }
-
-    void assignQuest(questInfo quest)
-    {
-        // all of the quest for the player should initially be set to Not_Accepted
-
-        switch(quest.questStatus)
-        {
-            case (int)questID.Not_Accepted: 
-        // if the quest wasn't accepted yet it should change the status of the quest and change the necessary stats on the player
-
-                break;
-
-            case (int)questID.In_Progress:
-        // if the quest is in progress it should check to see if the player has completed the quest and if they did change the status of the quest to completed
-
-                break;
-
-            case (int)questID.Completed:
-        // if the quest is completed the player shouldn't be able to activate/get it again until the game restarts
-
-                break;
-
-        }
     }
 
     public void takeDamage(int amount)
@@ -378,6 +364,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     IEnumerator Reload()
     {
         gunList[gunListPos].magsCur--;
+        gameManager.instance.updateMagCount();
         reloading = true;
         yield return new WaitForSeconds(gunList[gunListPos].reloadRate);
         gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
+using System.Linq;
 
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
@@ -57,6 +58,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [Range(0, 1f)][SerializeField] float jumpVol; 
     [SerializeField] AudioClip[] hurtSound;
     [Range(0, 1f)][SerializeField] float hurtVol;
+
+    bool isPlayingStep;
 
 
     [Header("----- Quest Fields -----")]
@@ -134,6 +137,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         //movement execution
         walkDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+
+        if (walkDir.magnitude > 0.3f && !isPlayingStep && controller.isGrounded)
+            StartCoroutine(playStep());
+
         moveDir = walkDir.x * transform.right * speedMod + walkDir.y * transform.forward * speedMod + jumpMod * transform.up;
         controller.Move(moveDir * Time.deltaTime);
     }
@@ -203,6 +210,17 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         
     }
 
+    IEnumerator playStep()
+    {
+        isPlayingStep = true;
+        aud.PlayOneShot(stepSound[Random.Range(0, stepSound.Length)], stepVol);
+        if (stance == stanceType.sprinting)
+            yield return new WaitForSeconds(0.3f);
+        else
+            yield return new WaitForSeconds(0.5f);
+        isPlayingStep = false;
+    }
+
     void jump()
     {
         if (!controller.isGrounded)
@@ -236,6 +254,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootTimer = 0;
 
         gunList[gunListPos].ammoCur--;
+
+        if (gunList[gunListPos].shootSound.Length > 0)
+            aud.PlayOneShot(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
 
         recoilSpeed += -Camera.main.transform.forward * recoil;
 
@@ -307,7 +328,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         gunList.Add(gun);
         gunListPos = gunList.Count - 1;
-
+        gunList[gunListPos].magsCur = gunList[gunListPos].magsMax;
+        gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
         changeGun();
     }
 

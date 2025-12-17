@@ -19,10 +19,11 @@ MonoBehaviour:
   shootRate: 0.1
   reloadRate: 2
   recoil: 0
-  ammoCur: 31
+  ammoCur: 60
   ammoMax: 60
-  magsCur: 45
+  magsCur: 49
   magsMax: 50
   hitEffect: {fileID: 8573406259994096289, guid: f3215467cd9e8d041b7c38ca802e2ddd, type: 3}
-  shootSound: []
-  shootSoundVol: 0
+  shootSound:
+  - {fileID: 8300000, guid: cd7af96da98e2b046820f5803240dbae, type: 3}
+  shootSoundVol: 0.5

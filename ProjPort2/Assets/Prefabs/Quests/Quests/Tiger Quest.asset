@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Tiger Quest
   m_EditorClassIdentifier: Assembly-CSharp::questInfo
   questObject: {fileID: 7631719889019543250, guid: 243426fef86a7d6448fdf17533b377a6, type: 3}
+  animal: {fileID: 7039625661349652223, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
   reward: 10
   questName: Tiger Quest
   questObjective: Hunt the Tiger!

@@ -3,6 +3,12 @@ using UnityEngine;
 public class questGiver : MonoBehaviour, IGiveQuest
 {
     [SerializeField] questInfo quest;
+    GameObject[] spawners;
+
+    private void Start()
+    {
+        
+    }
 
     public questInfo giveQuest()
     {

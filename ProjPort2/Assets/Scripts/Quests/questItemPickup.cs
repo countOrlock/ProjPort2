@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class questItemPickup : MonoBehaviour
 {
-    [SerializeField] questInfo quest;
+    [SerializeField] GameObject questItem;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -10,7 +10,7 @@ public class questItemPickup : MonoBehaviour
 
         if (pik != null)
         {
-            pik.getQuestItem(quest);
+            pik.getQuestItem(questItem);
             Destroy(gameObject);
         }
     }

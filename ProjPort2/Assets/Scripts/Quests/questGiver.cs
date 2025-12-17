@@ -15,4 +15,9 @@ public class questGiver : MonoBehaviour, IGiveQuest
             return new questInfo();
         }
     }
+
+    public int giveReward()
+    {
+        return quest.reward;
+    }
 }

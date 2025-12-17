@@ -11,19 +11,17 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] GameObject playerCam;
 
     [Header("----- Player Stats -----")]
-    [Range(1, 10)][SerializeField] int HP;
-    [Range(1, 10)][SerializeField] int wSpeed;
-    [Range(1, 10)][SerializeField] int rSpeed;
-    [Range(1, 10)][SerializeField] int cSpeed;
-    [Range(1, 10)][SerializeField] int pSpeed;
-    [Range(1, 20)][SerializeField] int jumpSpeed;
+    [Range(1,  10)][SerializeField] int HP;
+    [Range(1,  10)][SerializeField] int wSpeed;
+    [Range(1,  10)][SerializeField] int rSpeed;
+    [Range(1,  10)][SerializeField] int cSpeed;
+    [Range(1,  10)][SerializeField] int pSpeed;
+    [Range(1,  20)][SerializeField] int jumpSpeed;
     [Range(0f, 3f)][SerializeField] float cHeight;
     [Range(0f, 3f)][SerializeField] float pHeight;
     [SerializeField] float gravity;
     [SerializeField] int jumpCount;
     [SerializeField] float stanceChangeSpeed;
-
-    
 
     Vector3 moveDir;
     Vector2 walkDir;
@@ -62,10 +60,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
 
     [Header("----- Quest Fields -----")]
+    [Range(0, 100)][SerializeField] int Gold;
     [SerializeField] List<questInfo> questList = new List<questInfo>();
+    [SerializeField] List<GameObject> questItemList = new List<GameObject>();
     string questName;
     string questObjective;
-    int questItems;
 
     public enum questID
     {
@@ -262,10 +261,24 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
                 IGiveQuest questGiver = hit.collider.GetComponent<IGiveQuest>();
 
-                if (questGiver != null && questList.Count < 1)
+                if (questGiver != null)
                 {
-                    questList.Add(questGiver.giveQuest());
+                    if (questList.Count < 1)
+                    {
+                        questList.Add(questGiver.giveQuest());
+                    }
+                    else if (questList.Contains(questGiver.giveQuest()) && !questItemList.Contains(questGiver.giveQuest().questObject))
+                    {
+                        // Say "You already have the quest!!"
+                    }
+                    else if (questList.Contains(questGiver.giveQuest()) && questItemList.Contains(questGiver.giveQuest().questObject))
+                    {
+                        questList.Remove(questGiver.giveQuest());
+                        questItemList.Remove(questGiver.giveQuest().questObject);
+                        Gold += questGiver.giveReward();
+                    }
                 }
+
             }
         }
         else
@@ -273,6 +286,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             Instantiate(Bullet, playerCam.transform.position, playerCam.transform.rotation);
         }
 
+    }
+
+    public void getQuestItem(GameObject quest)
+    {
+        questItemList.Add(quest);
     }
 
     public void getGunStats(gunStats gun)
@@ -321,35 +339,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
     }
 
-    public void getQuestItem(questInfo quest)
-    {
-        questItems++;
-    }
-
-    void assignQuest(questInfo quest)
-    {
-        // all of the quest for the player should initially be set to Not_Accepted
-
-        switch(quest.questStatus)
-        {
-            case (int)questID.Not_Accepted: 
-        // if the quest wasn't accepted yet it should change the status of the quest and change the necessary stats on the player
-
-                break;
-
-            case (int)questID.In_Progress:
-        // if the quest is in progress it should check to see if the player has completed the quest and if they did change the status of the quest to completed
-
-                break;
-
-            case (int)questID.Completed:
-        // if the quest is completed the player shouldn't be able to activate/get it again until the game restarts
-
-                break;
-
-        }
-    }
-
     public void takeDamage(int amount)
     {
         HP -= amount;
@@ -383,5 +372,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
         reloading = false;
     }
+
 
 }

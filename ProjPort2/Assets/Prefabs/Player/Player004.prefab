@@ -470,7 +470,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9fa2fcf0f63360a45a55d6a297b70964, type: 3}
   - {fileID: 8300000, guid: 1ef927a663352154d84076611642b5e2, type: 3}
   hurtVol: 0.5
+  Gold: 57
   questList: []
+  questItemList: []
 --- !u!143 &7174832327420152129
 CharacterController:
   m_ObjectHideFlags: 0

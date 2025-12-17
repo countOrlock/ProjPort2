@@ -12,6 +12,8 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int FOV;
     [SerializeField] int animTranSpeed;
 
+    [SerializeField] GameObject dropItem;
+
     [Header("----- Toggles -----")]
     [SerializeField] bool scaredOfPlayer;
     [SerializeField] bool shootsProjectile;
@@ -227,6 +229,10 @@ public class enemyAI : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             gameManager.instance.updateGameGoal(-1);
+            if(dropItem != null)
+            {
+                Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            }
             Destroy(gameObject);
         }
         else

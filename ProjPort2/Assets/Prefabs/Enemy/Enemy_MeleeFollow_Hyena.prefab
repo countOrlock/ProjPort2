@@ -1810,6 +1810,7 @@ MonoBehaviour:
   faceTargetSpeed: 3
   FOV: 120
   animTranSpeed: 10
+  dropItem: {fileID: 6279683554899872397, guid: 018575af1408a3a4f8669f0bf81ce0c2, type: 3}
   scaredOfPlayer: 0
   shootsProjectile: 0
   attacksMelee: 1

@@ -47,6 +47,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     int gunListPos;
     GameObject Bullet = null;
+    public int currentAmmo;
+    public int maxAmmo;
+    public int currentMags;
+    public int maxMags;
+
 
     bool reloading = false;
 
@@ -254,6 +259,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootTimer = 0;
 
         gunList[gunListPos].ammoCur--;
+        gameManager.instance.updateAmmoCount();
 
         if (gunList[gunListPos].shootSound.Length > 0)
             aud.PlayOneShot(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
@@ -339,6 +345,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootDist = gunList[gunListPos].shootDist;
         shootRate = gunList[gunListPos].shootRate;
         recoil = gunList[gunListPos].recoil;
+        currentAmmo = gunList[gunListPos].ammoCur;
+        maxAmmo = gunList[gunListPos].ammoMax;
+        currentMags = gunList[gunListPos].magsCur;
+        maxMags = gunList[gunListPos].magsMax;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
@@ -389,6 +399,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     IEnumerator Reload()
     {
         gunList[gunListPos].magsCur--;
+        gameManager.instance.updateMagCount();
         reloading = true;
         yield return new WaitForSeconds(gunList[gunListPos].reloadRate);
         gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;

@@ -3,11 +3,11 @@ using UnityEngine;
 public class questGiver : MonoBehaviour, IGiveQuest
 {
     [SerializeField] questInfo quest;
-    GameObject[] spawners;
+    public GameObject[] spawners;
 
     private void Start()
     {
-        
+        spawners = GameObject.FindGameObjectsWithTag("Spawner");
     }
 
     public questInfo giveQuest()

@@ -2355,6 +2355,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1001 &1566379974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4241016444551286194, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
+      propertyPath: m_Name
+      value: Quest Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717280916650264789, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -70.34661
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717280916650264789, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.88045
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717280916650264789, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -84.50373
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717280916650264789, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717280916650264789, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717280916650264789, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717280916650264789, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717280916650264789, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717280916650264789, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717280916650264789, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ca3e758f5e285248a5d91263e2e878b, type: 3}
 --- !u!1001 &1566866379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3582,63 +3639,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
---- !u!1001 &144958146456306056
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1826935072061477632, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
-      propertyPath: m_Name
-      value: Buffalo Quest Giver
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -65.57846
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -82.065544
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5ce120a94a95d7c4988f9f109bbc4330, type: 3}
 --- !u!1001 &976024145693668390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3810,63 +3810,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e971a018f0b1ef94cbe25e8d1ac75b31, type: 3}
---- !u!1001 &2313751299398698580
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1826935072061477632, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
-      propertyPath: m_Name
-      value: Deer Quest Giver
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -68.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -82.065544
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c51df0333baf9da40b79d9c6b6e326ea, type: 3}
 --- !u!1001 &2918367339988825505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3981,177 +3924,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
---- !u!1001 &5004557108107892375
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1826935072061477632, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
-      propertyPath: m_Name
-      value: Leopard Quest Giver
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -75.126
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -82.065544
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6bb48dd24a8957f41ad9cca65fb16ae1, type: 3}
---- !u!1001 &5531323044221148499
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1826935072061477632, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
-      propertyPath: m_Name
-      value: Hyena Quest Giver
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -72.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -82.065544
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6e449d3784a752746a0045b9453827ea, type: 3}
---- !u!1001 &6393503399031439290
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1826935072061477632, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
-      propertyPath: m_Name
-      value: Tiger Quest Giver
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -77.744
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -82.065544
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376336969156639216, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c690925f79562de42a0cdd1a3d0d5329, type: 3}
 --- !u!1001 &7356233230815051394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4219,7 +3991,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6279683554899872397, guid: 555192e2c46b5fa4db97ab4817c19396, type: 3}
       propertyPath: m_Name
-      value: Tiger Quest Item Pickup (1)
+      value: Tiger Quest Item Pickup
       objectReference: {fileID: 0}
     - target: {fileID: 8003797299230397345, guid: 555192e2c46b5fa4db97ab4817c19396, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4307,13 +4079,9 @@ SceneRoots:
   - {fileID: 1833324539}
   - {fileID: 1064496983}
   - {fileID: 1643881084}
-  - {fileID: 144958146456306056}
-  - {fileID: 2313751299398698580}
-  - {fileID: 5531323044221148499}
-  - {fileID: 5004557108107892375}
-  - {fileID: 6393503399031439290}
   - {fileID: 2918367339988825505}
   - {fileID: 394829897}
   - {fileID: 1754039181}
   - {fileID: 976024145693668390}
   - {fileID: 7674354269889521342}
+  - {fileID: 1566379974}

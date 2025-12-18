@@ -269,6 +269,7 @@ public class enemyAI : MonoBehaviour, IDamage
             {
                 Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             }
+            gameManager.instance.hunterAmountCurr--;
             Destroy(gameObject);
         }
         else

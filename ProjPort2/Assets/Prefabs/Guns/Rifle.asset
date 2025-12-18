@@ -21,12 +21,12 @@ MonoBehaviour:
   recoil: 0
   ammoCur: 20
   ammoMax: 20
-  magsCur: 9
+  magsCur: 8
   magsMax: 10
   zoomMod: 0.7
   hitEffect: {fileID: 8573406259994096289, guid: f3215467cd9e8d041b7c38ca802e2ddd, type: 3}
   shootSound:
-  - {fileID: 8300000, guid: cd7af96da98e2b046820f5803240dbae, type: 3}
+  - {fileID: 8300000, guid: c0070fa988b21b145ab26f02ae2d3e0b, type: 3}
   reloadSound:
   - {fileID: 8300000, guid: 43494344f2af3344da29fe87c8c8068b, type: 3}
   shootSoundVol: 0.5

@@ -158,7 +158,7 @@ public class gameManager : MonoBehaviour
     {
         if (hunterAmountCurr < hunterCount)
         {
-            int amountToSpawn = hunterCount = hunterAmountCurr;
+            int amountToSpawn = hunterCount - hunterAmountCurr;
             hunterSpawner.GetComponent<spawner>().questCall(hunter, amountToSpawn);
             hunterAmountCurr += amountToSpawn;
         }

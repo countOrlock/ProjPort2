@@ -30,6 +30,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int meleeRange;
     [SerializeField] float meleeRate;
     [SerializeField] Transform attackPos;
+    public bool debugHasMeleeAnim;
 
     [Header("----- Roaming -----")]
     [SerializeField] int roamDist;
@@ -147,6 +148,8 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 if (attacksMelee && meleeTimer >= meleeRate && inMeleeRange())
                 {
+                    if (!debugHasMeleeAnim)
+                        meleeAttack();
                 }
 
                 agent.stoppingDistance = stoppingDistOrig;
@@ -168,7 +171,8 @@ public class enemyAI : MonoBehaviour, IDamage
 
             if (hit.collider.CompareTag("Player"))
             {
-                anim.SetTrigger("Melee");
+                if (debugHasMeleeAnim)
+                    anim.SetTrigger("Melee");
                 return true;
             }
         }
@@ -268,7 +272,10 @@ public class enemyAI : MonoBehaviour, IDamage
             {
                 Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             }
-            gameManager.instance.hunterAmountCurr--;
+
+            if (shootsProjectile)
+                gameManager.instance.hunterAmountCurr--;
+
             Destroy(gameObject);
         }
         else

@@ -1060,9 +1060,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   meleeDamage: 1
-  meleeRange: 4
+  meleeRange: 2
   meleeRate: 3
   attackPos: {fileID: 0}
+  debugHasMeleeAnim: 0
   roamDist: 10
   roamPauseTimer: 3
   targetPos: {x: 0, y: 0, z: 0}

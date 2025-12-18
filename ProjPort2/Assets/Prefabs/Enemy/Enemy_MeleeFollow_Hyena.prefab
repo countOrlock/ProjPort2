@@ -1824,6 +1824,7 @@ MonoBehaviour:
   meleeRange: 2
   meleeRate: 0.75
   attackPos: {fileID: 7740391500222814729}
+  debugHasMeleeAnim: 1
   roamDist: 5
   roamPauseTimer: 10
   targetPos: {x: 0, y: 0, z: 0}

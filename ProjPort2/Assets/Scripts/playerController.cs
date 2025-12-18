@@ -295,6 +295,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                         questList.Add(questGiver.giveQuest());
                         GameObject spawner = hit.collider.GetComponent<questGiver>().spawners[Random.Range(0, hit.collider.GetComponent<questGiver>().spawners.Length)];
                         spawner.GetComponent<spawner>().questCall(questGiver.giveQuest().animal);
+                        gameManager.instance.currQuestLoc = spawner.transform;
                     }
                     else if (questList.Contains(questGiver.giveQuest()) && !questItemList.Contains(questGiver.giveQuest().questObject))
                     {

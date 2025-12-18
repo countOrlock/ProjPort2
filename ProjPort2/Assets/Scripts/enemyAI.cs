@@ -40,6 +40,12 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- Move To Target -----")]
     [SerializeField] Vector3 targetPos;
     [SerializeField] int maxDistFromTarget;
+
+    [Header("----- Audio -----")]
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip[] shootSound;
+    [Range(0f, 1f)][SerializeField] float shootVol;
+
     float distToTarget;
 
     Color colorOrig;
@@ -54,6 +60,8 @@ public class enemyAI : MonoBehaviour, IDamage
 
     Vector3 playerDir;
     Vector3 startingPos;
+
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -190,6 +198,7 @@ public class enemyAI : MonoBehaviour, IDamage
     public void createBullet()
     {
         Instantiate(bullet, shootPos.position, transform.rotation);
+        aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootVol);
     }
 
     void meleeAttack()

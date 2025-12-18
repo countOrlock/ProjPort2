@@ -17,11 +17,11 @@ MonoBehaviour:
   shootDamage: 0
   shootDist: 0
   shootRate: 0.1
-  reloadRate: 5
+  reloadRate: 2
   recoil: 10
-  ammoCur: 1
+  ammoCur: 0
   ammoMax: 1
-  magsCur: 5
+  magsCur: 4
   magsMax: 5
   zoomMod: 0.7
   hitEffect: {fileID: 0}

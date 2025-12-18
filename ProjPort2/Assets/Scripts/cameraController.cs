@@ -4,6 +4,7 @@ public class cameraController : MonoBehaviour
 {
     [Range (50, 500)][SerializeField] float sens;
     [SerializeField] int maxUP, maxDOWN;
+    [Range(0, 100)][SerializeField] int zoomSpeed;
     [SerializeField] bool invert;
 
     private Camera _camera;
@@ -68,7 +69,7 @@ public class cameraController : MonoBehaviour
     {
         if (_camera.fieldOfView != targetFOV)
         {
-            _camera.fieldOfView = targetFOV;
+            _camera.fieldOfView = Mathf.MoveTowards(_camera.fieldOfView, targetFOV, zoomSpeed * Time.deltaTime);
         }
     }
 }

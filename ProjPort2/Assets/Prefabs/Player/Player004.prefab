@@ -269,6 +269,7 @@ MonoBehaviour:
   sens: 420
   maxUP: 90
   maxDOWN: -90
+  zoomSpeed: 50
   invert: 0
 --- !u!20 &8698845205236387683
 Camera:
@@ -440,10 +441,6 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 8
-  shootDamage: 0
-  shootDist: 0
-  shootRate: 0
-  recoil: 0
   gunList: []
   currentAmmo: 0
   maxAmmo: 0

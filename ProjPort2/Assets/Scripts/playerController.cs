@@ -115,6 +115,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         //crouch/prone
         stanceChange();
 
+        //zoom
+        if (Input.GetButtonDown("Fire2") && gunList.Any())
+            playerCam.GetComponent<cameraController>().zoomIn(gunList[gunListPos].zoomMod);
+        else if (Input.GetButtonUp("Fire2"))
+            playerCam.GetComponent<cameraController>().zoomOut();
+
         //recoil
         if (recoilSpeed.magnitude > 0.1f)
         {
@@ -406,6 +412,4 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
         reloading = false;
     }
-
-
 }

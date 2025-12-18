@@ -23,6 +23,7 @@ MonoBehaviour:
   ammoMax: 2
   magsCur: 19
   magsMax: 20
+  zoomMod: 0.8
   hitEffect: {fileID: 8573406259994096289, guid: f3215467cd9e8d041b7c38ca802e2ddd, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 6eaf1750633761746b78f5cdcf8240fa, type: 3}

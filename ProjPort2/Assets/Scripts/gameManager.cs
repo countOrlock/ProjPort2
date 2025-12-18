@@ -14,6 +14,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuQuestListFull;
     [SerializeField] GameObject menuQuestTracker;
     [SerializeField] TMP_Text gameGoalCountText;
+    [SerializeField] TMP_Text gameGoalNeededText;
     [SerializeField] TMP_Text questNameText;
     [SerializeField] TMP_Text questObjectiveText;
     [SerializeField] TMP_Text currentAmmoCountText;
@@ -58,6 +59,7 @@ public class gameManager : MonoBehaviour
     private void Start()
     {
         checkHunters();
+        gameGoalNeededText.text = targetGold.ToString("F0");
     }
 
     // Update is called once per frame

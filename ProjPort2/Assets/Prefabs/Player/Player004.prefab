@@ -445,6 +445,10 @@ MonoBehaviour:
   shootRate: 0
   recoil: 0
   gunList: []
+  currentAmmo: 0
+  maxAmmo: 0
+  currentMags: 0
+  maxMags: 0
   aud: {fileID: 8946319230293315414}
   stepSound:
   - {fileID: 8300000, guid: a97f9e799adb54d44931187f4fedd0bf, type: 3}
@@ -470,9 +474,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9fa2fcf0f63360a45a55d6a297b70964, type: 3}
   - {fileID: 8300000, guid: 1ef927a663352154d84076611642b5e2, type: 3}
   hurtVol: 0.5
-  Gold: 57
+  Gold: 0
   questList: []
   questItemList: []
+  questName: 
+  questObjective: 
 --- !u!143 &7174832327420152129
 CharacterController:
   m_ObjectHideFlags: 0

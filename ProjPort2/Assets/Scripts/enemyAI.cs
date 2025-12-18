@@ -55,6 +55,7 @@ public class enemyAI : MonoBehaviour, IDamage
     float meleeTimer;
 
     float angleToPlayer;
+    float angleToPlayerVert;
 
     bool playerInRange;
 
@@ -151,6 +152,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 if (shootsProjectile && shootTimer >= shootRate)
                 {
+                    shootPos.LookAt(hit.point);
                     shoot();
                 }
 
@@ -197,7 +199,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void createBullet()
     {
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
         aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootVol);
     }
 

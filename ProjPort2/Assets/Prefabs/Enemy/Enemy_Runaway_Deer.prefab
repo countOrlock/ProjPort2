@@ -294,6 +294,8 @@ MonoBehaviour:
   attackPos: {fileID: 0}
   roamDist: 10
   roamPauseTimer: 3
+  targetPos: {x: 0, y: 0, z: 0}
+  maxDistFromTarget: 30
 --- !u!95 &124196265414926387
 Animator:
   serializedVersion: 7

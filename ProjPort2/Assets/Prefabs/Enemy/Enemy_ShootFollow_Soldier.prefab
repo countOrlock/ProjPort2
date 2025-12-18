@@ -79,6 +79,7 @@ MonoBehaviour:
   faceTargetSpeed: 10
   FOV: 120
   animTranSpeed: 8
+  dropItem: {fileID: 0}
   scaredOfPlayer: 0
   shootsProjectile: 1
   attacksMelee: 0
@@ -92,8 +93,10 @@ MonoBehaviour:
   meleeRange: 0
   meleeRate: 0
   attackPos: {fileID: 0}
-  roamDist: 3
-  roamPauseTimer: 1
+  roamDist: 5
+  roamPauseTimer: 3
+  targetPos: {fileID: 0}
+  maxDistFromTarget: 20
 --- !u!195 &2710485856084164888
 NavMeshAgent:
   m_ObjectHideFlags: 0

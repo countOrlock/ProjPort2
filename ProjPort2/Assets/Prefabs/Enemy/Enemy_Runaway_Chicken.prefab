@@ -754,6 +754,7 @@ MonoBehaviour:
   faceTargetSpeed: 0
   FOV: 270
   animTranSpeed: 10
+  dropItem: {fileID: 0}
   scaredOfPlayer: 1
   shootsProjectile: 0
   attacksMelee: 0
@@ -769,6 +770,8 @@ MonoBehaviour:
   attackPos: {fileID: 0}
   roamDist: 3
   roamPauseTimer: 1
+  targetPos: {x: 0, y: 0, z: 0}
+  maxDistFromTarget: 30
 --- !u!195 &1878447044840084078
 NavMeshAgent:
   m_ObjectHideFlags: 0

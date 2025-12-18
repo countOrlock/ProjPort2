@@ -36,6 +36,11 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int roamPauseTimer;
     float stoppingDistOrig;
 
+    [Header("----- Move To Target -----")]
+    [SerializeField] Vector3 targetPos;
+    [SerializeField] int maxDistFromTarget;
+    float distToTarget;
+
     Color colorOrig;
 
     float roamTimer;
@@ -65,6 +70,20 @@ public class enemyAI : MonoBehaviour, IDamage
 
         locomotionAnim();
 
+        if(targetPos != null)
+        {
+            distToTarget = (targetPos - transform.position).magnitude;
+        }
+
+        if (gameManager.instance.currQuestLoc != null)
+        {
+            targetPos = gameManager.instance.currQuestLoc.position;
+        }
+        else
+        {
+            targetPos = startingPos;
+        }
+
         if (agent.remainingDistance < 0.01)
         {
             roamTimer += Time.deltaTime;
@@ -73,6 +92,10 @@ public class enemyAI : MonoBehaviour, IDamage
         if (playerInRange && !canSeePlayer())
         {
             checkRoam();
+        }
+        else if (!playerInRange && targetPos != null && distToTarget > maxDistFromTarget)
+        {
+            moveToTarget();
         }
         else if (!playerInRange)
         {
@@ -172,6 +195,12 @@ public class enemyAI : MonoBehaviour, IDamage
         dmg.takeDamage(meleeDamage);
     }
 
+    void moveToTarget()
+    {
+        agent.stoppingDistance = 0;
+        agent.SetDestination(targetPos);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -203,9 +232,17 @@ public class enemyAI : MonoBehaviour, IDamage
         agent.stoppingDistance = 0;
         
         Vector3 ranPos = Random.insideUnitSphere * roamDist;
-        ranPos += startingPos;
 
-        NavMeshHit hit;
+        if (targetPos != null)
+        {
+            ranPos += transform.position;
+        }
+        else
+        {
+            ranPos += startingPos;
+        }
+
+            NavMeshHit hit;
         NavMesh.SamplePosition(ranPos, out hit, roamDist, 1);
         agent.SetDestination(hit.position);
     }

@@ -1046,7 +1046,7 @@ MonoBehaviour:
   model: {fileID: 1482399929929171313}
   agent: {fileID: 901076682692079991}
   HP: 6
-  faceTargetSpeed: 0
+  faceTargetSpeed: 3
   FOV: 270
   animTranSpeed: 10
   dropItem: {fileID: 6279683554899872397, guid: 0c6f2e80cdd1f3f4c8b9b05eb0f08940, type: 3}
@@ -1065,6 +1065,8 @@ MonoBehaviour:
   attackPos: {fileID: 0}
   roamDist: 10
   roamPauseTimer: 3
+  targetPos: {x: 0, y: 0, z: 0}
+  maxDistFromTarget: 30
 --- !u!195 &901076682692079991
 NavMeshAgent:
   m_ObjectHideFlags: 0

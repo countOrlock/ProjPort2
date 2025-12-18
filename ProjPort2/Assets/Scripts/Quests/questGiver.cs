@@ -24,6 +24,7 @@ public class questGiver : MonoBehaviour, IGiveQuest
 
     public int giveReward()
     {
+        gameManager.instance.currQuestLoc = null;
         return quest.reward;
     }
 }

@@ -328,6 +328,8 @@ MonoBehaviour:
   attackPos: {fileID: 8382263242605224138}
   roamDist: 5
   roamPauseTimer: 10
+  targetPos: {x: 0, y: 0, z: 0}
+  maxDistFromTarget: 30
 --- !u!195 &4490082621547151456
 NavMeshAgent:
   m_ObjectHideFlags: 0

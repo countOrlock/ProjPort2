@@ -1173,10 +1173,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5800210183843199339, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
-      propertyPath: dropItem
-      value: 
-      objectReference: {fileID: 6279683554899872397, guid: fe886107c26d7e544b55967de121d266, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1341,10 +1337,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4879251290532961145, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
-      propertyPath: dropItem
-      value: 
-      objectReference: {fileID: 6279683554899872397, guid: 018575af1408a3a4f8669f0bf81ce0c2, type: 3}
     - target: {fileID: 8492705691287836685, guid: 9a4886abbb794154ea4dd3bbfc460bc7, type: 3}
       propertyPath: m_Name
       value: Enemy_MeleeFollow_Hyena
@@ -2079,6 +2071,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46.62563, y: -0.08, z: -13.46432}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1463445748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1463445749}
+  m_Layer: 0
+  m_Name: Test Target Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1463445749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463445748}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -52, y: 0, z: 40.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3756,10 +3779,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8248336998848634443, guid: 9ac9d6ab1ae53e447acc50808c866b90, type: 3}
-      propertyPath: dropItem
-      value: 
-      objectReference: {fileID: 6279683554899872397, guid: 485c733424679ab4b8ff422151294417, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3931,10 +3950,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_MeleeFollow_Tiger
       objectReference: {fileID: 0}
-    - target: {fileID: 9125500056977835846, guid: 2fcacfa63eb78364db3904abc0eae958, type: 3}
-      propertyPath: dropItem
-      value: 
-      objectReference: {fileID: 6279683554899872397, guid: 555192e2c46b5fa4db97ab4817c19396, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4101,3 +4116,4 @@ SceneRoots:
   - {fileID: 976024145693668390}
   - {fileID: 7674354269889521342}
   - {fileID: 1566379974}
+  - {fileID: 1463445749}

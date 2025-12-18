@@ -37,7 +37,7 @@ public class enemyAI : MonoBehaviour, IDamage
     float stoppingDistOrig;
 
     [Header("----- Move To Target -----")]
-    [SerializeField] Transform targetPos;
+    [SerializeField] Vector3 targetPos;
     [SerializeField] int maxDistFromTarget;
     float distToTarget;
 
@@ -72,7 +72,16 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if(targetPos != null)
         {
-            distToTarget = (targetPos.position - transform.position).magnitude;
+            distToTarget = (targetPos - transform.position).magnitude;
+        }
+
+        if (gameManager.instance.currQuestLoc != null)
+        {
+            targetPos = gameManager.instance.currQuestLoc.position;
+        }
+        else
+        {
+            targetPos = startingPos;
         }
 
         if (agent.remainingDistance < 0.01)
@@ -189,7 +198,7 @@ public class enemyAI : MonoBehaviour, IDamage
     void moveToTarget()
     {
         agent.stoppingDistance = 0;
-        agent.SetDestination(targetPos.position);
+        agent.SetDestination(targetPos);
     }
 
     private void OnTriggerEnter(Collider other)

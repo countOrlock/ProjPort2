@@ -1122,8 +1122,10 @@ MonoBehaviour:
   meleeRange: 2
   meleeRate: 0.75
   attackPos: {fileID: 5400148329440010590}
-  roamDist: 0
-  roamPauseTimer: 0
+  roamDist: 1
+  roamPauseTimer: 20
+  targetPos: {x: 0, y: 0, z: 0}
+  maxDistFromTarget: 30
 --- !u!95 &1941507079276125592
 Animator:
   serializedVersion: 7

@@ -271,6 +271,7 @@ MonoBehaviour:
   maxDOWN: -90
   zoomSpeed: 50
   invert: 0
+  _gunCam: {fileID: 5436180946371492431}
 --- !u!20 &8698845205236387683
 Camera:
   m_ObjectHideFlags: 0

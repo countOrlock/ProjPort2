@@ -14,6 +14,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuQuestListFull;
     [SerializeField] GameObject menuQuestTracker;
     [SerializeField] TMP_Text gameGoalCountText;
+    [SerializeField] TMP_Text gameGoalNeededText;
     [SerializeField] TMP_Text questNameText;
     [SerializeField] TMP_Text questObjectiveText;
     [SerializeField] TMP_Text currentAmmoCountText;
@@ -24,6 +25,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject hunter;
     [Range(0, 3)][SerializeField] int hunterCount;
     [Range(0, 300)][SerializeField] int targetGold;
+    
+    [SerializeField] TMP_Text currentQuest;
     
     public GameObject player;
     public playerController playerScript;
@@ -56,6 +59,7 @@ public class gameManager : MonoBehaviour
     private void Start()
     {
         checkHunters();
+        gameGoalNeededText.text = targetGold.ToString("F0");
     }
 
     // Update is called once per frame
@@ -105,6 +109,11 @@ public class gameManager : MonoBehaviour
             menuActive = menuWin;
             menuActive.SetActive(true);
         }
+    }
+
+    public void updateCurrentQuest(string questName)
+    {
+        currentQuest.text = questName;
     }
 
     public void updateAmmoCount(int currentAmmo, int maxAmmo)

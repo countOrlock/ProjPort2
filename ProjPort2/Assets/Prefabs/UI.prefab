@@ -332,11 +332,16 @@ MonoBehaviour:
   currentAmmoCountText: {fileID: 2618564264943468264}
   maxAmmoCountText: {fileID: 1131732513176502110}
   totalMagCountText: {fileID: 1164328310250093457}
+  hunter: {fileID: 869472922463874160, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
+  hunterCount: 0
+  targetGold: 0
   player: {fileID: 0}
   playerScript: {fileID: 0}
   playerHPBar: {fileID: 1397628598769450949}
   playerDamageScreen: {fileID: 5326149887852971818}
   currQuestLoc: {fileID: 0}
+  hunterSpawner: {fileID: 0}
+  hunterAmountCurr: 0
   isPaused: 0
 --- !u!1 &887270140598682624
 GameObject:

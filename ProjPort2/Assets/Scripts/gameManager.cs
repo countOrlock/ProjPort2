@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class gameManager : MonoBehaviour
 {
@@ -18,12 +19,19 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text currentAmmoCountText;
     [SerializeField] TMP_Text maxAmmoCountText;
     [SerializeField] TMP_Text totalMagCountText;
+
+    [Header("===Difficulty===")]
+    [SerializeField] GameObject hunter;
+    [Range(0, 3)][SerializeField] int hunterCount;
+    [Range(0, 300)][SerializeField] int targetGold;
     
     public GameObject player;
     public playerController playerScript;
     public Image playerHPBar;
     public GameObject playerDamageScreen;
     public Transform currQuestLoc;
+    public GameObject hunterSpawner;
+    public int hunterAmountCurr;
 
     public bool isPaused;
 
@@ -40,7 +48,14 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
 
         player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>(); 
+        playerScript = player.GetComponent<playerController>();
+
+        hunterSpawner = GameObject.FindWithTag("Hunter Spawner");
+    }
+
+    private void Start()
+    {
+        checkHunters();
     }
 
     // Update is called once per frame
@@ -84,7 +99,7 @@ public class gameManager : MonoBehaviour
         gameGoalCount += amount;
         gameGoalCountText.text = gameGoalCount.ToString("F0");
 
-        if (gameGoalCount <= 0)
+        if (gameGoalCount >= targetGold)
         {
             statePause();
             menuActive = menuWin;
@@ -128,5 +143,13 @@ public class gameManager : MonoBehaviour
 
         questNameText.text = playerScript.questName;
         questObjectiveText.text = playerScript.questObjective;
+    }
+
+    public void checkHunters()
+    {
+        if (hunterAmountCurr < hunterCount)
+        {
+            hunterSpawner.GetComponent<spawner>().questCall(hunter, hunterCount - hunterAmountCurr);
+        }
     }
 }

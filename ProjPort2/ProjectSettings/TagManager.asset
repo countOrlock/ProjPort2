@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Quest
   - Spawner
+  - Hunter Spawner
   layers:
   - Default
   - TransparentFX

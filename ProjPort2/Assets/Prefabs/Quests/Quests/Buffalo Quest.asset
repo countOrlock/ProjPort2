@@ -17,3 +17,5 @@ MonoBehaviour:
   reward: 10
   questName: Buffalo Quest
   questObjective: Hunt the Buffalo!
+  itemsForQuest: 1
+  questStatus: 0

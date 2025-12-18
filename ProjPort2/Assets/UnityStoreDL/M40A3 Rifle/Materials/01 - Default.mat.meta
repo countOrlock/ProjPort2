@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: eb66f2d764a5d7040912ce8a6bf44803
+timeCreated: 1516461317
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 107756
+  packageName: M40A3 Sniper Rifle
+  packageVersion: 1.0
+  assetPath: Assets/M40A3 Rifle/Materials/01 - Default.mat
+  uploadId: 225417

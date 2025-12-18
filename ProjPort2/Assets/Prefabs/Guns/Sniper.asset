@@ -16,15 +16,15 @@ MonoBehaviour:
   Bullet: {fileID: 0}
   shootDamage: 3
   shootDist: 500
-  shootRate: 1
+  shootRate: 2
   reloadRate: 2
   recoil: 0
-  ammoCur: 5
+  ammoCur: 3
   ammoMax: 5
-  magsCur: 6
+  magsCur: 10
   magsMax: 10
   zoomMod: 0.3
   hitEffect: {fileID: 8573406259994096289, guid: f3215467cd9e8d041b7c38ca802e2ddd, type: 3}
   shootSound:
-  - {fileID: 8300000, guid: 73118aacf04d23e49a185dec1518e33e, type: 3}
+  - {fileID: 8300000, guid: 9260e8dc2d67f9b419906f4a14d18c1f, type: 3}
   shootSoundVol: 0.5

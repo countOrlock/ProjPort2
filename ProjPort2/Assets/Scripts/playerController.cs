@@ -71,8 +71,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [Range(0, 100)][SerializeField] int Gold;
     [SerializeField] List<questInfo> questList = new List<questInfo>();
     [SerializeField] List<GameObject> questItemList = new List<GameObject>();
-    string questName;
-    string questObjective;
+    public string questName;
+    public string questObjective;
 
     public enum questID
     {
@@ -258,8 +258,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         shootTimer = 0;
 
-        currentAmmo--;
-        gameManager.instance.updateAmmoCount(currentAmmo, maxAmmo);
+        gunList[gunListPos].ammoCur--;
+        gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
 
         if (gunList[gunListPos].shootSound.Length > 0)
             aud.PlayOneShot(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
@@ -293,6 +293,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                     if (questList.Count < 1)
                     {
                         questList.Add(questGiver.giveQuest());
+                        //gameManager.instance.questTracker();  <-- Can't figure out how to access the strings to display them properly
                         GameObject spawner = hit.collider.GetComponent<questGiver>().spawners[Random.Range(0, hit.collider.GetComponent<questGiver>().spawners.Length)];
                         spawner.GetComponent<spawner>().questCall(questGiver.giveQuest().animal);
                         gameManager.instance.currQuestLoc = spawner.transform;
@@ -339,6 +340,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gunListPos = gunList.Count - 1;
         gunList[gunListPos].magsCur = gunList[gunListPos].magsMax;
         gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+        gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
         changeGun();
     }
 
@@ -357,6 +359,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         Bullet = gunList[gunListPos].Bullet;
+        gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
 
     }
 
@@ -409,6 +412,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         reloading = true;
         yield return new WaitForSeconds(gunList[gunListPos].reloadRate);
         gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+        gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
         reloading = false;
     }
 

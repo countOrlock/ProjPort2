@@ -11,7 +11,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuQuestListFull;
+    [SerializeField] GameObject menuQuestTracker;
     [SerializeField] TMP_Text gameGoalCountText;
+    [SerializeField] TMP_Text questNameText;
+    [SerializeField] TMP_Text questObjectiveText;
     [SerializeField] TMP_Text currentAmmoCountText;
     [SerializeField] TMP_Text maxAmmoCountText;
     [SerializeField] TMP_Text totalMagCountText;
@@ -116,5 +119,14 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuQuestListFull;
         menuActive.SetActive(true);
+    }
+
+    public void questTracker()
+    {
+        menuActive = menuQuestTracker;
+        menuActive.SetActive(true);
+
+        questNameText.text = playerScript.questName;
+        questObjectiveText.text = playerScript.questObjective;
     }
 }

@@ -17,3 +17,5 @@ MonoBehaviour:
   reward: 10
   questName: Leopard Quest
   questObjective: Hunt the Leopard!
+  itemsForQuest: 1
+  questStatus: 0

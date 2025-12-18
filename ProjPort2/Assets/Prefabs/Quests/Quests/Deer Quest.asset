@@ -17,3 +17,5 @@ MonoBehaviour:
   reward: 10
   questName: Deer Quest
   questObjective: Hunt the Deer!
+  itemsForQuest: 1
+  questStatus: 0

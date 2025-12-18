@@ -17,3 +17,5 @@ MonoBehaviour:
   reward: 10
   questName: Hyena Quest
   questObjective: Hunt the Hyena!
+  itemsForQuest: 1
+  questStatus: 0

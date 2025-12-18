@@ -17,3 +17,5 @@ MonoBehaviour:
   reward: 10
   questName: Tiger Quest
   questObjective: Hunt the Tiger!
+  itemsForQuest: 1
+  questStatus: 0

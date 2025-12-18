@@ -15,6 +15,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text currentAmmoCountText;
     [SerializeField] TMP_Text maxAmmoCountText;
     [SerializeField] TMP_Text totalMagCountText;
+    [SerializeField] TMP_Text currentQuest;
     
     public GameObject player;
     public playerController playerScript;
@@ -87,6 +88,11 @@ public class gameManager : MonoBehaviour
             menuActive = menuWin;
             menuActive.SetActive(true);
         }
+    }
+
+    public void updateCurrentQuest(string questName)
+    {
+        currentQuest.text = questName;
     }
 
     public void updateAmmoCount(int currentAmmo, int maxAmmo)

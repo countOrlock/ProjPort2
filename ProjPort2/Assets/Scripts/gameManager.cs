@@ -10,6 +10,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuQuestListFull;
     [SerializeField] TMP_Text gameGoalCountText;
     [SerializeField] TMP_Text currentAmmoCountText;
     [SerializeField] TMP_Text maxAmmoCountText;
@@ -19,6 +20,7 @@ public class gameManager : MonoBehaviour
     public playerController playerScript;
     public Image playerHPBar;
     public GameObject playerDamageScreen;
+    public Transform currQuestLoc;
 
     public bool isPaused;
 
@@ -87,26 +89,32 @@ public class gameManager : MonoBehaviour
         }
     }
 
-    public void updateAmmoCount()
+    public void updateAmmoCount(int currentAmmo, int maxAmmo)
     {
-        currentAmmoCount = playerScript.currentAmmo;
+        currentAmmoCount = currentAmmo;
         currentAmmoCountText.text = currentAmmoCount.ToString("F0");
 
-        maxAmmoCount = playerScript.maxAmmo;
+        maxAmmoCount = maxAmmo;
         maxAmmoCountText.text = maxAmmoCount.ToString("F0");
     }
 
-    public void updateMagCount()
+    public void updateMagCount(int currentMags)
     {
-        totalMagCount = playerScript.currentMags;
+        totalMagCount = currentMags;
         totalMagCountText.text = totalMagCount.ToString("F0");
-
     }
 
     public void youLose()
     {
         statePause();
         menuActive = menuLose;
+        menuActive.SetActive(true);
+    }
+
+    public void questListFull()
+    {
+        statePause();
+        menuActive = menuQuestListFull;
         menuActive.SetActive(true);
     }
 }

@@ -258,8 +258,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         shootTimer = 0;
 
-        gunList[gunListPos].ammoCur--;
-        gameManager.instance.updateAmmoCount();
+        currentAmmo--;
+        gameManager.instance.updateAmmoCount(currentAmmo, maxAmmo);
 
         if (gunList[gunListPos].shootSound.Length > 0)
             aud.PlayOneShot(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
@@ -295,10 +295,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                         questList.Add(questGiver.giveQuest());
                         GameObject spawner = hit.collider.GetComponent<questGiver>().spawners[Random.Range(0, hit.collider.GetComponent<questGiver>().spawners.Length)];
                         spawner.GetComponent<spawner>().questCall(questGiver.giveQuest().animal);
+                        gameManager.instance.currQuestLoc = spawner.transform;
                     }
                     else if (questList.Contains(questGiver.giveQuest()) && !questItemList.Contains(questGiver.giveQuest().questObject))
                     {
-                        // Say "You already have the quest!!"
+                        gameManager.instance.questListFull();
                     }
                     else if (questList.Contains(questGiver.giveQuest()) && questItemList.Contains(questGiver.giveQuest().questObject))
                     {
@@ -389,6 +390,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        gameManager.instance.updateAmmoCount(currentAmmo, maxAmmo);
+        gameManager.instance.updateMagCount(currentMags);
     }
 
     IEnumerator flashRed()
@@ -400,8 +403,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     IEnumerator Reload()
     {
-        gunList[gunListPos].magsCur--;
-        gameManager.instance.updateMagCount();
+        currentMags--;
+        gameManager.instance.updateMagCount(currentMags);
+
         reloading = true;
         yield return new WaitForSeconds(gunList[gunListPos].reloadRate);
         gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;

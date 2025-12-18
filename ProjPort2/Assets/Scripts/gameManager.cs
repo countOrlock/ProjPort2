@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class gameManager : MonoBehaviour
 {
@@ -11,10 +12,19 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuQuestListFull;
+    [SerializeField] GameObject menuQuestTracker;
     [SerializeField] TMP_Text gameGoalCountText;
+    [SerializeField] TMP_Text questNameText;
+    [SerializeField] TMP_Text questObjectiveText;
     [SerializeField] TMP_Text currentAmmoCountText;
     [SerializeField] TMP_Text maxAmmoCountText;
     [SerializeField] TMP_Text totalMagCountText;
+
+    [Header("===Difficulty===")]
+    [SerializeField] GameObject hunter;
+    [Range(0, 3)][SerializeField] int hunterCount;
+    [Range(0, 300)][SerializeField] int targetGold;
+    
     [SerializeField] TMP_Text currentQuest;
     
     public GameObject player;
@@ -22,6 +32,8 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public GameObject playerDamageScreen;
     public Transform currQuestLoc;
+    public GameObject hunterSpawner;
+    public int hunterAmountCurr;
 
     public bool isPaused;
 
@@ -38,7 +50,14 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
 
         player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>(); 
+        playerScript = player.GetComponent<playerController>();
+
+        hunterSpawner = GameObject.FindWithTag("Hunter Spawner");
+    }
+
+    private void Start()
+    {
+        checkHunters();
     }
 
     // Update is called once per frame
@@ -82,7 +101,7 @@ public class gameManager : MonoBehaviour
         gameGoalCount += amount;
         gameGoalCountText.text = gameGoalCount.ToString("F0");
 
-        if (gameGoalCount <= 0)
+        if (gameGoalCount >= targetGold)
         {
             statePause();
             menuActive = menuWin;
@@ -122,5 +141,22 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuQuestListFull;
         menuActive.SetActive(true);
+    }
+
+    public void questTracker()
+    {
+        menuActive = menuQuestTracker;
+        menuActive.SetActive(true);
+
+        questNameText.text = playerScript.questName;
+        questObjectiveText.text = playerScript.questObjective;
+    }
+
+    public void checkHunters()
+    {
+        if (hunterAmountCurr < hunterCount)
+        {
+            hunterSpawner.GetComponent<spawner>().questCall(hunter, hunterCount - hunterAmountCurr);
+        }
     }
 }

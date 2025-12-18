@@ -71,8 +71,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [Range(0, 100)][SerializeField] int Gold;
     [SerializeField] List<questInfo> questList = new List<questInfo>();
     [SerializeField] List<GameObject> questItemList = new List<GameObject>();
-    string questName;
-    string questObjective;
+    public string questName;
+    public string questObjective;
 
     public enum questID
     {

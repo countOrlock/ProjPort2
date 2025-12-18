@@ -39,14 +39,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [Header("----- Gun Fields -----")]
     [SerializeField] GameObject gunModel;
     [SerializeField] LayerMask ignoreLayer;
-    [SerializeField] int shootDamage;
-    [SerializeField] int shootDist;
-    [SerializeField] float shootRate;
-    [SerializeField] int recoil;
     float shootTimer;
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     int gunListPos;
-    GameObject Bullet = null;
     public int currentAmmo;
     public int maxAmmo;
     public int currentMags;
@@ -103,12 +98,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         movement();
 
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.white);
-
-        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= shootRate && reloading == false)
-        {
-            shoot();
-        }
+        if (gunList.Any())
+            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * gunList[gunListPos].shootDist, Color.white);
     }
 
     void movement()
@@ -148,6 +139,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         moveDir = walkDir.x * transform.right * speedMod + walkDir.y * transform.forward * speedMod + jumpMod * transform.up;
         controller.Move(moveDir * Time.deltaTime);
+
+        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate && reloading == false)
+        {
+            shoot();
+        }
     }
 
     void setStance()
@@ -264,12 +260,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         if (gunList[gunListPos].shootSound.Length > 0)
             aud.PlayOneShot(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
 
-        recoilSpeed += -Camera.main.transform.forward * recoil;
+        recoilSpeed += -Camera.main.transform.forward * gunList[gunListPos].recoil;
 
-        if (Bullet == null)
+        if (gunList[gunListPos].Bullet == null)
         {
             RaycastHit hit;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunList[gunListPos].shootDist, ~ignoreLayer))
             {
 
                 if (gunList[gunListPos].hitEffect != null)
@@ -283,7 +279,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
                 if (dmg != null)
                 {
-                    dmg.takeDamage(shootDamage);
+                    dmg.takeDamage(gunList[gunListPos].shootDamage);
                 }
 
                 IGiveQuest questGiver = hit.collider.GetComponent<IGiveQuest>();
@@ -316,7 +312,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
         else
         {
-            Instantiate(Bullet, playerCam.transform.position, playerCam.transform.rotation);
+            Instantiate(gunList[gunListPos].Bullet, playerCam.transform.position, playerCam.transform.rotation);
         }
 
     }
@@ -328,13 +324,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void getGunStats(gunStats gun)
     {
-        for (int i = 0; i < gunList.Count; i++)
+        if(gunList.Any())
         {
-            if (gunList[i] == gun)
+            for (int i = 1; i < gunList.Count; i++)
             {
-                
-                gunList[i].magsCur = gunList[i].magsMax;
-                return;
+                if (gunList[i] == gun)
+                {
+                    gunList[i].magsCur = gunList[i].magsMax;
+                    gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
+                    return;
+                }
             }
         }
 
@@ -343,26 +342,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gunList[gunListPos].magsCur = gunList[gunListPos].magsMax;
         gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
+        gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
         changeGun();
     }
 
     void changeGun()
     {
-        shootDamage = gunList[gunListPos].shootDamage;
-        shootDist = gunList[gunListPos].shootDist;
-        shootRate = gunList[gunListPos].shootRate;
-        recoil = gunList[gunListPos].recoil;
-        currentAmmo = gunList[gunListPos].ammoCur;
-        maxAmmo = gunList[gunListPos].ammoMax;
-        currentMags = gunList[gunListPos].magsCur;
-        maxMags = gunList[gunListPos].magsMax;
-
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-
-        Bullet = gunList[gunListPos].Bullet;
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
-
+        gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
     }
 
     void selectGun()
@@ -408,8 +397,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     IEnumerator Reload()
     {
-        currentMags--;
-        gameManager.instance.updateMagCount(currentMags);
+        gunList[gunListPos].magsCur--;
+        gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
 
         reloading = true;
         yield return new WaitForSeconds(gunList[gunListPos].reloadRate);

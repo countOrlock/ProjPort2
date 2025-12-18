@@ -298,7 +298,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                     }
                     else if (questList.Contains(questGiver.giveQuest()) && !questItemList.Contains(questGiver.giveQuest().questObject))
                     {
-                        // Say "You already have the quest!!"
+                        gameManager.instance.questListFull();
                     }
                     else if (questList.Contains(questGiver.giveQuest()) && questItemList.Contains(questGiver.giveQuest().questObject))
                     {

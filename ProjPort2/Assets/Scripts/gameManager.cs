@@ -10,6 +10,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuQuestListFull;
     [SerializeField] TMP_Text gameGoalCountText;
     [SerializeField] TMP_Text currentAmmoCountText;
     [SerializeField] TMP_Text maxAmmoCountText;
@@ -106,6 +107,13 @@ public class gameManager : MonoBehaviour
     {
         statePause();
         menuActive = menuLose;
+        menuActive.SetActive(true);
+    }
+
+    public void questListFull()
+    {
+        statePause();
+        menuActive = menuQuestListFull;
         menuActive.SetActive(true);
     }
 }

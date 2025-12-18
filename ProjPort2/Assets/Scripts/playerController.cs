@@ -71,8 +71,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [Range(0, 100)][SerializeField] int Gold;
     [SerializeField] List<questInfo> questList = new List<questInfo>();
     [SerializeField] List<GameObject> questItemList = new List<GameObject>();
-    string questName;
-    string questObjective;
+    public string questName;
+    public string questObjective;
 
     public enum questID
     {
@@ -293,6 +293,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                     if (questList.Count < 1)
                     {
                         questList.Add(questGiver.giveQuest());
+                        //gameManager.instance.questTracker();  <-- Can't figure out how to access the strings to display them properly
                         GameObject spawner = hit.collider.GetComponent<questGiver>().spawners[Random.Range(0, hit.collider.GetComponent<questGiver>().spawners.Length)];
                         spawner.GetComponent<spawner>().questCall(questGiver.giveQuest().animal);
                         gameManager.instance.currQuestLoc = spawner.transform;

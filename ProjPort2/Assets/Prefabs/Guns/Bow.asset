@@ -17,12 +17,13 @@ MonoBehaviour:
   shootDamage: 0
   shootDist: 0
   shootRate: 0.1
-  reloadRate: 0.1
+  reloadRate: 0.5
   recoil: 0
-  ammoCur: 147
-  ammoMax: 200
-  magsCur: 22
+  ammoCur: 0
+  ammoMax: 1
+  magsCur: 28
   magsMax: 30
   hitEffect: {fileID: 0}
-  shootSound: []
-  shootSoundVol: 0
+  shootSound:
+  - {fileID: 8300000, guid: 98b523eeb77430d4596b1822fc6ff2ff, type: 3}
+  shootSoundVol: 0.5

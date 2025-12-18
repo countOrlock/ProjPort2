@@ -17,11 +17,11 @@ MonoBehaviour:
   shootDamage: 0
   shootDist: 0
   shootRate: 0.1
-  reloadRate: 0.1
+  reloadRate: 5
   recoil: 10
-  ammoCur: 200
-  ammoMax: 200
-  magsCur: 4
+  ammoCur: 1
+  ammoMax: 1
+  magsCur: 5
   magsMax: 5
   hitEffect: {fileID: 0}
   shootSound:

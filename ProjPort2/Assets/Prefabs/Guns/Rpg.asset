@@ -27,4 +27,7 @@ MonoBehaviour:
   hitEffect: {fileID: 0}
   shootSound:
   - {fileID: 8300000, guid: 9f959ab25bed1f44e9d5279883c9defd, type: 3}
+  reloadSound:
+  - {fileID: 8300000, guid: 0e6f4d5db8dcb574892e7a8ee698e662, type: 3}
   shootSoundVol: 0.5
+  reloadSoundVol: 0.5

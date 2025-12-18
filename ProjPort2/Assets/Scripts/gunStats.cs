@@ -20,7 +20,7 @@ public class gunStats : ScriptableObject
 
     public ParticleSystem hitEffect;
     public AudioClip[] shootSound;
+    public AudioClip[] reloadSound;
     [Range(0, 1)] public float shootSoundVol;
-
-
+    [Range(0, 1)] public float reloadSoundVol;
 }

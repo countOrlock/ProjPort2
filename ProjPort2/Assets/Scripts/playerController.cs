@@ -405,6 +405,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         gunList[gunListPos].magsCur--;
         gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
+        aud.PlayOneShot(gunList[gunListPos].reloadSound[Random.Range(0, gunList[gunListPos].reloadSound.Length)], gunList[gunListPos].reloadSoundVol);
 
         reloading = true;
         yield return new WaitForSeconds(gunList[gunListPos].reloadRate);

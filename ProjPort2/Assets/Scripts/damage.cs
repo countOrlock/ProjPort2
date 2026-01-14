@@ -77,6 +77,13 @@ public class damage : MonoBehaviour
         {
             StartCoroutine(fuseTimer());
         }
+
+        IStatEff stat = other.GetComponent<IStatEff>();
+
+        if (stat != null && type == damageType.fire)
+        {
+            stat.fire(damageRate, damageAmount);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -91,12 +98,7 @@ public class damage : MonoBehaviour
             StartCoroutine(damageOther(dmg));
         }
 
-        IStatEff stat = other.GetComponent<IStatEff>();
-
-        if (stat != null && type == damageType.fire)
-        {
-            stat.fire(damageRate, damageAmount);
-        }
+        
     }
 
     IEnumerator damageOther(IDamage d)

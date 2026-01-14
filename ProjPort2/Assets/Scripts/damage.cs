@@ -3,14 +3,15 @@ using System.Collections;
 
 public class damage : MonoBehaviour
 {
-    enum damageType { moving, stationary, DOT, homing, thrown}
+    enum damageType { moving, stationary, DOT, homing, thrown, explosion}
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
+    [SerializeField] GameObject createdObject = null;
 
     [SerializeField] int damageAmount;
     [SerializeField] float damageRate;
     [SerializeField] int speed;
-    [SerializeField] int destroyTime;
+    [SerializeField] float destroyTime;
 
     bool isDamaging;
     bool canDamage;
@@ -18,7 +19,7 @@ public class damage : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (type == damageType.moving || type == damageType.homing)
+        if (type == damageType.moving || type == damageType.homing || type == damageType.explosion)
         {
             Destroy(gameObject, destroyTime);
 
@@ -74,7 +75,7 @@ public class damage : MonoBehaviour
 
         if (type == damageType.thrown)
         {
-            Destroy(gameObject, destroyTime);
+            StartCoroutine(fuseTimer());
         }
     }
 
@@ -97,5 +98,13 @@ public class damage : MonoBehaviour
         d.takeDamage(damageAmount);
         yield return new WaitForSeconds(damageRate);
         isDamaging = false;
+    }
+
+    IEnumerator fuseTimer()
+    {
+        yield return new WaitForSeconds(destroyTime);
+        if (createdObject != null)
+            Instantiate(createdObject, gameObject.transform.position, gameObject.transform.rotation);
+        Destroy(gameObject);
     }
 }

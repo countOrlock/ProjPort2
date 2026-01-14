@@ -50,10 +50,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::damage
   type: 4
   rb: {fileID: 7104043690972781835}
+  createdObject: {fileID: 1847328113182057386, guid: 92b40d24e1adc8f438c1da815126e335, type: 3}
   damageAmount: 0
   damageRate: 0
   speed: 15
   destroyTime: 2
+  createsObject: 0
 --- !u!135 &5214231138559343848
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -94,7 +96,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.17
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7104043690972781835
 Rigidbody:

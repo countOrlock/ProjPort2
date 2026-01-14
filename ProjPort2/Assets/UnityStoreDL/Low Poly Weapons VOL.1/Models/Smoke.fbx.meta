@@ -1,29 +1,24 @@
 fileFormatVersion: 2
-guid: 4e5ce0b6f97fdbc40b7bc818b06b80ba
+guid: fdd9b790eff3ea74d9c1ccf2c0db76bb
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Rocket
+    100000: Pin
     100002: //RootNode
-    100004: Trigger
-    400000: Rocket
+    400000: Pin
     400002: //RootNode
-    400004: Trigger
-    2100000: Mat
-    2300000: Rocket
+    2100000: Mat.1
+    2300000: Pin
     2300002: //RootNode
-    2300004: Trigger
-    3300000: Rocket
+    3300000: Pin
     3300002: //RootNode
-    3300004: Trigger
-    4300000: RPG7
-    4300002: Trigger
-    4300004: Rocket
+    4300000: Smoke
+    4300002: Pin
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Mat
+      name: Mat.1
     second: {fileID: 2100000, guid: 28f0b13c7e9707746b5e0b3336181560, type: 2}
   materials:
     importMaterials: 1
@@ -55,7 +50,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1191091
+    globalScale: 0.06745784
     meshCompression: 0
     addColliders: 0
     importVisibility: 0
@@ -112,5 +107,5 @@ AssetOrigin:
   productId: 151980
   packageName: Untitled
   packageVersion: 1.0
-  assetPath: Assets/UnityStoreDL/Low Poly Weapons VOL.1/Models/RPG7.fbx
+  assetPath: Assets/UnityStoreDL/Low Poly Weapons VOL.1/Models/Smoke.fbx
   uploadId: 324403

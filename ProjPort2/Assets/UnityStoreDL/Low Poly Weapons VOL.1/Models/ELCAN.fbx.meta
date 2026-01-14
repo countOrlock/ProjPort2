@@ -1,24 +1,14 @@
 fileFormatVersion: 2
-guid: 4e5ce0b6f97fdbc40b7bc818b06b80ba
+guid: 7430c7a2877dd0b429a981e69ac2ed00
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Rocket
-    100002: //RootNode
-    100004: Trigger
-    400000: Rocket
-    400002: //RootNode
-    400004: Trigger
+    100000: //RootNode
+    400000: //RootNode
     2100000: Mat
-    2300000: Rocket
-    2300002: //RootNode
-    2300004: Trigger
-    3300000: Rocket
-    3300002: //RootNode
-    3300004: Trigger
-    4300000: RPG7
-    4300002: Trigger
-    4300004: Rocket
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: ELCAN
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -55,7 +45,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1191091
+    globalScale: 1.16687
     meshCompression: 0
     addColliders: 0
     importVisibility: 0
@@ -112,5 +102,5 @@ AssetOrigin:
   productId: 151980
   packageName: Untitled
   packageVersion: 1.0
-  assetPath: Assets/UnityStoreDL/Low Poly Weapons VOL.1/Models/RPG7.fbx
+  assetPath: Assets/UnityStoreDL/Low Poly Weapons VOL.1/Models/ELCAN.fbx
   uploadId: 324403

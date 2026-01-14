@@ -1,24 +1,39 @@
 fileFormatVersion: 2
-guid: 4e5ce0b6f97fdbc40b7bc818b06b80ba
+guid: ff8c9f278b5bc8e4c894e1122f4a81f3
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Rocket
-    100002: //RootNode
-    100004: Trigger
-    400000: Rocket
-    400002: //RootNode
-    400004: Trigger
+    100000: Bolt
+    100002: Magazin
+    100004: Stock
+    100006: Stock_01
+    100008: Trigger
+    100010: //RootNode
+    400000: Bolt
+    400002: Magazin
+    400004: Stock
+    400006: Stock_01
+    400008: Trigger
+    400010: //RootNode
     2100000: Mat
-    2300000: Rocket
-    2300002: //RootNode
-    2300004: Trigger
-    3300000: Rocket
-    3300002: //RootNode
-    3300004: Trigger
-    4300000: RPG7
+    2300000: Bolt
+    2300002: Magazin
+    2300004: Stock
+    2300006: Stock_01
+    2300008: Trigger
+    2300010: //RootNode
+    3300000: Bolt
+    3300002: Magazin
+    3300004: Stock
+    3300006: Stock_01
+    3300008: Trigger
+    3300010: //RootNode
+    4300000: Uzi
     4300002: Trigger
-    4300004: Rocket
+    4300004: Bolt
+    4300006: Magazin
+    4300008: Stock
+    4300010: Stock_01
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -55,7 +70,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1191091
+    globalScale: 0.05211101
     meshCompression: 0
     addColliders: 0
     importVisibility: 0
@@ -112,5 +127,5 @@ AssetOrigin:
   productId: 151980
   packageName: Untitled
   packageVersion: 1.0
-  assetPath: Assets/UnityStoreDL/Low Poly Weapons VOL.1/Models/RPG7.fbx
+  assetPath: Assets/UnityStoreDL/Low Poly Weapons VOL.1/Models/Uzi.fbx
   uploadId: 324403

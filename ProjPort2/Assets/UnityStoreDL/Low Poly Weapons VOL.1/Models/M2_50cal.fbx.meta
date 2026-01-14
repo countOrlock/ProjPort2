@@ -1,24 +1,49 @@
 fileFormatVersion: 2
-guid: 4e5ce0b6f97fdbc40b7bc818b06b80ba
+guid: 018d5bd3bfb8b6a49a8b354ba11e4a8f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Rocket
-    100002: //RootNode
-    100004: Trigger
-    400000: Rocket
-    400002: //RootNode
-    400004: Trigger
+    100000: 1
+    100002: Bolt
+    100004: CINEMA_4D_Editor
+    100006: Gun
+    100008: M2
+    100010: //RootNode
+    100012: Magazin
+    100014: Slide
+    100016: Trigger
+    400000: 1
+    400002: Bolt
+    400004: CINEMA_4D_Editor
+    400006: Gun
+    400008: M2
+    400010: //RootNode
+    400012: Magazin
+    400014: Slide
+    400016: Trigger
+    2000000: CINEMA_4D_Editor
     2100000: Mat
-    2300000: Rocket
-    2300002: //RootNode
-    2300004: Trigger
-    3300000: Rocket
-    3300002: //RootNode
-    3300004: Trigger
-    4300000: RPG7
-    4300002: Trigger
-    4300004: Rocket
+    2300000: 1
+    2300002: Bolt
+    2300004: Gun
+    2300006: M2
+    2300008: Magazin
+    2300010: Slide
+    2300012: Trigger
+    3300000: 1
+    3300002: Bolt
+    3300004: Gun
+    3300006: M2
+    3300008: Magazin
+    3300010: Slide
+    3300012: Trigger
+    4300000: M2
+    4300002: 1
+    4300004: Gun
+    4300006: Magazin
+    4300008: Bolt
+    4300010: Trigger
+    4300012: Slide
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -55,7 +80,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1191091
+    globalScale: 0.9341716
     meshCompression: 0
     addColliders: 0
     importVisibility: 0
@@ -112,5 +137,5 @@ AssetOrigin:
   productId: 151980
   packageName: Untitled
   packageVersion: 1.0
-  assetPath: Assets/UnityStoreDL/Low Poly Weapons VOL.1/Models/RPG7.fbx
+  assetPath: Assets/UnityStoreDL/Low Poly Weapons VOL.1/Models/M2_50cal.fbx
   uploadId: 324403

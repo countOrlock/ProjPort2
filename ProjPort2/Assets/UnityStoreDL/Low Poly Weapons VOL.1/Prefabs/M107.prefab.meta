@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 28f0b13c7e9707746b5e0b3336181560
+guid: 7359baf27e84aa44cafac3788c8be0f1
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 100100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 151980
   packageName: Untitled
   packageVersion: 1.0
-  assetPath: Assets/UnityStoreDL/Low Poly Weapons VOL.1/Gun_MAT.mat
+  assetPath: Assets/UnityStoreDL/Low Poly Weapons VOL.1/Prefabs/M107.prefab
   uploadId: 324403

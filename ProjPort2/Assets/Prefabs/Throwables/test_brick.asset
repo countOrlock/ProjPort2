@@ -17,7 +17,11 @@ MonoBehaviour:
   itemName: Brick
   ammoCurr: 10
   ammoMax: 20
-  throwSound: []
+  throwSound:
+  - {fileID: 8300000, guid: fd68c93e082941443947053c9ed46ae4, type: 3}
+  - {fileID: 8300000, guid: 908930f1c1fd3ee41ae76cfd61d7b877, type: 3}
+  - {fileID: 8300000, guid: 794ff45446c6ba142925d497dbc7fc86, type: 3}
+  - {fileID: 8300000, guid: 018d4e40efa432f4c9d1825c0278dce8, type: 3}
   pickupSound: []
   throwSoundVol: 0.5
   pickupSoundVol: 0.5

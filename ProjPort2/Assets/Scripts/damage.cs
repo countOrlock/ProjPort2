@@ -74,7 +74,7 @@ public class damage : MonoBehaviour
 
         if (type == damageType.thrown)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, destroyTime);
         }
     }
 

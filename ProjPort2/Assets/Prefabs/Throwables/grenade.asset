@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e5d5cf7a3c852a4ca95bb993d4107f6, type: 3}
-  m_Name: test_ball
+  m_Name: grenade
   m_EditorClassIdentifier: Assembly-CSharp::throwStats
-  projectile: {fileID: 7215509146080090277, guid: 027eeacf2c81aa946b7e5a5a3107e21b, type: 3}
+  projectile: {fileID: 1582727997307941297, guid: cdbd2ced9e36e6843a83033c36f27a7c, type: 3}
   animObject: {fileID: 0}
-  itemName: Ball
-  ammoCurr: 7
+  itemName: Grenade
+  ammoCurr: 9
   ammoMax: 10
   throwSound:
   - {fileID: 8300000, guid: fd68c93e082941443947053c9ed46ae4, type: 3}

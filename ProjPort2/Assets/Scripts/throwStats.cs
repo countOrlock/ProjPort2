@@ -5,6 +5,7 @@ using UnityEngine;
 public class throwStats : ScriptableObject
 {
     public GameObject projectile = null;
+    public GameObject animObject = null;
 
     public int ammoCurr;
     [Range(1, 50)] public int ammoMax;

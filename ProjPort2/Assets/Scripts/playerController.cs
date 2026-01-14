@@ -50,6 +50,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     bool reloading = false;
 
+    [Header("----- Throwable Fields -----")]
+    [SerializeField] GameObject throwModel;
+    [SerializeField] List<throwStats> throwList = new List<throwStats>();
+    int throwListPos;
+    float throwTimer;
+    float throwRate;
+
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] stepSound;
@@ -95,6 +102,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     void Update()
     {
         shootTimer += Time.deltaTime;
+        throwTimer += Time.deltaTime;
 
         movement();
 
@@ -120,6 +128,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             playerCam.GetComponent<cameraController>().zoomIn(gunList[gunListPos].zoomMod);
         else if (Input.GetButtonUp("Fire2"))
             playerCam.GetComponent<cameraController>().zoomOut();
+
+        //throwable object
+        if (Input.GetButtonDown("Fire3") && throwList.Any() && throwList[throwListPos].ammoCurr > 0 && !gameManager.instance.isPaused)
+        {
+            throwItem();
+        }
+        selectThrow();
 
         //recoil
         if (recoilSpeed.magnitude > 0.1f)
@@ -412,5 +427,71 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
         reloading = false;
+    }
+
+    public void getThrowStats(throwStats item)
+    {
+        if (throwList.Any())
+        {
+            for (int i = 1; i < throwList.Count; i++)
+            {
+                if (throwList[i] == item)
+                {
+                    throwList[i].ammoCurr = throwList[i].ammoMax;
+                    //gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
+                    return;
+                }
+            }
+        }
+
+        throwList.Add(item);
+        throwListPos = throwList.Count - 1;
+        throwList[throwListPos].ammoCurr = throwList[throwListPos].ammoMax;
+        //gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
+        //gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
+        changeThrow();
+    }
+
+    void throwItem()
+    {
+        throwTimer = 0;
+        throwList[throwListPos].ammoCurr--;
+        //gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
+
+        if (throwList[throwListPos].throwSound.Length > 0)
+            aud.PlayOneShot(throwList[throwListPos].throwSound[Random.Range(0, throwList[throwListPos].throwSound.Length)], throwList[throwListPos].throwSoundVol);
+
+        if (throwList[throwListPos].animObject != null)
+        {
+            throwModel.GetComponent<MeshFilter>().sharedMesh = throwList[throwListPos].animObject.GetComponent<MeshFilter>().sharedMesh;
+            throwModel.GetComponent<MeshRenderer>().sharedMaterial = throwList[throwListPos].animObject.GetComponent<MeshRenderer>().sharedMaterial;
+            //add animation code here
+        }
+        else
+        {
+            Instantiate(throwList[throwListPos].projectile, playerCam.transform.position, playerCam.transform.rotation);
+        }
+    }
+
+    void changeThrow()
+    {
+        //gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        //gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        //gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
+        //gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
+    }
+
+    void selectThrow()
+    {
+        if (Input.GetButtonDown("Throwable Right") && throwListPos < throwList.Count - 1 && reloading == false)
+        {
+            throwListPos++;
+            changeThrow();
+        }
+        else if (Input.GetButtonDown("Throwable Left") && throwListPos > 0 && reloading == false)
+        {
+            throwListPos--;
+            changeThrow();
+        }
     }
 }

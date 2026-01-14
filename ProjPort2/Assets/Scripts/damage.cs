@@ -3,7 +3,7 @@ using System.Collections;
 
 public class damage : MonoBehaviour
 {
-    enum damageType { moving, stationary, DOT, homing}
+    enum damageType { moving, stationary, DOT, homing, thrown}
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
 
@@ -13,6 +13,7 @@ public class damage : MonoBehaviour
     [SerializeField] int destroyTime;
 
     bool isDamaging;
+    bool canDamage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,6 +26,12 @@ public class damage : MonoBehaviour
             {
                 rb.linearVelocity = transform.forward * speed;
             }
+        }
+
+        if (type == damageType.thrown)
+        {
+            rb.linearVelocity = transform.forward * speed;
+            canDamage = true;
         }
     }
 
@@ -46,10 +53,26 @@ public class damage : MonoBehaviour
 
         if (dmg!= null && type != damageType.DOT)
         {
-            dmg.takeDamage(damageAmount);
+            if (type == damageType.thrown)
+            {
+                if(canDamage)
+                {
+                    dmg.takeDamage(damageAmount);
+                    canDamage = false;
+                }
+            }
+            else
+            {
+                dmg.takeDamage(damageAmount);
+            }
         }
 
         if (type == damageType.homing || type == damageType.moving)
+        {
+            Destroy(gameObject);
+        }
+
+        if (type == damageType.thrown)
         {
             Destroy(gameObject);
         }

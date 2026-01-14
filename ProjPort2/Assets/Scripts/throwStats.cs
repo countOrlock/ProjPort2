@@ -7,6 +7,8 @@ public class throwStats : ScriptableObject
     public GameObject projectile = null;
     public GameObject animObject = null;
 
+    public string itemName;
+
     public int ammoCurr;
     [Range(1, 50)] public int ammoMax;
 

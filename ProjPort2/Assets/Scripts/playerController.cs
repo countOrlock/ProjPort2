@@ -438,7 +438,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                 if (throwList[i] == item)
                 {
                     throwList[i].ammoCurr = throwList[i].ammoMax;
-                    //gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
+                    //gameManager.instance.updateItemCount(throwList[i].ammoMax);
                     return;
                 }
             }
@@ -456,7 +456,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         throwTimer = 0;
         throwList[throwListPos].ammoCurr--;
-        //gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
+        gameManager.instance.updateItemCount(throwList[throwListPos].ammoCurr);
 
         if (throwList[throwListPos].throwSound.Length > 0)
             aud.PlayOneShot(throwList[throwListPos].throwSound[Random.Range(0, throwList[throwListPos].throwSound.Length)], throwList[throwListPos].throwSoundVol);
@@ -477,8 +477,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         //gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
         //gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-        //gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
-        //gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
+        gameManager.instance.updateItem(throwList[throwListPos].itemName);
+        gameManager.instance.updateItemCount(throwList[throwListPos].ammoCurr);
     }
 
     void selectThrow()

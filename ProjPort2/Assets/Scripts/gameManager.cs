@@ -20,6 +20,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text currentAmmoCountText;
     [SerializeField] TMP_Text maxAmmoCountText;
     [SerializeField] TMP_Text totalMagCountText;
+    [SerializeField] TMP_Text throwableItemText;
+    [SerializeField] TMP_Text itemCountText;
 
     [Header("===Difficulty===")]
     [SerializeField] GameObject hunter;
@@ -43,6 +45,7 @@ public class gameManager : MonoBehaviour
     int currentAmmoCount;
     int maxAmmoCount;
     int totalMagCount;
+    int itemCount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -162,5 +165,16 @@ public class gameManager : MonoBehaviour
             hunterSpawner.GetComponent<spawner>().questCall(hunter, amountToSpawn);
             hunterAmountCurr += amountToSpawn;
         }
+    }
+
+    public void updateItem(string name)
+    {
+        throwableItemText.text = name;
+    }
+
+    public void updateItemCount(int ammo)
+    {
+        itemCount = ammo;
+        itemCountText.text = itemCount.ToString("F0");
     }
 }

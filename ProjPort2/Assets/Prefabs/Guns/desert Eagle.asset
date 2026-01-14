@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
+  m_Name: desert Eagle
+  m_EditorClassIdentifier: Assembly-CSharp::gunStats
+  gunModel: {fileID: 3544158578533491332, guid: 5da4674f49da1f54db6ff0453c5b0ed1, type: 3}
+  Bullet: {fileID: 0}
+  shootDamage: 10
+  shootDist: 52
+  shootRate: 0.1
+  reloadRate: 0.5
+  recoil: 0
+  ammoCur: 6
+  ammoMax: 6
+  magsCur: 50
+  magsMax: 50
+  zoomMod: 0
+  hitEffect: {fileID: 0}
+  shootSound: []
+  reloadSound: []
+  shootSoundVol: 0
+  reloadSoundVol: 0

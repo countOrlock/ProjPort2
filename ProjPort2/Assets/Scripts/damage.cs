@@ -3,7 +3,7 @@ using System.Collections;
 
 public class damage : MonoBehaviour
 {
-    enum damageType { moving, stationary, DOT, homing, thrown, explosion}
+    enum damageType { moving, stationary, DOT, homing, thrown, explosion, fire}
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject createdObject = null;
@@ -52,7 +52,7 @@ public class damage : MonoBehaviour
 
         IDamage dmg = other.GetComponent<IDamage>();
 
-        if (dmg!= null && type != damageType.DOT)
+        if (dmg!= null && type != damageType.DOT && type != damageType.fire)
         {
             if (type == damageType.thrown)
             {
@@ -89,6 +89,13 @@ public class damage : MonoBehaviour
         if (dmg != null && type == damageType.DOT && !isDamaging)
         {
             StartCoroutine(damageOther(dmg));
+        }
+
+        IStatEff stat = other.GetComponent<IStatEff>();
+
+        if (stat != null && type == damageType.fire)
+        {
+            stat.fire(damageRate, damageAmount);
         }
     }
 

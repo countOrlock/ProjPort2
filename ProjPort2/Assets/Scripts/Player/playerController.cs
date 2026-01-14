@@ -3,8 +3,9 @@ using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
-public class playerController : MonoBehaviour, IDamage, IPickup
+public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 {
     public enum stanceType { sprinting, standing, crouching, prone};
     public stanceType stance;
@@ -76,6 +77,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public string questName;
     public string questObjective;
 
+    [Header("----- Status Effect -----")]
+    float fireTimer;
+
+    public bool isBurning;
+
     public enum questID
     {
         Completed, // 0
@@ -103,6 +109,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         shootTimer += Time.deltaTime;
         throwTimer += Time.deltaTime;
+        fireTimer += Time.deltaTime;
 
         movement();
 
@@ -493,5 +500,26 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             throwListPos--;
             changeThrow();
         }
+    }
+
+    public void fire(float time, int hpRate)
+    {
+        fireTimer = 0;
+
+        if (!isBurning)
+        {
+            StartCoroutine(burning(time, hpRate));
+        }
+    }
+
+    IEnumerator burning (float time, int hpRate)
+    {
+        isBurning = true;
+        while (fireTimer < time)
+        {
+            takeDamage(hpRate);
+            yield return new WaitForSeconds(0.5f);
+        }
+        isBurning = false;
     }
 }

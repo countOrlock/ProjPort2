@@ -7,12 +7,15 @@ public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
 
+    [Header("===Menus===")]
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuQuestListFull;
     [SerializeField] GameObject menuQuestTracker;
+
+    [Header("===Displayed Text===")]
     [SerializeField] TMP_Text gameGoalCountText;
     [SerializeField] TMP_Text gameGoalNeededText;
     [SerializeField] TMP_Text questNameText;

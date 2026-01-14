@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
-public class enemyAI : MonoBehaviour, IDamage
+public class enemyAI : MonoBehaviour, IDamage, IStatEff
 {
     [SerializeField] Animator anim;
     [SerializeField] Renderer model;
@@ -46,6 +46,11 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] AudioClip[] shootSound;
     [Range(0f, 1f)][SerializeField] float shootVol;
 
+    [Header("----- Status Effects -----")]
+    float fireTimer;
+
+    public bool isBurning;
+
     float distToTarget;
 
     Color colorOrig;
@@ -77,6 +82,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         shootTimer += Time.deltaTime;
         meleeTimer += Time.deltaTime;
+        fireTimer += Time.deltaTime;
 
         locomotionAnim();
 
@@ -300,5 +306,24 @@ public class enemyAI : MonoBehaviour, IDamage
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = colorOrig;
+    }
+
+    public void fire(float time, int hpRate)
+    {
+        fireTimer = 0;
+
+        if (!isBurning)
+            StartCoroutine(burning(time, hpRate));
+    }
+
+    IEnumerator burning(float time, int hpRate)
+    {
+        isBurning = true;
+        while (fireTimer < time)
+        {
+            takeDamage(hpRate);
+            yield return new WaitForSeconds(0.5f);
+        }
+        isBurning = false;
     }
 }

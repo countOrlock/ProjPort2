@@ -8,6 +8,7 @@ TagManager:
   - Spawner
   - Hunter Spawner
   - Small Game
+  - Medium Game
   layers:
   - Default
   - TransparentFX

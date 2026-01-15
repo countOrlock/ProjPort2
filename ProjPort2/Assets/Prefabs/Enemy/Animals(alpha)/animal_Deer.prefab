@@ -853,7 +853,7 @@ MonoBehaviour:
   FOV: 120
   animTranSpeed: 10
   dropItem: {fileID: 0}
-  aggressive: 1
+  aggressive: 0
   enemyIgnoreLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
+  m_Name: Ray gun
+  m_EditorClassIdentifier: Assembly-CSharp::gunStats
+  gunModel: {fileID: 537056831921413833, guid: 4badfc5dfaa4f71488ab5d73d2e86dbd, type: 3}
+  Bullet: {fileID: 0}
+  shootLaser: 1
+  shootDamage: 1
+  shootDist: 1000
+  shootRate: 0
+  reloadRate: 2.36
+  recoil: 0
+  ammoCur: 0
+  ammoMax: 200
+  magsCur: 9
+  magsMax: 10
+  zoomMod: 1
+  hitEffect: {fileID: 0}
+  shootSound: []
+  reloadSound:
+  - {fileID: 8300000, guid: 0e6f4d5db8dcb574892e7a8ee698e662, type: 3}
+  shootSoundVol: 0
+  reloadSoundVol: 0

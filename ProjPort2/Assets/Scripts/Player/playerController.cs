@@ -40,6 +40,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     [Header("----- Gun Fields -----")]
     [SerializeField] GameObject gunModel;
     [SerializeField] LayerMask ignoreLayer;
+    [SerializeField] LineRenderer Laser;
     float shootTimer;
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     int gunListPos;
@@ -170,7 +171,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
         if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate && reloading == false && !gameManager.instance.isPaused)
         {
+            
             shoot();
+        }
+        else
+        {
+            Laser.enabled = false;
         }
     }
 
@@ -299,6 +305,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 if (gunList[gunListPos].hitEffect != null)
                 {
                     Instantiate(gunList[gunListPos].hitEffect, hit.point, Quaternion.identity);
+                }
+
+                if(gunList[gunListPos].shootLaser == true)
+                {
+
+                    Laser.enabled = true;
+
+                    Laser.SetPosition(0, gunModel.transform.position);
+                    Laser.SetPosition(1, hit.point);
+
                 }
 
                 Debug.Log(hit.collider.name);

@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
   gunModel: {fileID: 1411512464560164, guid: 02baef62b1bfedf40bb369fb7542b9e7, type: 3}
   Bullet: {fileID: 1141838910390786918, guid: 57e314d01606ee14e9dd2f16de2291ae, type: 3}
+  shootLaser: 0
   shootDamage: 0
   shootDist: 0
   shootRate: 0.1
   reloadRate: 2
   recoil: 10
-  ammoCur: 0
+  ammoCur: 1
   ammoMax: 1
-  magsCur: 4
+  magsCur: 5
   magsMax: 5
   zoomMod: 0.7
   hitEffect: {fileID: 0}

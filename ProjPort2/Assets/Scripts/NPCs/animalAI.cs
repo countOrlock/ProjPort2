@@ -149,9 +149,11 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
                     faceTarget();
                 }
 
-                if (attacksMelee && meleeTimer >= meleeRate && inMeleeRange())
+                if (attacksMelee && meleeTimer >= meleeRate && inMeleeRange(hit))
                 {
-                    if (!debugHasMeleeAnim)
+                    if (debugHasMeleeAnim)
+                        anim.SetTrigger("Melee");
+                    else
                         meleeAttack();
                 }
 
@@ -163,19 +165,33 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         return false;
     }
 
-    bool inMeleeRange()
+    bool inMeleeRange(RaycastHit hit)
     {
-        RaycastHit hit;
-        Physics.Raycast(transform.position, playerDir, out hit, meleeRange, ~enemyIgnoreLayer);
-
-        if (hit.collider != null)
+        if (hit.distance <= meleeRange)
         {
             Debug.Log(hit.collider);
 
             if (hit.collider.CompareTag("Player"))
             {
-                if (debugHasMeleeAnim)
-                    anim.SetTrigger("Melee");
+                return true;
+            }
+        }
+
+
+        return false;
+    }
+
+    bool inMeleeRange()
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, playerDir, out hit, meleeRange, ~enemyIgnoreLayer);
+
+        if (hit.distance <= meleeRange)
+        {
+            Debug.Log(hit.collider);
+
+            if (hit.collider.CompareTag("Player"))
+            {
                 return true;
             }
         }
@@ -188,7 +204,8 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     {
         meleeTimer = 0;
         IDamage dmg = gameManager.instance.player.GetComponent<IDamage>();
-        dmg.takeDamage(meleeDamage);
+        if (inMeleeRange())
+            dmg.takeDamage(meleeDamage);
     }
 
     void moveToTarget()

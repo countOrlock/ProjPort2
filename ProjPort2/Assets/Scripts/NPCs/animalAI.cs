@@ -186,7 +186,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         RaycastHit hit;
         Physics.Raycast(transform.position, playerDir, out hit, meleeRange, ~enemyIgnoreLayer);
 
-        if (hit.distance <= meleeRange)
+        if (hit.collider != null)
         {
             Debug.Log(hit.collider);
 

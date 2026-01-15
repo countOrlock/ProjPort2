@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
   gunModel: {fileID: 3544158578533491332, guid: 5da4674f49da1f54db6ff0453c5b0ed1, type: 3}
   Bullet: {fileID: 0}
+  shootLaser: 0
   shootDamage: 10
   shootDist: 52
   shootRate: 0.1
@@ -26,6 +27,7 @@ MonoBehaviour:
   zoomMod: 0
   hitEffect: {fileID: 0}
   shootSound: []
-  reloadSound: []
+  reloadSound:
+  - {fileID: 8300000, guid: 0e6f4d5db8dcb574892e7a8ee698e662, type: 3}
   shootSoundVol: 0
   reloadSoundVol: 0

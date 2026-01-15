@@ -2591,7 +2591,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 210026739007158227, guid: 52e1195249875d24b94551e9c1162122, type: 3}
       propertyPath: m_Name
-      value: boar001
+      value: animal_Boar
       objectReference: {fileID: 0}
     - target: {fileID: 6131303052064860189, guid: 52e1195249875d24b94551e9c1162122, type: 3}
       propertyPath: m_LocalPosition.x

@@ -83,14 +83,8 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
             distToTarget = (targetPos - transform.position).magnitude;
         }
 
-        if (gameManager.instance.currQuestLoc != null)
-        {
-            targetPos = gameManager.instance.currQuestLoc.position;
-        }
-        else
-        {
-            targetPos = startingPos;
-        }
+
+        targetPos = startingPos;
 
         if (agent.remainingDistance < 0.01)
         {

@@ -1581,7 +1581,6 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   playerHPBar: {fileID: 1397628598769450949}
   playerDamageScreen: {fileID: 5326149887852971818}
-  currQuestLoc: {fileID: 0}
   hunterSpawner: {fileID: 0}
   hunterAmountCurr: 0
   isPaused: 0
@@ -11798,6 +11797,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2073479164823782859}
+  - {fileID: 488029172137920631}
   - {fileID: 8239631830425276074}
   - {fileID: 8985226784337932939}
   - {fileID: 9141434122553869593}
@@ -17943,6 +17943,65 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &7586963498433858871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 488029172137920631}
+  - component: {fileID: 9099150706935086929}
+  m_Layer: 5
+  m_Name: Quest Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &488029172137920631
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7586963498433858871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1676057543590099949}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9099150706935086929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7586963498433858871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e469e885d609304aae21573de86605c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::questManager
+  unavailableQuests:
+  - {fileID: 11400000, guid: e4b767b678abac842856289f148be957, type: 2}
+  - {fileID: 11400000, guid: 4fd7fb87b5847a24fa653789cd683b2a, type: 2}
+  - {fileID: 11400000, guid: 224d2280812c62846a32e349ebad919a, type: 2}
+  availableQuests:
+  - {fileID: 11400000, guid: 98bba4f51b5a1ed43b44c01ecf3cbf08, type: 2}
+  - {fileID: 11400000, guid: e4b767b678abac842856289f148be957, type: 2}
+  - {fileID: 11400000, guid: 4fd7fb87b5847a24fa653789cd683b2a, type: 2}
+  activeQuest1: {fileID: 11400000, guid: b6939dc738f94c94ea18fc3edd1858d4, type: 2}
+  activeQuest2: {fileID: 11400000, guid: 224d2280812c62846a32e349ebad919a, type: 2}
+  completeQuests: []
 --- !u!1 &7608468650908134611
 GameObject:
   m_ObjectHideFlags: 0

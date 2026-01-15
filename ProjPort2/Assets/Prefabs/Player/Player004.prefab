@@ -447,6 +447,8 @@ MonoBehaviour:
   maxAmmo: 0
   currentMags: 0
   maxMags: 0
+  throwModel: {fileID: 0}
+  throwList: []
   aud: {fileID: 8946319230293315414}
   stepSound:
   - {fileID: 8300000, guid: a97f9e799adb54d44931187f4fedd0bf, type: 3}
@@ -477,6 +479,7 @@ MonoBehaviour:
   questItemList: []
   questName: 
   questObjective: 
+  isBurning: 0
 --- !u!143 &7174832327420152129
 CharacterController:
   m_ObjectHideFlags: 0

@@ -1,7 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
-public class enemyAI : MonoBehaviour, IDamage, IStatEff
+
+public class animalAI : MonoBehaviour, IDamage, IStatEff
 {
     [SerializeField] Animator anim;
     [SerializeField] Renderer model;
@@ -15,14 +16,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     [SerializeField] GameObject dropItem;
 
     [Header("----- Toggles -----")]
-    [SerializeField] bool scaredOfPlayer;
-    [SerializeField] bool shootsProjectile;
-    [SerializeField] bool attacksMelee;
-
-    [Header("----- If Shoots Projectile -----")]
-    [SerializeField] GameObject bullet;
-    [SerializeField] float shootRate;
-    [SerializeField] Transform shootPos;
+    [SerializeField] bool aggressive;
 
     [Header("----- If Attacks Melee -----")]
     [SerializeField] LayerMask enemyIgnoreLayer;
@@ -56,7 +50,6 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     Color colorOrig;
 
     float roamTimer;
-    float shootTimer;
     float meleeTimer;
 
     float angleToPlayer;
@@ -67,7 +60,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     Vector3 playerDir;
     Vector3 startingPos;
 
-    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -80,13 +73,12 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     // Update is called once per frame
     void Update()
     {
-        shootTimer += Time.deltaTime;
         meleeTimer += Time.deltaTime;
         fireTimer += Time.deltaTime;
 
         locomotionAnim();
 
-        if(targetPos != null)
+        if (targetPos != null)
         {
             distToTarget = (targetPos - transform.position).magnitude;
         }
@@ -137,11 +129,11 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         {
             if (angleToPlayer <= FOV && hit.collider.CompareTag("Player"))
             {
-                if (!scaredOfPlayer)
+                if (aggressive)
                 {
                     agent.SetDestination(gameManager.instance.player.transform.position);
                 }
-                else if (scaredOfPlayer)
+                else
                 {
                     float oppositePlayerX = transform.position.x - playerDir.x;
                     float oppositePlayerZ = transform.position.z - playerDir.z;
@@ -156,15 +148,11 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
                     faceTarget();
                 }
 
-                if (shootsProjectile && shootTimer >= shootRate)
+                if (aggressive && meleeTimer >= meleeRate && inMeleeRange(hit))
                 {
-                    shootPos.LookAt(hit.point);
-                    shoot();
-                }
-
-                if (attacksMelee && meleeTimer >= meleeRate && inMeleeRange())
-                {
-                    if (!debugHasMeleeAnim)
+                    if (debugHasMeleeAnim)
+                        anim.SetTrigger("Melee");
+                    else
                         meleeAttack();
                 }
 
@@ -173,6 +161,22 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             }
         }
         agent.stoppingDistance = 0;
+        return false;
+    }
+
+    bool inMeleeRange(RaycastHit hit)
+    {
+        if (hit.distance <= meleeRange)
+        {
+            Debug.Log(hit.collider);
+
+            if (hit.collider.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+
+
         return false;
     }
 
@@ -187,8 +191,6 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
             if (hit.collider.CompareTag("Player"))
             {
-                if (debugHasMeleeAnim)
-                    anim.SetTrigger("Melee");
                 return true;
             }
         }
@@ -197,23 +199,12 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         return false;
     }
 
-    void shoot()
-    {
-        shootTimer = 0;
-        anim.SetTrigger("Shoot");
-    }
-
-    public void createBullet()
-    {
-        Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
-        aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootVol);
-    }
-
     void meleeAttack()
     {
         meleeTimer = 0;
         IDamage dmg = gameManager.instance.player.GetComponent<IDamage>();
-        dmg.takeDamage(meleeDamage);
+        if (inMeleeRange())
+            dmg.takeDamage(meleeDamage);
     }
 
     void moveToTarget()
@@ -251,7 +242,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     {
         roamTimer = 0;
         agent.stoppingDistance = 0;
-        
+
         Vector3 ranPos = Random.insideUnitSphere * roamDist;
 
         if (targetPos != null)
@@ -263,7 +254,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             ranPos += startingPos;
         }
 
-            NavMeshHit hit;
+        NavMeshHit hit;
         NavMesh.SamplePosition(ranPos, out hit, roamDist, 1);
         agent.SetDestination(hit.position);
     }
@@ -278,20 +269,17 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     public void takeDamage(int amount)
     {
         HP -= amount;
-        if (!scaredOfPlayer)
+        if (aggressive)
         {
             agent.SetDestination(gameManager.instance.player.transform.position);
         }
 
         if (HP <= 0)
         {
-            if(dropItem != null)
+            if (dropItem != null)
             {
                 Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             }
-
-            if (shootsProjectile)
-                gameManager.instance.hunterAmountCurr--;
 
             Destroy(gameObject);
         }

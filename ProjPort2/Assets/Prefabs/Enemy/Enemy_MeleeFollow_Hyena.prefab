@@ -1829,6 +1829,10 @@ MonoBehaviour:
   roamPauseTimer: 10
   targetPos: {x: 0, y: 0, z: 0}
   maxDistFromTarget: 30
+  aud: {fileID: 0}
+  shootSound: []
+  shootVol: 0
+  isBurning: 0
 --- !u!195 &6866544687672375880
 NavMeshAgent:
   m_ObjectHideFlags: 0

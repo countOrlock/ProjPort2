@@ -325,33 +325,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 {
                     dmg.takeDamage(gunList[gunListPos].shootDamage);
                 }
-
-                IGiveQuest questGiver = hit.collider.GetComponent<IGiveQuest>();
-
-                if (questGiver != null)
-                {
-                    if (questList.Count < 1)
-                    {
-                        questList.Add(questGiver.giveQuest());
-                        gameManager.instance.updateCurrentQuest(questGiver.giveQuest().questName);
-                        GameObject spawner = hit.collider.GetComponent<questGiver>().spawners[Random.Range(0, hit.collider.GetComponent<questGiver>().spawners.Length)];
-                        spawner.GetComponent<spawner>().questCall(questGiver.giveQuest().animal);
-                        gameManager.instance.currQuestLoc = spawner.transform;
-                        gameManager.instance.checkHunters();
-                    }
-                    else if (questList.Contains(questGiver.giveQuest()) && !questItemList.Contains(questGiver.giveQuest().questObject))
-                    {
-                        gameManager.instance.questListFull();
-                    }
-                    else if (questList.Contains(questGiver.giveQuest()) && questItemList.Contains(questGiver.giveQuest().questObject))
-                    {
-                        questList.Remove(questGiver.giveQuest());
-                        gameManager.instance.updateCurrentQuest("None");
-                        questItemList.Remove(questGiver.giveQuest().questObject);
-                        Gold += questGiver.giveReward();
-                    }
-                }
-
             }
         }
         else

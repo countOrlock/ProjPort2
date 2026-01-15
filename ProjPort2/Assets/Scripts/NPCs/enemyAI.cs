@@ -91,15 +91,6 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             distToTarget = (targetPos - transform.position).magnitude;
         }
 
-        if (gameManager.instance.currQuestLoc != null)
-        {
-            targetPos = gameManager.instance.currQuestLoc.position;
-        }
-        else
-        {
-            targetPos = startingPos;
-        }
-
         if (agent.remainingDistance < 0.01)
         {
             roamTimer += Time.deltaTime;
@@ -289,6 +280,8 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             {
                 Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             }
+
+            questManager.instance.UpdateQuest(gameObject);
 
             if (shootsProjectile)
                 gameManager.instance.hunterAmountCurr--;

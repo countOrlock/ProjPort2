@@ -37,7 +37,6 @@ public class gameManager : MonoBehaviour
     public playerController playerScript;
     public Image playerHPBar;
     public GameObject playerDamageScreen;
-    public Transform currQuestLoc;
     public GameObject hunterSpawner;
     public int hunterAmountCurr;
 

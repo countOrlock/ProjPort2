@@ -1,31 +1,13 @@
 using UnityEngine;
+using System.Collections.Generic;
 
-public class questGiver : MonoBehaviour, IGiveQuest
+public class questGiver : MonoBehaviour
 {
-    [SerializeField] questInfo quest;
-    public GameObject[] spawners;
+    [SerializeField] List<questInfo> availableQuestList = new List<questInfo>();
 
-    private void Start()
+    public void giveQuest(questInfo quest)
     {
-        spawners = GameObject.FindGameObjectsWithTag("Spawner");
-    }
-
-    public questInfo giveQuest()
-    {
-        if (quest != null)
-        {
-            return quest;
-        }
-        else
-        {
-            return new questInfo();
-        }
-    }
-
-    public int giveReward()
-    {
-        gameManager.instance.updateGameGoal(quest.reward);
-        gameManager.instance.currQuestLoc = null;
-        return quest.reward;
+        // move the quest from the (to-do quest list in the Quest Manager to an active quest slot)
+        // remove the quest from the quest giver's available quest list
     }
 }

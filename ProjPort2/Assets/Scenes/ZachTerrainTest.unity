@@ -4903,8 +4903,7 @@ MonoBehaviour:
   FOV: 120
   animTranSpeed: 2
   dropItem: {fileID: 0}
-  scaredOfPlayer: 0
-  attacksMelee: 1
+  aggressive: 1
   enemyIgnoreLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -5567,8 +5566,7 @@ MonoBehaviour:
   FOV: 120
   animTranSpeed: 10
   dropItem: {fileID: 0}
-  scaredOfPlayer: 0
-  attacksMelee: 1
+  aggressive: 1
   enemyIgnoreLayer:
     serializedVersion: 2
     m_Bits: 64

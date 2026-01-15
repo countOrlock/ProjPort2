@@ -16,8 +16,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     [SerializeField] GameObject dropItem;
 
     [Header("----- Toggles -----")]
-    [SerializeField] bool scaredOfPlayer;
-    [SerializeField] bool attacksMelee;
+    [SerializeField] bool aggressive;
 
     [Header("----- If Attacks Melee -----")]
     [SerializeField] LayerMask enemyIgnoreLayer;
@@ -130,11 +129,11 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         {
             if (angleToPlayer <= FOV && hit.collider.CompareTag("Player"))
             {
-                if (!scaredOfPlayer)
+                if (aggressive)
                 {
                     agent.SetDestination(gameManager.instance.player.transform.position);
                 }
-                else if (scaredOfPlayer)
+                else
                 {
                     float oppositePlayerX = transform.position.x - playerDir.x;
                     float oppositePlayerZ = transform.position.z - playerDir.z;
@@ -149,7 +148,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
                     faceTarget();
                 }
 
-                if (attacksMelee && meleeTimer >= meleeRate && inMeleeRange(hit))
+                if (aggressive && meleeTimer >= meleeRate && inMeleeRange(hit))
                 {
                     if (debugHasMeleeAnim)
                         anim.SetTrigger("Melee");
@@ -270,7 +269,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     public void takeDamage(int amount)
     {
         HP -= amount;
-        if (!scaredOfPlayer)
+        if (aggressive)
         {
             agent.SetDestination(gameManager.instance.player.transform.position);
         }

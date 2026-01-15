@@ -7,6 +7,7 @@ TagManager:
   - Quest
   - Spawner
   - Hunter Spawner
+  - Small Game
   layers:
   - Default
   - TransparentFX

@@ -17,13 +17,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
 
     [Header("----- Toggles -----")]
     [SerializeField] bool scaredOfPlayer;
-    [SerializeField] bool shootsProjectile;
     [SerializeField] bool attacksMelee;
-
-    [Header("----- If Shoots Projectile -----")]
-    [SerializeField] GameObject bullet;
-    [SerializeField] float shootRate;
-    [SerializeField] Transform shootPos;
 
     [Header("----- If Attacks Melee -----")]
     [SerializeField] LayerMask enemyIgnoreLayer;
@@ -57,7 +51,6 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     Color colorOrig;
 
     float roamTimer;
-    float shootTimer;
     float meleeTimer;
 
     float angleToPlayer;
@@ -81,7 +74,6 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     // Update is called once per frame
     void Update()
     {
-        shootTimer += Time.deltaTime;
         meleeTimer += Time.deltaTime;
         fireTimer += Time.deltaTime;
 
@@ -157,12 +149,6 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
                     faceTarget();
                 }
 
-                if (shootsProjectile && shootTimer >= shootRate)
-                {
-                    shootPos.LookAt(hit.point);
-                    shoot();
-                }
-
                 if (attacksMelee && meleeTimer >= meleeRate && inMeleeRange())
                 {
                     if (!debugHasMeleeAnim)
@@ -196,18 +182,6 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
 
 
         return false;
-    }
-
-    void shoot()
-    {
-        shootTimer = 0;
-        anim.SetTrigger("Shoot");
-    }
-
-    public void createBullet()
-    {
-        Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
-        aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootVol);
     }
 
     void meleeAttack()
@@ -290,9 +264,6 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
             {
                 Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             }
-
-            if (shootsProjectile)
-                gameManager.instance.hunterAmountCurr--;
 
             Destroy(gameObject);
         }

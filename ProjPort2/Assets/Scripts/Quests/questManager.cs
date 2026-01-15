@@ -1,16 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor;
+using System.Linq;
 
 public class questManager : MonoBehaviour
 {
     public static questManager instance;
 
-    [SerializeField] List<List<questInfo>> toDoQuests;
+    [SerializeField] List<questInfo> unavailableQuests;
     [SerializeField] List<questInfo> availableQuests;
     public questInfo activeQuest1;
     public questInfo activeQuest2;
-    List<questInfo> completeQuests;
+    public List<questInfo> completeQuests = new List<questInfo>();
 
     private int quest1Target;
     private int quest1Current;
@@ -27,6 +28,24 @@ public class questManager : MonoBehaviour
     {
         quest1Current = 0;
         quest2Current = 0;
+
+        if (activeQuest1)
+        {
+            quest1Target = activeQuest1.numOfAnimalsToHunt;
+        }
+        else
+        {
+            quest1Target = -1;
+        }
+
+        if (activeQuest2)
+        {
+            quest2Target = activeQuest2.numOfAnimalsToHunt;
+        }
+        else
+        {
+            quest2Target = -1;
+        }
     }
 
     // Update is called once per frame
@@ -43,7 +62,7 @@ public class questManager : MonoBehaviour
             {
                 quest1Current++;
             }
-            else if (activeQuest1.animal.name == killedAnimal.name)
+            else if (activeQuest2.animal.name == killedAnimal.name)
             {
                 quest2Current++;
             }
@@ -71,44 +90,65 @@ public class questManager : MonoBehaviour
 
     void CompleteQuest(int activeQuest)
     {
-        if (activeQuest != 1 || activeQuest != 2)
+        GameObject currentQuestAnimal;
+        if (activeQuest != 1 && activeQuest != 2)
         {
             Debug.LogError("Invalid Quest, Cannot Complete");
             return;
         }
         else if (activeQuest == 1)
         {
+            currentQuestAnimal = activeQuest1.animal;
             completeQuests.Add(activeQuest1);
             activeQuest1 = null;
         }
         else
         {
+            currentQuestAnimal = activeQuest2.animal;
             completeQuests.Add(activeQuest2);
             activeQuest2 = null;
         }
 
-        GiveNewQuest();
-        addToAvailableQuests();
-        RemoveFromQuestList();
+        if (availableQuests.Count != 0)
+        {
+            GiveNewQuest(availableQuests[0]);
+            availableQuests.Remove(availableQuests[0]);
+        }
+
+        questInfo nextLevelQuest = FindNextLevelQuest(currentQuestAnimal);
+
+        if (nextLevelQuest)
+        {
+            availableQuests.Add(nextLevelQuest);
+            unavailableQuests.Remove(nextLevelQuest);
+        }
     }
 
-    void addToAvailableQuests()
+    questInfo FindNextLevelQuest(GameObject questAnimal)
     {
-
+        for (int i = 0; i < unavailableQuests.Count; i++)
+        {
+            if (unavailableQuests[i].animal == questAnimal)
+            {
+                return unavailableQuests[i];
+            }
+        }
+        return null;
     }
 
-    void RemoveFromQuestList()
+    void GiveNewQuest(questInfo newQuest)
     {
-
-    }
-
-    void GiveNewQuest()
-    {
-
-    }
-
-    void UpdateQuestList()
-    {
-
+        if (!activeQuest1)
+        {
+            activeQuest1  = newQuest;
+            quest1Target  = activeQuest1.numOfAnimalsToHunt;
+            quest1Current = 0;
+        }
+        else if (!activeQuest2)
+        {
+            activeQuest2  = newQuest;
+            quest2Target  = activeQuest2.numOfAnimalsToHunt;
+            quest2Current = 0;
+        }
     }
 }

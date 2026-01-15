@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4046325855940202077}
   m_Layer: 0
   m_Name: Buffalo Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -60,22 +60,23 @@ public class questManager : MonoBehaviour
 
     public void UpdateCurrentQuest(GameObject animal, int amount)
     {
-        if (activeQuest1 != null || activeQuest2 != null)
+        if (activeQuest1 != null &&
+            activeQuest1.animal != null && 
+            activeQuest1.animal.GetComponent<animalAI>().model.ToString() == animal.GetComponent<animalAI>().model.ToString())
         {
-            if (activeQuest1.animal.GetComponent<animalAI>().model.ToString() == animal.GetComponent<animalAI>().model.ToString())
-            {
-                quest1Current += amount;
-                gameManager.instance.updateActiveQuest1(activeQuest1.questName, quest1Current, quest1Target);
-            }
-            else if (activeQuest2.animal.GetComponent<animalAI>().model.ToString() == animal.GetComponent<animalAI>().model.ToString())
-            {
-                quest2Current += amount;
-                gameManager.instance.updateActiveQuest2(activeQuest2.questName, quest2Current, quest2Target);
-            }
-            else
-            {
-                return;
-            }
+            quest1Current += amount;
+            gameManager.instance.updateActiveQuest1(activeQuest1.questName, quest1Current, quest1Target);
+        }
+        else if (activeQuest2 != null && 
+            activeQuest2.animal != null && 
+            activeQuest2.animal.GetComponent<animalAI>().model.ToString() == animal.GetComponent<animalAI>().model.ToString())
+        {
+            quest2Current += amount;
+            gameManager.instance.updateActiveQuest2(activeQuest2.questName, quest2Current, quest2Target);
+        }
+        else
+        {
+            return;
         }
 
         CheckQuestStatus();
@@ -96,7 +97,7 @@ public class questManager : MonoBehaviour
 
     void CompleteQuest(int activeQuest)
     {
-        GameObject currentQuestAnimal;
+        questInfo completedQuest;
         if (activeQuest != 1 && activeQuest != 2)
         {
             Debug.LogError("Invalid Quest, Cannot Complete");
@@ -104,7 +105,7 @@ public class questManager : MonoBehaviour
         }
         else if (activeQuest == 1)
         {
-            currentQuestAnimal = activeQuest1.animal;
+            completedQuest = activeQuest1;
             completeQuests.Add(activeQuest1);
             gameManager.instance.player.GetComponent<playerController>().Gold += activeQuest1.reward;
             gameManager.instance.updateGameGoal(activeQuest1.reward);
@@ -112,7 +113,7 @@ public class questManager : MonoBehaviour
         }
         else
         {
-            currentQuestAnimal = activeQuest2.animal;
+            completedQuest = activeQuest2;
             completeQuests.Add(activeQuest2);
             gameManager.instance.player.GetComponent<playerController>().Gold += activeQuest2.reward;
             gameManager.instance.updateGameGoal(activeQuest2.reward);
@@ -121,24 +122,16 @@ public class questManager : MonoBehaviour
 
         if (availableQuests.Count != 0)
         {
-            GiveNewQuest(availableQuests[0]);
-            availableQuests.Remove(availableQuests[0]);
+            GiveNewQuest(availableQuests[0], completedQuest);
         }
 
-        questInfo nextLevelQuest = FindNextLevelQuest(currentQuestAnimal);
-
-        if (nextLevelQuest)
-        {
-            availableQuests.Add(nextLevelQuest);
-            unavailableQuests.Remove(nextLevelQuest);
-        }
     }
 
-    questInfo FindNextLevelQuest(GameObject questAnimal)
+    questInfo FindNextLevelQuest(questInfo quest)
     {
         for (int i = 0; i < unavailableQuests.Count; i++)
         {
-            if (unavailableQuests[i].animal == questAnimal)
+            if (unavailableQuests[i].animal == quest.animal)
             {
                 return unavailableQuests[i];
             }
@@ -146,8 +139,31 @@ public class questManager : MonoBehaviour
         return null;
     }
 
-    public void GiveNewQuest(questInfo newQuest)
+    public bool GiveNewQuest(questInfo newQuest, questInfo completedQuest = null)
     {
+        if (newQuest == null || newQuest.animal == null)
+        {
+            if (completedQuest)
+            {
+                if (activeQuest1 == null)
+                {
+                    activeQuest1 = newQuest;
+                    gameManager.instance.updateActiveQuest1(newQuest.questName, 0, newQuest.numOfAnimalsToHunt);
+                    quest1Target  = 0;
+                    quest1Current = 0;
+                }
+                if (activeQuest2 == null)
+                {
+                    activeQuest2 = newQuest; 
+                    gameManager.instance.updateActiveQuest2(newQuest.questName, 0, newQuest.numOfAnimalsToHunt);
+                    quest2Target  = 0;
+                    quest2Current = 0;
+                }
+            }
+
+            return false;
+        }
+
         if (!activeQuest1)
         {
             activeQuest1  = newQuest;
@@ -162,5 +178,57 @@ public class questManager : MonoBehaviour
             quest2Current = 0;
             gameManager.instance.updateActiveQuest2(newQuest.questName, 0, newQuest.numOfAnimalsToHunt);
         }
+        else
+        {
+            return false;
+        }
+
+            availableQuests.Remove(newQuest);
+        if (completedQuest)
+        {
+            MoveUnavailableQuestToAvailableQuest(completedQuest);
+        }
+        else
+        {
+            MoveUnavailableQuestToAvailableQuest();
+        }
+
+        return true;
+    }
+
+    void MoveUnavailableQuestToAvailableQuest(questInfo completedQuest = null)
+    {
+        if (completedQuest)
+        {
+            questInfo nextLevelQuest = FindNextLevelQuest(completedQuest);
+
+            if (nextLevelQuest)
+            {
+                availableQuests.Add(nextLevelQuest);
+                unavailableQuests.Remove(nextLevelQuest);
+            }
+            else if (completeQuests.Exists(x => x.animal == completedQuest))
+            {
+                questInfo newQuest = completeQuests.Find(x => x.animal == completedQuest);
+                availableQuests.Add(newQuest);
+            }
+            else
+            {
+                questInfo newQuest = new questInfo();
+                availableQuests.Add(newQuest);
+            }
+        }
+        else if (unavailableQuests.Count != 0)
+        {
+            availableQuests.Add(unavailableQuests[0]);
+            unavailableQuests.Remove(unavailableQuests[0]);
+        }
+        else
+        {
+            questInfo newQuest = new questInfo();
+            availableQuests.Add(newQuest);
+        }
+
+        gameManager.instance.updateAvailableQuests();
     }
 }

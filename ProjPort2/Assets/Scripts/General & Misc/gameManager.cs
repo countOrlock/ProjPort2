@@ -90,7 +90,7 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (menuActive != menuPause)
+            if (menuActive == null)
             {
                 statePause();
                 menuActive = menuPause;
@@ -105,7 +105,7 @@ public class gameManager : MonoBehaviour
         // For Quest Menu
         if (Input.GetButtonDown("Quests"))
         {
-            if (menuActive != menuQuests)
+            if (menuActive == null)
             {
                 statePause();
                 menuActive = menuQuests;
@@ -151,17 +151,51 @@ public class gameManager : MonoBehaviour
 
     public void updateAvailableQuests()
     {
-        availableQuest1Title.text       = questManager.instance.availableQuests[0].questName;
-        availableQuest1Description.text = questManager.instance.availableQuests[0].questObjective;
+        questInfo defaultQuest = new questInfo();
 
-        availableQuest2Title.text       = questManager.instance.availableQuests[1].questName;
-        availableQuest2Description.text = questManager.instance.availableQuests[1].questObjective;
+        if (questManager.instance.availableQuests.Count > 0)
+        {
+            availableQuest1Title.text       = questManager.instance.availableQuests[0].questName;
+            availableQuest1Description.text = questManager.instance.availableQuests[0].questObjective;
+        }
+        else
+        {
+            availableQuest1Title.text       = defaultQuest.questName;
+            availableQuest1Description.text = defaultQuest.questObjective;
+        }
 
-        availableQuest3Title.text       = questManager.instance.availableQuests[2].questName;
-        availableQuest3Description.text = questManager.instance.availableQuests[2].questObjective;
+        if (questManager.instance.availableQuests.Count > 1)
+        {
+            availableQuest2Title.text       = questManager.instance.availableQuests[1].questName;
+            availableQuest2Description.text = questManager.instance.availableQuests[1].questObjective;
+        }
+        else
+        {
+            availableQuest2Title.text       = defaultQuest.questName;
+            availableQuest2Description.text = defaultQuest.questObjective;
+        }
 
-        availableQuest4Title.text       = questManager.instance.availableQuests[3].questName;
-        availableQuest4Description.text = questManager.instance.availableQuests[3].questObjective;
+        if (questManager.instance.availableQuests.Count > 2)
+        {
+            availableQuest3Title.text       = questManager.instance.availableQuests[2].questName;
+            availableQuest3Description.text = questManager.instance.availableQuests[2].questObjective;
+        }
+        else
+        {
+            availableQuest3Title.text       = defaultQuest.questName;
+            availableQuest3Description.text = defaultQuest.questObjective;
+        }
+
+        if (questManager.instance.availableQuests.Count > 3)
+        {
+            availableQuest4Title.text       = questManager.instance.availableQuests[3].questName;
+            availableQuest4Description.text = questManager.instance.availableQuests[3].questObjective;
+        }
+        else
+        {
+            availableQuest4Title.text       = defaultQuest.questName;
+            availableQuest4Description.text = defaultQuest.questObjective;
+        }
     }
 
     public void updateActiveQuest1(string questName, int current, int target)

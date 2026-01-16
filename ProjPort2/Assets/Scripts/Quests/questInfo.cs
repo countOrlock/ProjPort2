@@ -19,4 +19,9 @@ public class questInfo : ScriptableObject
         In_Progress_Slot2, // 2
         Completed // 3
     }
+
+    public questInfo(GameObject animal = null, GameObject questAnimalSpawn = null, int reward= -1, 
+        string questName = "", string questObjective = "", int numOfAnimalsToHunt = -1)
+    {
+    }
 }

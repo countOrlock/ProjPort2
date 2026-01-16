@@ -11754,11 +11754,18 @@ MonoBehaviour:
   mediumGame2: {fileID: 2536236743819561474, guid: ebca76b9fc0a9a24e912a22fd3f8636c, type: 3}
   mediumHostileGame: {fileID: 210026739007158227, guid: 52e1195249875d24b94551e9c1162122, type: 3}
   bigGame: {fileID: 3617165509172582398, guid: 84c1e8026c4e78b4099b2ef3b0fc06d3, type: 3}
-  smallGame1SpawnLimit: 9
-  smallGame2SpawnLimit: 1
-  mediumGame1SpawnLimit: 1
-  mediumGame2SpawnLimit: 1
-  mediumHostileGameSpawnLimit: 1
+  smallGame1SpawnMinimum: 3
+  smallGame2SpawnMinimum: 1
+  mediumGame1SpawnMinimum: 1
+  mediumGame2SpawnMinimum: 1
+  mediumHostileGameSpawnMinimum: 1
+  bigGameSpawnMinimum: 1
+  smallGame1SpawnLimit: 6
+  smallGame2SpawnLimit: 2
+  mediumGame1SpawnLimit: 2
+  mediumGame2SpawnLimit: 2
+  mediumHostileGameSpawnLimit: 2
+  bigGameSpawnLimit: 1
 --- !u!1 &4722197264221851325
 GameObject:
   m_ObjectHideFlags: 0

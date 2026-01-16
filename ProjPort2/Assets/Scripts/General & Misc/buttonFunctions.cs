@@ -22,4 +22,28 @@ public class buttonFunctions : MonoBehaviour
         Application.Quit();
     #endif
     }
+
+    public void SelectQuest1()
+    {
+        questManager.instance.GiveNewQuest(questManager.instance.availableQuests[0]);
+        gameManager.instance.updateAvailableQuests();
+    }
+
+    public void SelectQuest2()
+    {
+        questManager.instance.GiveNewQuest(questManager.instance.availableQuests[1]);
+        gameManager.instance.updateAvailableQuests();
+    }
+
+    public void SelectQuest3()
+    {
+        questManager.instance.GiveNewQuest(questManager.instance.availableQuests[2]);
+        gameManager.instance.updateAvailableQuests();
+    }
+
+    public void SelectQuest4()
+    {
+        questManager.instance.GiveNewQuest(questManager.instance.availableQuests[3]);
+        gameManager.instance.updateAvailableQuests();
+    }
 }

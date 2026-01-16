@@ -12,8 +12,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
-    [SerializeField] GameObject menuQuestListFull;
-    [SerializeField] GameObject menuQuestTracker;
+    [SerializeField] GameObject menuQuests;
 
     [Header("===Displayed Text===")]
     [SerializeField] TMP_Text gameGoalCountText;
@@ -26,12 +25,31 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text throwableItemText;
     [SerializeField] TMP_Text itemCountText;
 
+    [Header("===Displayed Active Quest Text===")]
+    [SerializeField] TMP_Text activeQuest1Title;
+    [SerializeField] TMP_Text activeQuest2Title;
+    [SerializeField] TMP_Text activeQuest1Current;
+    [SerializeField] TMP_Text activeQuest2Current;
+    [SerializeField] TMP_Text activeQuest1Target;
+    [SerializeField] TMP_Text activeQuest2Target;
+
+    [Header("===Displayed Quest Menu Text===")]
+    [SerializeField] TMP_Text availableQuest1Title;
+    [SerializeField] TMP_Text availableQuest1Description;
+
+    [SerializeField] TMP_Text availableQuest2Title;
+    [SerializeField] TMP_Text availableQuest2Description;
+
+    [SerializeField] TMP_Text availableQuest3Title;
+    [SerializeField] TMP_Text availableQuest3Description;
+
+    [SerializeField] TMP_Text availableQuest4Title;
+    [SerializeField] TMP_Text availableQuest4Description;
+
     [Header("===Difficulty===")]
     [SerializeField] GameObject hunter;
     [Range(0, 3)][SerializeField] int hunterCount;
     [Range(0, 300)][SerializeField] int targetGold;
-    
-    [SerializeField] TMP_Text currentQuest;
     
     public GameObject player;
     public playerController playerScript;
@@ -72,13 +90,28 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (menuActive == null)
+            if (menuActive != menuPause)
             {
                 statePause();
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
             else if (menuActive == menuPause)
+            {
+                stateUnpause();
+            }
+        }
+
+        // For Quest Menu
+        if (Input.GetButtonDown("Quests"))
+        {
+            if (menuActive != menuQuests)
+            {
+                statePause();
+                menuActive = menuQuests;
+                menuActive.SetActive(true);
+            }
+            else if (menuActive == menuQuests)
             {
                 stateUnpause();
             }
@@ -116,9 +149,33 @@ public class gameManager : MonoBehaviour
         }
     }
 
-    public void updateCurrentQuest(string questName)
+    public void updateAvailableQuests()
     {
-        currentQuest.text = questName;
+        availableQuest1Title.text       = questManager.instance.availableQuests[0].questName;
+        availableQuest1Description.text = questManager.instance.availableQuests[0].questObjective;
+
+        availableQuest2Title.text       = questManager.instance.availableQuests[1].questName;
+        availableQuest2Description.text = questManager.instance.availableQuests[1].questObjective;
+
+        availableQuest3Title.text       = questManager.instance.availableQuests[2].questName;
+        availableQuest3Description.text = questManager.instance.availableQuests[2].questObjective;
+
+        availableQuest4Title.text       = questManager.instance.availableQuests[3].questName;
+        availableQuest4Description.text = questManager.instance.availableQuests[3].questObjective;
+    }
+
+    public void updateActiveQuest1(string questName, int current, int target)
+    {
+        activeQuest1Title.text   = questName;
+        activeQuest1Current.text = current.ToString();
+        activeQuest1Target.text  = target.ToString();
+    }
+
+    public void updateActiveQuest2(string questName, int current, int target)
+    {
+        activeQuest2Title.text   = questName;
+        activeQuest2Current.text = current.ToString();
+        activeQuest2Target.text  = target.ToString();
     }
 
     public void updateAmmoCount(int currentAmmo, int maxAmmo)
@@ -141,22 +198,6 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
-    }
-
-    public void questListFull()
-    {
-        statePause();
-        menuActive = menuQuestListFull;
-        menuActive.SetActive(true);
-    }
-
-    public void questTracker()
-    {
-        menuActive = menuQuestTracker;
-        menuActive.SetActive(true);
-
-        questNameText.text = playerScript.questName;
-        questObjectiveText.text = playerScript.questObjective;
     }
 
     public void checkHunters()

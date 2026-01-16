@@ -25,25 +25,33 @@ public class buttonFunctions : MonoBehaviour
 
     public void SelectQuest1()
     {
-        questManager.instance.GiveNewQuest(questManager.instance.availableQuests[0]);
-        gameManager.instance.updateAvailableQuests();
+        if (questManager.instance.availableQuests.Count > 0)
+        {
+            questManager.instance.GiveNewQuest(questManager.instance.availableQuests[0]);
+        }
     }
 
     public void SelectQuest2()
     {
-        questManager.instance.GiveNewQuest(questManager.instance.availableQuests[1]);
-        gameManager.instance.updateAvailableQuests();
+        if (questManager.instance.availableQuests.Count > 1)
+        {
+            questManager.instance.GiveNewQuest(questManager.instance.availableQuests[1]);
+        }
     }
 
     public void SelectQuest3()
     {
-        questManager.instance.GiveNewQuest(questManager.instance.availableQuests[2]);
-        gameManager.instance.updateAvailableQuests();
+        if (questManager.instance.availableQuests.Count > 2)
+        {
+            questManager.instance.GiveNewQuest(questManager.instance.availableQuests[2]);
+        }
     }
 
     public void SelectQuest4()
     {
-        questManager.instance.GiveNewQuest(questManager.instance.availableQuests[3]);
-        gameManager.instance.updateAvailableQuests();
+        if (questManager.instance.availableQuests.Count > 3)
+        {
+            questManager.instance.GiveNewQuest(questManager.instance.availableQuests[3]);
+        }
     }
 }

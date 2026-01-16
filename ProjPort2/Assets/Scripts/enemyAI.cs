@@ -45,6 +45,9 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] shootSound;
     [Range(0f, 1f)][SerializeField] float shootVol;
+    [SerializeField] AudioSource deathAud;
+    [SerializeField] AudioClip[] deathSound;
+    [Range(0f, 1f)][SerializeField] float deathVol;
 
     float distToTarget;
 
@@ -279,6 +282,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
+            deathAud.PlayOneShot(deathSound[Random.Range(0, deathSound.Length)], deathVol);
             if(dropItem != null)
             {
                 Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);

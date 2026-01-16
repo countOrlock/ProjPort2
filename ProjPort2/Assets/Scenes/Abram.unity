@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &48450800 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1205159522599928434, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
+  m_PrefabInstance: {fileID: 2033828170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &297095805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -561,6 +566,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9040643028741707549, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
+      propertyPath: deathAud
+      value: 
+      objectReference: {fileID: 48450800}
+    - target: {fileID: 9040643028741707549, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
+      propertyPath: deathVol
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040643028741707549, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
+      propertyPath: shootVol
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040643028741707549, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
+      propertyPath: deathSound.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040643028741707549, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
+      propertyPath: 'deathSound.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: aa8922ddd5efabe468c38823162d45b8, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

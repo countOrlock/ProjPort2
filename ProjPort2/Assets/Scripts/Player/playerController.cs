@@ -296,7 +296,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
         recoilSpeed += -Camera.main.transform.forward * gunList[gunListPos].recoil;
 
-        if (gunList[gunListPos].Bullet == null)
+        if (gunList[gunListPos].Bullet == null || gunList[gunListPos].shootLaser == true)
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunList[gunListPos].shootDist, ~ignoreLayer))
@@ -315,6 +315,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                     Laser.SetPosition(0, gunModel.transform.position);
                     Laser.SetPosition(1, hit.point);
 
+                    if(gunList[gunListPos].Bullet != null)
+                    {
+                        Instantiate(gunList[gunListPos].Bullet, hit.point, Quaternion.identity);
+                    }
                 }
 
                 Debug.Log(hit.collider.name);

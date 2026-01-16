@@ -46,8 +46,6 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] AudioClip shootSound;
     [Range(0f, 1f)][SerializeField] float shootVol;
     [SerializeField] float pitchVar = 0.05f;
-    [SerializeField] AudioClip[] deathSound;
-    [Range(0f, 1f)][SerializeField] float deathVol;
 
     float distToTarget;
 
@@ -285,7 +283,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            if(dropItem != null)
+            if (dropItem != null)
             {
                 Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             }

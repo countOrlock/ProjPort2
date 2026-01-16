@@ -118,12 +118,12 @@ public class NPCManager : MonoBehaviour
             npcModelName = NPC.GetComponent<enemyAI>().model.ToString();
         }
 
-        // Sorting all the buckets based on the model name
+        // Sorting/adjusting the buckets based on the NPC model name
+        // For a positive adjustment: (an NPC was spawned)
         if (amount > 0)
         {
             for (int i = 0; i < amount; i++)
             {
-                questManager.instance.UpdateQuest(NPC, 1);
                 if (livingNPCBuckets.Count == 0)
                 {
                     livingNPCBuckets.Add(new List<string> { npcModelName });
@@ -145,6 +145,7 @@ public class NPCManager : MonoBehaviour
                 }
             }
         }
+        // For a negative adjustment: (an NPC died)
         else
         {
             for (int i = 0; i > amount; i--)
@@ -164,7 +165,7 @@ public class NPCManager : MonoBehaviour
                             {
                                 livingNPCBuckets.RemoveAt(j);
                             }
-                            questManager.instance.UpdateQuest(NPC, -1);
+                            questManager.instance.UpdateQuest(NPC, 1);
                             break;
                         }
                     }

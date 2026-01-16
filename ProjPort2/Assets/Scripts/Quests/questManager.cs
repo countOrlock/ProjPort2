@@ -58,11 +58,11 @@ public class questManager : MonoBehaviour
     {
         if (activeQuest1 != null || activeQuest2 != null)
         {
-            if (activeQuest1.animal.name == animal.name)
+            if (activeQuest1.animal.GetComponent<animalAI>().model.ToString() == animal.GetComponent<animalAI>().model.ToString())
             {
                 quest1Current += amount;
             }
-            else if (activeQuest2.animal.name == animal.name)
+            else if (activeQuest2.animal.GetComponent<animalAI>().model.ToString() == animal.GetComponent<animalAI>().model.ToString())
             {
                 quest2Current += amount;
             }

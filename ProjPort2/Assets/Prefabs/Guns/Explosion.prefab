@@ -48,12 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b16befbbc4fe0d4e87a2dd39ff27dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::damage
-  type: 0
+  type: 5
   rb: {fileID: 5692436798161558266}
+  createdObject: {fileID: 0}
   damageAmount: 10
   damageRate: 1
   speed: 0
-  destroyTime: 2
+  destroyTime: 0.5
 --- !u!33 &5650712153571964933
 MeshFilter:
   m_ObjectHideFlags: 0

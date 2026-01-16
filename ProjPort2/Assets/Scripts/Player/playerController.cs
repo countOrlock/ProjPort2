@@ -72,7 +72,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
 
     [Header("----- Quest Fields -----")]
-    [Range(0, 100)][SerializeField] int Gold;
+    [Range(0, 1000)][SerializeField] public int Gold;
     [SerializeField] List<questInfo> questList = new List<questInfo>();
     [SerializeField] List<GameObject> questItemList = new List<GameObject>();
     public string questName;
@@ -296,11 +296,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
         recoilSpeed += -Camera.main.transform.forward * gunList[gunListPos].recoil;
 
-        if (gunList[gunListPos].Bullet == null)
+        if (gunList[gunListPos].Bullet == null || gunList[gunListPos].shootLaser == true)
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunList[gunListPos].shootDist, ~ignoreLayer))
             {
+                if (gunList[gunListPos].shootEffect != null)
+                {
+                    Instantiate(gunList[gunListPos].shootEffect, gunModel.transform.position, playerCam.transform.rotation);
+                }
+
 
                 if (gunList[gunListPos].hitEffect != null)
                 {
@@ -315,6 +320,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                     Laser.SetPosition(0, gunModel.transform.position);
                     Laser.SetPosition(1, hit.point);
 
+                    if(gunList[gunListPos].Bullet != null)
+                    {
+                        Instantiate(gunList[gunListPos].Bullet, hit.point, Quaternion.identity);
+                    }
                 }
 
                 Debug.Log(hit.collider.name);
@@ -366,7 +375,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     void changeGun()
     {
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterials = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterials;
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
         gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
     }

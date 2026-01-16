@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class animalAI : MonoBehaviour, IDamage, IStatEff
 {
     [SerializeField] Animator anim;
-    [SerializeField] Renderer model;
+    [SerializeField] public Renderer model;
     [SerializeField] NavMeshAgent agent;
 
     [SerializeField] int HP;
@@ -274,6 +274,8 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
             {
                 Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             }
+
+            NPCManager.instance.UpdateNPCCount(gameObject, -1);
 
             Destroy(gameObject);
         }

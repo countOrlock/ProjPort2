@@ -176,7 +176,7 @@ public class NPCManager : MonoBehaviour
                             }
 
                             // Updating any quests using this NPC
-                            questManager.instance.UpdateQuest(NPC, 1);
+                            questManager.instance.UpdateCurrentQuest(NPC, 1);
                             break;
                         }
                     }

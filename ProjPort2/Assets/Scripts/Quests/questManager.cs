@@ -8,7 +8,7 @@ public class questManager : MonoBehaviour
     public static questManager instance;
 
     [SerializeField] List<questInfo> unavailableQuests;
-    [SerializeField] List<questInfo> availableQuests;
+    [SerializeField] public List<questInfo> availableQuests;
     public questInfo activeQuest1;
     public questInfo activeQuest2;
     public List<questInfo> completeQuests = new List<questInfo>();
@@ -48,6 +48,8 @@ public class questManager : MonoBehaviour
         {
             quest2Target = -1;
         }
+
+        gameManager.instance.updateAvailableQuests();
     }
 
     // Update is called once per frame
@@ -56,7 +58,7 @@ public class questManager : MonoBehaviour
 
     }
 
-    public void UpdateQuest(GameObject animal, int amount)
+    public void UpdateCurrentQuest(GameObject animal, int amount)
     {
         if (activeQuest1 != null || activeQuest2 != null)
         {
@@ -144,7 +146,7 @@ public class questManager : MonoBehaviour
         return null;
     }
 
-    void GiveNewQuest(questInfo newQuest)
+    public void GiveNewQuest(questInfo newQuest)
     {
         if (!activeQuest1)
         {

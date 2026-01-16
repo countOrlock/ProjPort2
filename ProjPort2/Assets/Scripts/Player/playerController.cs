@@ -72,7 +72,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
 
     [Header("----- Quest Fields -----")]
-    [Range(0, 100)][SerializeField] int Gold;
+    [Range(0, 1000)][SerializeField] public int Gold;
     [SerializeField] List<questInfo> questList = new List<questInfo>();
     [SerializeField] List<GameObject> questItemList = new List<GameObject>();
     public string questName;

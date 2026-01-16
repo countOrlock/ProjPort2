@@ -43,9 +43,9 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
-    [SerializeField] AudioClip[] shootSound;
+    [SerializeField] AudioClip shootSound;
     [Range(0f, 1f)][SerializeField] float shootVol;
-    [SerializeField] AudioSource deathAud;
+    [SerializeField] float pitchVar = 0.05f;
     [SerializeField] AudioClip[] deathSound;
     [Range(0f, 1f)][SerializeField] float deathVol;
 
@@ -203,7 +203,10 @@ public class enemyAI : MonoBehaviour, IDamage
     public void createBullet()
     {
         Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
-        aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootVol);
+        //aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootVol);
+        float randomPitch = Random.Range(1f - pitchVar, 1f + pitchVar);
+        aud.pitch = randomPitch;
+        aud.PlayOneShot(shootSound);
     }
 
     void meleeAttack()
@@ -282,7 +285,6 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            deathAud.PlayOneShot(deathSound[Random.Range(0, deathSound.Length)], deathVol);
             if(dropItem != null)
             {
                 Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);

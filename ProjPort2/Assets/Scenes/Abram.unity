@@ -572,12 +572,20 @@ PrefabInstance:
       objectReference: {fileID: 48450800}
     - target: {fileID: 9040643028741707549, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
       propertyPath: deathVol
-      value: 1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040643028741707549, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
+      propertyPath: pitchVar
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9040643028741707549, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
       propertyPath: shootVol
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9040643028741707549, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cd7af96da98e2b046820f5803240dbae, type: 3}
     - target: {fileID: 9040643028741707549, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
       propertyPath: deathSound.Array.size
       value: 1

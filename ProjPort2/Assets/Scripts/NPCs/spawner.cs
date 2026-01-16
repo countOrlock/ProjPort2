@@ -16,12 +16,17 @@ public class spawner : MonoBehaviour
     bool startSpawning;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Awake()
     {
         foreach (Transform child in gameObject.transform)
         {
             points.Add(child);
         }
+    }
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
@@ -42,6 +47,7 @@ public class spawner : MonoBehaviour
     {
         //spawnTimer = 0;
         //spawnCount++;
+        
         for (int i = 0; i < spawnAmount; i++)
         {
             Instantiate(objectToSpawn, points[Random.Range(0, points.Count - 1)].transform.position, Quaternion.identity);
@@ -57,7 +63,7 @@ public class spawner : MonoBehaviour
         }
     }
 
-    public void spawnAssign(GameObject animal, int amount = 1)
+    public void spawnAssign(GameObject animal, int amount)
     {
         if (objectToSpawn != animal)
         {

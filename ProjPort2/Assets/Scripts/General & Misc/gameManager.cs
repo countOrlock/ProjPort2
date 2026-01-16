@@ -26,6 +26,15 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text throwableItemText;
     [SerializeField] TMP_Text itemCountText;
 
+    [SerializeField] TMP_Text activeQuest1Title;
+    [SerializeField] TMP_Text activeQuest2Title;
+    [SerializeField] TMP_Text activeQuest1Current;
+    [SerializeField] TMP_Text activeQuest2Current;
+    [SerializeField] TMP_Text activeQuest1Target;
+    [SerializeField] TMP_Text activeQuest2Target;
+
+
+
     [Header("===Difficulty===")]
     [SerializeField] GameObject hunter;
     [Range(0, 3)][SerializeField] int hunterCount;
@@ -116,9 +125,24 @@ public class gameManager : MonoBehaviour
         }
     }
 
+    // Think this isn't needed - Dante
     public void updateCurrentQuest(string questName)
     {
         currentQuest.text = questName;
+    }
+
+    public void updateActiveQuest1(string questName, int current, int target)
+    {
+        activeQuest1Title.text   = questName;
+        activeQuest1Current.text = current.ToString();
+        activeQuest1Target.text  = target.ToString();
+    }
+
+    public void updateActiveQuest2(string questName, int current, int target)
+    {
+        activeQuest2Title.text   = questName;
+        activeQuest2Current.text = current.ToString();
+        activeQuest2Target.text  = target.ToString();
     }
 
     public void updateAmmoCount(int currentAmmo, int maxAmmo)

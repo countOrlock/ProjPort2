@@ -32,6 +32,7 @@ public class questManager : MonoBehaviour
         if (activeQuest1)
         {
             quest1Target = activeQuest1.numOfAnimalsToHunt;
+            gameManager.instance.updateActiveQuest1(activeQuest1.questName, quest1Current, quest1Target);
         }
         else
         {
@@ -41,6 +42,7 @@ public class questManager : MonoBehaviour
         if (activeQuest2)
         {
             quest2Target = activeQuest2.numOfAnimalsToHunt;
+            gameManager.instance.updateActiveQuest2(activeQuest2.questName, quest2Current, quest2Target);
         }
         else
         {
@@ -61,10 +63,12 @@ public class questManager : MonoBehaviour
             if (activeQuest1.animal.GetComponent<animalAI>().model.ToString() == animal.GetComponent<animalAI>().model.ToString())
             {
                 quest1Current += amount;
+                gameManager.instance.updateActiveQuest1(activeQuest1.questName, quest1Current, quest1Target);
             }
             else if (activeQuest2.animal.GetComponent<animalAI>().model.ToString() == animal.GetComponent<animalAI>().model.ToString())
             {
                 quest2Current += amount;
+                gameManager.instance.updateActiveQuest2(activeQuest2.questName, quest2Current, quest2Target);
             }
             else
             {
@@ -86,7 +90,7 @@ public class questManager : MonoBehaviour
         {
             CompleteQuest(2);
         }
-    }
+        }
 
     void CompleteQuest(int activeQuest)
     {
@@ -100,12 +104,16 @@ public class questManager : MonoBehaviour
         {
             currentQuestAnimal = activeQuest1.animal;
             completeQuests.Add(activeQuest1);
+            gameManager.instance.player.GetComponent<playerController>().Gold += activeQuest1.reward;
+            gameManager.instance.updateGameGoal(activeQuest1.reward);
             activeQuest1 = null;
         }
         else
         {
             currentQuestAnimal = activeQuest2.animal;
             completeQuests.Add(activeQuest2);
+            gameManager.instance.player.GetComponent<playerController>().Gold += activeQuest2.reward;
+            gameManager.instance.updateGameGoal(activeQuest2.reward);
             activeQuest2 = null;
         }
 
@@ -143,12 +151,14 @@ public class questManager : MonoBehaviour
             activeQuest1  = newQuest;
             quest1Target  = activeQuest1.numOfAnimalsToHunt;
             quest1Current = 0;
+            gameManager.instance.updateActiveQuest1(newQuest.questName, 0, newQuest.numOfAnimalsToHunt);
         }
         else if (!activeQuest2)
         {
             activeQuest2  = newQuest;
             quest2Target  = activeQuest2.numOfAnimalsToHunt;
             quest2Current = 0;
+            gameManager.instance.updateActiveQuest2(newQuest.questName, 0, newQuest.numOfAnimalsToHunt);
         }
     }
 }

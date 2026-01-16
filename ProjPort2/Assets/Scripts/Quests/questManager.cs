@@ -54,17 +54,17 @@ public class questManager : MonoBehaviour
 
     }
 
-    public void UpdateQuest(GameObject killedAnimal)
+    public void UpdateQuest(GameObject animal, int amount)
     {
         if (activeQuest1 != null || activeQuest2 != null)
         {
-            if (activeQuest1.animal.name == killedAnimal.name)
+            if (activeQuest1.animal.GetComponent<animalAI>().model.ToString() == animal.GetComponent<animalAI>().model.ToString())
             {
-                quest1Current++;
+                quest1Current += amount;
             }
-            else if (activeQuest2.animal.name == killedAnimal.name)
+            else if (activeQuest2.animal.GetComponent<animalAI>().model.ToString() == animal.GetComponent<animalAI>().model.ToString())
             {
-                quest2Current++;
+                quest2Current += amount;
             }
             else
             {

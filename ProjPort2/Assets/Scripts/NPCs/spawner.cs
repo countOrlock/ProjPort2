@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class spawner : MonoBehaviour
 {
-    [SerializeField] GameObject objectToSpawn;
+    [SerializeField] public GameObject objectToSpawn;
     [SerializeField] int spawnAmount;
     [SerializeField] float spawnRate;
 
@@ -31,7 +31,7 @@ public class spawner : MonoBehaviour
         }
     }
 
-    void spawn()
+    public void spawn()
     {
         spawnTimer = 0;
         spawnCount++;

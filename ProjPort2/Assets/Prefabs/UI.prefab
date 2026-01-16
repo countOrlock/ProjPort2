@@ -11009,6 +11009,61 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &4699091291764387504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9001726661816967877}
+  - component: {fileID: 6860638825665318161}
+  m_Layer: 0
+  m_Name: NPCManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9001726661816967877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4699091291764387504}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1676057543590099949}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6860638825665318161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4699091291764387504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7aa7725eb9bc34c8e76eb21a6c7bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCManager
+  smallGame1: {fileID: 3285567043007469565, guid: 5bd17f7165a7cf74a95ca20c19ed55a5, type: 3}
+  smallGame2: {fileID: 5693768469468200881, guid: b3d348117dd1fc1488a62c9079cef40a, type: 3}
+  mediumGame1: {fileID: 5648286772186859958, guid: ca2478e90e85b1943b5feadc32a292c1, type: 3}
+  mediumGame2: {fileID: 2536236743819561474, guid: ebca76b9fc0a9a24e912a22fd3f8636c, type: 3}
+  mediumHostileGame: {fileID: 210026739007158227, guid: 52e1195249875d24b94551e9c1162122, type: 3}
+  bigGame: {fileID: 3617165509172582398, guid: 84c1e8026c4e78b4099b2ef3b0fc06d3, type: 3}
+  smallGame1SpawnLimit: 9
+  smallGame2SpawnLimit: 1
+  mediumGame1SpawnLimit: 1
+  mediumGame2SpawnLimit: 1
+  mediumHostileGameSpawnLimit: 1
 --- !u!1 &4722197264221851325
 GameObject:
   m_ObjectHideFlags: 0
@@ -11798,6 +11853,7 @@ RectTransform:
   m_Children:
   - {fileID: 2073479164823782859}
   - {fileID: 488029172137920631}
+  - {fileID: 9001726661816967877}
   - {fileID: 8239631830425276074}
   - {fileID: 8985226784337932939}
   - {fileID: 9141434122553869593}
@@ -17992,14 +18048,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::questManager
   unavailableQuests:
-  - {fileID: 11400000, guid: e4b767b678abac842856289f148be957, type: 2}
-  - {fileID: 11400000, guid: 4fd7fb87b5847a24fa653789cd683b2a, type: 2}
   - {fileID: 11400000, guid: 224d2280812c62846a32e349ebad919a, type: 2}
+  - {fileID: 11400000, guid: a8eecbafa646ef14ab27861ce6675e00, type: 2}
+  - {fileID: 11400000, guid: 813ab640808c3cc4aa26170f03b33267, type: 2}
+  - {fileID: 11400000, guid: b6939dc738f94c94ea18fc3edd1858d4, type: 2}
   availableQuests:
-  - {fileID: 11400000, guid: 98bba4f51b5a1ed43b44c01ecf3cbf08, type: 2}
-  - {fileID: 11400000, guid: e4b767b678abac842856289f148be957, type: 2}
-  - {fileID: 11400000, guid: 4fd7fb87b5847a24fa653789cd683b2a, type: 2}
-  activeQuest1: {fileID: 11400000, guid: b6939dc738f94c94ea18fc3edd1858d4, type: 2}
+  - {fileID: 11400000, guid: b6939dc738f94c94ea18fc3edd1858d4, type: 2}
+  - {fileID: 11400000, guid: 813ab640808c3cc4aa26170f03b33267, type: 2}
+  activeQuest1: {fileID: 11400000, guid: a8eecbafa646ef14ab27861ce6675e00, type: 2}
   activeQuest2: {fileID: 11400000, guid: 224d2280812c62846a32e349ebad919a, type: 2}
   completeQuests: []
 --- !u!1 &7608468650908134611

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5450548908757211001}
   - component: {fileID: 7551601179735031458}
   m_Layer: 0
-  m_Name: Chicken Spawner
+  m_Name: Bear Spawner
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eab3c55f6e0c9241b9b89f98f579173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::spawner
-  objectToSpawn: {fileID: 5018127689058175712, guid: e971a018f0b1ef94cbe25e8d1ac75b31, type: 3}
-  spawnAmount: 1
+  objectToSpawn: {fileID: 3617165509172582398, guid: 84c1e8026c4e78b4099b2ef3b0fc06d3, type: 3}
+  spawnAmount: 0
   spawnRate: 1
 --- !u!33 &5450548908757211001
 MeshFilter:

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03f483dae09952141a730b88d3f83a1a, type: 3}
-  m_Name: Deer Quest
+  m_Name: Hyena Quest
   m_EditorClassIdentifier: Assembly-CSharp::questInfo
-  animal: {fileID: 3199249875144518678, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
+  animal: {fileID: 5648286772186859958, guid: ca2478e90e85b1943b5feadc32a292c1, type: 3}
   questAnimalSpawn: {fileID: 0}
   reward: 5
-  questName: Deer Quest
-  questObjective: Hunt the Deer!
+  questName: Hyena Quest
+  questObjective: Hunt the Hyena!
   numOfAnimalsToHunt: 1
-  questStatus: 1
+  questStatus: 0

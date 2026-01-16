@@ -4,7 +4,7 @@ using System.Collections;
 public class enemyAI : MonoBehaviour, IDamage, IStatEff
 {
     [SerializeField] Animator anim;
-    [SerializeField] Renderer model;
+    [SerializeField] public Renderer model;
     [SerializeField] NavMeshAgent agent;
 
     [SerializeField] int HP;
@@ -283,6 +283,8 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
             if (shootsProjectile)
                 gameManager.instance.hunterAmountCurr--;
+
+            NPCManager.instance.UpdateNPCCount(gameObject, -1);
 
             Destroy(gameObject);
         }

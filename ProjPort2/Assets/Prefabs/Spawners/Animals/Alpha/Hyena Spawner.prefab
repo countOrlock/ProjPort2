@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1894276844761100676
+--- !u!1 &4363384229333835489
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4888679097918175265}
-  - component: {fileID: 2936666586157486526}
-  - component: {fileID: 8136783539896917128}
-  - component: {fileID: 8987048747393591280}
+  - component: {fileID: 7571308234853242181}
+  - component: {fileID: 5612601226753991519}
+  - component: {fileID: 5691435900512579243}
+  - component: {fileID: 6195864668880027373}
   m_Layer: 0
-  m_Name: Deer Spawner
+  m_Name: Hyena Spawner
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4888679097918175265
+--- !u!4 &7571308234853242181
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894276844761100676}
+  m_GameObject: {fileID: 4363384229333835489}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15, y: 0, z: 0}
@@ -34,36 +34,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2936666586157486526
+--- !u!114 &5612601226753991519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894276844761100676}
+  m_GameObject: {fileID: 4363384229333835489}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eab3c55f6e0c9241b9b89f98f579173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::spawner
-  objectToSpawn: {fileID: 3199249875144518678, guid: 9373b637fabc8854e8ea8dc7680fe9cb, type: 3}
-  spawnAmount: 1
+  objectToSpawn: {fileID: 5648286772186859958, guid: ca2478e90e85b1943b5feadc32a292c1, type: 3}
+  spawnAmount: 0
   spawnRate: 1
---- !u!33 &8136783539896917128
+--- !u!33 &5691435900512579243
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894276844761100676}
+  m_GameObject: {fileID: 4363384229333835489}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!135 &8987048747393591280
+--- !u!135 &6195864668880027373
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894276844761100676}
+  m_GameObject: {fileID: 4363384229333835489}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

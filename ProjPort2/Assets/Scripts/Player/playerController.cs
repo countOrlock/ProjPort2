@@ -301,6 +301,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunList[gunListPos].shootDist, ~ignoreLayer))
             {
+                if (gunList[gunListPos].shootEffect != null)
+                {
+                    Instantiate(gunList[gunListPos].shootEffect, gunModel.transform.position, playerCam.transform.rotation);
+                }
+
 
                 if (gunList[gunListPos].hitEffect != null)
                 {
@@ -370,7 +375,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     void changeGun()
     {
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterials = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterials;
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
         gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
     }

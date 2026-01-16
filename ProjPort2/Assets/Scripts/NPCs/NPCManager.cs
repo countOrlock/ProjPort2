@@ -46,7 +46,8 @@ public class NPCManager : MonoBehaviour
         for (int i = 0; i < spawners.Length; i++)
         {
             spawner spawnerObject = spawners[i].GetComponent<spawner>();
-            
+            string npcModelName = GetModelName(spawnerObject.objectToSpawn);
+
             if (spawnerBuckets.Count == 0)
             {
                 spawnerBuckets.Add(new List<spawner> { spawnerObject });
@@ -55,11 +56,11 @@ public class NPCManager : MonoBehaviour
             {
                 for (int j = 0; j < spawnerBuckets.Count; j++)
                 {
-                    if (spawnerBuckets[j][0].objectToSpawn == spawnerObject.objectToSpawn)
+                    if (GetModelName(spawnerBuckets[j][0].objectToSpawn) == GetModelName(spawnerObject.objectToSpawn))
                     {
                         spawnerBuckets[j].Add(spawnerObject);
                     }
-                    else
+                    else if (j == spawnerBuckets.Count - 1)
                     {
                         spawnerBuckets.Add(new List<spawner> { spawnerObject });
                         break;
@@ -76,7 +77,7 @@ public class NPCManager : MonoBehaviour
         Spawn(smallGame1,        smallGame1SpawnLimit);
         Spawn(smallGame2,        smallGame2SpawnLimit);
         Spawn(mediumGame1,       mediumGame1SpawnLimit);
-        Spawn(mediumGame2,       mediumGame2SpawnLimit);
+        Spawn(mediumGame2,       mediumGame2SpawnLimit); 
         Spawn(mediumHostileGame, mediumHostileGameSpawnLimit);
         Spawn(bigGame,           bigGameSpawnLimit);
     }

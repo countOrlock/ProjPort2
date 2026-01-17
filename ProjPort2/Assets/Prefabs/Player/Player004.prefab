@@ -421,6 +421,7 @@ GameObject:
   - component: {fileID: 7174832327420152129}
   - component: {fileID: 8946319230293315414}
   - component: {fileID: 6419759126234275546}
+  - component: {fileID: 1128826592024148964}
   m_Layer: 3
   m_Name: Player004
   m_TagString: Player
@@ -472,6 +473,7 @@ MonoBehaviour:
   jumpCount: 2
   stanceChangeSpeed: 3
   gunModel: {fileID: 6504785613829033627}
+  gunCam: {fileID: 6171382480255209084}
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -508,12 +510,23 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9fa2fcf0f63360a45a55d6a297b70964, type: 3}
   - {fileID: 8300000, guid: 1ef927a663352154d84076611642b5e2, type: 3}
   hurtVol: 0.5
+  deathSound:
+  - {fileID: 8300000, guid: d401285aa88926646b4637f6af655554, type: 3}
+  - {fileID: 8300000, guid: 40ec711f1b2f9944797bf150e0dfd6f3, type: 3}
+  - {fileID: 8300000, guid: e05ac4099e3d2ce4cb87ffbe88974242, type: 3}
+  - {fileID: 8300000, guid: d3e6b37b3176e224693f34ca5092ca15, type: 3}
+  - {fileID: 8300000, guid: 47144973a7c54684086ebf236ea54ebf, type: 3}
+  - {fileID: 8300000, guid: bca3631ed4ce24140b11324aeb744907, type: 3}
+  - {fileID: 8300000, guid: c97142657e32c984a87d03314cdbd86a, type: 3}
+  - {fileID: 8300000, guid: 45a03b1a8bc947e4f84ea1a14ee6aa86, type: 3}
+  deathVol: 0.5
   Gold: 0
   questList: []
   questItemList: []
   questName: 
   questObjective: 
   isBurning: 0
+  anim: {fileID: 1128826592024148964}
 --- !u!143 &7174832327420152129
 CharacterController:
   m_ObjectHideFlags: 0
@@ -746,6 +759,28 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!95 &1128826592024148964
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726352775847767780}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 34ce71fcee36c974f9afba45b6c13819, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &6883987750232050453
 PrefabInstance:
   m_ObjectHideFlags: 0

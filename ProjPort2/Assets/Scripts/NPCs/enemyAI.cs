@@ -53,9 +53,11 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     float fireTimer;
 
     public bool isBurning;
+    public bool isSlow;
 
 
     Color colorOrig;
+    float speedOrig;
 
     [Header("----- AI Logic / Behavior Variables -----")]
     [SerializeField] Waypoint startingWaypoint;
@@ -90,6 +92,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         mode = npcMode.Roam;
         targetPos = startingWaypoint.transform.position;
         currentWaypoint = startingWaypoint;
+        speedOrig = agent.speed;
     }
 
     // Update is called once per frame
@@ -377,5 +380,20 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             yield return new WaitForSeconds(0.5f);
         }
         isBurning = false;
+    }
+
+    public void slow(float time, float slowAmount)
+    {
+        if (!isSlow)
+            StartCoroutine(slowed(time, slowAmount));
+    }
+
+    IEnumerator slowed(float time, float slowAmount)
+    {
+        isSlow = true;
+        agent.speed = slowAmount * speedOrig;
+        yield return new WaitForSeconds(time);
+        agent.speed = speedOrig;
+        isSlow = false;
     }
 }

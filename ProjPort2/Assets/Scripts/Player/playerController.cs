@@ -7,7 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 
 public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 {
-    public enum stanceType { sprinting, standing, crouching, prone};
+    public enum stanceType { sprinting, standing, crouching, prone, dead};
     public stanceType stance;
     [SerializeField] CharacterController controller;
     [SerializeField] GameObject playerCam;
@@ -39,6 +39,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     [Header("----- Gun Fields -----")]
     [SerializeField] GameObject gunModel;
+    [SerializeField] GameObject gunCam;
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] LineRenderer Laser;
     float shootTimer;
@@ -67,6 +68,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     [Range(0, 1f)][SerializeField] float jumpVol; 
     [SerializeField] AudioClip[] hurtSound;
     [Range(0, 1f)][SerializeField] float hurtVol;
+    [SerializeField] AudioClip[] deathSound;
+    [Range(0, 1f)][SerializeField] float deathVol;
 
     bool isPlayingStep;
 
@@ -82,6 +85,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     float fireTimer;
 
     public bool isBurning;
+    public bool isSlow;
+    public float slowMod;
+
+    [Header("----- Animation -----")]
+    [SerializeField] Animator anim;
+
 
     public enum questID
     {
@@ -103,19 +112,27 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         controllerHeightOrig = controller.center.y;
         targetHeight = heightOrig;
         stance = stanceType.standing;
+        slowMod = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        shootTimer += Time.deltaTime;
-        throwTimer += Time.deltaTime;
-        fireTimer += Time.deltaTime;
+        switch (stance)
+        {
+            case stanceType.dead:
+                break;
+            default:
+                shootTimer += Time.deltaTime;
+                throwTimer += Time.deltaTime;
+                fireTimer += Time.deltaTime;
 
-        movement();
+                movement();
 
-        if (gunList.Any())
-            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * gunList[gunListPos].shootDist, Color.white);
+                if (gunList.Any())
+                    Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * gunList[gunListPos].shootDist, Color.white);
+                break;
+        }
     }
 
     void movement()
@@ -166,7 +183,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         if (walkDir.magnitude > 0.3f && !isPlayingStep && controller.isGrounded)
             StartCoroutine(playStep());
 
-        moveDir = walkDir.x * transform.right * speedMod + walkDir.y * transform.forward * speedMod + jumpMod * transform.up;
+        moveDir = walkDir.x * transform.right * speedMod * slowMod + walkDir.y * transform.forward * speedMod * slowMod + jumpMod * transform.up;
         controller.Move(moveDir * Time.deltaTime);
 
         if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate && reloading == false && !gameManager.instance.isPaused)
@@ -234,18 +251,21 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     void sprint()
     {
-        if (Input.GetButton("Sprint"))
+        if (!isSlow)
         {
-            stance = stanceType.sprinting;
-            setStance();
+            if (Input.GetButton("Sprint"))
+            {
+                stance = stanceType.sprinting;
+                setStance();
+            }
+            else if (Input.GetButtonUp("Sprint"))
+            {
+                stance = stanceType.standing;
+                setStance();
+            }
         }
-        else if (Input.GetButtonUp("Sprint"))
-        {
+        else
             stance = stanceType.standing;
-            setStance();
-        }
-
-        
     }
 
     IEnumerator playStep()
@@ -271,7 +291,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             jumpCount = maxJump;
         }
 
-        if (Input.GetButtonDown("Jump") && jumpCount > 0)
+        if (Input.GetButtonDown("Jump") && jumpCount > 0 && !isSlow)
         {
             if (stance == stanceType.crouching || stance == stanceType.prone)
             {
@@ -343,7 +363,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         {
             Instantiate(gunList[gunListPos].Bullet, playerCam.transform.position, playerCam.transform.rotation);
         }
-
     }
 
     void shoot2()
@@ -458,15 +477,31 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     public void takeDamage(int amount)
     {
-        HP -= amount;
-        updatePlayerUI();
-        StartCoroutine(flashRed());
-        aud.PlayOneShot(hurtSound[Random.Range(0, hurtSound.Length)], hurtVol);
-
-        if (HP <= 0)
+        if (stance != stanceType.dead)
         {
-            gameManager.instance.youLose();
+            HP -= amount;
+            updatePlayerUI();
+            StartCoroutine(flashRed());
+            aud.PlayOneShot(hurtSound[Random.Range(0, hurtSound.Length)], hurtVol);
+
+            if (HP <= 0)
+            {
+                die();
+            }
         }
+    }
+
+    public void die()
+    {
+        aud.PlayOneShot(deathSound[Random.Range(0, deathSound.Length)], deathVol);
+        stance = stanceType.dead;
+        gunCam.SetActive(false);
+        anim.SetTrigger("Dead");
+    }
+
+    public void lose()
+    {
+        gameManager.instance.youLose();
     }
 
     public void updatePlayerUI()
@@ -575,11 +610,26 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     IEnumerator burning (float time, int hpRate)
     {
         isBurning = true;
-        while (fireTimer < time)
+        while (fireTimer < time && stance != stanceType.dead)
         {
             takeDamage(hpRate);
             yield return new WaitForSeconds(0.5f);
         }
         isBurning = false;
+    }
+
+    public void slow(float time, float slowAmount)
+    {
+        if (!isSlow)
+            StartCoroutine(slowed(time, slowAmount));
+    }
+
+    IEnumerator slowed (float time, float slowAmount)
+    {
+        isSlow = true;
+        slowMod = slowAmount;
+        yield return new WaitForSeconds(time);
+        slowMod = 1;
+        isSlow = false;
     }
 }

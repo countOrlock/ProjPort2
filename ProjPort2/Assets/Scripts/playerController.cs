@@ -78,6 +78,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     const string gun_Index_Key = "Player_GunIndex";
     const string ammo_Key = "Player_Ammo";
     const string mags_Key = "Player_Mags";
+    const string questList_Key = "Player_Quests";
+    const string questItemList_Key = "Player_QuestItems";
 
     public enum questID
     {

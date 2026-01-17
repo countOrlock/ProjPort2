@@ -378,4 +378,9 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         }
         isBurning = false;
     }
+
+    public void slow(float time, float slowAmount)
+    {
+        
+    }
 }

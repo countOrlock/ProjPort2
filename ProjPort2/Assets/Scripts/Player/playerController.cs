@@ -85,6 +85,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     float fireTimer;
 
     public bool isBurning;
+    public bool isSlow;
+    public float slowMod;
 
     [Header("----- Animation -----")]
     [SerializeField] Animator anim;
@@ -110,6 +112,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         controllerHeightOrig = controller.center.y;
         targetHeight = heightOrig;
         stance = stanceType.standing;
+        slowMod = 1f;
     }
 
     // Update is called once per frame
@@ -180,12 +183,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         if (walkDir.magnitude > 0.3f && !isPlayingStep && controller.isGrounded)
             StartCoroutine(playStep());
 
-        moveDir = walkDir.x * transform.right * speedMod + walkDir.y * transform.forward * speedMod + jumpMod * transform.up;
+        moveDir = walkDir.x * transform.right * speedMod * slowMod + walkDir.y * transform.forward * speedMod * slowMod + jumpMod * transform.up;
         controller.Move(moveDir * Time.deltaTime);
 
         if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate && reloading == false && !gameManager.instance.isPaused)
         {
-            
             shoot();
         }
         else
@@ -245,18 +247,21 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     void sprint()
     {
-        if (Input.GetButton("Sprint"))
+        if (!isSlow)
         {
-            stance = stanceType.sprinting;
-            setStance();
+            if (Input.GetButton("Sprint"))
+            {
+                stance = stanceType.sprinting;
+                setStance();
+            }
+            else if (Input.GetButtonUp("Sprint"))
+            {
+                stance = stanceType.standing;
+                setStance();
+            }
         }
-        else if (Input.GetButtonUp("Sprint"))
-        {
+        else
             stance = stanceType.standing;
-            setStance();
-        }
-
-        
     }
 
     IEnumerator playStep()
@@ -282,7 +287,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             jumpCount = maxJump;
         }
 
-        if (Input.GetButtonDown("Jump") && jumpCount > 0)
+        if (Input.GetButtonDown("Jump") && jumpCount > 0 && !isSlow)
         {
             if (stance == stanceType.crouching || stance == stanceType.prone)
             {
@@ -354,7 +359,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         {
             Instantiate(gunList[gunListPos].Bullet, playerCam.transform.position, playerCam.transform.rotation);
         }
-
     }
 
     public void getQuestItem(GameObject quest)
@@ -549,5 +553,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             yield return new WaitForSeconds(0.5f);
         }
         isBurning = false;
+    }
+
+    public void slow(float time, float slowAmount)
+    {
+        if (!isSlow)
+            StartCoroutine(slowed(time, slowAmount));
+    }
+
+    IEnumerator slowed (float time, float slowAmount)
+    {
+        isSlow = true;
+        slowMod = slowAmount;
+        yield return new WaitForSeconds(time);
+        slowMod = 1;
+        isSlow = false;
     }
 }

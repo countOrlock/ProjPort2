@@ -310,4 +310,9 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         }
         isBurning = false;
     }
+
+    public void slow(float time, float slowAmount)
+    {
+        
+    }
 }

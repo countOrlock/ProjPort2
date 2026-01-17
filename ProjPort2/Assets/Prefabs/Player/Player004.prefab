@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3170896652843727807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2609719929229774631}
+  m_Layer: 0
+  m_Name: Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2609719929229774631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170896652843727807}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6071646225770469010}
+  m_Father: {fileID: 6503316508990841740}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6171382480255209084
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,13 +278,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8000944031630460299}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4782403151323784118}
-  m_Father: {fileID: 6503316508990841740}
+  m_Father: {fileID: 2609719929229774631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8020056661884929717
 MonoBehaviour:
@@ -389,6 +421,7 @@ GameObject:
   - component: {fileID: 7174832327420152129}
   - component: {fileID: 8946319230293315414}
   - component: {fileID: 6419759126234275546}
+  - component: {fileID: 1128826592024148964}
   m_Layer: 3
   m_Name: Player004
   m_TagString: Player
@@ -409,7 +442,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6071646225770469010}
+  - {fileID: 2609719929229774631}
   - {fileID: 4959022739848273726}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -440,6 +473,7 @@ MonoBehaviour:
   jumpCount: 2
   stanceChangeSpeed: 3
   gunModel: {fileID: 6504785613829033627}
+  gunCam: {fileID: 6171382480255209084}
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -482,6 +516,7 @@ MonoBehaviour:
   questName: 
   questObjective: 
   isBurning: 0
+  anim: {fileID: 1128826592024148964}
 --- !u!143 &7174832327420152129
 CharacterController:
   m_ObjectHideFlags: 0
@@ -714,6 +749,28 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!95 &1128826592024148964
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726352775847767780}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 34ce71fcee36c974f9afba45b6c13819, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &6883987750232050453
 PrefabInstance:
   m_ObjectHideFlags: 0

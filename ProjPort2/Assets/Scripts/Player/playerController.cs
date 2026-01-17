@@ -7,7 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 
 public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 {
-    public enum stanceType { sprinting, standing, crouching, prone};
+    public enum stanceType { sprinting, standing, crouching, prone, dead};
     public stanceType stance;
     [SerializeField] CharacterController controller;
     [SerializeField] GameObject playerCam;
@@ -39,6 +39,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     [Header("----- Gun Fields -----")]
     [SerializeField] GameObject gunModel;
+    [SerializeField] GameObject gunCam;
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] LineRenderer Laser;
     float shootTimer;
@@ -83,6 +84,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     public bool isBurning;
 
+    [Header("----- Animation -----")]
+    [SerializeField] Animator anim;
+
+
     public enum questID
     {
         Completed, // 0
@@ -108,14 +113,21 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     // Update is called once per frame
     void Update()
     {
-        shootTimer += Time.deltaTime;
-        throwTimer += Time.deltaTime;
-        fireTimer += Time.deltaTime;
+        switch (stance)
+        {
+            case stanceType.dead:
+                break;
+            default:
+                shootTimer += Time.deltaTime;
+                throwTimer += Time.deltaTime;
+                fireTimer += Time.deltaTime;
 
-        movement();
+                movement();
 
-        if (gunList.Any())
-            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * gunList[gunListPos].shootDist, Color.white);
+                if (gunList.Any())
+                    Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * gunList[gunListPos].shootDist, Color.white);
+                break;
+        }
     }
 
     void movement()
@@ -403,8 +415,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
         if (HP <= 0)
         {
-            gameManager.instance.youLose();
+            die();
         }
+    }
+
+    public void die()
+    {
+        stance = stanceType.dead;
+        gunCam.SetActive(false);
+        anim.SetTrigger("Dead");
+    }
+
+    public void lose()
+    {
+        gameManager.instance.youLose();
     }
 
     public void updatePlayerUI()
@@ -513,7 +537,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     IEnumerator burning (float time, int hpRate)
     {
         isBurning = true;
-        while (fireTimer < time)
+        while (fireTimer < time && stance != stanceType.dead)
         {
             takeDamage(hpRate);
             yield return new WaitForSeconds(0.5f);

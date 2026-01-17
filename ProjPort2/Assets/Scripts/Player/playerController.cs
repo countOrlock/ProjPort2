@@ -68,6 +68,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     [Range(0, 1f)][SerializeField] float jumpVol; 
     [SerializeField] AudioClip[] hurtSound;
     [Range(0, 1f)][SerializeField] float hurtVol;
+    [SerializeField] AudioClip[] deathSound;
+    [Range(0, 1f)][SerializeField] float deathVol;
 
     bool isPlayingStep;
 
@@ -408,19 +410,23 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     public void takeDamage(int amount)
     {
-        HP -= amount;
-        updatePlayerUI();
-        StartCoroutine(flashRed());
-        aud.PlayOneShot(hurtSound[Random.Range(0, hurtSound.Length)], hurtVol);
-
-        if (HP <= 0)
+        if (stance != stanceType.dead)
         {
-            die();
+            HP -= amount;
+            updatePlayerUI();
+            StartCoroutine(flashRed());
+            aud.PlayOneShot(hurtSound[Random.Range(0, hurtSound.Length)], hurtVol);
+
+            if (HP <= 0)
+            {
+                die();
+            }
         }
     }
 
     public void die()
     {
+        aud.PlayOneShot(deathSound[Random.Range(0, deathSound.Length)], deathVol);
         stance = stanceType.dead;
         gunCam.SetActive(false);
         anim.SetTrigger("Dead");

@@ -3,6 +3,13 @@ using UnityEngine.AI;
 using System.Collections;
 public class enemyAI : MonoBehaviour, IDamage, IStatEff
 {
+    public enum npcMode 
+    { 
+        Roam,
+        Attack,
+        Patrol,
+    }
+
     [SerializeField] Animator anim;
     [SerializeField] public Renderer model;
     [SerializeField] NavMeshAgent agent;
@@ -55,6 +62,9 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
     Color colorOrig;
 
+    // AI Logic / Behavior Variables
+    npcMode mode;
+
     float roamTimer;
     float shootTimer;
     float meleeTimer;
@@ -75,6 +85,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         colorOrig = model.material.color;
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
+        mode = npcMode.Roam;
     }
 
     // Update is called once per frame
@@ -96,18 +107,58 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             roamTimer += Time.deltaTime;
         }
 
-        if (playerInRange && !canSeePlayer())
+        switch (mode)
         {
-            checkRoam();
+            case npcMode.Roam:
+                checkRoam();
+                if (!playerInRange && targetPos != null && distToTarget > maxDistFromTarget)
+                {
+                    mode = npcMode.Patrol;
+                }
+                else if (playerInRange && canSeePlayer())
+                {
+                    mode = npcMode.Attack;
+                }
+                    break;
+            case npcMode.Attack:
+                if (playerInRange && !canSeePlayer())
+                {
+                    checkRoam();
+                }
+                else if (!playerInRange && targetPos != null && distToTarget > maxDistFromTarget)
+                {
+                    moveToTarget();
+                }
+                else if (!playerInRange)
+                {
+                    checkRoam();
+                }
+                break;
+            case npcMode.Patrol:
+                Vector3 nextTarget = FindNextWaypoint();
+                SetTarget(nextTarget);
+                moveToTarget();
+
+                if (playerInRange && !canSeePlayer())
+                {
+                    mode = npcMode.Roam;
+                }
+                else if (playerInRange && canSeePlayer())
+                {
+                    mode = npcMode.Attack;
+                }
+                break;
         }
-        else if (!playerInRange && targetPos != null && distToTarget > maxDistFromTarget)
-        {
-            moveToTarget();
-        }
-        else if (!playerInRange)
-        {
-            checkRoam();
-        }
+    }
+
+    Vector3 FindNextWaypoint()
+    {
+        return Vector3.forward;
+    }
+
+    public void SetTarget(Vector3 newTarget)
+    {
+        targetPos = newTarget;
     }
 
     void locomotionAnim()
@@ -254,7 +305,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             ranPos += startingPos;
         }
 
-            NavMeshHit hit;
+        NavMeshHit hit;
         NavMesh.SamplePosition(ranPos, out hit, roamDist, 1);
         agent.SetDestination(hit.position);
     }

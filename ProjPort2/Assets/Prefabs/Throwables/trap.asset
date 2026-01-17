@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5d5cf7a3c852a4ca95bb993d4107f6, type: 3}
   m_Name: trap
   m_EditorClassIdentifier: Assembly-CSharp::throwStats
-  projectile: {fileID: 0}
+  projectile: {fileID: 989778642408947695, guid: 226ce2d30c23e4c4aaa2ecd6bb30c782, type: 3}
   animObject: {fileID: 0}
-  itemName: 
-  ammoCurr: 0
-  ammoMax: 1
+  itemName: Trap
+  ammoCurr: 5
+  ammoMax: 10
   throwSound: []
   pickupSound: []
   throwSoundVol: 0

@@ -12,6 +12,8 @@ public class damage : MonoBehaviour
     [SerializeField] float damageRate;
     [SerializeField] int speed;
     [SerializeField] float destroyTime;
+    [SerializeField] bool groundCheck;
+    [SerializeField] GameObject groundObject = null;
 
     bool isDamaging;
     bool canDamage;
@@ -102,7 +104,15 @@ public class damage : MonoBehaviour
 
         if (type == damageType.thrown)
         {
-            StartCoroutine(fuseTimer());
+            if (groundCheck)
+            {
+                if (other.CompareTag("Ground"))
+                    StartCoroutine(grounded());
+                else
+                    StartCoroutine(fuseTimer());
+            }
+            else
+                StartCoroutine(fuseTimer());
         }
 
         if (stat != null)
@@ -160,6 +170,14 @@ public class damage : MonoBehaviour
         yield return new WaitForSeconds(destroyTime);
         if (createdObject != null)
             Instantiate(createdObject, gameObject.transform.position, gameObject.transform.rotation);
+        Destroy(gameObject);
+    }
+
+    IEnumerator grounded()
+    {
+        yield return new WaitForSeconds(destroyTime);
+        if (groundObject != null)
+            Instantiate(groundObject, gameObject.transform.position, gameObject.transform.rotation);
         Destroy(gameObject);
     }
 }

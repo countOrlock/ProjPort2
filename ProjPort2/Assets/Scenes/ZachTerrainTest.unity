@@ -2457,6 +2457,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5549885136560530059, guid: 05ebe2bb3e15326429cf0d27e4890704, type: 3}
+      propertyPath: fire
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549885136560530059, guid: 05ebe2bb3e15326429cf0d27e4890704, type: 3}
+      propertyPath: slow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549885136560530059, guid: 05ebe2bb3e15326429cf0d27e4890704, type: 3}
+      propertyPath: slowTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549885136560530059, guid: 05ebe2bb3e15326429cf0d27e4890704, type: 3}
+      propertyPath: slowAmount
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5855369739418755514, guid: 05ebe2bb3e15326429cf0d27e4890704, type: 3}
       propertyPath: m_Name
       value: testFire

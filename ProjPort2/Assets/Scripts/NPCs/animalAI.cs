@@ -44,10 +44,12 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     float fireTimer;
 
     public bool isBurning;
+    public bool isSlow;
 
     float distToTarget;
 
     Color colorOrig;
+    float speedOrig;
 
     float roamTimer;
     float meleeTimer;
@@ -68,6 +70,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         colorOrig = model.material.color;
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
+        speedOrig = agent.speed;
     }
 
     // Update is called once per frame
@@ -313,6 +316,16 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
 
     public void slow(float time, float slowAmount)
     {
-        
+        if (!isSlow)
+            StartCoroutine(slowed(time, slowAmount));
+    }
+
+    IEnumerator slowed(float time, float slowAmount)
+    {
+        isSlow = true;
+        agent.speed = slowAmount * speedOrig;
+        yield return new WaitForSeconds(time);
+        agent.speed = speedOrig;
+        isSlow = false;
     }
 }

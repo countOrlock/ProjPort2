@@ -610,6 +610,7 @@ MonoBehaviour:
   shootSound: []
   shootVol: 0
   isBurning: 0
+  isSlow: 0
 --- !u!195 &3640060390503317986
 NavMeshAgent:
   m_ObjectHideFlags: 0

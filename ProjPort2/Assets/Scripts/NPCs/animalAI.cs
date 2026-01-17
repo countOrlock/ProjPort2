@@ -44,10 +44,13 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     float fireTimer;
 
     public bool isBurning;
+    public bool isSlow;
+    float slowMod;
 
     float distToTarget;
 
     Color colorOrig;
+    float speedOrig;
 
     float roamTimer;
     float meleeTimer;
@@ -68,12 +71,14 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         colorOrig = model.material.color;
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
+        speedOrig = agent.speed;
+        slowMod = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        meleeTimer += Time.deltaTime;
+        meleeTimer += (slowMod * Time.deltaTime);
         fireTimer += Time.deltaTime;
 
         locomotionAnim();
@@ -145,7 +150,9 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
                 if (aggressive && meleeTimer >= meleeRate && inMeleeRange(hit))
                 {
                     if (debugHasMeleeAnim)
+                    {
                         anim.SetTrigger("Melee");
+                    }
                     else
                         meleeAttack();
                 }
@@ -309,5 +316,22 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
             yield return new WaitForSeconds(0.5f);
         }
         isBurning = false;
+    }
+
+    public void slow(float time, float slowAmount)
+    {
+        if (!isSlow)
+            StartCoroutine(slowed(time, slowAmount));
+    }
+
+    IEnumerator slowed(float time, float slowAmount)
+    {
+        isSlow = true;
+        agent.speed = slowAmount * speedOrig;
+        slowMod = slowAmount;
+        yield return new WaitForSeconds(time);
+        agent.speed = speedOrig;
+        slowMod = 1;
+        isSlow = false;
     }
 }

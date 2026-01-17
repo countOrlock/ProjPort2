@@ -1085,7 +1085,7 @@ MonoBehaviour:
     m_Bits: 64
   meleeDamage: 3
   meleeRange: 2
-  meleeRate: 0.75
+  meleeRate: 2
   attackPos: {fileID: 6827024356971628369}
   debugHasMeleeAnim: 1
   roamDist: 5
@@ -1096,6 +1096,7 @@ MonoBehaviour:
   shootSound: []
   shootVol: 0
   isBurning: 0
+  isSlow: 0
 --- !u!195 &7579537676640334968
 NavMeshAgent:
   m_ObjectHideFlags: 0

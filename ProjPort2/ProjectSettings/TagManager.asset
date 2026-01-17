@@ -9,6 +9,7 @@ TagManager:
   - Hunter Spawner
   - Small Game
   - Medium Game
+  - Ground
   layers:
   - Default
   - TransparentFX

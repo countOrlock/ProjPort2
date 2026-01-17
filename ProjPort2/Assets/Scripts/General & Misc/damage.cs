@@ -3,7 +3,7 @@ using System.Collections;
 
 public class damage : MonoBehaviour
 {
-    enum damageType { moving, stationary, DOT, homing, thrown, explosion, fire}
+    enum damageType { moving, stationary, DOT, homing, thrown, explosion, trap}
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject createdObject = null;
@@ -12,16 +12,27 @@ public class damage : MonoBehaviour
     [SerializeField] float damageRate;
     [SerializeField] int speed;
     [SerializeField] float destroyTime;
+    [SerializeField] bool groundCheck;
+    [SerializeField] GameObject groundObject = null;
 
     bool isDamaging;
     bool canDamage;
+    Quaternion groundedQuat;
+
+    [Header("----- Status Effects -----")]
+    [SerializeField] bool fire;
+    [SerializeField] int fireDamage;
+    [SerializeField] float fireTime;
+    [SerializeField] bool slow;
+    [SerializeField] float slowAmount;
+    [SerializeField] float slowTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (type == damageType.moving || type == damageType.homing || type == damageType.explosion)
         {
-            Destroy(gameObject, destroyTime);
+            StartCoroutine(fuseTimer());
 
             if (type == damageType.moving)
             {
@@ -33,6 +44,7 @@ public class damage : MonoBehaviour
         {
             rb.linearVelocity = transform.forward * speed;
             canDamage = true;
+            groundedQuat = gameManager.instance.player.transform.rotation;
         }
     }
 
@@ -52,19 +64,38 @@ public class damage : MonoBehaviour
 
         IDamage dmg = other.GetComponent<IDamage>();
 
-        if (dmg!= null && type != damageType.DOT && type != damageType.fire)
+        IStatEff stat = other.GetComponent<IStatEff>();
+
+
+        if (dmg!= null && type != damageType.DOT)
         {
             if (type == damageType.thrown)
             {
-                if(canDamage)
+                if (canDamage)
                 {
-                    dmg.takeDamage(damageAmount);
                     canDamage = false;
+                    if (damageAmount > 0)
+                        dmg.takeDamage(damageAmount);
                 }
+            }
+            else if (type == damageType.trap)
+            {
+                if (damageAmount > 0)
+                    dmg.takeDamage(damageAmount);
+
+                if (stat  != null)
+                {
+                    if (fire)
+                        stat.fire(fireTime, fireDamage);
+                    if (slow)
+                        stat.slow(slowTime, slowAmount);
+                }
+                StartCoroutine(fuseTimer());
             }
             else
             {
-                dmg.takeDamage(damageAmount);
+                if (damageAmount > 0)
+                    dmg.takeDamage(damageAmount);
             }
         }
 
@@ -75,14 +106,24 @@ public class damage : MonoBehaviour
 
         if (type == damageType.thrown)
         {
-            StartCoroutine(fuseTimer());
+            if (groundCheck)
+            {
+                if (other.CompareTag("Ground"))
+                    StartCoroutine(grounded());
+                else
+                    StartCoroutine(fuseTimer());
+            }
+            else
+                StartCoroutine(fuseTimer());
         }
 
-        IStatEff stat = other.GetComponent<IStatEff>();
-
-        if (stat != null && type == damageType.fire)
+        if (stat != null)
         {
-            stat.fire(damageRate, damageAmount);
+            if (fire)
+                stat.fire(fireTime, fireDamage);
+
+            if (slow)
+                stat.slow(slowTime, slowAmount);
         }
     }
 
@@ -95,10 +136,12 @@ public class damage : MonoBehaviour
 
         if (dmg != null && type == damageType.DOT && !isDamaging)
         {
-            StartCoroutine(damageOther(dmg));
+            IStatEff stat = other.GetComponent<IStatEff>();
+            if (stat != null)
+                StartCoroutine(damageOther(dmg, stat));
+            else
+                StartCoroutine(damageOther(dmg));
         }
-
-        
     }
 
     IEnumerator damageOther(IDamage d)
@@ -109,11 +152,38 @@ public class damage : MonoBehaviour
         isDamaging = false;
     }
 
+    IEnumerator damageOther(IDamage d, IStatEff s)
+    {
+        isDamaging = true;
+        if (damageAmount > 0)
+            d.takeDamage(damageAmount);
+
+        if (fire)
+            s.fire(fireTime, fireDamage);
+
+        if (slow)
+            s.slow(slowTime, slowAmount);
+        yield return new WaitForSeconds(damageRate);
+        isDamaging = false;
+    }
+
     IEnumerator fuseTimer()
     {
         yield return new WaitForSeconds(destroyTime);
         if (createdObject != null)
             Instantiate(createdObject, gameObject.transform.position, gameObject.transform.rotation);
+        Destroy(gameObject);
+    }
+
+    IEnumerator grounded()
+    {
+        yield return new WaitForSeconds(destroyTime);
+        if (groundObject != null)
+        {
+            
+
+            Instantiate(groundObject, gameObject.transform.position, groundedQuat);
+        }
         Destroy(gameObject);
     }
 }

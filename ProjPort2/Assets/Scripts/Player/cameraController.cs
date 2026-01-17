@@ -54,7 +54,7 @@ public class cameraController : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(camUpDown, 0, 0);
 
-        transform.parent.Rotate(Vector3.up * mouseX);
+        transform.parent.parent.Rotate(Vector3.up * mouseX);
     }
 
     public void zoomIn(float amount)

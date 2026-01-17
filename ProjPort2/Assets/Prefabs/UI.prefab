@@ -1941,7 +1941,6 @@ MonoBehaviour:
   hunter: {fileID: 869472922463874160, guid: dc6bbcfb9d0587d4b9d86af241196632, type: 3}
   hunterCount: 0
   targetGold: 300
-  interactionPopupTxt: {fileID: 9184927333506226888}
   player: {fileID: 0}
   playerScript: {fileID: 0}
   playerHPBar: {fileID: 1397628598769450949}

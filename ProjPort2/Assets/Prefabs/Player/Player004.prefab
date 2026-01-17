@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
   interactorSource: {fileID: 6071646225770469010}
-  interactRange: 15
+  interactRange: 10
 --- !u!20 &8698845205236387683
 Camera:
   m_ObjectHideFlags: 0

@@ -51,7 +51,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject hunter;
     [Range(0, 3)][SerializeField] int hunterCount;
     [Range(0, 300)][SerializeField] int targetGold;
-    
+
+    [Header("===Misc Variables===")]
     public GameObject player;
     public playerController playerScript;
     public Image playerHPBar;

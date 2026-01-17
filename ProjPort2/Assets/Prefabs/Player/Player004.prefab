@@ -260,6 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6071646225770469010}
   - component: {fileID: 8020056661884929717}
+  - component: {fileID: 3350552509344967676}
   - component: {fileID: 8698845205236387683}
   - component: {fileID: 2757848981066383066}
   - component: {fileID: 6929704398827002014}
@@ -304,6 +305,20 @@ MonoBehaviour:
   zoomSpeed: 50
   invert: 0
   _gunCam: {fileID: 5436180946371492431}
+--- !u!114 &3350552509344967676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8000944031630460299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39873334e94044e40b548a4ff52a99ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactor
+  interactorSource: {fileID: 6071646225770469010}
+  interactRange: 15
 --- !u!20 &8698845205236387683
 Camera:
   m_ObjectHideFlags: 0

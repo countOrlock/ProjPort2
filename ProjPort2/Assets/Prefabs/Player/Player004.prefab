@@ -510,6 +510,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9fa2fcf0f63360a45a55d6a297b70964, type: 3}
   - {fileID: 8300000, guid: 1ef927a663352154d84076611642b5e2, type: 3}
   hurtVol: 0.5
+  deathSound:
+  - {fileID: 8300000, guid: d401285aa88926646b4637f6af655554, type: 3}
+  - {fileID: 8300000, guid: 40ec711f1b2f9944797bf150e0dfd6f3, type: 3}
+  - {fileID: 8300000, guid: e05ac4099e3d2ce4cb87ffbe88974242, type: 3}
+  - {fileID: 8300000, guid: d3e6b37b3176e224693f34ca5092ca15, type: 3}
+  - {fileID: 8300000, guid: 47144973a7c54684086ebf236ea54ebf, type: 3}
+  - {fileID: 8300000, guid: bca3631ed4ce24140b11324aeb744907, type: 3}
+  - {fileID: 8300000, guid: c97142657e32c984a87d03314cdbd86a, type: 3}
+  - {fileID: 8300000, guid: 45a03b1a8bc947e4f84ea1a14ee6aa86, type: 3}
+  deathVol: 0.5
   Gold: 0
   questList: []
   questItemList: []

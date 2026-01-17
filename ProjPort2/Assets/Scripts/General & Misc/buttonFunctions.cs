@@ -10,6 +10,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void restart()
     {
+        DayManager.instance.ResetDay();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameManager.instance.stateUnpause();
     }

@@ -24,6 +24,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text totalMagCountText;
     [SerializeField] TMP_Text throwableItemText;
     [SerializeField] TMP_Text itemCountText;
+    [SerializeField] TMP_Text dayTimeMinutes;
+    [SerializeField] TMP_Text dayTimeSeconds;
 
     [Header("===Displayed Active Quest Text===")]
     [SerializeField] TMP_Text activeQuest1Title;
@@ -143,9 +145,7 @@ public class gameManager : MonoBehaviour
 
         if (gameGoalCount >= targetGold)
         {
-            statePause();
-            menuActive = menuWin;
-            menuActive.SetActive(true);
+            youWin();
         }
     }
 
@@ -212,6 +212,35 @@ public class gameManager : MonoBehaviour
         activeQuest2Target.text  = target.ToString();
     }
 
+    public void updateDayTime(float timeInSeconds)
+    {
+        int minutesLeft = (int)(timeInSeconds / 60);
+        int secondsLeft = (int)(timeInSeconds % 60);
+
+        dayTimeMinutes.text = minutesLeft.ToString();
+
+        if (secondsLeft < 10)
+        {
+            dayTimeSeconds.text = (padSingleDigitString(secondsLeft.ToString(), 1));
+        }
+        else
+        {
+            dayTimeSeconds.text = secondsLeft.ToString();
+        }
+    }
+
+    public string padSingleDigitString(string singleDigit, int padding)
+    {
+        string newDigit = "";
+        for (int i = 0; i < padding; i++)
+        {
+            newDigit += "0";
+        }
+        newDigit += singleDigit;
+        return newDigit;
+
+    }
+
     public void updateAmmoCount(int currentAmmo, int maxAmmo)
     {
         currentAmmoCount = currentAmmo;
@@ -232,6 +261,20 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
+    }
+
+    public void youWin()
+    {
+        statePause();
+        menuActive = menuWin;
+        menuActive.SetActive(true);
+    }
+
+    public void ResetPlayerToStartOfDay()
+    {
+        player.GetComponent<playerController>().Gold    = DayManager.instance.currentDayInfoAtStartOfDay.goldEarned;
+        player.GetComponent<playerController>().gunList = DayManager.instance.currentDayInfoAtStartOfDay.playerGunList;
+        // Reset Player Item Inventory
     }
 
     public void checkHunters()

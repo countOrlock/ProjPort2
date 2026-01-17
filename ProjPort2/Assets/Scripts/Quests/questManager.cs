@@ -7,7 +7,8 @@ public class questManager : MonoBehaviour
 {
     public static questManager instance;
 
-    [SerializeField] List<questInfo> unavailableQuests;
+    [Header("-----General-----")]
+    [SerializeField] public List<questInfo> unavailableQuests;
     [SerializeField] public List<questInfo> availableQuests;
     public questInfo activeQuest1;
     public questInfo activeQuest2;
@@ -18,6 +19,11 @@ public class questManager : MonoBehaviour
     private int quest2Target;
     private int quest2Current;
 
+    [Header("-----Day Info-----")]
+    float dayTimeInSeconds;
+    float dayTimerInSeconds;
+
+
     void Awake()
     {
         instance = this;
@@ -26,6 +32,10 @@ public class questManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // For Day Initialization
+        dayTimeInSeconds = DayManager.instance.currentDay.dayLengthInMinutes * 60;
+
+        // For Quest Initialization
         quest1Current = 0;
         quest2Current = 0;
 
@@ -55,7 +65,19 @@ public class questManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dayTimerInSeconds += Time.deltaTime;
+        CheckTimeLeft();
+        CheckRentPaid();
+    }
 
+    void CheckTimeLeft()
+    {
+        gameManager.instance.updateDayTime(dayTimeInSeconds - dayTimerInSeconds);
+        if (dayTimerInSeconds > dayTimeInSeconds)
+        {
+            dayTimerInSeconds = 0;
+            gameManager.instance.youLose();
+        }
     }
 
     public void UpdateCurrentQuest(GameObject animal, int amount)
@@ -95,6 +117,14 @@ public class questManager : MonoBehaviour
         }
         }
 
+    public void CheckRentPaid()
+    {
+        if (gameManager.instance.player.GetComponent<playerController>().Gold >= DayManager.instance.currentDay.rentAmountDue)
+        {
+            gameManager.instance.youWin();
+        }
+    }
+
     void CompleteQuest(int activeQuest)
     {
         questInfo completedQuest;
@@ -108,6 +138,7 @@ public class questManager : MonoBehaviour
             completedQuest = activeQuest1;
             completeQuests.Add(activeQuest1);
             gameManager.instance.player.GetComponent<playerController>().Gold += activeQuest1.reward;
+            DayManager.instance.UpdateGoldEarned(activeQuest1.reward);
             gameManager.instance.updateGameGoal(activeQuest1.reward);
             activeQuest1 = null;
         }
@@ -116,6 +147,7 @@ public class questManager : MonoBehaviour
             completedQuest = activeQuest2;
             completeQuests.Add(activeQuest2);
             gameManager.instance.player.GetComponent<playerController>().Gold += activeQuest2.reward;
+            DayManager.instance.UpdateGoldEarned(activeQuest2.reward);
             gameManager.instance.updateGameGoal(activeQuest2.reward);
             activeQuest2 = null;
         }
@@ -125,6 +157,8 @@ public class questManager : MonoBehaviour
             GiveNewQuest(availableQuests[0], completedQuest);
         }
 
+        DayManager.instance.UpdateQuests();
+        DayManager.instance.UpdateQuestsCompletedDuringDay(completedQuest);
     }
 
     questInfo FindNextLevelQuest(questInfo quest)
@@ -161,6 +195,7 @@ public class questManager : MonoBehaviour
                 }
             }
 
+            DayManager.instance.UpdateQuests();
             return false;
         }
 
@@ -180,6 +215,7 @@ public class questManager : MonoBehaviour
         }
         else
         {
+            DayManager.instance.UpdateQuests();
             return false;
         }
 
@@ -192,6 +228,8 @@ public class questManager : MonoBehaviour
         {
             MoveUnavailableQuestToAvailableQuest();
         }
+
+        DayManager.instance.UpdateQuests();
 
         return true;
     }
@@ -230,5 +268,14 @@ public class questManager : MonoBehaviour
         }
 
         gameManager.instance.updateAvailableQuests();
+    }
+
+    public void ResetQuestsToStartOfDay()
+    {
+        unavailableQuests = DayManager.instance.currentDayInfoAtStartOfDay.unavailableQuests;
+        availableQuests   = DayManager.instance.currentDayInfoAtStartOfDay.availableQuests;
+        activeQuest1      = DayManager.instance.currentDayInfoAtStartOfDay.activeQuest1;
+        activeQuest2      = DayManager.instance.currentDayInfoAtStartOfDay.activeQuest2;
+        completeQuests    = DayManager.instance.currentDayInfoAtStartOfDay.TotalCompletedQuests;
     }
 }

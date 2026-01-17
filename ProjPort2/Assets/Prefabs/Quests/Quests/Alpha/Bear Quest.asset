@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::questInfo
   animal: {fileID: 3617165509172582398, guid: 84c1e8026c4e78b4099b2ef3b0fc06d3, type: 3}
   questAnimalSpawn: {fileID: 0}
-  reward: 5
+  reward: 20
   questName: Bear Quest
   questObjective: Hunt the Bear!
   numOfAnimalsToHunt: 1

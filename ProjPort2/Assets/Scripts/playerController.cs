@@ -69,6 +69,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public string questName;
     public string questObjective;
 
+    // Saved Player Info
+    const string hp_Key = "Player_HP";
+    const string gold_Key = "Player_Gold";
+    const string posX_Key = "Player_PosX";
+    const string posY_Key = "Player_posY";
+    const string posZ_Key = "Player_posZ";
+    const string gun_Index_Key = "Player_GunIndex";
+    const string ammo_Key = "Player_Ammo";
+    const string mags_Key = "Player_Mags";
+
     public enum questID
     {
         Completed, // 0
@@ -89,6 +99,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         controllerHeightOrig = controller.center.y;
         targetHeight = heightOrig;
         stance = stanceType.standing;
+        LoadPlayerData();
     }
 
     // Update is called once per frame
@@ -412,5 +423,42 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
         reloading = false;
+    }
+
+    public void SavePlayerData()
+    {
+        PlayerPrefs.SetInt(hp_Key, HP);
+        PlayerPrefs.SetInt(gold_Key, Gold);
+        PlayerPrefs.SetFloat(posX_Key, transform.position.x);
+        PlayerPrefs.SetFloat(posY_Key, transform.position.y);
+        PlayerPrefs.SetFloat(posZ_Key, transform.position.z);
+        PlayerPrefs.SetInt(gun_Index_Key, gunListPos);
+        if (gunList.Any())
+        {
+            PlayerPrefs.SetInt(ammo_Key, gunList[gunListPos].ammoCur);
+            PlayerPrefs.SetInt(mags_Key, gunList[gunListPos].magsCur);
+        }
+        PlayerPrefs.Save();
+    }
+
+    void LoadPlayerData()
+    {
+        if (!PlayerPrefs.HasKey(hp_Key))
+            return;
+
+        HP = PlayerPrefs.GetInt(hp_Key);
+        Gold = PlayerPrefs.GetInt(gold_Key);
+        float x = PlayerPrefs.GetFloat(posX_Key);
+        float y = PlayerPrefs.GetFloat(posY_Key);
+        float z = PlayerPrefs.GetFloat(posZ_Key);
+        transform.position = new Vector3(x, y, z);
+        gunListPos = PlayerPrefs.GetInt(gun_Index_Key);
+        if (gunList.Any())
+        {
+            gunList[gunListPos].ammoCur = PlayerPrefs.GetInt(ammo_Key);
+            gunList[gunListPos].magsCur = PlayerPrefs.GetInt(mags_Key);
+            changeGun();
+        }
+        updatePlayerUI();
     }
 }

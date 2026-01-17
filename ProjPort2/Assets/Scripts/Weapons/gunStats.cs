@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class gunStats : ScriptableObject
 {
+    [Header("----- Gun Fire1 -----")]
     public GameObject gunModel;
     public GameObject Bullet = null;
     public bool shootLaser;
@@ -25,4 +26,18 @@ public class gunStats : ScriptableObject
     public AudioClip[] reloadSound;
     [Range(0, 1)] public float shootSoundVol;
     [Range(0, 1)] public float reloadSoundVol;
+
+    [Header("----- Gun Fire2 -----")]
+    public bool HasSecondary;
+    public GameObject Bullet2 = null;
+    public bool shootLaser2;
+    [Range(0, 10)] public int shootDamage2;
+    [Range(0, 1000)] public int shootDist2;
+    [Range(0f, 4)] public float shootRate2;
+
+    public ParticleSystem hitEffect2;
+    public ParticleSystem shootEffect2;
+    public AudioClip[] shootSound2;
+    [Range(0, 1)] public float shootSoundVol2;
+    
 }

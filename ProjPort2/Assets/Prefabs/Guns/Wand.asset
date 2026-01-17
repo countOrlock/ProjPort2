@@ -13,21 +13,32 @@ MonoBehaviour:
   m_Name: Wand
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
   gunModel: {fileID: 2449049758879426439, guid: 351ea694076c5a747b0a4f4178f810e9, type: 3}
-  Bullet: {fileID: 0}
+  Bullet: {fileID: 8949708971757413220, guid: dd85721034bc6444884df286dc7bf3a7, type: 3}
   shootLaser: 0
   shootDamage: 0
   shootDist: 0
-  shootRate: 3
+  shootRate: 2
   reloadRate: 0.1
   recoil: 0
-  ammoCur: 0
-  ammoMax: 1
-  magsCur: 0
-  magsMax: 1
+  ammoCur: 298
+  ammoMax: 300
+  magsCur: 8
+  magsMax: 8
   zoomMod: 0
   hitEffect: {fileID: 0}
   shootEffect: {fileID: 0}
   shootSound: []
-  reloadSound: []
+  reloadSound:
+  - {fileID: 8300000, guid: 0e6f4d5db8dcb574892e7a8ee698e662, type: 3}
   shootSoundVol: 0
   reloadSoundVol: 0
+  HasSecondary: 1
+  Bullet2: {fileID: 0}
+  shootLaser2: 0
+  shootDamage2: 0
+  shootDist2: 20
+  shootRate2: 1
+  hitEffect2: {fileID: 0}
+  shootEffect2: {fileID: 2322205823804172958, guid: fb796145ced6fa646a03a89452814034, type: 3}
+  shootSound2: []
+  shootSoundVol2: 0

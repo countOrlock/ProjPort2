@@ -132,9 +132,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         stanceChange();
 
         //zoom
-        if (Input.GetButtonDown("Fire2") && gunList.Any())
+        if (Input.GetButtonDown("Fire2") && gunList.Any() && gunList[gunListPos].HasSecondary == false)
             playerCam.GetComponent<cameraController>().zoomIn(gunList[gunListPos].zoomMod);
-        else if (Input.GetButtonUp("Fire2"))
+        else if (Input.GetButtonUp("Fire2") && gunList[gunListPos].HasSecondary == false)
             playerCam.GetComponent<cameraController>().zoomOut();
 
         //throwable object
@@ -171,8 +171,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
         if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate && reloading == false && !gameManager.instance.isPaused)
         {
-            
             shoot();
+        }
+        else if(Input.GetButton("Fire2") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate2 && reloading == false && !gameManager.instance.isPaused && gunList[gunListPos].HasSecondary == true)
+        {
+            shoot2();
         }
         else
         {
@@ -339,6 +342,65 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         else
         {
             Instantiate(gunList[gunListPos].Bullet, playerCam.transform.position, playerCam.transform.rotation);
+        }
+
+    }
+
+    void shoot2()
+    {
+        shootTimer = 0;
+
+        gunList[gunListPos].ammoCur--;
+        gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
+
+        if (gunList[gunListPos].shootSound2.Length > 0)
+            aud.PlayOneShot(gunList[gunListPos].shootSound2[Random.Range(0, gunList[gunListPos].shootSound2.Length)], gunList[gunListPos].shootSoundVol2);
+
+        recoilSpeed += -Camera.main.transform.forward * gunList[gunListPos].recoil;
+
+        if (gunList[gunListPos].Bullet2 == null || gunList[gunListPos].shootLaser2 == true)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunList[gunListPos].shootDist2, ~ignoreLayer))
+            {
+                if (gunList[gunListPos].shootEffect2 != null)
+                {
+                    Instantiate(gunList[gunListPos].shootEffect2, gunModel.transform.position, playerCam.transform.rotation);
+                }
+
+
+                if (gunList[gunListPos].hitEffect2 != null)
+                {
+                    Instantiate(gunList[gunListPos].hitEffect2, hit.point, Quaternion.identity);
+                }
+
+                if (gunList[gunListPos].shootLaser2 == true)
+                {
+
+                    Laser.enabled = true;
+
+                    Laser.SetPosition(0, gunModel.transform.position);
+                    Laser.SetPosition(1, hit.point);
+
+                    if (gunList[gunListPos].Bullet2 != null)
+                    {
+                        Instantiate(gunList[gunListPos].Bullet2, hit.point, Quaternion.identity);
+                    }
+                }
+
+                Debug.Log(hit.collider.name);
+
+                IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+                if (dmg != null)
+                {
+                    dmg.takeDamage(gunList[gunListPos].shootDamage2);
+                }
+            }
+        }
+        else
+        {
+            Instantiate(gunList[gunListPos].Bullet2, playerCam.transform.position, playerCam.transform.rotation);
         }
 
     }

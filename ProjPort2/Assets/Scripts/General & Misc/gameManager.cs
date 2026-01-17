@@ -13,6 +13,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuQuests;
+    [SerializeField] GameObject menuShop;
 
     [Header("===Displayed Text===")]
     [SerializeField] TMP_Text gameGoalCountText;
@@ -134,6 +135,13 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
+    }
+
+    public void ShopMenu()
+    {
+        statePause();
+        menuActive = menuShop;
+        menuActive.SetActive(true);
     }
 
     public void updateGameGoal(int amount)

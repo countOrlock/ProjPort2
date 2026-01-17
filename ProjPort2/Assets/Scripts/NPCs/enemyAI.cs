@@ -44,10 +44,6 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     [SerializeField] int roamPauseTimer;
     float stoppingDistOrig;
 
-    [Header("----- Move To Target -----")]
-    [SerializeField] Vector3 targetPos;
-    [SerializeField] int maxDistFromTarget;
-
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] shootSound;
@@ -58,12 +54,18 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
     public bool isBurning;
 
-    float distToTarget;
 
     Color colorOrig;
 
-    // AI Logic / Behavior Variables
+    [Header("----- AI Logic / Behavior Variables -----")]
+    [SerializeField] Waypoint startingWaypoint;
+    [SerializeField] Waypoint currentWaypoint;
+    [SerializeField] Vector3 targetPos;
+    [SerializeField] int maxDistFromTarget;
+    float distToTarget;
     npcMode mode;
+
+    [SerializeField] int ResumePatrolTimer;
 
     float roamTimer;
     float shootTimer;
@@ -86,6 +88,8 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         mode = npcMode.Roam;
+        targetPos = startingWaypoint.transform.position;
+        currentWaypoint = startingWaypoint;
     }
 
     // Update is called once per frame
@@ -100,6 +104,12 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         if(targetPos != null)
         {
             distToTarget = (targetPos - transform.position).magnitude;
+        }
+
+        if (distToTarget < maxDistFromTarget)
+        {
+            SetTarget(currentWaypoint.nextWaypoint.transform.position);
+            currentWaypoint = currentWaypoint.nextWaypoint;
         }
 
         if (agent.remainingDistance < 0.01)
@@ -123,21 +133,19 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             case npcMode.Attack:
                 if (playerInRange && !canSeePlayer())
                 {
-                    checkRoam();
+                    mode = npcMode.Roam;
                 }
                 else if (!playerInRange && targetPos != null && distToTarget > maxDistFromTarget)
                 {
-                    moveToTarget();
+                    mode = npcMode.Patrol;
                 }
                 else if (!playerInRange)
                 {
-                    checkRoam();
+                    mode = npcMode.Patrol;
                 }
                 break;
             case npcMode.Patrol:
-                Vector3 nextTarget = FindNextWaypoint();
-                SetTarget(nextTarget);
-                moveToTarget();
+                StartCoroutine(ResumePatrol());
 
                 if (playerInRange && !canSeePlayer())
                 {
@@ -151,9 +159,10 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         }
     }
 
-    Vector3 FindNextWaypoint()
+    IEnumerator ResumePatrol()
     {
-        return Vector3.forward;
+        yield return new WaitForSeconds(5);
+        moveToTarget();
     }
 
     public void SetTarget(Vector3 newTarget)
@@ -234,7 +243,6 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
                 return true;
             }
         }
-
 
         return false;
     }

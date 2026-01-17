@@ -17,6 +17,7 @@ public class damage : MonoBehaviour
 
     bool isDamaging;
     bool canDamage;
+    Quaternion groundedQuat;
 
     [Header("----- Status Effects -----")]
     [SerializeField] bool fire;
@@ -43,6 +44,7 @@ public class damage : MonoBehaviour
         {
             rb.linearVelocity = transform.forward * speed;
             canDamage = true;
+            groundedQuat = gameManager.instance.player.transform.rotation;
         }
     }
 
@@ -177,7 +179,11 @@ public class damage : MonoBehaviour
     {
         yield return new WaitForSeconds(destroyTime);
         if (groundObject != null)
-            Instantiate(groundObject, gameObject.transform.position, gameObject.transform.rotation);
+        {
+            
+
+            Instantiate(groundObject, gameObject.transform.position, groundedQuat);
+        }
         Destroy(gameObject);
     }
 }

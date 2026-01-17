@@ -39,6 +39,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     [Header("----- Gun Fields -----")]
     [SerializeField] GameObject gunModel;
+    [SerializeField] GameObject gunCam;
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] LineRenderer Laser;
     float shootTimer;
@@ -421,6 +422,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     public void die()
     {
         stance = stanceType.dead;
+        gunCam.SetActive(false);
         anim.SetTrigger("Dead");
     }
 
@@ -535,7 +537,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     IEnumerator burning (float time, int hpRate)
     {
         isBurning = true;
-        while (fireTimer < time)
+        while (fireTimer < time && stance != stanceType.dead)
         {
             takeDamage(hpRate);
             yield return new WaitForSeconds(0.5f);

@@ -39,10 +39,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     [SerializeField] Transform attackPos;
     public bool debugHasMeleeAnim;
 
-    [Header("----- Roaming -----")]
-    [SerializeField] int roamDist;
-    [SerializeField] int roamPauseTimer;
-    float stoppingDistOrig;
+
 
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
@@ -63,13 +60,23 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     [SerializeField] Waypoint startingWaypoint;
     [SerializeField] Waypoint currentWaypoint;
     [SerializeField] Vector3 targetPos;
+    [SerializeField] Vector3 waypointPos;
     [SerializeField] int maxDistFromTarget;
+    [SerializeField] int maxDistFromWaypoint;
     float distToTarget;
+    float distToWaypoint;
     npcMode mode;
+    bool resumingPatrol;
 
-    [SerializeField] int ResumePatrolTimer;
+    [SerializeField] int resumePatrolTime;
+    float resumePatrolTimer;
 
+    [Header("----- Roaming -----")]
+    [SerializeField] int roamDist;
+    [SerializeField] int roamPauseTimer;
+    float stoppingDistOrig;
     float roamTimer;
+
     float shootTimer;
     float meleeTimer;
 
@@ -81,7 +88,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     Vector3 playerDir;
     Vector3 startingPos;
 
-    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -89,10 +96,14 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         colorOrig = model.material.color;
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
+        targetPos = transform.position;
         mode = npcMode.Roam;
-        targetPos = startingWaypoint.transform.position;
-        currentWaypoint = startingWaypoint;
-        speedOrig = agent.speed;
+        if (startingWaypoint)
+        {
+            waypointPos = startingWaypoint.transform.position;
+            currentWaypoint = startingWaypoint;
+            speedOrig = agent.speed;
+        }
     }
 
     // Update is called once per frame
@@ -104,27 +115,46 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
         locomotionAnim();
 
-        if(targetPos != null)
+        // Logic for ALL non-waypoint related movement
+        if (targetPos != null)
         {
             distToTarget = (targetPos - transform.position).magnitude;
         }
 
-        if (distToTarget < maxDistFromTarget)
-        {
-            SetTarget(currentWaypoint.nextWaypoint.transform.position);
-            currentWaypoint = currentWaypoint.nextWaypoint;
-        }
-
-        if (agent.remainingDistance < 0.01)
+        if (agent.remainingDistance < 0.01 && !resumingPatrol)
         {
             roamTimer += Time.deltaTime;
         }
+        else
+        {
+            roamTimer = 0.0f;
+        }
 
+        //Logic for JUST waypoint related movement
+        if (waypointPos != null)
+        {
+            distToWaypoint = (waypointPos - transform.position).magnitude;
+        }
+
+        if (distToWaypoint < maxDistFromWaypoint)
+        {
+            SetWaypointPos(currentWaypoint.nextWaypoint.transform.position);
+            currentWaypoint = currentWaypoint.nextWaypoint;
+        }
+
+        if (resumingPatrol)
+        {
+            resumePatrolTimer += Time.deltaTime;
+        }
+
+        // Finite State Machine -- Used to control switching between behaviors
         switch (mode)
         {
+            // Basic Roam mode
             case npcMode.Roam:
+
                 checkRoam();
-                if (!playerInRange && targetPos != null && distToTarget > maxDistFromTarget)
+                if (!playerInRange && currentWaypoint != null)
                 {
                     mode = npcMode.Patrol;
                 }
@@ -132,45 +162,64 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
                 {
                     mode = npcMode.Attack;
                 }
-                    break;
+                break;
+            // Attack mode following the NPC's designated attack logic
+            // Happens mostly in canSeePlayer() during that check.
             case npcMode.Attack:
                 if (playerInRange && !canSeePlayer())
                 {
                     mode = npcMode.Roam;
                 }
-                else if (!playerInRange && targetPos != null && distToTarget > maxDistFromTarget)
-                {
-                    mode = npcMode.Patrol;
-                }
-                else if (!playerInRange)
+                else if (!playerInRange && currentWaypoint != null)
                 {
                     mode = npcMode.Patrol;
                 }
                 break;
+            // Patrol mode following waypoints
             case npcMode.Patrol:
-                StartCoroutine(ResumePatrol());
 
+                // Resuming patrol once the enemy has finished it's current move action.
+                if (!resumingPatrol && resumePatrolTimer < resumePatrolTime && agent.remainingDistance < 0.01)
+                {
+                    resumingPatrol = true;
+                }
+
+                // Moving to the next patrol waypoint once the original "resuming patrol" timer has gone
+                // above the SerializedField set variable.
+                if (resumePatrolTimer >= resumePatrolTime)
+                {
+                    SetWaypointPos(currentWaypoint.transform.position);
+                    moveToTarget(waypointPos);
+                }
+
+                // Have to reset the patrol timer and boolean variables when going into other NPC Modes
                 if (playerInRange && !canSeePlayer())
                 {
+                    moveToTarget(transform.position);
+                    resumingPatrol = false;
+                    resumePatrolTimer = 0.0f;
                     mode = npcMode.Roam;
+                    break;
                 }
                 else if (playerInRange && canSeePlayer())
                 {
+                    resumingPatrol = false;
+                    resumePatrolTimer = 0.0f;
                     mode = npcMode.Attack;
+                    break;
                 }
                 break;
         }
     }
 
-    IEnumerator ResumePatrol()
-    {
-        yield return new WaitForSeconds(5);
-        moveToTarget();
-    }
-
     public void SetTarget(Vector3 newTarget)
     {
         targetPos = newTarget;
+    }
+
+    public void SetWaypointPos(Vector3 newWaypoint)
+    {
+        waypointPos = newWaypoint;
     }
 
     void locomotionAnim()
@@ -269,10 +318,10 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         dmg.takeDamage(meleeDamage);
     }
 
-    void moveToTarget()
+    void moveToTarget(Vector3 target)
     {
         agent.stoppingDistance = 0;
-        agent.SetDestination(targetPos);
+        agent.SetDestination(target);
     }
 
     private void OnTriggerEnter(Collider other)

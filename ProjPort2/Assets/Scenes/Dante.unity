@@ -3113,6 +3113,10 @@ PrefabInstance:
       propertyPath: mediumGameHostileSpawner
       value: 
       objectReference: {fileID: 958504843}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: defaultQuest
+      value: 
+      objectReference: {fileID: 11400000, guid: 071ff50321f7f3a4cbcf85ae1cd8e1bf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

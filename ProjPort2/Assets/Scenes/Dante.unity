@@ -3634,12 +3634,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: activeQuest1
+      value: 
+      objectReference: {fileID: 11400000, guid: 813ab640808c3cc4aa26170f03b33267, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: rentAmountDue
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: dayLengthInMinutes
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: availableQuests.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

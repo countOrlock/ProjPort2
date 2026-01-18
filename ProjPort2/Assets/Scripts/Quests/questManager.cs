@@ -70,7 +70,6 @@ public class questManager : MonoBehaviour
     {
         dayTimerInSeconds += Time.deltaTime;
         CheckTimeLeft();
-        //CheckRentPaid();
     }
 
     void CheckTimeLeft()
@@ -119,14 +118,6 @@ public class questManager : MonoBehaviour
             CompleteQuest(2);
         }
         }
-
-    //public void CheckRentPaid()
-    //{
-    //    if (gameManager.instance.gameGoalCount >= rentAmountDue)
-    //    {
-    //        gameManager.instance.youWin();
-    //    }
-    //}
 
     void CompleteQuest(int activeQuest)
     {
@@ -195,6 +186,7 @@ public class questManager : MonoBehaviour
                 }
             }
 
+            gameManager.instance.updateAvailableQuests();
             return false;
         }
 
@@ -217,7 +209,7 @@ public class questManager : MonoBehaviour
             return false;
         }
 
-            availableQuests.Remove(newQuest);
+        availableQuests.Remove(newQuest);
         if (completedQuest)
         {
             MoveUnavailableQuestToAvailableQuest(completedQuest);
@@ -227,6 +219,7 @@ public class questManager : MonoBehaviour
             MoveUnavailableQuestToAvailableQuest();
         }
 
+        gameManager.instance.updateAvailableQuests();
         return true;
     }
 

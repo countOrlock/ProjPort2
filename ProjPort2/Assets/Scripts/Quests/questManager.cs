@@ -7,7 +7,8 @@ public class questManager : MonoBehaviour
 {
     public static questManager instance;
 
-    [SerializeField] List<questInfo> unavailableQuests;
+    [Header("-----General-----")]
+    [SerializeField] public List<questInfo> unavailableQuests;
     [SerializeField] public List<questInfo> availableQuests;
     public questInfo activeQuest1;
     public questInfo activeQuest2;
@@ -18,6 +19,13 @@ public class questManager : MonoBehaviour
     private int quest2Target;
     private int quest2Current;
 
+    [Header("-----Day Info-----")]
+    [SerializeField] public float dayLengthInMinutes;
+    [SerializeField] public int   rentAmountDue;
+    float dayTimeInSeconds;
+    float dayTimerInSeconds;
+
+
     void Awake()
     {
         instance = this;
@@ -26,6 +34,11 @@ public class questManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // For Day Initialization
+        dayTimeInSeconds = dayLengthInMinutes * 60;
+        gameManager.instance.updateGameGoalNeeded(rentAmountDue);
+
+        // For Quest Initialization
         quest1Current = 0;
         quest2Current = 0;
 
@@ -55,7 +68,18 @@ public class questManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dayTimerInSeconds += Time.deltaTime;
+        CheckTimeLeft();
+    }
 
+    void CheckTimeLeft()
+    {
+        gameManager.instance.updateDayTime(dayTimeInSeconds - dayTimerInSeconds);
+        if (dayTimerInSeconds > dayTimeInSeconds)
+        {
+            dayTimerInSeconds = 0;
+            gameManager.instance.youLose();
+        }
     }
 
     public void UpdateCurrentQuest(GameObject animal, int amount)
@@ -125,6 +149,7 @@ public class questManager : MonoBehaviour
             GiveNewQuest(availableQuests[0], completedQuest);
         }
 
+
     }
 
     questInfo FindNextLevelQuest(questInfo quest)
@@ -161,6 +186,7 @@ public class questManager : MonoBehaviour
                 }
             }
 
+            gameManager.instance.updateAvailableQuests();
             return false;
         }
 
@@ -183,7 +209,7 @@ public class questManager : MonoBehaviour
             return false;
         }
 
-            availableQuests.Remove(newQuest);
+        availableQuests.Remove(newQuest);
         if (completedQuest)
         {
             MoveUnavailableQuestToAvailableQuest(completedQuest);
@@ -193,6 +219,7 @@ public class questManager : MonoBehaviour
             MoveUnavailableQuestToAvailableQuest();
         }
 
+        gameManager.instance.updateAvailableQuests();
         return true;
     }
 
@@ -228,7 +255,5 @@ public class questManager : MonoBehaviour
             questInfo newQuest = new questInfo();
             availableQuests.Add(newQuest);
         }
-
-        gameManager.instance.updateAvailableQuests();
     }
 }

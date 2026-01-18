@@ -188,7 +188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6843105125683420796}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -550,6 +550,24 @@ MonoBehaviour:
   damageUpTimer: 0
   timeDamageUp: 0
   damageUpAmount: 0
+  isSpeedUp: 0
+  speedUpTimer: 0
+  timeSpeedUp: 0
+  speedUpAmount: 0
+  isJumpUp: 0
+  jumpUpTimer: 0
+  timeJumpUp: 0
+  jumpUpAmount: 0
+  isDoubleJump: 0
+  doubleJumpTimer: 0
+  timeDoubleJump: 0
+  doubleJumpAmount: 0
+  isHealing: 0
+  healingTimer: 0
+  timeHealing: 0
+  isDrunk: 0
+  drunkTimer: 0
+  timeDrunk: 0
   anim: {fileID: 1128826592024148964}
 --- !u!114 &5778749303491190053
 MonoBehaviour:

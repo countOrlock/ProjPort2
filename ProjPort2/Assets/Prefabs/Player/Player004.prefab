@@ -433,6 +433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6503316508990841740}
   - component: {fileID: 340904989919816821}
+  - component: {fileID: 5778749303491190053}
   - component: {fileID: 7174832327420152129}
   - component: {fileID: 8946319230293315414}
   - component: {fileID: 6419759126234275546}
@@ -541,7 +542,23 @@ MonoBehaviour:
   questName: 
   questObjective: 
   isBurning: 0
+  isSlow: 0
+  slowMod: 0
   anim: {fileID: 1128826592024148964}
+--- !u!114 &5778749303491190053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726352775847767780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39873334e94044e40b548a4ff52a99ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactor
+  interactorSource: {fileID: 6071646225770469010}
+  interactRange: 5
 --- !u!143 &7174832327420152129
 CharacterController:
   m_ObjectHideFlags: 0

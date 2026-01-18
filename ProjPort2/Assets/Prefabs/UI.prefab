@@ -1915,6 +1915,7 @@ MonoBehaviour:
   menuLose: {fileID: 6841110865161660845}
   menuQuests: {fileID: 5015638506898611165}
   menuShop: {fileID: 4458618091225578614}
+  interactPopup: {fileID: 9184927333506226888}
   gameGoalCountText: {fileID: 587727451725917064}
   gameGoalNeededText: {fileID: 8848150914686016638}
   questNameText: {fileID: 0}
@@ -24452,7 +24453,7 @@ GameObject:
   - component: {fileID: 3848700858480764213}
   - component: {fileID: 6142631529998095479}
   m_Layer: 5
-  m_Name: Press (E)
+  m_Name: Press (F)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24505,7 +24506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press (E)
+  m_text: Press (F)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

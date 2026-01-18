@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class showInteractionText : MonoBehaviour
 {
-    [SerializeField] GameObject interactionPopupTxt;
+    SphereCollider collider;
 
+    public void Start()
+    {
+        collider = GetComponent<SphereCollider>();
+    }
     private void OnTriggerEnter(Collider player)
     {
         if (player.gameObject.tag == "Player")
         {
-            interactionPopupTxt.SetActive(true);
+            gameManager.instance.playerInteract.interactRange = collider.radius;
+            gameManager.instance.playerInteract.inRange = true;
         }
     }
 
@@ -16,7 +21,7 @@ public class showInteractionText : MonoBehaviour
     {
         if (player.gameObject.tag == "Player")
         {
-            interactionPopupTxt.SetActive(false);
+            gameManager.instance.playerInteract.inRange = false;
         }
     }
 }

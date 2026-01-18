@@ -18,6 +18,8 @@ MonoBehaviour:
   ammoCurr: 9
   ammoMax: 10
   isPowerUP: 1
+  Drunk: 1
+  drunkTime: 5
   _powerUpType: 1
   powerUpTime: 5
   powerUpAmount: 3

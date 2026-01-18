@@ -110,6 +110,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     public float timeDoubleJump;
     public int doubleJumpAmount;
 
+    public bool isDrunk;
+    public float drunkTimer;
+    public float timeDrunk;
+
     [Header("----- Animation -----")]
     [SerializeField] Animator anim;
 
@@ -156,6 +160,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 speedUpTimer += Time.deltaTime;
                 jumpUpTimer += Time.deltaTime;
                 doubleJumpTimer += Time.deltaTime;
+                drunkTimer += Time.deltaTime;
 
                 movement();
                 checkBuffs();
@@ -646,6 +651,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             default:
                 break;
         }
+
+        if (throwList[throwListPos].Drunk)
+        {
+            drunk(throwList[throwListPos].drunkTime);
+        }
     }
 
     void changeThrow()
@@ -759,9 +769,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     }
 
-    public void drunk(float time, int drunkStacks)
+    public void drunk(float time)
     {
+        drunkTimer = 0;
 
+        if(!isDrunk)
+        {
+            isDrunk = true;
+            timeDrunk = time;
+            anim.SetTrigger("Drunk");
+        }
     }
 
     public void checkBuffs()
@@ -792,6 +809,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             isDoubleJump = false;
             doubleJumpAmount = 0;
             timeDoubleJump = 0;
+        }
+
+        if (isDrunk && drunkTimer >= timeDrunk)
+        {
+            isDrunk = false;
+            anim.SetTrigger("Sober");
         }
     }
 

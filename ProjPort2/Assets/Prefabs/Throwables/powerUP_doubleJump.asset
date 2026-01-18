@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::throwStats
   projectile: {fileID: 6964113444499593189, guid: e8605aee834e8964bbe883bd89a3879a, type: 3}
   animObject: {fileID: 3482037465839035312, guid: 35b8e5bc82be3854985962e31dcd0454, type: 3}
-  itemName: 
+  itemName: Double Jump
   ammoCurr: 4
   ammoMax: 5
   isPowerUP: 1
+  Drunk: 1
+  drunkTime: 5
   _powerUpType: 3
   powerUpTime: 5
   powerUpAmount: 0

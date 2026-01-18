@@ -360,7 +360,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
 
     }
 
-    public void drunk(float time, int drunkStacks)
+    public void drunk(float time)
     {
         
     }

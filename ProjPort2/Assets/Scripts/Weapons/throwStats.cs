@@ -14,6 +14,8 @@ public class throwStats : ScriptableObject
 
     [Header("----- Power Up -----")]
     public bool isPowerUP;
+    public bool Drunk;
+    public float drunkTime;
     public enum powerUpType { damage, speed, jumpHeight, doubleJump }
     public powerUpType _powerUpType;
     public float powerUpTime;

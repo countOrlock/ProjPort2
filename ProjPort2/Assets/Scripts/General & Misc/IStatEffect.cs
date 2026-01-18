@@ -16,5 +16,5 @@ public interface IStatEff
 
     public void healthUP(float time, int healthAmount);
 
-    public void drunk(float time, int drunkStacks);
+    public void drunk(float time);
 }

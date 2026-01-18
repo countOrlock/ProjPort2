@@ -471,7 +471,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         
     }
 
-    public void drunk(float time, int drunkStacks)
+    public void drunk(float time)
     {
         
     }

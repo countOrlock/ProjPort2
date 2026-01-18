@@ -19,10 +19,10 @@ MonoBehaviour:
   shootDist: 15
   shootRate: 1
   reloadRate: 5
-  recoil: 0
+  recoil: 5
   ammoCur: 0
   ammoMax: 2
-  magsCur: 19
+  magsCur: 20
   magsMax: 20
   zoomMod: 0.8
   hitEffect: {fileID: 8573406259994096289, guid: f3215467cd9e8d041b7c38ca802e2ddd, type: 3}

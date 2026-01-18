@@ -829,6 +829,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: activeQuest1
+      value: 
+      objectReference: {fileID: 11400000, guid: a8eecbafa646ef14ab27861ce6675e00, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: activeQuest2
+      value: 
+      objectReference: {fileID: 11400000, guid: 224d2280812c62846a32e349ebad919a, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: availableQuests.Array.size
       value: 5
       objectReference: {fileID: 0}

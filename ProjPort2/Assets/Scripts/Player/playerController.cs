@@ -167,6 +167,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 speedUpTimer += Time.deltaTime;
                 jumpUpTimer += Time.deltaTime;
                 doubleJumpTimer += Time.deltaTime;
+                healingTimer += Time.deltaTime;
                 drunkTimer += Time.deltaTime;
 
                 movement();
@@ -779,7 +780,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     {
         healingTimer = 0;
         if (!isHealing)
+        {
+            timeHealing = time;
             StartCoroutine(healing(time, healRate, healthAmount));
+        }
     }
 
     public void drunk(float time)
@@ -822,6 +826,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             isDoubleJump = false;
             doubleJumpAmount = 0;
             timeDoubleJump = 0;
+        }
+
+        if (isHealing && healingTimer >= timeHealing)
+        {
+            isHealing = false;
+            timeHealing = 0;
         }
 
         if (isDrunk && drunkTimer >= timeDrunk)

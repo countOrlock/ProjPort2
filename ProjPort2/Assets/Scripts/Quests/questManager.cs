@@ -20,6 +20,8 @@ public class questManager : MonoBehaviour
     private int quest2Current;
 
     [Header("-----Day Info-----")]
+    [SerializeField] public float dayLengthInMinutes;
+    [SerializeField] public int   rentAmountDue;
     float dayTimeInSeconds;
     float dayTimerInSeconds;
 
@@ -33,7 +35,8 @@ public class questManager : MonoBehaviour
     void Start()
     {
         // For Day Initialization
-        dayTimeInSeconds = DayManager.instance.currentDay.dayLengthInMinutes * 60;
+        dayTimeInSeconds = dayLengthInMinutes * 60;
+        gameManager.instance.updateGameGoalNeeded(rentAmountDue);
 
         // For Quest Initialization
         quest1Current = 0;
@@ -67,7 +70,7 @@ public class questManager : MonoBehaviour
     {
         dayTimerInSeconds += Time.deltaTime;
         CheckTimeLeft();
-        CheckRentPaid();
+        //CheckRentPaid();
     }
 
     void CheckTimeLeft()
@@ -117,13 +120,13 @@ public class questManager : MonoBehaviour
         }
         }
 
-    public void CheckRentPaid()
-    {
-        if (gameManager.instance.player.GetComponent<playerController>().Gold >= DayManager.instance.currentDay.rentAmountDue)
-        {
-            gameManager.instance.youWin();
-        }
-    }
+    //public void CheckRentPaid()
+    //{
+    //    if (gameManager.instance.gameGoalCount >= rentAmountDue)
+    //    {
+    //        gameManager.instance.youWin();
+    //    }
+    //}
 
     void CompleteQuest(int activeQuest)
     {
@@ -138,7 +141,6 @@ public class questManager : MonoBehaviour
             completedQuest = activeQuest1;
             completeQuests.Add(activeQuest1);
             gameManager.instance.player.GetComponent<playerController>().Gold += activeQuest1.reward;
-            DayManager.instance.UpdateGoldEarned(activeQuest1.reward);
             gameManager.instance.updateGameGoal(activeQuest1.reward);
             activeQuest1 = null;
         }
@@ -147,7 +149,6 @@ public class questManager : MonoBehaviour
             completedQuest = activeQuest2;
             completeQuests.Add(activeQuest2);
             gameManager.instance.player.GetComponent<playerController>().Gold += activeQuest2.reward;
-            DayManager.instance.UpdateGoldEarned(activeQuest2.reward);
             gameManager.instance.updateGameGoal(activeQuest2.reward);
             activeQuest2 = null;
         }
@@ -157,7 +158,7 @@ public class questManager : MonoBehaviour
             GiveNewQuest(availableQuests[0], completedQuest);
         }
 
-        DayManager.instance.UpdateQuests();
+
     }
 
     questInfo FindNextLevelQuest(questInfo quest)
@@ -194,7 +195,6 @@ public class questManager : MonoBehaviour
                 }
             }
 
-            DayManager.instance.UpdateQuests();
             return false;
         }
 
@@ -214,7 +214,6 @@ public class questManager : MonoBehaviour
         }
         else
         {
-            DayManager.instance.UpdateQuests();
             return false;
         }
 
@@ -227,8 +226,6 @@ public class questManager : MonoBehaviour
         {
             MoveUnavailableQuestToAvailableQuest();
         }
-
-        DayManager.instance.UpdateQuests();
 
         return true;
     }
@@ -265,16 +262,5 @@ public class questManager : MonoBehaviour
             questInfo newQuest = new questInfo();
             availableQuests.Add(newQuest);
         }
-
-        gameManager.instance.updateAvailableQuests();
-    }
-
-    public void ResetQuestsToStartOfDay()
-    {
-        unavailableQuests = DayManager.instance.unavailableQuests;
-        availableQuests   = DayManager.instance.availableQuests;
-        activeQuest1      = DayManager.instance.activeQuest1;
-        activeQuest2      = DayManager.instance.activeQuest2;
-        completeQuests    = DayManager.instance.TotalCompletedQuests;
     }
 }

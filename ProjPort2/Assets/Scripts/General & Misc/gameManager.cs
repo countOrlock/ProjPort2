@@ -84,7 +84,7 @@ public class gameManager : MonoBehaviour
     private void Start()
     {
         checkHunters();
-        gameGoalNeededText.text = targetGold.ToString("F0");
+        gameGoalCount = 0;
     }
 
     // Update is called once per frame
@@ -143,10 +143,15 @@ public class gameManager : MonoBehaviour
         gameGoalCount += amount;
         gameGoalCountText.text = gameGoalCount.ToString("F0");
 
-        if (gameGoalCount >= targetGold)
+        if (gameGoalCount >= questManager.instance.rentAmountDue)
         {
             youWin();
         }
+    }
+
+    public void updateGameGoalNeeded(int amount)
+    {
+        gameGoalNeededText.text = amount.ToString();
     }
 
     public void updateAvailableQuests()
@@ -268,13 +273,6 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuWin;
         menuActive.SetActive(true);
-    }
-
-    public void ResetPlayerToStartOfDay()
-    {
-        player.GetComponent<playerController>().Gold    -= DayManager.instance.goldEarned;
-        player.GetComponent<playerController>().gunList  = DayManager.instance.playerGunList;
-        // Reset Player Item Inventory
     }
 
     public void checkHunters()

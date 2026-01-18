@@ -24,7 +24,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     [SerializeField] float gravity;
     [SerializeField] int jumpCount;
     [SerializeField] float stanceChangeSpeed;
-    [Range(0, 1000)][SerializeField] public int Gold;
 
     Vector3 moveDir;
     Vector2 walkDir;
@@ -44,7 +43,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] LineRenderer Laser;
     float shootTimer;
-    [SerializeField] public List<gunStats> gunList = new List<gunStats>();
+    [SerializeField] List<gunStats> gunList = new List<gunStats>();
     int gunListPos;
     public int currentAmmo;
     public int maxAmmo;
@@ -76,6 +75,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
 
     [Header("----- Quest Fields -----")]
+    [Range(0, 1000)][SerializeField] public int Gold;
     [SerializeField] List<questInfo> questList = new List<questInfo>();
     [SerializeField] List<GameObject> questItemList = new List<GameObject>();
     public string questName;

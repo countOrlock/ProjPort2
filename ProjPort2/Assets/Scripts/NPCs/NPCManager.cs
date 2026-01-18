@@ -240,7 +240,7 @@ public class NPCManager : MonoBehaviour
         }
     }
 
-    public string GetModelName(GameObject NPC)
+    string GetModelName(GameObject NPC)
     {
         bool isAnimal = NPC.GetComponent<animalAI>();
 

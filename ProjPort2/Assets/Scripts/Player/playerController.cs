@@ -110,6 +110,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     public float timeDoubleJump;
     public int doubleJumpAmount;
 
+    public bool isHealing;
+    public float healingTimer;
+    public float timeHealing;
+
     public bool isDrunk;
     public float drunkTimer;
     public float timeDrunk;
@@ -141,6 +145,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         speedUpAmount = 1;
         jumpUpAmount = 1;
         doubleJumpAmount = 0;
+
+        updatePlayerUI();
+
 
         respawnPlayer();
     }
@@ -648,6 +655,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 jumpDouble(throwList[throwListPos].powerUpTime, throwList[throwListPos].powerUpAmountInt);
                 break;
 
+            case throwStats.powerUpType.healing:
+                healthUP(throwList[throwListPos].powerUpTime, throwList[throwListPos].powerUpAmount, throwList[throwListPos].powerUpAmountInt);
+                break;
+
             default:
                 break;
         }
@@ -764,9 +775,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         }
     }
 
-    public void healthUP(float time, int healthAmount)
+    public void healthUP(float time, float healRate, int healthAmount)
     {
-
+        healingTimer = 0;
+        if (!isHealing)
+            StartCoroutine(healing(time, healRate, healthAmount));
     }
 
     public void drunk(float time)
@@ -836,6 +849,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         yield return new WaitForSeconds(time);
         slowMod = 1;
         isSlow = false;
+    }
+
+    IEnumerator healing (float time, float healRate, int healAmount)
+    {
+        isHealing = true;
+        while (healingTimer < time && stance != stanceType.dead)
+        {
+            HP += healAmount;
+            if (HP > HPOrig)
+                HP = HPOrig;
+            updatePlayerUI();
+            yield return new WaitForSeconds(healRate);
+        }
+        isHealing = false;
     }
 
     public void respawnPlayer()

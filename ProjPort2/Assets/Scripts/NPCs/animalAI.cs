@@ -355,7 +355,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         
     }
 
-    public void healthUP(float time, int healthAmount)
+    public void healthUP(float time, float healRate, int healthAmount)
     {
 
     }

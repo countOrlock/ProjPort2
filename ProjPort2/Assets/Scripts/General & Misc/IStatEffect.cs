@@ -14,7 +14,7 @@ public interface IStatEff
 
     public void jumpDouble(float time, int jumpAdd);
 
-    public void healthUP(float time, int healthAmount);
+    public void healthUP(float time, float healRate, int healthAmount);
 
     public void drunk(float time);
 }

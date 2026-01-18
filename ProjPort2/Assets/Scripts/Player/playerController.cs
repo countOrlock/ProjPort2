@@ -4,6 +4,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using System.Linq;
 using System.Diagnostics.CodeAnalysis;
+using NUnit.Framework.Constraints;
 
 public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 {
@@ -59,6 +60,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     int throwListPos;
     float throwTimer;
     float throwRate;
+    bool throwing;
 
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
@@ -87,6 +89,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     public bool isBurning;
     public bool isSlow;
     public float slowMod;
+    public bool isDamageUP;
+    public float damageUpTimer;
+    public float timeDamageUp;
+    public int damageUpAmount;
 
     [Header("----- Animation -----")]
     [SerializeField] Animator anim;
@@ -111,6 +117,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         targetHeight = heightOrig;
         stance = stanceType.standing;
         slowMod = 1f;
+        damageUpAmount = 0;
 
         respawnPlayer();
     }
@@ -126,8 +133,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 shootTimer += Time.deltaTime;
                 throwTimer += Time.deltaTime;
                 fireTimer += Time.deltaTime;
+                damageUpTimer += Time.deltaTime;
 
                 movement();
+                checkBuffs();
 
                 if (gunList.Any())
                     Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * gunList[gunListPos].shootDist, Color.white);
@@ -356,7 +365,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
                 if (dmg != null)
                 {
-                    dmg.takeDamage(gunList[gunListPos].shootDamage);
+                    dmg.takeDamage(gunList[gunListPos].shootDamage + damageUpAmount);
                 }
             }
         }
@@ -414,7 +423,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
                 if (dmg != null)
                 {
-                    dmg.takeDamage(gunList[gunListPos].shootDamage2);
+                    dmg.takeDamage(gunList[gunListPos].shootDamage2 + damageUpAmount);
                 }
             }
         }
@@ -557,22 +566,51 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     void throwItem()
     {
-        throwTimer = 0;
-        throwList[throwListPos].ammoCurr--;
-        gameManager.instance.updateItemCount(throwList[throwListPos].ammoCurr);
-
-        if (throwList[throwListPos].throwSound.Length > 0)
-            aud.PlayOneShot(throwList[throwListPos].throwSound[Random.Range(0, throwList[throwListPos].throwSound.Length)], throwList[throwListPos].throwSoundVol);
-
-        if (throwList[throwListPos].animObject != null)
+        if (throwTimer >= throwRate && !throwing)
         {
-            throwModel.GetComponent<MeshFilter>().sharedMesh = throwList[throwListPos].animObject.GetComponent<MeshFilter>().sharedMesh;
-            throwModel.GetComponent<MeshRenderer>().sharedMaterial = throwList[throwListPos].animObject.GetComponent<MeshRenderer>().sharedMaterial;
-            //add animation code here
+            throwTimer = 0;
+            throwing = true;
+            throwList[throwListPos].ammoCurr--;
+            gameManager.instance.updateItemCount(throwList[throwListPos].ammoCurr);
+
+            if (throwList[throwListPos].throwSound.Length > 0)
+                aud.PlayOneShot(throwList[throwListPos].throwSound[Random.Range(0, throwList[throwListPos].throwSound.Length)], throwList[throwListPos].throwSoundVol);
+
+            if (throwList[throwListPos].animObject != null)
+            {
+                throwModel.SetActive(true);
+                if (throwList[throwListPos].isPowerUP)
+                {
+                    throwModel.GetComponent<MeshFilter>().sharedMesh = throwList[throwListPos].animObject.GetComponent<MeshFilter>().sharedMesh;
+                    throwModel.GetComponent<MeshRenderer>().sharedMaterial = throwList[throwListPos].animObject.GetComponent<MeshRenderer>().sharedMaterial;
+                    //add animation code here
+                    anim.SetTrigger("Drink");
+                }
+            }
+            else
+            {
+                endThrowEvent();
+            }
         }
-        else
+    }
+
+    void endThrowEvent()
+    {
+        throwModel.SetActive(false);
+        Instantiate(throwList[throwListPos].projectile, playerCam.transform.position, playerCam.transform.rotation);
+        throwing = false;
+    }
+
+    void powerUP()
+    {
+        switch(throwList[throwListPos]._powerUpType)
         {
-            Instantiate(throwList[throwListPos].projectile, playerCam.transform.position, playerCam.transform.rotation);
+            case throwStats.powerUpType.damage:
+                damageUP(throwList[throwListPos].powerUpTime, throwList[throwListPos].powerUpAmountInt);
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -586,12 +624,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     void selectThrow()
     {
-        if (Input.GetButtonDown("Throwable Right") && throwListPos < throwList.Count - 1 && reloading == false)
+        if (Input.GetButtonDown("Throwable Right") && throwListPos < throwList.Count - 1 && throwing == false)
         {
             throwListPos++;
             changeThrow();
         }
-        else if (Input.GetButtonDown("Throwable Left") && throwListPos > 0 && reloading == false)
+        else if (Input.GetButtonDown("Throwable Left") && throwListPos > 0 && throwing == false)
         {
             throwListPos--;
             changeThrow();
@@ -608,7 +646,65 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         }
     }
 
-    IEnumerator burning (float time, int hpRate)
+    public void slow(float time, float slowAmount)
+    {
+        if (!isSlow)
+            StartCoroutine(slowed(time, slowAmount));
+    }
+
+    public void damageUP(float time, int damageAmount)
+    {
+        damageUpTimer = 0;
+
+        if (isDamageUP)
+        {
+            damageUpAmount += damageAmount;
+            timeDamageUp += time;
+        }
+        else
+        {
+            isDamageUP = true;
+            damageUpAmount = damageAmount;
+            timeDamageUp = time;
+        }
+    }
+
+    public void speedUP(float time, float speedAmount)
+    {
+
+    }
+
+    public void jumpUP(float time, float jumpAmount)
+    {
+
+    }
+
+    public void jumpDouble(float time, int jumpAdd)
+    {
+
+    }
+
+    public void healthUP(float time, int healthAmount)
+    {
+
+    }
+
+    public void drunk(float time, int drunkStacks)
+    {
+
+    }
+
+    public void checkBuffs()
+    {
+        if(isDamageUP && damageUpTimer >= timeDamageUp)
+        {
+            isDamageUP = false;
+            damageUpAmount = 0;
+            timeDamageUp = 0;
+        }
+    }
+
+    IEnumerator burning(float time, int hpRate)
     {
         isBurning = true;
         while (fireTimer < time && stance != stanceType.dead)
@@ -617,12 +713,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             yield return new WaitForSeconds(0.5f);
         }
         isBurning = false;
-    }
-
-    public void slow(float time, float slowAmount)
-    {
-        if (!isSlow)
-            StartCoroutine(slowed(time, slowAmount));
     }
 
     IEnumerator slowed (float time, float slowAmount)
@@ -655,4 +745,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
         stanceChange();
     }
+
+    
 }

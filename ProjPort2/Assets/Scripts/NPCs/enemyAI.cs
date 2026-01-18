@@ -445,4 +445,34 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         agent.speed = speedOrig;
         isSlow = false;
     }
+
+    public void damageUP(float time, int damageAmount)
+    {
+        
+    }
+
+    public void speedUP(float time, float speedAmount)
+    {
+        
+    }
+
+    public void jumpUP(float time, float jumpAmount)
+    {
+        
+    }
+
+    public void jumpDouble(float time, int jumpAdd)
+    {
+        
+    }
+
+    public void healthUP(float time, int healthAmount)
+    {
+        
+    }
+
+    public void drunk(float time, int drunkStacks)
+    {
+        
+    }
 }

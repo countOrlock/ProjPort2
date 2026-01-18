@@ -12,6 +12,14 @@ public class throwStats : ScriptableObject
     public int ammoCurr;
     [Range(1, 50)] public int ammoMax;
 
+    [Header("----- Power Up -----")]
+    public bool isPowerUP;
+    public enum powerUpType { damage, speed, jumpHeight, doubleJump }
+    public powerUpType _powerUpType;
+    public float powerUpTime;
+    public float powerUpAmount;
+    public int powerUpAmountInt;
+
     public AudioClip[] throwSound;
     public AudioClip[] pickupSound;
     [Range(0, 1)] public float throwSoundVol;

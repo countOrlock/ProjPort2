@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
   interactorSource: {fileID: 6071646225770469010}
+  inRange: 0
   interactRange: 10
 --- !u!20 &8698845205236387683
 Camera:
@@ -474,7 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fae6c06e568aa4885dc62435ad8c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerController
-  stance: 0
+  stance: 1
   controller: {fileID: 7174832327420152129}
   playerCam: {fileID: 8000944031630460299}
   HP: 10
@@ -558,6 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
   interactorSource: {fileID: 6071646225770469010}
+  inRange: 0
   interactRange: 5
 --- !u!143 &7174832327420152129
 CharacterController:

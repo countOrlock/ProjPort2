@@ -103,8 +103,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     void Start()
     {
         HPOrig = HP;
+        jumpMod = 0f;
+        speedMod = wSpeed;
+        maxJump = jumpCount;
+        heightOrig = controller.height;
+        controllerHeightOrig = controller.center.y;
+        targetHeight = heightOrig;
+        stance = stanceType.standing;
+        slowMod = 1f;
 
-        
         respawnPlayer();
     }
 
@@ -644,14 +651,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
         updatePlayerUI();
 
-        jumpMod = 0f;
-        speedMod = wSpeed;
-        maxJump = jumpCount;
-        heightOrig = controller.height;
-        controllerHeightOrig = controller.center.y;
-        targetHeight = heightOrig;
-        stance = stanceType.standing;
-        slowMod = 1f;
+        
 
         stanceChange();
     }

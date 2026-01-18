@@ -195,7 +195,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         //zoom
         if (Input.GetButtonDown("Fire2") && gunList.Any() && gunList[gunListPos].HasSecondary == false)
             playerCam.GetComponent<cameraController>().zoomIn(gunList[gunListPos].zoomMod);
-        else if (Input.GetButtonUp("Fire2") && gunList[gunListPos].HasSecondary == false)
+        else if (Input.GetButtonUp("Fire2") && gunList.Any() && gunList[gunListPos].HasSecondary == false)
             playerCam.GetComponent<cameraController>().zoomOut();
 
         //throwable object

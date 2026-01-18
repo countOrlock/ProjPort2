@@ -10,6 +10,8 @@ TagManager:
   - Small Game
   - Medium Game
   - Ground
+  - FxTemporaire
+  - Player Spawn Pos
   layers:
   - Default
   - TransparentFX

@@ -58,6 +58,7 @@ public class gameManager : MonoBehaviour
     [Header("===Misc Variables===")]
     public GameObject player;
     public playerController playerScript;
+    public GameObject playerSpawnPos;
     public Interactor playerInteract;
     public Image playerHPBar;
     public GameObject playerDamageScreen;
@@ -84,6 +85,7 @@ public class gameManager : MonoBehaviour
         playerInteract = player.GetComponent<Interactor>();
 
         hunterSpawner = GameObject.FindWithTag("Hunter Spawner");
+        playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
     }
 
     private void Start()

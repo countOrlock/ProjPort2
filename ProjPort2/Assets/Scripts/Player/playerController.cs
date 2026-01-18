@@ -103,16 +103,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     void Start()
     {
         HPOrig = HP;
-        updatePlayerUI();
 
-        jumpMod = 0f;
-        speedMod = wSpeed;
-        maxJump = jumpCount;
-        heightOrig = controller.height;
-        controllerHeightOrig = controller.center.y;
-        targetHeight = heightOrig;
-        stance = stanceType.standing;
-        slowMod = 1f;
+        
         respawnPlayer();
     }
 
@@ -165,8 +157,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         //recoil
         if (recoilSpeed.magnitude > 0.1f)
         {
+            recoilSpeed += -Camera.main.transform.forward * gunList[gunListPos].recoil;
             controller.Move(recoilSpeed * Time.deltaTime);
-            recoilSpeed = Vector3.Lerp(recoilSpeed, Vector3.zero, 5f * Time.deltaTime);
+            
         }
         else
         {
@@ -578,10 +571,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     void changeThrow()
     {
-        //gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        //gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
         gameManager.instance.updateItem(throwList[throwListPos].itemName);
         gameManager.instance.updateItemCount(throwList[throwListPos].ammoCurr);
+
+        
     }
 
     void selectThrow()
@@ -636,9 +629,30 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     public void respawnPlayer()
     {
+        //controller.enabled = false;
+
         controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+
+        //controller.enabled = true;
+
         HP = HPOrig;
-        stance = stanceType.standing;
+
+        //currentAmmo = gunList[gunListPos].ammoCur;
+        //maxAmmo = gunList[gunListPos].ammoMax;
+        //currentMags = gunList[gunListPos].magsCur;
+       // maxMags = gunList[gunListPos].magsMax;
+
         updatePlayerUI();
+
+        jumpMod = 0f;
+        speedMod = wSpeed;
+        maxJump = jumpCount;
+        heightOrig = controller.height;
+        controllerHeightOrig = controller.center.y;
+        targetHeight = heightOrig;
+        stance = stanceType.standing;
+        slowMod = 1f;
+
+        stanceChange();
     }
 }

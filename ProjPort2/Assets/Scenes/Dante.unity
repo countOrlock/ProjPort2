@@ -3094,10 +3094,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 600939576}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: mediumGameHostile
-      value: 
-      objectReference: {fileID: 1696124183839179580, guid: f476aa3e6b6e7bc449450bef2b3c2860, type: 3}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: smallGame1Spawner
       value: 
       objectReference: {fileID: 1776893313}
@@ -3117,14 +3113,6 @@ PrefabInstance:
       propertyPath: mediumGameHostileSpawner
       value: 
       objectReference: {fileID: 958504843}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: mediumGameHostileSpawnLimit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: mediumGameHostileSpawnMinimum
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

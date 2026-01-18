@@ -113,6 +113,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         targetHeight = heightOrig;
         stance = stanceType.standing;
         slowMod = 1f;
+        respawnPlayer();
     }
 
     // Update is called once per frame
@@ -631,5 +632,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         yield return new WaitForSeconds(time);
         slowMod = 1;
         isSlow = false;
+    }
+
+    public void respawnPlayer()
+    {
+        controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        HP = HPOrig;
+        stance = stanceType.standing;
+        updatePlayerUI();
     }
 }

@@ -15,6 +15,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuQuests;
     [SerializeField] GameObject menuShop;
 
+    [Header("=====Popups=====")]
+    [SerializeField] GameObject interactPopup;
+
     [Header("===Displayed Text===")]
     [SerializeField] TMP_Text gameGoalCountText;
     [SerializeField] TMP_Text gameGoalNeededText;
@@ -55,6 +58,7 @@ public class gameManager : MonoBehaviour
     [Header("===Misc Variables===")]
     public GameObject player;
     public playerController playerScript;
+    public Interactor playerInteract;
     public Image playerHPBar;
     public GameObject playerDamageScreen;
     public GameObject hunterSpawner;
@@ -77,6 +81,7 @@ public class gameManager : MonoBehaviour
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
+        playerInteract = player.GetComponent<Interactor>();
 
         hunterSpawner = GameObject.FindWithTag("Hunter Spawner");
     }
@@ -98,7 +103,7 @@ public class gameManager : MonoBehaviour
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
-            else if (menuActive == menuPause)
+            else if (menuActive == menuPause || menuActive == menuShop)
             {
                 stateUnpause();
             }
@@ -143,6 +148,16 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuShop;
         menuActive.SetActive(true);
+    }
+
+    public void InteractOn()
+    {
+        interactPopup.SetActive(true);
+    }
+
+    public void InteractOff()
+    {
+        interactPopup.SetActive(false);
     }
 
     public void updateGameGoal(int amount)

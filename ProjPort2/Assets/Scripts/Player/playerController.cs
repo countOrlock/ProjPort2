@@ -100,6 +100,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     public float timeSpeedUp;
     public float speedUpAmount;
 
+    public bool isJumpUp;
+    public float jumpUpTimer;
+    public float timeJumpUp;
+    public float jumpUpAmount;
+
+    public bool isDoubleJump;
+    public float doubleJumpTimer;
+    public float timeDoubleJump;
+    public int doubleJumpAmount;
+
     [Header("----- Animation -----")]
     [SerializeField] Animator anim;
 
@@ -125,6 +135,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         slowMod = 1f;
         damageUpAmount = 0;
         speedUpAmount = 1;
+        jumpUpAmount = 1;
+        doubleJumpAmount = 0;
 
         respawnPlayer();
     }
@@ -142,6 +154,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 fireTimer += Time.deltaTime;
                 damageUpTimer += Time.deltaTime;
                 speedUpTimer += Time.deltaTime;
+                jumpUpTimer += Time.deltaTime;
+                doubleJumpTimer += Time.deltaTime;
 
                 movement();
                 checkBuffs();
@@ -309,7 +323,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             jumpCount = maxJump;
         }
 
-        if (Input.GetButtonDown("Jump") && jumpCount > 0 && !isSlow)
+        if (Input.GetButtonDown("Jump") && jumpCount > (0 - doubleJumpAmount) && !isSlow)
         {
             if (stance == stanceType.crouching || stance == stanceType.prone)
             {
@@ -318,7 +332,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             }
             else
             {
-                jumpMod = jumpSpeed;
+                jumpMod = jumpSpeed * jumpUpAmount;
                 jumpCount--;
                 aud.PlayOneShot(jumpSound[Random.Range(0, jumpSound.Length)], jumpVol);
             }
@@ -621,6 +635,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 speedUP(throwList[throwListPos].powerUpTime, throwList[throwListPos].powerUpAmount);
                 break;
 
+            case throwStats.powerUpType.jumpHeight:
+                jumpUP(throwList[throwListPos].powerUpTime, throwList[throwListPos].powerUpAmount);
+                break;
+
+            case throwStats.powerUpType.doubleJump:
+                jumpDouble(throwList[throwListPos].powerUpTime, throwList[throwListPos].powerUpAmountInt);
+                break;
+
             default:
                 break;
         }
@@ -700,12 +722,36 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     public void jumpUP(float time, float jumpAmount)
     {
+        jumpUpTimer = 0;
 
+        if (isJumpUp)
+        {
+            jumpUpAmount += jumpAmount;
+            timeJumpUp += time;
+        }
+        else
+        {
+            isJumpUp = true;
+            jumpUpAmount = jumpAmount;
+            timeJumpUp = time;
+        }
     }
 
     public void jumpDouble(float time, int jumpAdd)
     {
+        doubleJumpTimer = 0;
 
+        if(isDoubleJump)
+        {
+            doubleJumpAmount += jumpAdd;
+            timeDoubleJump += time;
+        }
+        else
+        {
+            isDoubleJump = true;
+            doubleJumpAmount = jumpAdd;
+            timeDoubleJump = time;
+        }
     }
 
     public void healthUP(float time, int healthAmount)
@@ -732,6 +778,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             isSpeedUp = false;
             speedUpAmount = 1;
             timeSpeedUp = 0;
+        }
+
+        if (isJumpUp && jumpUpTimer >= timeJumpUp)
+        {
+            isJumpUp = false;
+            jumpUpAmount = 1;
+            timeJumpUp = 0;
+        }
+
+        if (isDoubleJump && doubleJumpTimer >= timeDoubleJump)
+        {
+            isDoubleJump = false;
+            doubleJumpAmount = 0;
+            timeDoubleJump = 0;
         }
     }
 

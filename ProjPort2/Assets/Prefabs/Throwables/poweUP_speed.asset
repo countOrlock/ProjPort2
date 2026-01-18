@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5d5cf7a3c852a4ca95bb993d4107f6, type: 3}
+  m_Name: poweUP_speed
+  m_EditorClassIdentifier: Assembly-CSharp::throwStats
+  projectile: {fileID: 1477535293007493015, guid: b6eb9c4d38316ed4a9866e0bb7d22ccc, type: 3}
+  animObject: {fileID: 7154388405620587563, guid: e4702137096472943b51197c1cac2ed4, type: 3}
+  itemName: SpeedUP
+  ammoCurr: 9
+  ammoMax: 10
+  isPowerUP: 1
+  _powerUpType: 1
+  powerUpTime: 5
+  powerUpAmount: 3
+  powerUpAmountInt: 0
+  throwSound: []
+  pickupSound: []
+  throwSoundVol: 0
+  pickupSoundVol: 0

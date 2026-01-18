@@ -89,10 +89,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     public bool isBurning;
     public bool isSlow;
     public float slowMod;
+
     public bool isDamageUP;
     public float damageUpTimer;
     public float timeDamageUp;
     public int damageUpAmount;
+
+    public bool isSpeedUp;
+    public float speedUpTimer;
+    public float timeSpeedUp;
+    public float speedUpAmount;
 
     [Header("----- Animation -----")]
     [SerializeField] Animator anim;
@@ -118,6 +124,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         stance = stanceType.standing;
         slowMod = 1f;
         damageUpAmount = 0;
+        speedUpAmount = 1;
 
         respawnPlayer();
     }
@@ -134,6 +141,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 throwTimer += Time.deltaTime;
                 fireTimer += Time.deltaTime;
                 damageUpTimer += Time.deltaTime;
+                speedUpTimer += Time.deltaTime;
 
                 movement();
                 checkBuffs();
@@ -193,7 +201,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         if (walkDir.magnitude > 0.3f && !isPlayingStep && controller.isGrounded)
             StartCoroutine(playStep());
 
-        moveDir = walkDir.x * transform.right * speedMod * slowMod + walkDir.y * transform.forward * speedMod * slowMod + jumpMod * transform.up;
+        moveDir = walkDir.x * transform.right * speedMod * speedUpAmount * slowMod + walkDir.y * transform.forward * speedMod * speedUpAmount * slowMod + jumpMod * transform.up;
         controller.Move(moveDir * Time.deltaTime);
 
         if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate && reloading == false && !gameManager.instance.isPaused)
@@ -609,6 +617,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 damageUP(throwList[throwListPos].powerUpTime, throwList[throwListPos].powerUpAmountInt);
                 break;
 
+            case throwStats.powerUpType.speed:
+                speedUP(throwList[throwListPos].powerUpTime, throwList[throwListPos].powerUpAmount);
+                break;
+
             default:
                 break;
         }
@@ -671,7 +683,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     public void speedUP(float time, float speedAmount)
     {
+        speedUpTimer = 0;
 
+        if (isSpeedUp)
+        {
+            speedUpAmount += speedAmount;
+            timeSpeedUp += time;
+        }
+        else
+        {
+            isSpeedUp = true;
+            speedUpAmount = speedAmount;
+            timeSpeedUp = time;
+        }
     }
 
     public void jumpUP(float time, float jumpAmount)
@@ -701,6 +725,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             isDamageUP = false;
             damageUpAmount = 0;
             timeDamageUp = 0;
+        }
+
+        if(isSpeedUp && speedUpTimer >= timeSpeedUp)
+        {
+            isSpeedUp = false;
+            speedUpAmount = 1;
+            timeSpeedUp = 0;
         }
     }
 

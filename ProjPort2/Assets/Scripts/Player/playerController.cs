@@ -206,9 +206,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         selectThrow();
 
         //recoil
-        if (recoilSpeed.magnitude > 0.1f)
+        if (recoilSpeed.magnitude > 1f)
         {
-            recoilSpeed += -Camera.main.transform.forward * gunList[gunListPos].recoil;
+            recoilSpeed -= -Camera.main.transform.forward * 5 * Time.deltaTime;
             controller.Move(recoilSpeed * Time.deltaTime);
             
         }
@@ -362,7 +362,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         if (gunList[gunListPos].shootSound.Length > 0)
             aud.PlayOneShot(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
 
-        recoilSpeed += -Camera.main.transform.forward * gunList[gunListPos].recoil;
+        recoilSpeed = -Camera.main.transform.forward * gunList[gunListPos].recoil;
 
         if (gunList[gunListPos].Bullet == null || gunList[gunListPos].shootLaser == true)
         {

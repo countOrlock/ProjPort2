@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
+  m_Name: Flamethrower
+  m_EditorClassIdentifier: Assembly-CSharp::gunStats
+  gunModel: {fileID: 9106803508192027718, guid: f729d0247df876a40871b0469dc180fc, type: 3}
+  Bullet: {fileID: 0}
+  shootLaser: 0
+  shootDamage: 0
+  shootDist: 10
+  shootRate: 0.1
+  reloadRate: 0.1
+  recoil: 0
+  ammoCur: 177
+  ammoMax: 200
+  magsCur: 4
+  magsMax: 5
+  zoomMod: 0
+  hitEffect: {fileID: 0}
+  shootEffect: {fileID: 2971711294078377837, guid: eb3a73de6048d2140af52b313cb7b681, type: 3}
+  shootSound: []
+  reloadSound:
+  - {fileID: 8300000, guid: 0e6f4d5db8dcb574892e7a8ee698e662, type: 3}
+  shootSoundVol: 0
+  reloadSoundVol: 0

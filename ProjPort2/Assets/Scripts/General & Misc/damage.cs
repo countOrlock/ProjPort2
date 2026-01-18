@@ -1,0 +1,189 @@
+using UnityEngine;
+using System.Collections;
+
+public class damage : MonoBehaviour
+{
+    enum damageType { moving, stationary, DOT, homing, thrown, explosion, trap}
+    [SerializeField] damageType type;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] GameObject createdObject = null;
+
+    [SerializeField] int damageAmount;
+    [SerializeField] float damageRate;
+    [SerializeField] int speed;
+    [SerializeField] float destroyTime;
+    [SerializeField] bool groundCheck;
+    [SerializeField] GameObject groundObject = null;
+
+    bool isDamaging;
+    bool canDamage;
+    Quaternion groundedQuat;
+
+    [Header("----- Status Effects -----")]
+    [SerializeField] bool fire;
+    [SerializeField] int fireDamage;
+    [SerializeField] float fireTime;
+    [SerializeField] bool slow;
+    [SerializeField] float slowAmount;
+    [SerializeField] float slowTime;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        if (type == damageType.moving || type == damageType.homing || type == damageType.explosion)
+        {
+            StartCoroutine(fuseTimer());
+
+            if (type == damageType.moving)
+            {
+                rb.linearVelocity = transform.forward * speed;
+            }
+        }
+
+        if (type == damageType.thrown)
+        {
+            rb.linearVelocity = transform.forward * speed;
+            canDamage = true;
+            groundedQuat = gameManager.instance.player.transform.rotation;
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (type == damageType.homing)
+        {
+            rb.linearVelocity = (gameManager.instance.player.transform.position - transform.position).normalized * speed * Time.deltaTime;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.isTrigger)
+            return;
+
+        IDamage dmg = other.GetComponent<IDamage>();
+
+        IStatEff stat = other.GetComponent<IStatEff>();
+
+
+        if (dmg!= null && type != damageType.DOT)
+        {
+            if (type == damageType.thrown)
+            {
+                if (canDamage)
+                {
+                    canDamage = false;
+                    if (damageAmount > 0)
+                        dmg.takeDamage(damageAmount);
+                }
+            }
+            else if (type == damageType.trap)
+            {
+                if (damageAmount > 0)
+                    dmg.takeDamage(damageAmount);
+
+                if (stat  != null)
+                {
+                    if (fire)
+                        stat.fire(fireTime, fireDamage);
+                    if (slow)
+                        stat.slow(slowTime, slowAmount);
+                }
+                StartCoroutine(fuseTimer());
+            }
+            else
+            {
+                if (damageAmount > 0)
+                    dmg.takeDamage(damageAmount);
+            }
+        }
+
+        if (type == damageType.homing || type == damageType.moving)
+        {
+            Destroy(gameObject);
+        }
+
+        if (type == damageType.thrown)
+        {
+            if (groundCheck)
+            {
+                if (other.CompareTag("Ground"))
+                    StartCoroutine(grounded());
+                else
+                    StartCoroutine(fuseTimer());
+            }
+            else
+                StartCoroutine(fuseTimer());
+        }
+
+        if (stat != null)
+        {
+            if (fire)
+                stat.fire(fireTime, fireDamage);
+
+            if (slow)
+                stat.slow(slowTime, slowAmount);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.isTrigger)
+            return;
+
+        IDamage dmg = other.GetComponent<IDamage>();
+
+        if (dmg != null && type == damageType.DOT && !isDamaging)
+        {
+            IStatEff stat = other.GetComponent<IStatEff>();
+            if (stat != null)
+                StartCoroutine(damageOther(dmg, stat));
+            else
+                StartCoroutine(damageOther(dmg));
+        }
+    }
+
+    IEnumerator damageOther(IDamage d)
+    {
+        isDamaging = true;
+        d.takeDamage(damageAmount);
+        yield return new WaitForSeconds(damageRate);
+        isDamaging = false;
+    }
+
+    IEnumerator damageOther(IDamage d, IStatEff s)
+    {
+        isDamaging = true;
+        if (damageAmount > 0)
+            d.takeDamage(damageAmount);
+
+        if (fire)
+            s.fire(fireTime, fireDamage);
+
+        if (slow)
+            s.slow(slowTime, slowAmount);
+        yield return new WaitForSeconds(damageRate);
+        isDamaging = false;
+    }
+
+    IEnumerator fuseTimer()
+    {
+        yield return new WaitForSeconds(destroyTime);
+        if (createdObject != null)
+            Instantiate(createdObject, gameObject.transform.position, gameObject.transform.rotation);
+        Destroy(gameObject);
+    }
+
+    IEnumerator grounded()
+    {
+        yield return new WaitForSeconds(destroyTime);
+        if (groundObject != null)
+        {
+            
+
+            Instantiate(groundObject, gameObject.transform.position, groundedQuat);
+        }
+        Destroy(gameObject);
+    }
+}

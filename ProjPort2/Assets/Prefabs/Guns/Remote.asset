@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
+  m_Name: Remote
+  m_EditorClassIdentifier: Assembly-CSharp::gunStats
+  gunModel: {fileID: 100000, guid: 8cbbb35c5fcc276458e3e8865abf1341, type: 3}
+  Bullet: {fileID: 3253788973550098280, guid: 73e1dc2b721c8fa49b44c62d17efd388, type: 3}
+  shootLaser: 1
+  shootDamage: 0
+  shootDist: 1000
+  shootRate: 2
+  reloadRate: 10
+  recoil: 0
+  ammoCur: 0
+  ammoMax: 1
+  magsCur: 5
+  magsMax: 5
+  zoomMod: 0
+  hitEffect: {fileID: 0}
+  shootSound: []
+  reloadSound:
+  - {fileID: 8300000, guid: 0e6f4d5db8dcb574892e7a8ee698e662, type: 3}
+  shootSoundVol: 0
+  reloadSoundVol: 0

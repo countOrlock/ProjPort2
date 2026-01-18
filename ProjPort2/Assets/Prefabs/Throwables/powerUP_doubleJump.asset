@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5d5cf7a3c852a4ca95bb993d4107f6, type: 3}
+  m_Name: powerUP_doubleJump
+  m_EditorClassIdentifier: Assembly-CSharp::throwStats
+  projectile: {fileID: 6964113444499593189, guid: e8605aee834e8964bbe883bd89a3879a, type: 3}
+  animObject: {fileID: 3482037465839035312, guid: 35b8e5bc82be3854985962e31dcd0454, type: 3}
+  itemName: Double Jump
+  ammoCurr: 4
+  ammoMax: 5
+  isPowerUP: 1
+  Drunk: 1
+  drunkTime: 5
+  _powerUpType: 3
+  powerUpTime: 5
+  powerUpAmount: 0
+  powerUpAmountInt: 2
+  throwSound: []
+  pickupSound: []
+  throwSoundVol: 0
+  pickupSoundVol: 0

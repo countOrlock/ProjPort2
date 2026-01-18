@@ -7,6 +7,11 @@ TagManager:
   - Quest
   - Spawner
   - Hunter Spawner
+  - Small Game
+  - Medium Game
+  - Ground
+  - FxTemporaire
+  - Player Spawn Pos
   layers:
   - Default
   - TransparentFX
@@ -17,7 +22,7 @@ TagManager:
   - Enemy
   - Enemy Bullet
   - Gun Cam
-  - 
+  - Player Bullet
   - 
   - 
   - 

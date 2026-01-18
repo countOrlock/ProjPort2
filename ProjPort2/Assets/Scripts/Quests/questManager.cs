@@ -242,7 +242,7 @@ public class questManager : MonoBehaviour
             }
             else
             {
-                questInfo newQuest = new questInfo();
+                questInfo newQuest = ScriptableObject.Instantiate(defaultQuest);
                 availableQuests.Add(newQuest);
             }
         }

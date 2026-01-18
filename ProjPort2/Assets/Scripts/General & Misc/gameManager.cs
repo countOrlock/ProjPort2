@@ -272,8 +272,8 @@ public class gameManager : MonoBehaviour
 
     public void ResetPlayerToStartOfDay()
     {
-        player.GetComponent<playerController>().Gold    = DayManager.instance.currentDayInfoAtStartOfDay.goldEarned;
-        player.GetComponent<playerController>().gunList = DayManager.instance.currentDayInfoAtStartOfDay.playerGunList;
+        player.GetComponent<playerController>().Gold    -= DayManager.instance.goldEarned;
+        player.GetComponent<playerController>().gunList  = DayManager.instance.playerGunList;
         // Reset Player Item Inventory
     }
 

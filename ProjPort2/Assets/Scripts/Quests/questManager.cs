@@ -158,7 +158,6 @@ public class questManager : MonoBehaviour
         }
 
         DayManager.instance.UpdateQuests();
-        DayManager.instance.UpdateQuestsCompletedDuringDay(completedQuest);
     }
 
     questInfo FindNextLevelQuest(questInfo quest)
@@ -272,10 +271,10 @@ public class questManager : MonoBehaviour
 
     public void ResetQuestsToStartOfDay()
     {
-        unavailableQuests = DayManager.instance.currentDayInfoAtStartOfDay.unavailableQuests;
-        availableQuests   = DayManager.instance.currentDayInfoAtStartOfDay.availableQuests;
-        activeQuest1      = DayManager.instance.currentDayInfoAtStartOfDay.activeQuest1;
-        activeQuest2      = DayManager.instance.currentDayInfoAtStartOfDay.activeQuest2;
-        completeQuests    = DayManager.instance.currentDayInfoAtStartOfDay.TotalCompletedQuests;
+        unavailableQuests = DayManager.instance.unavailableQuests;
+        availableQuests   = DayManager.instance.availableQuests;
+        activeQuest1      = DayManager.instance.activeQuest1;
+        activeQuest2      = DayManager.instance.activeQuest2;
+        completeQuests    = DayManager.instance.TotalCompletedQuests;
     }
 }

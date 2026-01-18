@@ -5,10 +5,21 @@ public class DayManager : MonoBehaviour
 {
     public static DayManager instance;
 
-    [SerializeField] public DayInfo firstDay;
     public List<DayInfo> previousDays;
     public DayInfo currentDay;
-    [SerializeField] public DayInfo currentDayInfoAtStartOfDay;
+
+    public int dayNumber;
+    public float dayLengthInMinutes;
+    public int rentAmountDue;
+    public List<questInfo> unavailableQuests;
+    public List<questInfo> availableQuests;
+    public questInfo activeQuest1;
+    public questInfo activeQuest2;
+    public List<questInfo> TotalCompletedQuests;
+    public List<questInfo> questsCompletedDuringDay;
+    public int goldEarned;
+    public List<List<string>> NPCsKilled;
+    public List<gunStats> playerGunList;
 
     void Awake()
     {
@@ -18,20 +29,30 @@ public class DayManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (firstDay == null)
-        {
-            firstDay = new DayInfo();
-        }
-
-        currentDay = firstDay;
+        SetDayToCurrentDay();
         UpdateQuests();
-        CopyDay(currentDay, currentDayInfoAtStartOfDay);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    void SetDayToCurrentDay()
+    {
+        dayNumber                = currentDay.dayNumber;
+        dayLengthInMinutes       = currentDay.dayLengthInMinutes;
+        rentAmountDue            = currentDay.rentAmountDue;
+        unavailableQuests        = currentDay.unavailableQuests;
+        availableQuests          = currentDay.availableQuests;
+        activeQuest1             = currentDay.activeQuest1;
+        activeQuest2             = currentDay.activeQuest2;
+        TotalCompletedQuests     = currentDay.TotalCompletedQuests;
+        questsCompletedDuringDay = currentDay.questsCompletedDuringDay;
+        goldEarned               = currentDay.goldEarned;
+        NPCsKilled               = currentDay.NPCsKilled;
+        playerGunList            = currentDay.playerGunList;
     }
 
     void CopyDay(DayInfo dayToCopy, DayInfo toRecieve)
@@ -60,37 +81,32 @@ public class DayManager : MonoBehaviour
 
     public void UpdateQuests()
     {
-        currentDay.unavailableQuests          = questManager.instance.unavailableQuests;
-        currentDay.availableQuests            = questManager.instance.availableQuests;
-        currentDay.activeQuest1               = questManager.instance.activeQuest1;
-        currentDay.activeQuest2               = questManager.instance.activeQuest2;
-        currentDay.TotalCompletedQuests       = questManager.instance.completeQuests;
-    }
-
-    public void UpdateQuestsCompletedDuringDay(questInfo completedQuest)
-    {
-        currentDay.questsCompletedDuringDay.Add(completedQuest);
+        unavailableQuests          = questManager.instance.unavailableQuests;
+        availableQuests            = questManager.instance.availableQuests;
+        activeQuest1               = questManager.instance.activeQuest1;
+        activeQuest2               = questManager.instance.activeQuest2;
+        TotalCompletedQuests       = questManager.instance.completeQuests;
     }
 
     public void UpdateGoldEarned(int amount)
     {
-        currentDay.goldEarned += amount;
+        goldEarned += amount;
     }
 
     public void UpdateNPCsKilled(GameObject NPC)
     {
         string npcModelName = NPCManager.instance.GetModelName(NPC);
 
-        if (currentDay.NPCsKilled.Exists(x => x[0] == npcModelName))
+        if (NPCsKilled.Exists(x => x[0] == npcModelName))
         {
-            currentDay.NPCsKilled.Find(x => x[0] == npcModelName).Add(npcModelName);
+            NPCsKilled.Find(x => x[0] == npcModelName).Add(npcModelName);
         }
 
     }
 
     public void UpdatePlayerGunList(gunStats gun)
     {
-        currentDay.playerGunList.Add(gun);
+        playerGunList = gameManager.instance.player.GetComponent<playerController>().gunList;
     }
 
     //public void UpdateItems(Item newItem)
@@ -100,7 +116,7 @@ public class DayManager : MonoBehaviour
 
     public void ResetDay()
     {
-        CopyDay(currentDay, currentDayInfoAtStartOfDay);
+        SetDayToCurrentDay();
         gameManager.instance.ResetPlayerToStartOfDay();
         questManager.instance.ResetQuestsToStartOfDay();
     }

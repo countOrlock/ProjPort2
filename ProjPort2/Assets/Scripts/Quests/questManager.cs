@@ -8,6 +8,7 @@ public class questManager : MonoBehaviour
     public static questManager instance;
 
     [Header("-----General-----")]
+    [SerializeField] public questInfo defaultQuest;
     [SerializeField] public List<questInfo> unavailableQuests;
     [SerializeField] public List<questInfo> availableQuests;
     public questInfo activeQuest1;
@@ -252,7 +253,7 @@ public class questManager : MonoBehaviour
         }
         else
         {
-            questInfo newQuest = new questInfo();
+            questInfo newQuest = ScriptableObject.Instantiate(defaultQuest);
             availableQuests.Add(newQuest);
         }
     }

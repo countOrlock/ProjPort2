@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class showInteractionText : MonoBehaviour
 {
-    SphereCollider collider;
+    SphereCollider newCollider;
 
     public void Start()
     {
-        collider = GetComponent<SphereCollider>();
+        newCollider = GetComponent<SphereCollider>();
     }
     private void OnTriggerEnter(Collider player)
     {
         if (player.gameObject.tag == "Player")
         {
-            gameManager.instance.playerInteract.interactRange = collider.radius;
+            gameManager.instance.playerInteract.interactRange = newCollider.radius;
             gameManager.instance.playerInteract.inRange = true;
         }
     }

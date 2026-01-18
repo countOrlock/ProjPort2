@@ -182,7 +182,7 @@ public class gameManager : MonoBehaviour
 
     public void updateAvailableQuests()
     {
-        questInfo defaultQuest = new questInfo();
+        questInfo defaultQuest = ScriptableObject.Instantiate(questManager.instance.defaultQuest);
 
         if (questManager.instance.availableQuests.Count > 0)
         {

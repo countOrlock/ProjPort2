@@ -18,7 +18,7 @@ public class loadingManager : MonoBehaviour
     IEnumerator LoadSceneAsync()
     {
         yield return new WaitForSeconds(fakeLoadingDelay);
-        AsyncOperation operation = SceneManager.LoadSceneAsync("Level001");
+        AsyncOperation operation = SceneManager.LoadSceneAsync("ZachTerrainTest");
         operation.allowSceneActivation = false;
 
         while (!operation.isDone)

@@ -1,12 +1,14 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class spawner : MonoBehaviour
 {
     [SerializeField] public GameObject objectToSpawn;
     [SerializeField] int spawnAmount;
     //[SerializeField] float spawnRate;
+    [SerializeField] ParticleSystem enemySpawnEffect;
 
     public List<Transform> points = new List<Transform>();
 
@@ -26,7 +28,7 @@ public class spawner : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -47,10 +49,11 @@ public class spawner : MonoBehaviour
     {
         //spawnTimer = 0;
         //spawnCount++;
-        
+
         for (int i = 0; i < spawnAmount; i++)
         {
-            Instantiate(objectToSpawn, points[Random.Range(0, points.Count - 1)].transform.position, Quaternion.identity);
+            Vector3 point = points[Random.Range(0, points.Count - 1)].transform.position;
+            StartCoroutine(spawnWithDelay(point));
         }
     }
 
@@ -59,7 +62,8 @@ public class spawner : MonoBehaviour
         spawnAmount = amount;
         for (int i = 0; i < spawnAmount; i++)
         {
-            Instantiate(objectToSpawn, points[Random.Range(0, points.Count - 1)].transform.position, Quaternion.identity);
+            Vector3 point = points[Random.Range(0, points.Count - 1)].transform.position;
+            StartCoroutine(spawnWithDelay(point));
         }
     }
 
@@ -78,6 +82,12 @@ public class spawner : MonoBehaviour
         spawn();
     }
 
+    private IEnumerator spawnWithDelay(Vector3 point)
+    {
+        Instantiate(enemySpawnEffect, point, Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(objectToSpawn, point, Quaternion.identity);
+    }
     //private void OnTriggerEnter(Collider other)
     //{
     //    if (other.CompareTag("Player"))

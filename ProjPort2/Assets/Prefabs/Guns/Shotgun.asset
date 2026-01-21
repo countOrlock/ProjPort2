@@ -14,20 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
   gunModel: {fileID: 5494625650325380441, guid: 944f765b84e4c4012876d61f4dfc7b5a, type: 3}
   Bullet: {fileID: 0}
+  shootLaser: 0
   shootDamage: 5
   shootDist: 15
   shootRate: 1
   reloadRate: 5
-  recoil: 20
-  ammoCur: 2
+  recoil: 5
+  ammoCur: 0
   ammoMax: 2
-  magsCur: 18
+  magsCur: 20
   magsMax: 20
   zoomMod: 0.8
   hitEffect: {fileID: 8573406259994096289, guid: f3215467cd9e8d041b7c38ca802e2ddd, type: 3}
+  shootEffect: {fileID: 0}
   shootSound:
   - {fileID: 8300000, guid: 6eaf1750633761746b78f5cdcf8240fa, type: 3}
   reloadSound:
   - {fileID: 8300000, guid: d998bf2d2a36c434e94999e8d6b94f82, type: 3}
   shootSoundVol: 0.7
   reloadSoundVol: 0.5
+  HasSecondary: 0
+  Bullet2: {fileID: 0}
+  shootLaser2: 0
+  shootDamage2: 0
+  shootDist2: 0
+  shootRate2: 0
+  hitEffect2: {fileID: 0}
+  shootEffect2: {fileID: 0}
+  shootSound2: []
+  shootSoundVol2: 0

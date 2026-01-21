@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 9a9d1b62ca2ce0e4b8179873619e38e3
+timeCreated: 1528030707
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 120047
+  packageName: Grenades Lowpoly
+  packageVersion: 1.0
+  assetPath: Assets/Grenades_Lowpoly/Grenade2/grenade2_lowpoly_prefab.prefab
+  uploadId: 249290

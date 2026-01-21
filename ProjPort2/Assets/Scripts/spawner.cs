@@ -36,6 +36,7 @@ public class spawner : MonoBehaviour
     {
         spawnTimer = 0;
         spawnCount++;
+        Instantiate(enemySpawnEffect, transform.position, Quaternion.identity);
         Instantiate(objectToSpawn, transform.position, Quaternion.identity);
     }
 

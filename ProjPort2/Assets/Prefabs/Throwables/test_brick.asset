@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5d5cf7a3c852a4ca95bb993d4107f6, type: 3}
+  m_Name: test_brick
+  m_EditorClassIdentifier: Assembly-CSharp::throwStats
+  projectile: {fileID: 767320326592786347, guid: f328907baf7e9ef408ab9a86ef44d6fb, type: 3}
+  animObject: {fileID: 0}
+  itemName: Brick
+  ammoCurr: 10
+  ammoMax: 20
+  throwSound:
+  - {fileID: 8300000, guid: fd68c93e082941443947053c9ed46ae4, type: 3}
+  - {fileID: 8300000, guid: 908930f1c1fd3ee41ae76cfd61d7b877, type: 3}
+  - {fileID: 8300000, guid: 794ff45446c6ba142925d497dbc7fc86, type: 3}
+  - {fileID: 8300000, guid: 018d4e40efa432f4c9d1825c0278dce8, type: 3}
+  pickupSound: []
+  throwSoundVol: 0.5
+  pickupSoundVol: 0.5

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 07dd38a87c95fd841ba0448785d3a3ca
+timeCreated: 1528030276
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 120047
+  packageName: Grenades Lowpoly
+  packageVersion: 1.0
+  assetPath: Assets/Grenades_Lowpoly/Grenade1/materials/grenade_lowpoly.mat
+  uploadId: 249290

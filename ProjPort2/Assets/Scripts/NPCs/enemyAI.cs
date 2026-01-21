@@ -8,6 +8,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         Roam,
         Attack,
         Patrol,
+        Dying,
     }
 
     [SerializeField] Animator anim;
@@ -88,7 +89,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     Vector3 playerDir;
     Vector3 startingPos;
 
-
+    bool isDying;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -104,6 +105,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             speedOrig = agent.speed;
         }
         colorOrig = model.material.color;
+        isDying = false;
     }
 
     // Update is called once per frame
@@ -153,6 +155,12 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             // Basic Roam mode
             case npcMode.Roam:
 
+                if (isDying)
+                {
+                    mode = npcMode.Dying;
+                    break;
+                }
+
                 checkRoam();
                 if (!playerInRange && currentWaypoint != null)
                 {
@@ -166,6 +174,12 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             // Attack mode following the NPC's designated attack logic
             // Happens mostly in canSeePlayer() during that check.
             case npcMode.Attack:
+                if (isDying)
+                {
+                    mode = npcMode.Dying;
+                    break;
+                }
+
                 if (playerInRange && !canSeePlayer())
                 {
                     mode = npcMode.Roam;
@@ -177,6 +191,12 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
                 break;
             // Patrol mode following waypoints
             case npcMode.Patrol:
+
+                if (isDying)
+                {
+                    mode = npcMode.Dying;
+                    break;
+                }
 
                 // Resuming patrol once the enemy has finished it's current move action.
                 if (!resumingPatrol && resumePatrolTimer < resumePatrolTime && agent.remainingDistance < 0.01)
@@ -208,6 +228,10 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
                     mode = npcMode.Attack;
                     break;
                 }
+                break;
+
+            case npcMode.Dying:
+                agent.SetDestination(gameObject.transform.position);
                 break;
         }
     }
@@ -379,6 +403,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
     public void takeDamage(int amount)
     {
+
         HP -= amount;
         if (!scaredOfPlayer)
         {
@@ -387,22 +412,40 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
         if (HP <= 0)
         {
-            if(dropItem != null)
-            {
-                Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-            }
+            isDying = true;
+            anim.SetTrigger("Die");
 
-            if (shootsProjectile)
-                gameManager.instance.hunterAmountCurr--;
+            //if (dropItem != null)
+            //{
+            //    Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            //}
 
-            NPCManager.instance.UpdateNPCCount(gameObject, -1);
+            //if (shootsProjectile)
+            //    gameManager.instance.hunterAmountCurr--;
 
-            Destroy(gameObject);
+            //NPCManager.instance.UpdateNPCCount(gameObject, -1);
+
+            //Destroy(gameObject);
         }
         else
         {
             StartCoroutine(flashRed());
         }
+    }
+
+    public void Die()
+    {
+        if (dropItem != null)
+        {
+            Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        }
+
+        if (shootsProjectile)
+            gameManager.instance.hunterAmountCurr--;
+
+        NPCManager.instance.UpdateNPCCount(gameObject, -1);
+
+        Destroy(gameObject);
     }
 
     IEnumerator flashRed()

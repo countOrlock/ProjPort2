@@ -208,9 +208,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         //recoil
         if (recoilSpeed.magnitude > 1f)
         {
-            recoilSpeed -= -Camera.main.transform.forward * 5 * Time.deltaTime;
             controller.Move(recoilSpeed * Time.deltaTime);
-            
+            recoilSpeed = Vector3.Lerp(recoilSpeed, Vector3.zero, 5f * Time.deltaTime);
+
         }
         else
         {

@@ -9420,13 +9420,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b16befbbc4fe0d4e87a2dd39ff27dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::damage
-  type: 6
+  type: 1
   rb: {fileID: 5526700348056454945}
   createdObject: {fileID: 0}
-  damageAmount: 1
+  damageAmount: 0
   damageRate: 2
   speed: 0
   destroyTime: 1
+  groundCheck: 0
+  groundObject: {fileID: 0}
+  fire: 1
+  fireDamage: 1
+  fireTime: 5
+  slow: 0
+  slowAmount: 0
+  slowTime: 0
 --- !u!65 &6144043566108877819
 BoxCollider:
   m_ObjectHideFlags: 0

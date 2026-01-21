@@ -9692,7 +9692,7 @@ MonoBehaviour:
   type: 5
   rb: {fileID: 5692436798161558266}
   createdObject: {fileID: 0}
-  damageAmount: 5
+  damageAmount: 10
   damageRate: 0
   speed: 0
   destroyTime: 3

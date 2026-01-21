@@ -201,21 +201,6 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         return false;
     }
 
-    void shoot()
-    {
-        shootTimer = 0;
-        anim.SetTrigger("Shoot");
-    }
-
-    public void createBullet()
-    {
-        Instantiate(bullet, shootPos.position, shootPos.transform.rotation);
-        //aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootVol);
-        float randomPitch = Random.Range(1f - pitchVar, 1f + pitchVar);
-        aud.pitch = randomPitch;
-        aud.PlayOneShot(shootSound);
-    }
-
     void meleeAttack()
     {
         meleeTimer = 0;

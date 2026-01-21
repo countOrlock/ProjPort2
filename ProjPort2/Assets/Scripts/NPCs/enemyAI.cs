@@ -93,17 +93,17 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        colorOrig = model.material.color;
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         targetPos = transform.position;
         mode = npcMode.Roam;
-        if (startingWaypoint)
+        if (startingWaypoint != null)
         {
             waypointPos = startingWaypoint.transform.position;
             currentWaypoint = startingWaypoint;
             speedOrig = agent.speed;
         }
+        colorOrig = model.material.color;
     }
 
     // Update is called once per frame

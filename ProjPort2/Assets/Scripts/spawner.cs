@@ -5,6 +5,7 @@ public class spawner : MonoBehaviour
     [SerializeField] GameObject objectToSpawn;
     [SerializeField] int spawnAmount;
     [SerializeField] float spawnRate;
+    [SerializeField] ParticleSystem enemySpawnEffect;
 
     int spawnCount;
     float spawnTimer;

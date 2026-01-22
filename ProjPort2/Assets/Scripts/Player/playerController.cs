@@ -950,7 +950,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     {
         //controller.enabled = false;
 
-        controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        //controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
 
         //controller.enabled = true;
 

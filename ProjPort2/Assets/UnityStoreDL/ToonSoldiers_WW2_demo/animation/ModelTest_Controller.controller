@@ -83,7 +83,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: e9fa0cd70df4a414ea410a82fba042e6, type: 3}
+    m_Motion: {fileID: 7400000, guid: 92f8e8a48ba6ac445b0befdc93bb93f5, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -91,7 +91,7 @@ BlendTree:
     m_DirectBlendParameter: Speed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: adde12196c137914ebee8cac80b7dddb, type: 3}
+    m_Motion: {fileID: 7400000, guid: 3473244d6a4e9d04dbc96e97d847b0da, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -184,7 +184,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: infantry_combat_shoot
+  m_Name: BountyHunter_shoot
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -198,7 +198,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f82df825e9d95914186355593096f25e, type: 3}
+  m_Motion: {fileID: 7400000, guid: 4880d225bbb3c8e48ae0ce9557c4c9e9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

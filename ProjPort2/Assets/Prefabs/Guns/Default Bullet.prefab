@@ -162,7 +162,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.025
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -238,10 +238,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::damage
   type: 0
   rb: {fileID: 3680485759073927824}
+  createdObject: {fileID: 0}
   damageAmount: 1
   damageRate: 0
   speed: 80
   destroyTime: 5
+  groundCheck: 0
+  groundObject: {fileID: 0}
+  fire: 0
+  fireDamage: 0
+  fireTime: 0
+  slow: 0
+  slowAmount: 0
+  slowTime: 0
 --- !u!54 &3680485759073927824
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -15,10 +15,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     [Header("----- Player Stats -----")]
     [Range(1,  10)][SerializeField] int HP;
-    [Range(1,  10)][SerializeField] int wSpeed;
-    [Range(1,  10)][SerializeField] int rSpeed;
-    [Range(1,  10)][SerializeField] int cSpeed;
-    [Range(1,  10)][SerializeField] int pSpeed;
+    [Range(1,  50)][SerializeField] int wSpeed;
+    [Range(1,  50)][SerializeField] int rSpeed;
+    [Range(1,  50)][SerializeField] int cSpeed;
+    [Range(1,  50)][SerializeField] int pSpeed;
     [Range(1,  20)][SerializeField] int jumpSpeed;
     [Range(0f, 3f)][SerializeField] float cHeight;
     [Range(0f, 3f)][SerializeField] float pHeight;
@@ -29,6 +29,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     Vector3 moveDir;
     Vector2 walkDir;
     Vector3 recoilSpeed;
+    Vector3 slopeSlideVelocity;
 
     float jumpMod;
     int speedMod;
@@ -37,6 +38,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     float heightOrig;
     float controllerHeightOrig;
     float targetHeight;
+
+    bool isSliding;
+    [SerializeField] LayerMask slideIgnoreLayer;
 
     [Header("----- Gun Fields -----")]
     [SerializeField] GameObject gunModel;
@@ -72,8 +76,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     [Range(0, 1f)][SerializeField] float hurtVol;
     [SerializeField] AudioClip[] deathSound;
     [Range(0, 1f)][SerializeField] float deathVol;
+    [SerializeField] AudioClip slideSound;
+    [Range(0, 1f)][SerializeField] float slideVol;
 
     bool isPlayingStep;
+    bool isPlayingSlide;
 
 
     [Header("----- Quest Fields -----")]
@@ -145,6 +152,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         speedUpAmount = 1;
         jumpUpAmount = 1;
         doubleJumpAmount = 0;
+        isSliding = false;
 
         updatePlayerUI();
 
@@ -217,7 +225,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             recoilSpeed = Vector3.zero;
         }
 
-        if(Input.GetButtonDown("Reload Gun") && gunList.Count > 0 && reloading == false && gunList[gunListPos].magsCur > 0 && gunList[gunListPos].ammoCur < gunList[gunListPos].ammoMax)
+        if (Input.GetButtonDown("Reload Gun") && gunList.Count > 0 && reloading == false && gunList[gunListPos].magsCur > 0 && gunList[gunListPos].ammoCur < gunList[gunListPos].ammoMax)
         {
             StartCoroutine(Reload());
         }
@@ -225,17 +233,30 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         //movement execution
         walkDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
-        if (walkDir.magnitude > 0.3f && !isPlayingStep && controller.isGrounded)
+        if (walkDir.magnitude > 0.3f && !isPlayingStep && controller.isGrounded && !isSliding)
             StartCoroutine(playStep());
 
         moveDir = walkDir.x * transform.right * speedMod * speedUpAmount * slowMod + walkDir.y * transform.forward * speedMod * speedUpAmount * slowMod + jumpMod * transform.up;
         controller.Move(moveDir * Time.deltaTime);
 
+        if(isSliding)
+        {
+            Vector3 velocity = slopeSlideVelocity;
+            velocity.y = jumpMod;
+            controller.Move(velocity * Time.deltaTime);
+
+            if (!isPlayingSlide)
+            {
+                aud.PlayOneShot(slideSound, stepVol);
+                StartCoroutine(playSlide());
+            }
+        }
+
         if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate && reloading == false && !gameManager.instance.isPaused)
         {
             shoot();
         }
-        else if(Input.GetButton("Fire2") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate2 && reloading == false && !gameManager.instance.isPaused && gunList[gunListPos].HasSecondary == true)
+        else if (Input.GetButton("Fire2") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate2 && reloading == false && !gameManager.instance.isPaused && gunList[gunListPos].HasSecondary == true)
         {
             shoot2();
         }
@@ -324,19 +345,44 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         isPlayingStep = false;
     }
 
+    IEnumerator playSlide()
+    {
+        isPlayingSlide = true;
+        yield return new WaitForSeconds(slideSound.length);
+        isPlayingSlide = false;
+    }
+
     void jump()
     {
+        setSlopeSlideVelocity();
+
         if (!controller.isGrounded)
         {
-            jumpMod = jumpMod - gravity;
+            isSliding = false;
+            jumpMod = jumpMod - (gravity * Time.deltaTime);
         }
         else
         {
-            jumpMod = 0;
+            if (slopeSlideVelocity != Vector3.zero)
+            {
+                isSliding = true;
+                jumpMod = jumpMod - (gravity * Time.deltaTime);
+            }
+
+            if (isSliding == false)
+            {
+                jumpMod = -1;
+            }
+
             jumpCount = maxJump;
         }
 
-        if (Input.GetButtonDown("Jump") && jumpCount > (0 - doubleJumpAmount) && !isSlow)
+        if (slopeSlideVelocity == Vector3.zero)
+        {
+            isSliding = false;
+        }
+
+        if (Input.GetButtonDown("Jump") && jumpCount > (0 - doubleJumpAmount) && !isSlow && !isSliding)
         {
             if (stance == stanceType.crouching || stance == stanceType.prone)
             {
@@ -350,6 +396,31 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 aud.PlayOneShot(jumpSound[Random.Range(0, jumpSound.Length)], jumpVol);
             }
         }
+    }
+
+    void setSlopeSlideVelocity()
+    {
+        if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out RaycastHit hitInfo, 5, ~slideIgnoreLayer))
+        {
+            float angle = Vector3.Angle(hitInfo.normal, Vector3.up);
+
+            if (angle >= controller.slopeLimit)
+            {
+                slopeSlideVelocity = Vector3.ProjectOnPlane(new Vector3(0, jumpMod, 0), hitInfo.normal);
+                return;
+            }
+        }
+
+        if (isSliding)
+        {
+            slopeSlideVelocity -= slopeSlideVelocity * Time.deltaTime * 3;
+
+            if (slopeSlideVelocity.magnitude > 1)
+            {
+                return;
+            }
+        }
+        slopeSlideVelocity = Vector3.zero;
     }
 
     void shoot()
@@ -879,7 +950,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     {
         //controller.enabled = false;
 
-        controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        //controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
 
         //controller.enabled = true;
 

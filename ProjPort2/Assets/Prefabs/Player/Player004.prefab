@@ -480,16 +480,19 @@ MonoBehaviour:
   controller: {fileID: 7174832327420152129}
   playerCam: {fileID: 8000944031630460299}
   HP: 10
-  wSpeed: 5
-  rSpeed: 10
-  cSpeed: 3
-  pSpeed: 1
-  jumpSpeed: 10
+  wSpeed: 10
+  rSpeed: 15
+  cSpeed: 5
+  pSpeed: 3
+  jumpSpeed: 5
   cHeight: 1.5
   pHeight: 1
-  gravity: 0.2
+  gravity: 9.8
   jumpCount: 2
   stanceChangeSpeed: 3
+  slideIgnoreLayer:
+    serializedVersion: 2
+    m_Bits: 8
   gunModel: {fileID: 6504785613829033627}
   gunCam: {fileID: 6171382480255209084}
   ignoreLayer:
@@ -538,6 +541,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c97142657e32c984a87d03314cdbd86a, type: 3}
   - {fileID: 8300000, guid: 45a03b1a8bc947e4f84ea1a14ee6aa86, type: 3}
   deathVol: 0.5
+  slideSound: {fileID: 8300000, guid: 70273935ef9fc734b8b924ad96585499, type: 3}
+  slideVol: 0.5
   Gold: 0
   questList: []
   questItemList: []

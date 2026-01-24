@@ -81,6 +81,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     [Range(0, 1f)][SerializeField] float deathVol;
     [SerializeField] AudioClip slideSound;
     [Range(0, 1f)][SerializeField] float slideVol;
+    [SerializeField] AudioClip swapSound;
+    [Range(0, 1f)][SerializeField] float swapVol;
 
     bool isPlayingStep;
     bool isPlayingSlide;
@@ -615,6 +617,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     {
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunMesh;
         gunModel.GetComponent<MeshRenderer>().material = gunList[gunListPos].gunMaterial;
+
+        aud.PlayOneShot(swapSound, swapVol);
         
         if (gunList[gunListPos].slideMesh != null )
         {

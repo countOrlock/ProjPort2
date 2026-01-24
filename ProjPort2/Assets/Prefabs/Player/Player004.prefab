@@ -577,6 +577,8 @@ MonoBehaviour:
   deathVol: 0.5
   slideSound: {fileID: 8300000, guid: 70273935ef9fc734b8b924ad96585499, type: 3}
   slideVol: 0.5
+  swapSound: {fileID: 8300000, guid: 50658125921865045a80d3932ca2513a, type: 3}
+  swapVol: 0.5
   Gold: 0
   questList: []
   questItemList: []

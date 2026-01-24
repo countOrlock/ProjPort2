@@ -4374,6 +4374,16 @@ MonoBehaviour:
   aud: {fileID: 0}
   shootSound: []
   shootVol: 0
+  stepSound: []
+  stepVol: 0
+  hurtSound: []
+  hurtVol: 0
+  deathSound: []
+  deathVol: 0
+  alertedSound: []
+  alertedVol: 0
+  resumingPatrolSound: []
+  resumingPatrolVol: 0
   burnEffect: {fileID: 1034553196687713251, guid: 041be19fd0d56384ba5e1ee5af1589bc, type: 3}
   isBurning: 0
   isSlow: 0

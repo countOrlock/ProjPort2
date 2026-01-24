@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Option Menu.unity
     guid: b709209661ddc9341bb08851348ae81f
+  - enabled: 1
+    path: Assets/Scenes/ForestLevel.unity
+    guid: 5c7a0b8617673b54d8a97ddd86a524af
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

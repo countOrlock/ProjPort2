@@ -44,6 +44,16 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] shootSound;
     [Range(0f, 1f)][SerializeField] float shootVol;
+    [SerializeField] AudioClip[] stepSound;
+    [Range(0f, 1f)][SerializeField] float stepVol;
+    [SerializeField] AudioClip[] hurtSound;
+    [Range(0f, 1f)][SerializeField] float hurtVol;
+    [SerializeField] AudioClip[] deathSound;
+    [Range(0f, 1f)][SerializeField] float deathVol;
+    [SerializeField] AudioClip[] alertedSound;
+    [Range(0f, 1f)][SerializeField] float alertedVol;
+    [SerializeField] AudioClip[] resumingPatrolSound;
+    [Range(0f, 1f)][SerializeField] float resumingPatrolVol;
 
     [Header("----- Status Effects -----")]
     [SerializeField] public ParticleSystem burnEffect;
@@ -180,6 +190,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
                 if (playerInRange && !canSeePlayer())
                 {
+                    playAlertedSound();
                     mode = npcMode.Roam;
                 }
                 else if (!playerInRange && currentWaypoint != null)
@@ -200,6 +211,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
                 if (!resumingPatrol && resumePatrolTimer < resumePatrolTime && agent.remainingDistance < 0.01)
                 {
                     resumingPatrol = true;
+                    playResumingPatrolSound();
                 }
 
                 // Moving to the next patrol waypoint once the original "resuming patrol" timer has gone
@@ -213,6 +225,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
                 // Have to reset the patrol timer and boolean variables when going into other NPC Modes
                 if (playerInRange && !canSeePlayer())
                 {
+                    playAlertedSound();
                     moveToTarget(transform.position);
                     resumingPatrol = false;
                     resumePatrolTimer = 0.0f;
@@ -333,6 +346,11 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootVol);
     }
 
+    public void playStep()
+    {
+        aud.PlayOneShot(stepSound[Random.Range(0, stepSound.Length)], stepVol);
+    }
+
     void meleeAttack()
     {
         meleeTimer = 0;
@@ -406,6 +424,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         if (!scaredOfPlayer)
         {
             agent.SetDestination(gameManager.instance.player.transform.position);
+            aud.PlayOneShot(hurtSound[Random.Range(0, hurtSound.Length)], hurtVol);
         }
 
         if (HP <= 0)
@@ -431,8 +450,24 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         }
     }
 
+    public void playDeathSound()
+    {
+        aud.PlayOneShot(deathSound[Random.Range(0, deathSound.Length)], deathVol);
+    }
+
+    public void playAlertedSound()
+    {
+        aud.PlayOneShot(alertedSound[Random.Range(0, alertedSound.Length)], alertedVol);
+    }
+
+    public void playResumingPatrolSound()
+    {
+        aud.PlayOneShot(resumingPatrolSound[Random.Range(0, resumingPatrolSound.Length)], resumingPatrolVol);
+    }
+
     public void Die()
     {
+
         if (dropItem != null)
         {
             Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);

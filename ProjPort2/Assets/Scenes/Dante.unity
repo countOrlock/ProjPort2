@@ -204,7 +204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -76.669655
+      value: 13.74
       objectReference: {fileID: 0}
     - target: {fileID: 3787748491812545476, guid: 61ffaa281b76a514baf0efd579afff4d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1797,6 +1797,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1118460603569394733, guid: 75aea8638e8732a4ea20e1dbca580429, type: 3}
+      propertyPath: startingWaypoint
+      value: 
+      objectReference: {fileID: 1833779430}
     - target: {fileID: 7458136239459263457, guid: 75aea8638e8732a4ea20e1dbca580429, type: 3}
       propertyPath: m_Name
       value: Game Warden

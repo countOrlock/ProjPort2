@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class deathCleanup : MonoBehaviour
+public class DeathCleanup : MonoBehaviour
 {
     public float timeBeforeFade = 3f;
     public float fadeDuration = 2f;

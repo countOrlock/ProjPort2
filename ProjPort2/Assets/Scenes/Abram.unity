@@ -250,6 +250,33 @@ MonoBehaviour:
   timeBeforeFade: 3
   fadeDuration: 2
   sinkSpeed: 0.5
+--- !u!54 &445117492
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445117476}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &587972855
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +400,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7458136239459263457, guid: 75aea8638e8732a4ea20e1dbca580429, type: 3}
       insertIndex: 3
       addedObject: {fileID: 445117484}
+    - targetCorrespondingSourceObject: {fileID: 7458136239459263457, guid: 75aea8638e8732a4ea20e1dbca580429, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 445117492}
   m_SourcePrefab: {fileID: 100100000, guid: 75aea8638e8732a4ea20e1dbca580429, type: 3}
 --- !u!1001 &1160914183
 PrefabInstance:

@@ -14,6 +14,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuQuests;
     [SerializeField] GameObject menuShop;
+    [SerializeField] GameObject menuOptions;
 
     [Header("=====Popups=====")]
     [SerializeField] GameObject interactPopup;
@@ -109,7 +110,7 @@ public class gameManager : MonoBehaviour
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
-            else if (menuActive == menuPause || menuActive == menuShop)
+            else if (menuActive == menuPause || menuActive == menuShop || menuActive == menuOptions)
             {
                 stateUnpause();
             }
@@ -153,6 +154,13 @@ public class gameManager : MonoBehaviour
     {
         statePause();
         menuActive = menuShop;
+        menuActive.SetActive(true);
+    }
+
+    public void OptionMenu()
+    {
+        statePause();
+        menuActive = menuOptions;
         menuActive.SetActive(true);
     }
 

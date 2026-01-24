@@ -40,16 +40,14 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     [SerializeField] Transform attackPos;
     public bool debugHasMeleeAnim;
 
-
-
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] shootSound;
     [Range(0f, 1f)][SerializeField] float shootVol;
 
     [Header("----- Status Effects -----")]
+    [SerializeField] public ParticleSystem burnEffect;
     float fireTimer;
-    public ParticleSystem burnEffect;
     public bool isBurning;
     public bool isSlow;
 

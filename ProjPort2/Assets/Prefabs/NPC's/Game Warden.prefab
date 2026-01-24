@@ -2057,8 +2057,14 @@ MonoBehaviour:
   debugHasMeleeAnim: 0
   aud: {fileID: 3293581511059203598}
   shootSound:
-  - {fileID: 8300000, guid: c0070fa988b21b145ab26f02ae2d3e0b, type: 3}
+  - {fileID: 8300000, guid: 19e93cfa9b9b73e44bdc4a27c03e4abb, type: 3}
+  - {fileID: 8300000, guid: b3e45df255ba3ce47a964378fb3ec8f0, type: 3}
+  - {fileID: 8300000, guid: c6c93f34894b7e7419dc549d13039077, type: 3}
+  - {fileID: 8300000, guid: df82e3d29bc4fa64a8cf38e8c1d3afb8, type: 3}
+  - {fileID: 8300000, guid: b13b2b2f25b738243a9c5d0e196f888e, type: 3}
+  - {fileID: 8300000, guid: 302f6e952757175448dccc0eab344a30, type: 3}
   shootVol: 0.5
+  burnEffect: {fileID: 0}
   isBurning: 0
   isSlow: 0
   startingWaypoint: {fileID: 0}
@@ -2145,7 +2151,7 @@ AudioSource:
   m_GameObject: {fileID: 7458136239459263457}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8345779038663605321, guid: 26a0b8bc6ea9e11499a094f2c55947b7, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0

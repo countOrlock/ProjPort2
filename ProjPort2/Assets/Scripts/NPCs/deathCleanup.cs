@@ -17,9 +17,9 @@ public class DeathCleanup : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
+        animator     = GetComponent<Animator>();
+        rb           = GetComponent<Rigidbody>();
+        col          = GetComponent<Collider>();
         meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 

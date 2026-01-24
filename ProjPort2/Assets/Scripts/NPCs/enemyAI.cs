@@ -444,6 +444,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         {
             isDying = true;
             agent.isStopped = true;
+            anim.SetFloat("Speed", 0);
             enemyDeathCleanup.Die();
 
             //if (dropItem != null)

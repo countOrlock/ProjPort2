@@ -37,8 +37,9 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
 
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
-    [SerializeField] AudioClip[] shootSound;
+    [SerializeField] AudioClip shootSound;
     [Range(0f, 1f)][SerializeField] float shootVol;
+    [SerializeField] float pitchVar = 0.05f;
 
     [Header("----- Status Effects -----")]
     float fireTimer;

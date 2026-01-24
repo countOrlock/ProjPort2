@@ -99,6 +99,8 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
     bool isDying;
 
+    DeathCleanup enemyDeathCleanup;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -114,11 +116,17 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         }
         colorOrig = model.material.color;
         isDying = false;
+        enemyDeathCleanup = GetComponent<DeathCleanup>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isDying)
+        {
+            return;
+        }
+
         shootTimer += Time.deltaTime;
         meleeTimer += Time.deltaTime;
         fireTimer += Time.deltaTime;
@@ -242,8 +250,8 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
                 break;
 
             case npcMode.Dying:
-                agent.SetDestination(gameObject.transform.position);
-                break;
+                agent.isStopped = true;
+                return;
         }
     }
 
@@ -259,6 +267,11 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
     void locomotionAnim()
     {
+        if (isDying)
+        {
+            return;
+        }
+
         float agentSpeedCurr = agent.velocity.normalized.magnitude;
         float agentSpeedAnim = anim.GetFloat("Speed");
 
@@ -430,7 +443,8 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         if (HP <= 0)
         {
             isDying = true;
-            anim.SetTrigger("Die");
+            agent.isStopped = true;
+            enemyDeathCleanup.Die();
 
             //if (dropItem != null)
             //{
@@ -477,8 +491,6 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             gameManager.instance.hunterAmountCurr--;
 
         NPCManager.instance.UpdateNPCCount(gameObject, -1);
-
-        Destroy(gameObject);
     }
 
     IEnumerator flashRed()

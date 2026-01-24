@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
   m_Name: Flamethrower
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunModel: {fileID: 9106803508192027718, guid: f729d0247df876a40871b0469dc180fc, type: 3}
+  gunMesh: {fileID: -175605686938029449, guid: 874d33713f6ae084181c8027099d0769, type: 3}
+  slideMesh: {fileID: 0}
+  hammerMesh: {fileID: 0}
+  magMesh: {fileID: 0}
+  gunMaterial: {fileID: -6305016945756233627, guid: 874d33713f6ae084181c8027099d0769, type: 3}
   Bullet: {fileID: 0}
   shootLaser: 0
   shootDamage: 0
@@ -20,15 +24,30 @@ MonoBehaviour:
   shootRate: 0.1
   reloadRate: 0.1
   recoil: 0
-  ammoCur: 177
+  ammoCur: 200
   ammoMax: 200
   magsCur: 4
   magsMax: 5
   zoomMod: 0
   hitEffect: {fileID: 0}
   shootEffect: {fileID: 2971711294078377837, guid: eb3a73de6048d2140af52b313cb7b681, type: 3}
-  shootSound: []
+  shootSound:
+  - {fileID: 8300000, guid: b3778e711d8380c45a9d067f1d5a2d85, type: 3}
+  missFireSound:
+  - {fileID: 8300000, guid: 7742fd2ca2be66447b9e7ff580559a9a, type: 3}
   reloadSound:
   - {fileID: 8300000, guid: 0e6f4d5db8dcb574892e7a8ee698e662, type: 3}
-  shootSoundVol: 0
-  reloadSoundVol: 0
+  shootSoundVol: 0.5
+  missFireSoundVol: 0.5
+  reloadSoundVol: 0.5
+  HasSecondary: 0
+  Bullet2: {fileID: 0}
+  shootLaser2: 0
+  shootDamage2: 0
+  shootDist2: 0
+  shootRate2: 0
+  hitEffect2: {fileID: 0}
+  shootEffect2: {fileID: 0}
+  shootSound2: []
+  shootSoundVol2: 0
+  gunAnims: {fileID: 22100000, guid: 94df2a1d496613d409446b2d1a7934e7, type: 2}

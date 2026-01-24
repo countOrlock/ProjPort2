@@ -12,22 +12,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunModel: {fileID: 5160407153299701334, guid: 13fd4b827e9486b4591bc8135d13a546, type: 3}
+  gunMesh: {fileID: 5987310431416709998, guid: 165c63fb389f58e4bb78061fe42ba4de, type: 3}
+  slideMesh: {fileID: -6081876587123893287, guid: 6a70f8d58f0469a4680627c0092c7c56, type: 3}
+  hammerMesh: {fileID: 0}
+  magMesh: {fileID: 0}
+  gunMaterial: {fileID: 2100000, guid: 5acce1f2b51a9c64baa41fe711e3f321, type: 2}
   Bullet: {fileID: 640929130221536815, guid: 8a031845954676e46aa2ea9c65e19e01, type: 3}
+  shootLaser: 0
   shootDamage: 0
   shootDist: 0
-  shootRate: 0.1
+  shootRate: 1
   reloadRate: 1
   recoil: 0
-  ammoCur: 0
-  ammoMax: 1
-  magsCur: 28
-  magsMax: 30
+  ammoCur: 36
+  ammoMax: 40
+  magsCur: 0
+  magsMax: 0
   zoomMod: 0.6
   hitEffect: {fileID: 0}
+  shootEffect: {fileID: 0}
   shootSound:
   - {fileID: 8300000, guid: 98b523eeb77430d4596b1822fc6ff2ff, type: 3}
+  missFireSound:
+  - {fileID: 8300000, guid: 80e7ae299d2acdf41aa20b600a8be828, type: 3}
+  - {fileID: 8300000, guid: a0d76f1a382eb1441b6a4a8d10fa893f, type: 3}
+  - {fileID: 8300000, guid: 7ff9dfdde98eaf849908e1d8d609f925, type: 3}
+  - {fileID: 8300000, guid: a8e5b80925f97814b983ae2dd69e7512, type: 3}
+  - {fileID: 8300000, guid: c49323bb239724246bb97687d01f0060, type: 3}
+  - {fileID: 8300000, guid: 6307ecb5fdf18334f8bc0c89be857dc3, type: 3}
+  - {fileID: 8300000, guid: c3d279884cf54a64e878f2fa32a10a9e, type: 3}
+  - {fileID: 8300000, guid: 0dc6cc00c9e9e1f479a6d50791bc5813, type: 3}
   reloadSound:
-  - {fileID: 8300000, guid: 162bef51496e3c34cb115d6a2e4f3cf4, type: 3}
+  - {fileID: 8300000, guid: 80e7ae299d2acdf41aa20b600a8be828, type: 3}
+  - {fileID: 8300000, guid: a0d76f1a382eb1441b6a4a8d10fa893f, type: 3}
+  - {fileID: 8300000, guid: 7ff9dfdde98eaf849908e1d8d609f925, type: 3}
+  - {fileID: 8300000, guid: a8e5b80925f97814b983ae2dd69e7512, type: 3}
+  - {fileID: 8300000, guid: c49323bb239724246bb97687d01f0060, type: 3}
+  - {fileID: 8300000, guid: 6307ecb5fdf18334f8bc0c89be857dc3, type: 3}
+  - {fileID: 8300000, guid: c3d279884cf54a64e878f2fa32a10a9e, type: 3}
+  - {fileID: 8300000, guid: 0dc6cc00c9e9e1f479a6d50791bc5813, type: 3}
   shootSoundVol: 0.5
+  missFireSoundVol: 0
   reloadSoundVol: 0.5
+  HasSecondary: 0
+  Bullet2: {fileID: 0}
+  shootLaser2: 0
+  shootDamage2: 0
+  shootDist2: 0
+  shootRate2: 0
+  hitEffect2: {fileID: 0}
+  shootEffect2: {fileID: 0}
+  shootSound2: []
+  shootSoundVol2: 0
+  gunAnims: {fileID: 22100000, guid: 324e758a31b059f4eb1fe11666f89c3c, type: 2}

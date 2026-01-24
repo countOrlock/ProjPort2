@@ -14,6 +14,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuQuests;
     [SerializeField] GameObject menuShop;
+    [SerializeField] GameObject menuOptions;
 
     [Header("=====Popups=====")]
     [SerializeField] GameObject interactPopup;
@@ -58,6 +59,7 @@ public class gameManager : MonoBehaviour
     [Range(0, 300)][SerializeField] int targetGold;
 
     [Header("===Misc Variables===")]
+    [SerializeField] AudioClip DefaultInGameMusic;
     public GameObject player;
     public playerController playerScript;
     public GameObject playerSpawnPos;
@@ -94,6 +96,7 @@ public class gameManager : MonoBehaviour
     {
         checkHunters();
         gameGoalCount = 0;
+        MusicManager.instance.SwapTrack(DefaultInGameMusic);
     }
 
     // Update is called once per frame
@@ -107,7 +110,7 @@ public class gameManager : MonoBehaviour
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
-            else if (menuActive == menuPause || menuActive == menuShop)
+            else if (menuActive == menuPause || menuActive == menuShop || menuActive == menuOptions)
             {
                 stateUnpause();
             }
@@ -151,6 +154,13 @@ public class gameManager : MonoBehaviour
     {
         statePause();
         menuActive = menuShop;
+        menuActive.SetActive(true);
+    }
+
+    public void OptionMenu()
+    {
+        statePause();
+        menuActive = menuOptions;
         menuActive.SetActive(true);
     }
 

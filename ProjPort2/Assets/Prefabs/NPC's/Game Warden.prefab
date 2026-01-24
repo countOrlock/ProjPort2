@@ -1971,6 +1971,7 @@ GameObject:
   - component: {fileID: 8587972904475850819}
   - component: {fileID: 7236920042421892072}
   - component: {fileID: 1118460603569394733}
+  - component: {fileID: -7902797618602889838}
   - component: {fileID: 3051702144706895166}
   - component: {fileID: 3757167915713247813}
   - component: {fileID: 4989797328604271375}
@@ -2104,6 +2105,21 @@ MonoBehaviour:
   resumePatrolTime: 5
   roamDist: 5
   roamPauseTimer: 3
+--- !u!114 &-7902797618602889838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458136239459263457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c413b49026afab849957f52de1612811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathCleanup
+  timeBeforeFade: 3
+  fadeDuration: 2
+  sinkSpeed: 0.5
 --- !u!195 &3051702144706895166
 NavMeshAgent:
   m_ObjectHideFlags: 0

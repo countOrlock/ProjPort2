@@ -28,15 +28,15 @@ public class MusicManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    void Start()
-    {
         track01 = track01AudioSource;
         track02 = track02AudioSource;
 
         track1Playing = true;
+    }
 
+    void Start()
+    {
         ReturnToDefaultTrack();
     }
 

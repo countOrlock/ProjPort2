@@ -228,9 +228,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             recoilSpeed = Vector3.zero;
         }
 
-        if (Input.GetButtonDown("Reload Gun") && gunList.Count > 0 && reloading == false && gunList[gunListPos].magsCur > 0 && gunList[gunListPos].ammoCur < gunList[gunListPos].ammoMax)
+        if (Input.GetButtonDown("Reload Gun") && gunList.Count > 0 && reloading == false)
         {
-            Reload();
+            if ((gunList[gunListPos].magsCur > 0 && gunList[gunListPos].ammoCur < gunList[gunListPos].ammoMax) || gunList[gunListPos].magsMax == 0)
+            {
+                Reload();
+            }
         }
 
         //movement execution
@@ -734,8 +737,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     //}
     void Reload()
     {
-        gunList[gunListPos].magsCur--;
-        gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
+        
         aud.PlayOneShot(gunList[gunListPos].reloadSound[Random.Range(0, gunList[gunListPos].reloadSound.Length)], gunList[gunListPos].reloadSoundVol);
         reloading = true;
         anim.SetTrigger("Reload");
@@ -743,7 +745,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     void ReloadEnd()
     {
-        gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+        if (gunList[gunListPos].magsMax > 0)
+        {
+            gunList[gunListPos].magsCur--;
+            gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+        }
+        gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
         reloading = false;
         anim.SetBool("Ammo", true);

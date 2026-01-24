@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
   m_Name: Wand
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunModel: {fileID: 2449049758879426439, guid: 351ea694076c5a747b0a4f4178f810e9, type: 3}
+  gunMesh: {fileID: -6081876587123893287, guid: 6a70f8d58f0469a4680627c0092c7c56, type: 3}
+  slideMesh: {fileID: 0}
+  hammerMesh: {fileID: 0}
+  magMesh: {fileID: 0}
+  gunMaterial: {fileID: 2100000, guid: f925e82642a9f7a41850e58638572857, type: 2}
   Bullet: {fileID: 8949708971757413220, guid: dd85721034bc6444884df286dc7bf3a7, type: 3}
   shootLaser: 0
   shootDamage: 0
@@ -20,18 +24,28 @@ MonoBehaviour:
   shootRate: 2
   reloadRate: 0.1
   recoil: 0
-  ammoCur: 298
+  ammoCur: 289
   ammoMax: 300
   magsCur: 8
   magsMax: 8
   zoomMod: 0
   hitEffect: {fileID: 0}
   shootEffect: {fileID: 0}
-  shootSound: []
+  shootSound:
+  - {fileID: 8300000, guid: 3b644fc2d5765864a8f18b7b2037034a, type: 3}
+  - {fileID: 8300000, guid: 9deab70737dbb154e97f3b481fd51307, type: 3}
+  - {fileID: 8300000, guid: 01d2a52d087974b46ab40e74e50b262a, type: 3}
+  - {fileID: 8300000, guid: 8747e9bd1a90bb046a6706c4a6cc25b1, type: 3}
+  - {fileID: 8300000, guid: ba7ca35a87b88cd4b9dbc15036e135c4, type: 3}
+  - {fileID: 8300000, guid: 4fbf195cfd0f2e541a43960e1a13922b, type: 3}
+  - {fileID: 8300000, guid: 7d1ecdc327923754b8efb6d377af921b, type: 3}
+  missFireSound:
+  - {fileID: 8300000, guid: 560a7ff5a6b68954e9e949bc22a473d1, type: 3}
   reloadSound:
   - {fileID: 8300000, guid: 0e6f4d5db8dcb574892e7a8ee698e662, type: 3}
-  shootSoundVol: 0
-  reloadSoundVol: 0
+  shootSoundVol: 0.5
+  missFireSoundVol: 0.5
+  reloadSoundVol: 0.5
   HasSecondary: 1
   Bullet2: {fileID: 0}
   shootLaser2: 0
@@ -42,3 +56,4 @@ MonoBehaviour:
   shootEffect2: {fileID: 2322205823804172958, guid: fb796145ced6fa646a03a89452814034, type: 3}
   shootSound2: []
   shootSoundVol2: 0
+  gunAnims: {fileID: 22100000, guid: c2e5813103f250a4eaa65a4cb62a6971, type: 2}

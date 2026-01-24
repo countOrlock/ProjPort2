@@ -14,9 +14,6 @@ public class MusicManager : MonoBehaviour
 
     public bool track1Playing;
 
-    float track01CurrentVolume;
-    float track02CurrentVolume;
-
     void Awake()
     {
         if (instance == null)

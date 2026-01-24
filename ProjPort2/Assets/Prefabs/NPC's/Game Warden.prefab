@@ -2057,8 +2057,42 @@ MonoBehaviour:
   debugHasMeleeAnim: 0
   aud: {fileID: 3293581511059203598}
   shootSound:
-  - {fileID: 8300000, guid: c0070fa988b21b145ab26f02ae2d3e0b, type: 3}
-  shootVol: 0.5
+  - {fileID: 8300000, guid: 19e93cfa9b9b73e44bdc4a27c03e4abb, type: 3}
+  - {fileID: 8300000, guid: b3e45df255ba3ce47a964378fb3ec8f0, type: 3}
+  - {fileID: 8300000, guid: c6c93f34894b7e7419dc549d13039077, type: 3}
+  - {fileID: 8300000, guid: df82e3d29bc4fa64a8cf38e8c1d3afb8, type: 3}
+  - {fileID: 8300000, guid: b13b2b2f25b738243a9c5d0e196f888e, type: 3}
+  - {fileID: 8300000, guid: 302f6e952757175448dccc0eab344a30, type: 3}
+  shootVol: 0.1
+  stepSound:
+  - {fileID: 8300000, guid: 73f5be3a0daa14c42bddaf9732ddd739, type: 3}
+  - {fileID: 8300000, guid: 053f165a7b1797349a2b67f2f8748a00, type: 3}
+  - {fileID: 8300000, guid: 24b786730bd98a445aa23551a33101f2, type: 3}
+  - {fileID: 8300000, guid: a957616dc47c4c94a9bfd6e4fb2270e7, type: 3}
+  - {fileID: 8300000, guid: 4b8ddd024b47baa4390befee5fd7ef8b, type: 3}
+  - {fileID: 8300000, guid: b10b5dc03eec28b48a0357f4274df896, type: 3}
+  - {fileID: 8300000, guid: a9eaff5b063129f48bbc9c12613492c0, type: 3}
+  stepVol: 0.1
+  hurtSound:
+  - {fileID: 8300000, guid: 6868d4debac6ccf45ae1c5feecd28021, type: 3}
+  - {fileID: 8300000, guid: f77cb46ffc846f849aabc69ac28a2f03, type: 3}
+  - {fileID: 8300000, guid: 80860d9b608273c4ca372a69a61b6cdb, type: 3}
+  - {fileID: 8300000, guid: 9b1967b70289b734a838056b101ce57f, type: 3}
+  - {fileID: 8300000, guid: d0dd22eda846da440954465c9e849996, type: 3}
+  - {fileID: 8300000, guid: 899265b573c54484597679acca6289b9, type: 3}
+  hurtVol: 0.1
+  deathSound:
+  - {fileID: 8300000, guid: 7f95acaa9d1fb2243ac2b2d23d0480d3, type: 3}
+  deathVol: 0.3
+  alertedSound:
+  - {fileID: 8300000, guid: 6986f757119801e4aa7ff34ef68dfbe5, type: 3}
+  - {fileID: 8300000, guid: dd7d6d2a58cceba4a83f60283608e3a3, type: 3}
+  - {fileID: 8300000, guid: f32c615ad1b89de4c9a547347791e68e, type: 3}
+  alertedVol: 0.1
+  resumingPatrolSound:
+  - {fileID: 8300000, guid: 0b661f10f85b81746a13ac60402d9729, type: 3}
+  resumingPatrolVol: 0.1
+  burnEffect: {fileID: 0}
   isBurning: 0
   isSlow: 0
   startingWaypoint: {fileID: 0}
@@ -2145,7 +2179,7 @@ AudioSource:
   m_GameObject: {fileID: 7458136239459263457}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8345779038663605321, guid: 26a0b8bc6ea9e11499a094f2c55947b7, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -2157,10 +2191,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 20
+  MinDistance: 10
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -2169,22 +2203,40 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0.9819565
+      inSlope: -50.01992
+      outSlope: -50.01992
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      time: 0.015643157
+      value: 0.46752167
+      inSlope: -11.777615
+      outSlope: -11.777615
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0.39106897
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.06646927
+      value: 0.16630554
+      inSlope: -3.305435
+      outSlope: -3.305435
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.18164459
+      value: 0.003982544
+      inSlope: -0.78156126
+      outSlope: -0.78156126
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -2208,7 +2260,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.51666665
       inSlope: 0
       outSlope: 0
       tangentMode: 0

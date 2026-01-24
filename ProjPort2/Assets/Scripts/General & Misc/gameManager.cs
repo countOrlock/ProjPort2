@@ -96,7 +96,8 @@ public class gameManager : MonoBehaviour
     {
         checkHunters();
         gameGoalCount = 0;
-        MusicManager.instance.SwapTrack(DefaultInGameMusic);
+        MusicManager.instance.defaultTrack = DefaultInGameMusic;
+        MusicManager.instance.ReturnToDefaultTrack();
     }
 
     // Update is called once per frame

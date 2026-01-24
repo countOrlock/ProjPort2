@@ -4,13 +4,19 @@ public class AudioEnvironment : MonoBehaviour
 {
     [SerializeField] AudioClip newTrack;
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-        MusicManager.instance.SwapTrack(newTrack);
+        if (other.CompareTag("Player"))
+        {
+            MusicManager.instance.SwapTrack(newTrack);
+        }
     }
 
-    void OnTriggerExit()
+    void OnTriggerExit(Collider other)
     {
-        MusicManager.instance.ReturnToDefaultTrack();
+        if (other.CompareTag("Player"))
+        {
+            MusicManager.instance.ReturnToDefaultTrack();
+        }
     }
 }

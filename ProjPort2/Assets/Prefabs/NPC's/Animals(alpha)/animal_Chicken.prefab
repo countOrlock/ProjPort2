@@ -550,6 +550,8 @@ GameObject:
   - component: {fileID: 3819078881970781137}
   - component: {fileID: 5948567583015472971}
   - component: {fileID: -7113781495670390708}
+  - component: {fileID: 155794886384395301}
+  - component: {fileID: -6533037835098917229}
   m_Layer: 6
   m_Name: animal_Chicken
   m_TagString: Small Game
@@ -604,7 +606,7 @@ MonoBehaviour:
   attackPos: {fileID: 0}
   debugHasMeleeAnim: 0
   roamDist: 5
-  roamPauseTimer: 10
+  roamPauseTimer: 3
   targetPos: {x: 0, y: 0, z: 0}
   maxDistFromTarget: 30
   aud: {fileID: -7113781495670390708}
@@ -820,6 +822,48 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &155794886384395301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3285567043007469565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c413b49026afab849957f52de1612811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathCleanup
+  timeBeforeFade: 3
+  fadeDuration: 2
+  sinkSpeed: 0.5
+--- !u!54 &-6533037835098917229
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3285567043007469565}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3381045804325992509
 GameObject:
   m_ObjectHideFlags: 0

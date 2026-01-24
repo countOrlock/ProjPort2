@@ -27,8 +27,10 @@ public class gunStats : ScriptableObject
     public ParticleSystem hitEffect;
     public ParticleSystem shootEffect;
     public AudioClip[] shootSound;
+    public AudioClip[] missFireSound;
     public AudioClip[] reloadSound;
     [Range(0, 1)] public float shootSoundVol;
+    [Range(0, 1)] public float missFireSoundVol;
     [Range(0, 1)] public float reloadSoundVol;
 
     [Header("----- Gun Fire2 -----")]
@@ -45,8 +47,5 @@ public class gunStats : ScriptableObject
     [Range(0, 1)] public float shootSoundVol2;
 
     [Header("-----Animations-----")]
-    public AnimationClip[] fireAnims;
-    public AnimationClip[] idleAnims;
-    public AnimationClip[] missfireAnims;
-    public AnimationClip[] reloadAnims;
+    public AnimatorOverrideController gunAnims;
 }

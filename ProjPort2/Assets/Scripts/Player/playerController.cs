@@ -230,7 +230,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
         if (Input.GetButtonDown("Reload Gun") && gunList.Count > 0 && reloading == false && gunList[gunListPos].magsCur > 0 && gunList[gunListPos].ammoCur < gunList[gunListPos].ammoMax)
         {
-            StartCoroutine(Reload());
+            Reload();
         }
 
         //movement execution
@@ -255,16 +255,34 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             }
         }
 
-        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && reloading == false && !gameManager.instance.isPaused)
+        if (Input.GetButton("Fire1") && gunList.Count > 0 && !reloading && !gameManager.instance.isPaused)
         {
-            if (gunList[gunListPos].shootLaser)
+            if (gunList[gunListPos].ammoCur > 0)
             {
-                Laser.enabled = true;
-            }
+                anim.SetBool("Ammo", true);
 
-            if (shootTimer >= gunList[gunListPos].shootRate)
+                if (gunList[gunListPos].shootLaser)
+                {
+                    Laser.enabled = true;
+                }
+
+                if (shootTimer >= gunList[gunListPos].shootRate)
+                {
+                    anim.SetTrigger("Fire");
+                    shoot();
+                }
+            }
+            else
             {
-                shoot();
+                //missfire
+                anim.SetBool("Ammo", false);
+
+                if (shootTimer >= gunList[gunListPos].shootRate)
+                {
+                    anim.SetTrigger("Fire");
+                    aud.PlayOneShot(gunList[gunListPos].missFireSound[Random.Range(0, gunList[gunListPos].missFireSound.Length)], gunList[gunListPos].missFireSoundVol);
+                    shootTimer = 0;
+                }
             }
         }
         else if (Input.GetButton("Fire2") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && reloading == false && !gameManager.instance.isPaused && gunList[gunListPos].HasSecondary == true)
@@ -446,8 +464,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     {
         shootTimer = 0;
 
-        
-
         gunList[gunListPos].ammoCur--;
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
 
@@ -456,17 +472,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
         recoilSpeed = -Camera.main.transform.forward * gunList[gunListPos].recoil;
 
-        if (gunList[gunListPos].Bullet == null || gunList[gunListPos].shootLaser == true)
+        if (gunList[gunListPos].Bullet == null)
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunList[gunListPos].shootDist, ~ignoreLayer))
             {
-                if (gunList[gunListPos].shootEffect != null)
-                {
-                    Instantiate(gunList[gunListPos].shootEffect, gunModel.transform.position, playerCam.transform.rotation);
-                }
-
-
                 if (gunList[gunListPos].hitEffect != null)
                 {
                     Instantiate(gunList[gunListPos].hitEffect, hit.point, Quaternion.identity);
@@ -484,12 +494,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                         Laser.SetPosition(1, new Vector3(0, 0, gunList[gunListPos].shootDist));
                     }
                 }
-                else if (gunList[gunListPos].fireAnims.Any())
-                {
-                    //animation script here
-                }
-
-                    Debug.Log(hit.collider.name);
+                Debug.Log(hit.collider.name);
 
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
 
@@ -502,6 +507,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             {
                 Laser.SetPosition(0, Vector3.zero);
                 Laser.SetPosition(1, new Vector3(0, 0, gunList[gunListPos].shootDist));
+            }
+
+            if (gunList[gunListPos].shootEffect != null)
+            {
+                Instantiate(gunList[gunListPos].shootEffect, gunModel.transform.position, playerCam.transform.rotation);
             }
         }
         else
@@ -637,6 +647,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         }
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
         gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
+
+        if (gunList[gunListPos].gunAnims != null)
+        {
+            anim.runtimeAnimatorController = gunList[gunListPos].gunAnims;
+        }
+
+        if (gunList[gunListPos].ammoCur > 0)
+        {
+            anim.SetBool("Ammo", true);
+        }
+        else
+        {
+            anim.SetBool("Ammo", false);
+        }
     }
 
     void selectGun()
@@ -696,17 +720,33 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         gameManager.instance.playerDamageScreen.SetActive(false);
     }
 
-    IEnumerator Reload()
+    //IEnumerator Reload()
+    //{
+    //    gunList[gunListPos].magsCur--;
+    //    gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
+    //    aud.PlayOneShot(gunList[gunListPos].reloadSound[Random.Range(0, gunList[gunListPos].reloadSound.Length)], gunList[gunListPos].reloadSoundVol);
+
+    //    reloading = true;
+    //    yield return new WaitForSeconds(gunList[gunListPos].reloadRate);
+    //    gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+    //    gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
+    //    reloading = false;
+    //}
+    void Reload()
     {
         gunList[gunListPos].magsCur--;
         gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
         aud.PlayOneShot(gunList[gunListPos].reloadSound[Random.Range(0, gunList[gunListPos].reloadSound.Length)], gunList[gunListPos].reloadSoundVol);
-
         reloading = true;
-        yield return new WaitForSeconds(gunList[gunListPos].reloadRate);
+        anim.SetTrigger("Reload");
+    }
+
+    void ReloadEnd()
+    {
         gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
         reloading = false;
+        anim.SetBool("Ammo", true);
     }
 
     public void getThrowStats(throwStats item)

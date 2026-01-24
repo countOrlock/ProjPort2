@@ -9424,7 +9424,7 @@ MonoBehaviour:
   rb: {fileID: 5526700348056454945}
   createdObject: {fileID: 0}
   damageAmount: 0
-  damageRate: 2
+  damageRate: 5
   speed: 0
   destroyTime: 1
   groundCheck: 0
@@ -9445,7 +9445,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 8

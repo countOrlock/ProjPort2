@@ -24,18 +24,22 @@ MonoBehaviour:
   shootRate: 0.1
   reloadRate: 0.1
   recoil: 0
-  ammoCur: 177
+  ammoCur: 200
   ammoMax: 200
   magsCur: 4
   magsMax: 5
   zoomMod: 0
   hitEffect: {fileID: 0}
   shootEffect: {fileID: 2971711294078377837, guid: eb3a73de6048d2140af52b313cb7b681, type: 3}
-  shootSound: []
+  shootSound:
+  - {fileID: 8300000, guid: b3778e711d8380c45a9d067f1d5a2d85, type: 3}
+  missFireSound:
+  - {fileID: 8300000, guid: 7742fd2ca2be66447b9e7ff580559a9a, type: 3}
   reloadSound:
   - {fileID: 8300000, guid: 0e6f4d5db8dcb574892e7a8ee698e662, type: 3}
-  shootSoundVol: 0
-  reloadSoundVol: 0
+  shootSoundVol: 0.5
+  missFireSoundVol: 0.5
+  reloadSoundVol: 0.5
   HasSecondary: 0
   Bullet2: {fileID: 0}
   shootLaser2: 0
@@ -46,3 +50,4 @@ MonoBehaviour:
   shootEffect2: {fileID: 0}
   shootSound2: []
   shootSoundVol2: 0
+  gunAnims: {fileID: 22100000, guid: 94df2a1d496613d409446b2d1a7934e7, type: 2}

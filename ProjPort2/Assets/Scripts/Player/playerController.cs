@@ -277,7 +277,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 //missfire
                 anim.SetBool("Ammo", false);
 
-                if (shootTimer >= gunList[gunListPos].shootRate)
+                if (shootTimer >= 0.5f)
                 {
                     anim.SetTrigger("Fire");
                     aud.PlayOneShot(gunList[gunListPos].missFireSound[Random.Range(0, gunList[gunListPos].missFireSound.Length)], gunList[gunListPos].missFireSoundVol);
@@ -638,7 +638,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         if (gunList[gunListPos].magMesh != null)
         {
             magModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].magMesh;
-            magModel.GetComponent<MeshRenderer>().sharedMaterials[0] = gunList[gunListPos].gunMaterial;
+            magModel.GetComponent<MeshRenderer>().material = gunList[gunListPos].gunMaterial;
         }
         else
         {

@@ -617,15 +617,24 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b10b5dc03eec28b48a0357f4274df896, type: 3}
   - {fileID: 8300000, guid: a9eaff5b063129f48bbc9c12613492c0, type: 3}
   stepVol: 0.1
-  hurtSound: []
-  hurtVol: 0
+  hurtSound:
+  - {fileID: 8300000, guid: f4fb816c996b6734da0f4ca87071eb84, type: 3}
+  - {fileID: 8300000, guid: bed8d49b877f9b348a975ac338b77025, type: 3}
+  - {fileID: 8300000, guid: 2b1f423c8f68c064295397ea639623d6, type: 3}
+  - {fileID: 8300000, guid: daabee1a6c4ab674fad4fdfb7b214e45, type: 3}
+  - {fileID: 8300000, guid: 185d3ebefb8d1c048b6142c418c05f39, type: 3}
+  - {fileID: 8300000, guid: 1bfafd020bd0ca0489cf98dfa0ec2635, type: 3}
+  - {fileID: 8300000, guid: bc7be4b9ae8a84742babd6adc524a2e5, type: 3}
+  hurtVol: 0.5
   attackSound: []
-  attackVol: 0
+  attackVol: 0.5
   deathSound:
   - {fileID: 8300000, guid: 148ce71213418504e83f7d91f206983d, type: 3}
-  deathVol: 0
-  idleSound: []
-  idleVol: 0
+  deathVol: 0.5
+  idleSound:
+  - {fileID: 8300000, guid: 1326054e19317bc468b8451206507cd9, type: 3}
+  - {fileID: 8300000, guid: ab01165f85f82fe4db697ac8d4c24062, type: 3}
+  idleVol: 0.5
   isBurning: 0
   isSlow: 0
 --- !u!195 &3640060390503317986

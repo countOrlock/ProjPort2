@@ -7,7 +7,7 @@ public class MusicManager : MonoBehaviour
     public static MusicManager instance;
 
     AudioSource track01, track02;
-    [SerializeField] AudioClip defaultTrack;
+    [SerializeField] public AudioClip defaultTrack;
     [SerializeField] float fadeTime;
     [SerializeField] AudioSource track01AudioSource;
     [SerializeField] AudioSource track02AudioSource;

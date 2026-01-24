@@ -342,7 +342,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3e750ada6c31f5b4797029fbee3b52c8, type: 2}
+  - {fileID: 2100000, guid: 888d37fd9ab387846b2db509d6155586, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -549,9 +549,9 @@ GameObject:
   - component: {fileID: 3231309862603008603}
   - component: {fileID: 3819078881970781137}
   - component: {fileID: 5948567583015472971}
-  - component: {fileID: -7113781495670390708}
+  - component: {fileID: -4967980047000817868}
   m_Layer: 6
-  m_Name: animal_Chicken
+  m_Name: animal_Fox
   m_TagString: Small Game
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -607,22 +607,14 @@ MonoBehaviour:
   roamPauseTimer: 10
   targetPos: {x: 0, y: 0, z: 0}
   maxDistFromTarget: 30
-  aud: {fileID: -7113781495670390708}
-  stepSound:
-  - {fileID: 8300000, guid: 73f5be3a0daa14c42bddaf9732ddd739, type: 3}
-  - {fileID: 8300000, guid: 053f165a7b1797349a2b67f2f8748a00, type: 3}
-  - {fileID: 8300000, guid: 24b786730bd98a445aa23551a33101f2, type: 3}
-  - {fileID: 8300000, guid: a957616dc47c4c94a9bfd6e4fb2270e7, type: 3}
-  - {fileID: 8300000, guid: 4b8ddd024b47baa4390befee5fd7ef8b, type: 3}
-  - {fileID: 8300000, guid: b10b5dc03eec28b48a0357f4274df896, type: 3}
-  - {fileID: 8300000, guid: a9eaff5b063129f48bbc9c12613492c0, type: 3}
-  stepVol: 0.1
+  aud: {fileID: -4967980047000817868}
+  stepSound: []
+  stepVol: 0
   hurtSound: []
   hurtVol: 0
   attackSound: []
   attackVol: 0
-  deathSound:
-  - {fileID: 8300000, guid: 148ce71213418504e83f7d91f206983d, type: 3}
+  deathSound: []
   deathVol: 0
   idleSound: []
   idleVol: 0
@@ -714,7 +706,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!82 &-7113781495670390708
+--- !u!82 &-4967980047000817868
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -37,9 +37,16 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
 
     [Header("----- Audio -----")]
     [SerializeField] AudioSource aud;
-    [SerializeField] AudioClip shootSound;
-    [Range(0f, 1f)][SerializeField] float shootVol;
-    [SerializeField] float pitchVar = 0.05f;
+    [SerializeField] AudioClip[] stepSound;
+    [Range(0f, 1f)][SerializeField] float stepVol;
+    [SerializeField] AudioClip[] hurtSound;
+    [Range(0f, 1f)][SerializeField] float hurtVol;
+    [SerializeField] AudioClip[] attackSound;
+    [Range(0f, 1f)][SerializeField] float attackVol;
+    [SerializeField] AudioClip[] deathSound;
+    [Range(0f, 1f)][SerializeField] float deathVol;
+    [SerializeField] AudioClip[] idleSound;
+    [Range(0f, 1f)][SerializeField] float idleVol;
 
     [Header("----- Status Effects -----")]
     float fireTimer;
@@ -117,6 +124,31 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         float agentSpeedAnim = anim.GetFloat("Speed");
 
         anim.SetFloat("Speed", Mathf.Lerp(agentSpeedAnim, agentSpeedCurr, Time.deltaTime * animTranSpeed));
+    }
+
+    public void playStepSound()
+    {
+        aud.PlayOneShot(stepSound[Random.Range(0, stepSound.Length)], stepVol);
+    }
+
+    public void playHurtSound()
+    {
+        aud.PlayOneShot(hurtSound[Random.Range(0, hurtSound.Length)], hurtVol);
+    }
+
+    public void playAttackSound()
+    {
+        aud.PlayOneShot(attackSound[Random.Range(0, attackSound.Length)], attackVol);
+    }
+
+    public void playDeathSound()
+    {
+        aud.PlayOneShot(deathSound[Random.Range(0, deathSound.Length)], deathVol);
+    }
+
+    public void playIdleSound()
+    {
+        aud.PlayOneShot(idleSound[Random.Range(0, idleSound.Length)], idleVol);
     }
 
     bool canSeePlayer()

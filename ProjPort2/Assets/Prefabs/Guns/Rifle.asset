@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
   m_Name: Rifle
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunModel: {fileID: 5571641588984482722, guid: c303a18f1cbdd4156b139b9e5b35d6a9, type: 3}
+  gunMesh: {fileID: 7753405534921295286, guid: c1ce864051db441b9bfac2723519107a, type: 3}
+  slideMesh: {fileID: 0}
+  hammerMesh: {fileID: 0}
+  magMesh: {fileID: 0}
+  gunMaterial: {fileID: 2100000, guid: 2edc7b0cc34ac4680b9ff4f527c30174, type: 2}
   Bullet: {fileID: 0}
+  shootLaser: 0
   shootDamage: 1
   shootDist: 26
   shootRate: 0.1
@@ -21,13 +26,24 @@ MonoBehaviour:
   recoil: 0
   ammoCur: 20
   ammoMax: 20
-  magsCur: 8
+  magsCur: 10
   magsMax: 10
   zoomMod: 0.7
   hitEffect: {fileID: 8573406259994096289, guid: f3215467cd9e8d041b7c38ca802e2ddd, type: 3}
+  shootEffect: {fileID: 0}
   shootSound:
   - {fileID: 8300000, guid: c0070fa988b21b145ab26f02ae2d3e0b, type: 3}
   reloadSound:
   - {fileID: 8300000, guid: 43494344f2af3344da29fe87c8c8068b, type: 3}
   shootSoundVol: 0.5
   reloadSoundVol: 0.5
+  HasSecondary: 0
+  Bullet2: {fileID: 0}
+  shootLaser2: 0
+  shootDamage2: 0
+  shootDist2: 0
+  shootRate2: 0
+  hitEffect2: {fileID: 0}
+  shootEffect2: {fileID: 0}
+  shootSound2: []
+  shootSoundVol2: 0

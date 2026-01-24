@@ -44,6 +44,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     [Header("----- Gun Fields -----")]
     [SerializeField] GameObject gunModel;
+    [SerializeField] GameObject slideModel;
+    [SerializeField] GameObject hammerModel;
+    [SerializeField] GameObject magModel;
     [SerializeField] GameObject gunCam;
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] LineRenderer Laser;
@@ -457,15 +460,21 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                     Laser.enabled = true;
 
                     Laser.SetPosition(0, gunModel.transform.position);
-                    Laser.SetPosition(1, hit.point);
-
-                    if(gunList[gunListPos].Bullet != null)
+                    if (hit.distance <= gunList[gunListPos].shootDist)
                     {
-                        Instantiate(gunList[gunListPos].Bullet, hit.point, Quaternion.identity);
+                        Laser.SetPosition(1, hit.point);
+                    }
+                    else
+                    {
+                        Laser.SetPosition(1, new Vector3(gunModel.transform.localPosition.x, gunModel.transform.localPosition.y, gunModel.transform.localPosition.z + gunList[gunListPos].shootDist) + gunModel.transform.rotation.eulerAngles);
                     }
                 }
+                else if (gunList[gunListPos].fireAnims.Any())
+                {
+                    //animation script here
+                }
 
-                Debug.Log(hit.collider.name);
+                    Debug.Log(hit.collider.name);
 
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
 
@@ -473,6 +482,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 {
                     dmg.takeDamage(gunList[gunListPos].shootDamage + damageUpAmount);
                 }
+            }
+            else if (gunList[gunListPos].shootLaser)
+            {
+                Laser.SetPosition(0, gunModel.transform.position);
+                Laser.SetPosition(1, new Vector3(0, 0, gunList[gunListPos].shootDist));
             }
         }
         else
@@ -571,8 +585,41 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
     void changeGun()
     {
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterials = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterials;
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunMesh;
+        gunModel.GetComponent<MeshRenderer>().material = gunList[gunListPos].gunMaterial;
+        
+        if (gunList[gunListPos].slideMesh != null )
+        {
+            slideModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].slideMesh;
+            slideModel.GetComponent<MeshRenderer>().material = gunList[gunListPos].gunMaterial;
+        }
+        else
+        {
+            slideModel.GetComponent<MeshFilter>().mesh = null;
+            slideModel.GetComponent<MeshRenderer>().material = null;
+        }
+
+        if (gunList[gunListPos].hammerMesh != null)
+        {
+            hammerModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].hammerMesh;
+            hammerModel.GetComponent<MeshRenderer>().material = gunList[gunListPos].gunMaterial;
+        }
+        else
+        {
+            hammerModel.GetComponent<MeshFilter>().mesh = null;
+            hammerModel.GetComponent<MeshRenderer>().material = null;
+        }
+
+        if (gunList[gunListPos].magMesh != null)
+        {
+            magModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].magMesh;
+            magModel.GetComponent<MeshRenderer>().sharedMaterials[0] = gunList[gunListPos].gunMaterial;
+        }
+        else
+        {
+            magModel.GetComponent<MeshFilter>().mesh = null;
+            magModel.GetComponent<MeshRenderer>().material = null;
+        }
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
         gameManager.instance.updateMagCount(gunList[gunListPos].magsCur);
     }

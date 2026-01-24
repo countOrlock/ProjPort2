@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunModel: {fileID: 5494625650325380441, guid: 944f765b84e4c4012876d61f4dfc7b5a, type: 3}
+  gunMesh: {fileID: 0}
+  slideMesh: {fileID: 0}
+  hammerMesh: {fileID: 0}
+  magMesh: {fileID: 0}
+  gunMaterial: {fileID: 0}
   Bullet: {fileID: 0}
   shootLaser: 0
   shootDamage: 5
@@ -20,7 +24,7 @@ MonoBehaviour:
   shootRate: 1
   reloadRate: 5
   recoil: 5
-  ammoCur: 0
+  ammoCur: 2
   ammoMax: 2
   magsCur: 20
   magsMax: 20

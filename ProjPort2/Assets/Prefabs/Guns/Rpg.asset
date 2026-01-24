@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
   m_Name: Rpg
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunModel: {fileID: 1411512464560164, guid: 02baef62b1bfedf40bb369fb7542b9e7, type: 3}
+  gunMesh: {fileID: 4300000, guid: 4e5ce0b6f97fdbc40b7bc818b06b80ba, type: 3}
+  slideMesh: {fileID: 0}
+  hammerMesh: {fileID: 0}
+  magMesh: {fileID: 0}
+  gunMaterial: {fileID: 2100000, guid: 28f0b13c7e9707746b5e0b3336181560, type: 2}
   Bullet: {fileID: 1141838910390786918, guid: 57e314d01606ee14e9dd2f16de2291ae, type: 3}
   shootLaser: 0
   shootDamage: 0

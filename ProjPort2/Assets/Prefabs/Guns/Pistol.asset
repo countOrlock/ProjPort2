@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunModel: {fileID: 8511213538548069405, guid: b58758523fb291443bdbfcd3a075a31e, type: 3}
+  gunMesh: {fileID: -4222014210152529660, guid: 769ec9975dc255c45a15dc6149059930, type: 3}
+  slideMesh: {fileID: 2885756083127718827, guid: 769ec9975dc255c45a15dc6149059930, type: 3}
+  hammerMesh: {fileID: 8164388750953057965, guid: 769ec9975dc255c45a15dc6149059930, type: 3}
+  magMesh: {fileID: -8632004758062431357, guid: 769ec9975dc255c45a15dc6149059930, type: 3}
+  gunMaterial: {fileID: 70839587048951557, guid: 769ec9975dc255c45a15dc6149059930, type: 3}
   Bullet: {fileID: 0}
   shootLaser: 0
   shootDamage: 1
@@ -22,7 +26,7 @@ MonoBehaviour:
   recoil: 0
   ammoCur: 8
   ammoMax: 8
-  magsCur: 42
+  magsCur: 50
   magsMax: 50
   zoomMod: 0.9
   hitEffect: {fileID: 8573406259994096289, guid: f3215467cd9e8d041b7c38ca802e2ddd, type: 3}
@@ -43,3 +47,11 @@ MonoBehaviour:
   shootEffect2: {fileID: 0}
   shootSound2: []
   shootSoundVol2: 0
+  fireAnims:
+  - {fileID: 7400000, guid: b3536f8d7d842a94fafc0279e284c854, type: 2}
+  idleAnims:
+  - {fileID: 7400000, guid: 8ffd4214b91a78c44941bc47c9cef602, type: 2}
+  missfireAnims:
+  - {fileID: 7400000, guid: b00cf5d199f5e554bae68e2163dd19ea, type: 2}
+  reloadAnims:
+  - {fileID: 7400000, guid: 5d2c9d2d14e214747a5a62294add9da1, type: 2}

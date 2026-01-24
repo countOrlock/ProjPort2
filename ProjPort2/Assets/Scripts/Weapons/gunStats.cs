@@ -5,7 +5,11 @@ using UnityEngine;
 public class gunStats : ScriptableObject
 {
     [Header("----- Gun Fire1 -----")]
-    public GameObject gunModel;
+    public Mesh gunMesh;
+    public Mesh slideMesh;
+    public Mesh hammerMesh;
+    public Mesh magMesh;
+    public Material gunMaterial;
     public GameObject Bullet = null;
     public bool shootLaser;
 
@@ -39,5 +43,10 @@ public class gunStats : ScriptableObject
     public ParticleSystem shootEffect2;
     public AudioClip[] shootSound2;
     [Range(0, 1)] public float shootSoundVol2;
-    
+
+    [Header("-----Animations-----")]
+    public AnimationClip[] fireAnims;
+    public AnimationClip[] idleAnims;
+    public AnimationClip[] missfireAnims;
+    public AnimationClip[] reloadAnims;
 }

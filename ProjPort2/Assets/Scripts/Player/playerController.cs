@@ -255,13 +255,29 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             }
         }
 
-        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate && reloading == false && !gameManager.instance.isPaused)
+        if (Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && reloading == false && !gameManager.instance.isPaused)
         {
-            shoot();
+            if (gunList[gunListPos].shootLaser)
+            {
+                Laser.enabled = true;
+            }
+
+            if (shootTimer >= gunList[gunListPos].shootRate)
+            {
+                shoot();
+            }
         }
-        else if (Input.GetButton("Fire2") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= gunList[gunListPos].shootRate2 && reloading == false && !gameManager.instance.isPaused && gunList[gunListPos].HasSecondary == true)
+        else if (Input.GetButton("Fire2") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && reloading == false && !gameManager.instance.isPaused && gunList[gunListPos].HasSecondary == true)
         {
-            shoot2();
+            if (gunList[gunListPos].shootLaser2)
+            {
+                Laser.enabled = true;
+            }
+
+            if (shootTimer >= gunList[gunListPos].shootRate2)
+            {
+                shoot2();
+            }
         }
         else
         {
@@ -430,6 +446,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     {
         shootTimer = 0;
 
+        
+
         gunList[gunListPos].ammoCur--;
         gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
 
@@ -456,17 +474,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
                 if(gunList[gunListPos].shootLaser == true)
                 {
-
-                    Laser.enabled = true;
-
-                    Laser.SetPosition(0, gunModel.transform.position);
+                    Laser.SetPosition(0, Vector3.zero);
                     if (hit.distance <= gunList[gunListPos].shootDist)
                     {
-                        Laser.SetPosition(1, hit.point);
+                        Laser.SetPosition(1, new Vector3(0, 0, hit.distance));
                     }
                     else
                     {
-                        Laser.SetPosition(1, new Vector3(gunModel.transform.localPosition.x, gunModel.transform.localPosition.y, gunModel.transform.localPosition.z + gunList[gunListPos].shootDist) + gunModel.transform.rotation.eulerAngles);
+                        Laser.SetPosition(1, new Vector3(0, 0, gunList[gunListPos].shootDist));
                     }
                 }
                 else if (gunList[gunListPos].fireAnims.Any())
@@ -485,7 +500,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             }
             else if (gunList[gunListPos].shootLaser)
             {
-                Laser.SetPosition(0, gunModel.transform.position);
+                Laser.SetPosition(0, Vector3.zero);
                 Laser.SetPosition(1, new Vector3(0, 0, gunList[gunListPos].shootDist));
             }
         }

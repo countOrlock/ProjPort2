@@ -21,12 +21,12 @@ MonoBehaviour:
   shootLaser: 1
   shootDamage: 1
   shootDist: 101
-  shootRate: 0
+  shootRate: 0.1
   reloadRate: 2.36
   recoil: 0
-  ammoCur: 105
+  ammoCur: 150
   ammoMax: 200
-  magsCur: 9
+  magsCur: 7
   magsMax: 10
   zoomMod: 1
   hitEffect: {fileID: 0}

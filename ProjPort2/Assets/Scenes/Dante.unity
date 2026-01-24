@@ -1836,7 +1836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068f2a3587cae734b926ccb746841609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioEnvironment
-  newTrack: {fileID: 8300000, guid: e2690d6ce7f504b49a9e53b615049a66, type: 3}
+  newTrack: {fileID: 8300000, guid: d4ff80be796e91946b2e77f54ca55640, type: 3}
 --- !u!135 &2132854652
 SphereCollider:
   m_ObjectHideFlags: 0

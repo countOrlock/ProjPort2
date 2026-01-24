@@ -49,7 +49,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
     [Header("----- Status Effects -----")]
     float fireTimer;
-
+    public ParticleSystem burnEffect;
     public bool isBurning;
     public bool isSlow;
 
@@ -468,6 +468,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         isBurning = true;
         while (fireTimer < time)
         {
+            Instantiate(burnEffect, transform.position, Quaternion.identity);
             takeDamage(hpRate);
             yield return new WaitForSeconds(0.5f);
         }

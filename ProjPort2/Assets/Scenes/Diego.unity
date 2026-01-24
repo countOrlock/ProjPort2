@@ -4374,6 +4374,7 @@ MonoBehaviour:
   aud: {fileID: 0}
   shootSound: []
   shootVol: 0
+  burnEffect: {fileID: 0}
   isBurning: 0
   isSlow: 0
   startingWaypoint: {fileID: 0}

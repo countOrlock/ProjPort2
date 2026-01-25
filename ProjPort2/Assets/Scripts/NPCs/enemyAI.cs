@@ -118,6 +118,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         colorOrig = model.material.color;
         isDying = false;
         enemyDeathCleanup = GetComponent<DeathCleanup>();
+        startingWaypoint = GameObject.FindGameObjectWithTag("Starting Waypoint").GetComponent<Waypoint>();
     }
 
     // Update is called once per frame

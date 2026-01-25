@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::spawner
   objectToSpawn: {fileID: 0}
   spawnAmount: 0
+  enemySpawnEffect: {fileID: 6474070465985688016, guid: d7843b853a2c5024e9545112fd0a2956, type: 3}
   points: []
 --- !u!33 &4779772876010469391
 MeshFilter:

@@ -1976,6 +1976,7 @@ GameObject:
   - component: {fileID: 3757167915713247813}
   - component: {fileID: 4989797328604271375}
   - component: {fileID: 3293581511059203598}
+  - component: {fileID: 8099669516266652188}
   m_Layer: 0
   m_Name: Game Warden
   m_TagString: Untagged
@@ -2073,7 +2074,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4b8ddd024b47baa4390befee5fd7ef8b, type: 3}
   - {fileID: 8300000, guid: b10b5dc03eec28b48a0357f4274df896, type: 3}
   - {fileID: 8300000, guid: a9eaff5b063129f48bbc9c12613492c0, type: 3}
-  stepVol: 0.1
+  stepVol: 0.5
   hurtSound:
   - {fileID: 8300000, guid: 6868d4debac6ccf45ae1c5feecd28021, type: 3}
   - {fileID: 8300000, guid: f77cb46ffc846f849aabc69ac28a2f03, type: 3}
@@ -2081,18 +2082,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9b1967b70289b734a838056b101ce57f, type: 3}
   - {fileID: 8300000, guid: d0dd22eda846da440954465c9e849996, type: 3}
   - {fileID: 8300000, guid: 899265b573c54484597679acca6289b9, type: 3}
-  hurtVol: 0.1
+  hurtVol: 0.5
   deathSound:
   - {fileID: 8300000, guid: 7f95acaa9d1fb2243ac2b2d23d0480d3, type: 3}
-  deathVol: 0.3
+  deathVol: 0.5
   alertedSound:
   - {fileID: 8300000, guid: 6986f757119801e4aa7ff34ef68dfbe5, type: 3}
   - {fileID: 8300000, guid: dd7d6d2a58cceba4a83f60283608e3a3, type: 3}
   - {fileID: 8300000, guid: f32c615ad1b89de4c9a547347791e68e, type: 3}
-  alertedVol: 0.1
+  alertedVol: 0.5
   resumingPatrolSound:
   - {fileID: 8300000, guid: 0b661f10f85b81746a13ac60402d9729, type: 3}
-  resumingPatrolVol: 0.1
+  resumingPatrolVol: 0.5
   burnEffect: {fileID: 0}
   isBurning: 0
   isSlow: 0
@@ -2208,7 +2209,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 10
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -2218,40 +2219,31 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0.9819565
-      inSlope: -50.01992
-      outSlope: -50.01992
+      time: 0.20207931
+      value: 1
+      inSlope: -1.330794
+      outSlope: -1.330794
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.27635688
     - serializedVersion: 3
-      time: 0.015643157
-      value: 0.46752167
-      inSlope: -11.777615
-      outSlope: -11.777615
+      time: 0.40559295
+      value: 0.5105438
+      inSlope: -1.7933338
+      outSlope: -1.7933338
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.39106897
+      inWeight: 0.33040375
       outWeight: 0
     - serializedVersion: 3
-      time: 0.06646927
-      value: 0.16630554
-      inSlope: -3.305435
-      outSlope: -3.305435
+      time: 1
+      value: 0
+      inSlope: -0.39403883
+      outSlope: -0.39403883
       tangentMode: 0
       weightedMode: 0
-      inWeight: 1
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.18164459
-      value: 0.003982544
-      inSlope: -0.78156126
-      outSlope: -0.78156126
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
+      inWeight: 0.28272426
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -2301,6 +2293,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &8099669516266652188
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458136239459263457}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7536714199767445136
 GameObject:
   m_ObjectHideFlags: 0

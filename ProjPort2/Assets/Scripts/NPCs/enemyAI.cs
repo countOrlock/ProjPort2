@@ -75,6 +75,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     float distToTarget;
     float distToWaypoint;
     npcMode mode;
+    bool isDying;
     bool resumingPatrol;
 
     [SerializeField] int resumePatrolTime;
@@ -97,7 +98,6 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     Vector3 playerDir;
     Vector3 startingPos;
 
-    bool isDying;
 
     DeathCleanup enemyDeathCleanup;
 

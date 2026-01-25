@@ -1348,10 +1348,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3794093757279029054, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4006885481864663589, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: playerSpawnPos
       value: 
@@ -1359,14 +1355,6 @@ PrefabInstance:
     - target: {fileID: 5133888021578418263, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 5547507041309618019, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5606162014950984939, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: alienSpawner
@@ -1380,10 +1368,6 @@ PrefabInstance:
       propertyPath: bigGameSpawner
       value: 
       objectReference: {fileID: 600939576}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: bigGameSpawnLimit
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: smallGame1Spawner
       value: 
@@ -1401,53 +1385,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 624924302}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: bigGameSpawnMinimum
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: smallGame1SpawnLimit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: smallGame2SpawnLimit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: mediumGame1SpawnLimit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: mediumGame2SpawnLimit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: smallGame1SpawnMinimum
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: smallGame2SpawnMinimum
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: mediumGame1SpawnMinimum
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: mediumGame2SpawnMinimum
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: mediumGameHostileSpawner
       value: 
       objectReference: {fileID: 958504843}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: mediumGameHostileSpawnLimit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: mediumGameHostileSpawnMinimum
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

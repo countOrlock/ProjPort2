@@ -10093,6 +10093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::spawner
   objectToSpawn: {fileID: 0}
   spawnAmount: 0
+  enemySpawnEffect: {fileID: 6474070465985688016, guid: d7843b853a2c5024e9545112fd0a2956, type: 3}
   points: []
 --- !u!1 &1925445786486777117
 GameObject:
@@ -10148,6 +10149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::spawner
   objectToSpawn: {fileID: 0}
   spawnAmount: 0
+  enemySpawnEffect: {fileID: 6474070465985688016, guid: d7843b853a2c5024e9545112fd0a2956, type: 3}
   points: []
 --- !u!1 &2907740690516400266
 GameObject:
@@ -10352,6 +10354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::spawner
   objectToSpawn: {fileID: 0}
   spawnAmount: 0
+  enemySpawnEffect: {fileID: 6474070465985688016, guid: d7843b853a2c5024e9545112fd0a2956, type: 3}
   points: []
 --- !u!33 &5113804907646830328
 MeshFilter:
@@ -10414,6 +10417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::spawner
   objectToSpawn: {fileID: 0}
   spawnAmount: 0
+  enemySpawnEffect: {fileID: 6474070465985688016, guid: d7843b853a2c5024e9545112fd0a2956, type: 3}
   points: []
 --- !u!33 &5967166688879918147
 MeshFilter:
@@ -10571,6 +10575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::spawner
   objectToSpawn: {fileID: 0}
   spawnAmount: 0
+  enemySpawnEffect: {fileID: 6474070465985688016, guid: d7843b853a2c5024e9545112fd0a2956, type: 3}
   points: []
 --- !u!135 &7945927883151246317
 SphereCollider:
@@ -10722,6 +10727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::spawner
   objectToSpawn: {fileID: 0}
   spawnAmount: 0
+  enemySpawnEffect: {fileID: 6474070465985688016, guid: d7843b853a2c5024e9545112fd0a2956, type: 3}
   points: []
 --- !u!33 &9198352586007958259
 MeshFilter:

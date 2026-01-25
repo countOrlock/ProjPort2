@@ -16,7 +16,7 @@ MonoBehaviour:
   slideMesh: {fileID: 0}
   hammerMesh: {fileID: 0}
   magMesh: {fileID: 0}
-  gunMaterial: {fileID: 2100000, guid: f925e82642a9f7a41850e58638572857, type: 2}
+  gunMaterial: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
   Bullet: {fileID: 8949708971757413220, guid: dd85721034bc6444884df286dc7bf3a7, type: 3}
   shootLaser: 0
   shootDamage: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   shootRate: 2
   reloadRate: 0.1
   recoil: 0
-  ammoCur: 289
+  ammoCur: 298
   ammoMax: 300
   magsCur: 8
   magsMax: 8

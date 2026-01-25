@@ -12,6 +12,8 @@ public class NPCManager : MonoBehaviour
     [SerializeField] GameObject mediumGame2;
     [SerializeField] GameObject mediumGameHostile;
     [SerializeField] GameObject bigGame;
+    [SerializeField] GameObject warden;
+    [SerializeField] GameObject alien;
 
     [Header("-----Spawners-----")]
     [SerializeField] spawner smallGame1Spawner;
@@ -20,6 +22,8 @@ public class NPCManager : MonoBehaviour
     [SerializeField] spawner mediumGame2Spawner;
     [SerializeField] spawner mediumGameHostileSpawner;
     [SerializeField] spawner bigGameSpawner;
+    [SerializeField] spawner wardenSpawner;
+    [SerializeField] spawner alienSpawner;
 
     [Header("-----Min-----")]
     [SerializeField] int smallGame1SpawnMinimum;
@@ -28,6 +32,8 @@ public class NPCManager : MonoBehaviour
     [SerializeField] int mediumGame2SpawnMinimum;
     [SerializeField] int mediumGameHostileSpawnMinimum;
     [SerializeField] int bigGameSpawnMinimum;
+    [SerializeField] int wardenSpawnMinimum;
+    [SerializeField] int alienSpawnMinimum;
 
     [Header("-----Max-----")]
     [SerializeField] int smallGame1SpawnLimit;
@@ -36,6 +42,8 @@ public class NPCManager : MonoBehaviour
     [SerializeField] int mediumGame2SpawnLimit;
     [SerializeField] int mediumGameHostileSpawnLimit;
     [SerializeField] int bigGameSpawnLimit;
+    [SerializeField] int wardenSpawnLimit;
+    [SerializeField] int alienSpawnLimit;
 
     // List of all spawners
     GameObject[] spawners;
@@ -116,6 +124,12 @@ public class NPCManager : MonoBehaviour
         random = Random.Range(bigGameSpawnMinimum, bigGameSpawnLimit);
         bigGameSpawner.spawnAssign(bigGame, random);
         UpdateNPCCount(bigGame, random);
+
+        wardenSpawner.spawnAssign(warden, wardenSpawnLimit);
+        UpdateNPCCount(warden, wardenSpawnLimit);
+
+        alienSpawner.spawnAssign(alien, alienSpawnLimit);
+        UpdateNPCCount(alien, alienSpawnLimit);
     }
 
     // Update is called once per frame
@@ -292,5 +306,12 @@ public class NPCManager : MonoBehaviour
         }
 
         return min;
+    }
+
+    public void AlienSpawnEvent()
+    {
+        alienSpawnLimit = 1;
+        Spawn(alien, 1);
+        UpdateNPCCount(alien, 1);
     }
 }

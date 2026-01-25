@@ -11,8 +11,16 @@ public class MusicManager : MonoBehaviour
     [SerializeField] float fadeTime;
     [SerializeField] AudioSource track01AudioSource;
     [SerializeField] AudioSource track02AudioSource;
-
     public bool track1Playing;
+
+
+    [Header("----- FOR VOLUME SETTINGS -----")]
+    [SerializeField] AudioMixer mixer;
+
+    public const string MASTER_KEY = "masterVolume";
+    public const string MUSIC_KEY = "musicVolume";
+    public const string SFX_KEY = "sfxVolume";
+
 
     void Awake()
     {
@@ -35,6 +43,18 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         ReturnToDefaultTrack();
+        LoadVolume();
+    }
+
+    void LoadVolume()
+    {
+        float masterVolume = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
+        float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
+        float sfxVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
+
+        mixer.SetFloat("MasterVolume", Mathf.Log10(masterVolume) * 20);
+        mixer.SetFloat("MusicVolume", Mathf.Log10(musicVolume) * 20);
+        mixer.SetFloat("SFXVolume", Mathf.Log10(sfxVolume) * 20);
     }
 
     public void SwapTrack(AudioClip newTrack)

@@ -12,6 +12,7 @@ TagManager:
   - Ground
   - FxTemporaire
   - Player Spawn Pos
+  - Starting Waypoint
   layers:
   - Default
   - TransparentFX

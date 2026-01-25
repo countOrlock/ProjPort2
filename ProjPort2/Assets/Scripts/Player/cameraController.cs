@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class cameraController : MonoBehaviour
 {
-    [Range (50, 500)][SerializeField] float sens;
+    [Range (0.1f, 10f)][SerializeField] float sens;
     [SerializeField] int maxUP, maxDOWN;
     [Range(0, 100)][SerializeField] int zoomSpeed;
     [SerializeField] bool invert;
@@ -37,24 +37,27 @@ public class cameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        zoomAdjust();
-        float mouseX = Input.GetAxisRaw("Mouse X") * sens * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * sens * Time.deltaTime;
-
-        if (invert)
+        if (!gameManager.instance.isPaused)
         {
-            camUpDown += mouseY;
+            zoomAdjust();
+            float mouseX = Input.GetAxisRaw("Mouse X") * sens;
+            float mouseY = Input.GetAxisRaw("Mouse Y") * sens;
+
+            if (invert)
+            {
+                camUpDown += mouseY;
+            }
+            else
+            {
+                camUpDown -= mouseY;
+            }
+
+            camUpDown = Mathf.Clamp(camUpDown, maxDOWN, maxUP);
+
+            transform.localRotation = Quaternion.Euler(camUpDown, 0, 0);
+
+            transform.parent.parent.Rotate(Vector3.up * mouseX);
         }
-        else
-        {
-            camUpDown -= mouseY;
-        }
-
-        camUpDown = Mathf.Clamp(camUpDown, maxDOWN, maxUP);
-
-        transform.localRotation = Quaternion.Euler(camUpDown, 0, 0);
-
-        transform.parent.parent.Rotate(Vector3.up * mouseX);
     }
 
     public void zoomIn(float amount)

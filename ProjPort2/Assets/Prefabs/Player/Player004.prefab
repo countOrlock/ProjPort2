@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d238044335d3848a5e0feada648e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cameraController
-  sens: 420
+  sens: 2
   maxUP: 90
   maxDOWN: -90
   zoomSpeed: 50

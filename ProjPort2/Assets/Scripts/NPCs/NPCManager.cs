@@ -32,8 +32,6 @@ public class NPCManager : MonoBehaviour
     [SerializeField] int mediumGame2SpawnMinimum;
     [SerializeField] int mediumGameHostileSpawnMinimum;
     [SerializeField] int bigGameSpawnMinimum;
-    [SerializeField] int wardenSpawnMinimum;
-    [SerializeField] int alienSpawnMinimum;
 
     [Header("-----Max-----")]
     [SerializeField] int smallGame1SpawnLimit;
@@ -42,8 +40,6 @@ public class NPCManager : MonoBehaviour
     [SerializeField] int mediumGame2SpawnLimit;
     [SerializeField] int mediumGameHostileSpawnLimit;
     [SerializeField] int bigGameSpawnLimit;
-    [SerializeField] int wardenSpawnLimit;
-    [SerializeField] int alienSpawnLimit;
 
     // List of all spawners
     GameObject[] spawners;
@@ -125,11 +121,9 @@ public class NPCManager : MonoBehaviour
         bigGameSpawner.spawnAssign(bigGame, random);
         UpdateNPCCount(bigGame, random);
 
-        wardenSpawner.spawnAssign(warden, wardenSpawnLimit);
-        UpdateNPCCount(warden, wardenSpawnLimit);
+        wardenSpawner.spawnAssign(warden, 1);
 
-        alienSpawner.spawnAssign(alien, alienSpawnLimit);
-        UpdateNPCCount(alien, alienSpawnLimit);
+        alienSpawner.spawnAssign(alien, 0);
     }
 
     // Update is called once per frame
@@ -310,8 +304,11 @@ public class NPCManager : MonoBehaviour
 
     public void AlienSpawnEvent()
     {
-        alienSpawnLimit = 1;
-        Spawn(alien, 1);
-        UpdateNPCCount(alien, 1);
+        alienSpawner.spawn(1);
+    }
+
+    public void WardenDeathEvent()
+    {
+        wardenSpawner.spawn(1);
     }
 }

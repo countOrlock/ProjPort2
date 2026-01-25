@@ -1440,17 +1440,9 @@ PrefabInstance:
       value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 4006885481864663589, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: mixer
-      value: 
-      objectReference: {fileID: 24100000, guid: 26a0b8bc6ea9e11499a094f2c55947b7, type: 2}
-    - target: {fileID: 4006885481864663589, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: playerSpawnPos
       value: 
       objectReference: {fileID: 807941853}
-    - target: {fileID: 4006885481864663589, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: volumeManagerToEnable
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4557185513918723963, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: m_Value
       value: 0.0001
@@ -1481,10 +1473,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5857317938251957864, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6005864648264104711, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}

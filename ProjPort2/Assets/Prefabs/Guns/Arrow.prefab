@@ -138,10 +138,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::damage
   type: 0
   rb: {fileID: 1372661982407892980}
+  createdObject: {fileID: 0}
   damageAmount: 3
   damageRate: 1
   speed: 40
   destroyTime: 5
+  groundCheck: 0
+  groundObject: {fileID: 0}
+  fire: 0
+  fireDamage: 0
+  fireTime: 0
+  slow: 0
+  slowAmount: 0
+  slowTime: 0
 --- !u!54 &1372661982407892980
 Rigidbody:
   m_ObjectHideFlags: 0

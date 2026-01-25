@@ -279,7 +279,6 @@ GameObject:
   m_Component:
   - component: {fileID: 47905108}
   - component: {fileID: 47905111}
-  - component: {fileID: 47905110}
   - component: {fileID: 47905109}
   m_Layer: 5
   m_Name: Master Volume Bar
@@ -361,23 +360,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &47905110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47905107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5384ea6dfa74b2b429c72f640ae6b1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::volumeManager
-  volumeParameter: MasterVolume
-  mixer: {fileID: 24100000, guid: 26a0b8bc6ea9e11499a094f2c55947b7, type: 2}
-  volumeSlider: {fileID: 47905109}
-  multiplier: 20
-  toggle: {fileID: 1800903418}
 --- !u!114 &47905111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +373,103 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::buttonHoverEffect
   sizeDifference: 1.15
+--- !u!1001 &91067117
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1270.814
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 807.7907
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831272308127573261, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523343377968332831, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
+      propertyPath: m_Name
+      value: Music Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 17008a4d7e7b492418ea1896aea40a36, type: 3}
 --- !u!1 &101934651
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,135 +621,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162094667}
   m_CullTransparentMesh: 1
---- !u!1 &252292632
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 252292634}
-  - component: {fileID: 252292633}
-  m_Layer: 0
-  m_Name: Music
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &252292633
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252292632}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 8962724264433689956, guid: 26a0b8bc6ea9e11499a094f2c55947b7, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 9532dff63c664fd4a943d83d881498c1, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!4 &252292634
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252292632}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 944.95215, y: 551.86975, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &286405992
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +772,7 @@ GameObject:
   - component: {fileID: 386030352}
   - component: {fileID: 386030351}
   - component: {fileID: 386030350}
+  - component: {fileID: 386030355}
   m_Layer: 5
   m_Name: Option Menu
   m_TagString: Untagged
@@ -930,6 +881,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee00444223c74b04289cb85e7625abf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::buttonFunctions
+--- !u!114 &386030355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386030349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5384ea6dfa74b2b429c72f640ae6b1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::volumeManager
+  mixer: {fileID: 24100000, guid: 26a0b8bc6ea9e11499a094f2c55947b7, type: 2}
+  masterSlider: {fileID: 47905109}
+  musicSlider: {fileID: 1358833271}
+  sfxSlider: {fileID: 1811746636}
+  masterToggle: {fileID: 1800903418}
+  musicToggle: {fileID: 983494884}
+  sfxToggle: {fileID: 1673729753}
 --- !u!1 &470722180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,7 +2519,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1358833270}
   - component: {fileID: 1358833273}
-  - component: {fileID: 1358833272}
   - component: {fileID: 1358833271}
   m_Layer: 5
   m_Name: Music Volume Bar
@@ -2631,23 +2600,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1358833272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358833269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5384ea6dfa74b2b429c72f640ae6b1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::volumeManager
-  volumeParameter: MusicVolume
-  mixer: {fileID: 24100000, guid: 26a0b8bc6ea9e11499a094f2c55947b7, type: 2}
-  volumeSlider: {fileID: 1358833271}
-  multiplier: 20
-  toggle: {fileID: 983494884}
 --- !u!114 &1358833273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4192,7 +4144,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1811746635}
   - component: {fileID: 1811746638}
-  - component: {fileID: 1811746637}
   - component: {fileID: 1811746636}
   m_Layer: 5
   m_Name: SFX Volume Bar
@@ -4274,23 +4225,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1811746637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811746634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5384ea6dfa74b2b429c72f640ae6b1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::volumeManager
-  volumeParameter: SFXVolume
-  mixer: {fileID: 24100000, guid: 26a0b8bc6ea9e11499a094f2c55947b7, type: 2}
-  volumeSlider: {fileID: 1811746636}
-  multiplier: 20
-  toggle: {fileID: 1673729753}
 --- !u!114 &1811746638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4709,4 +4643,4 @@ SceneRoots:
   - {fileID: 1640023220}
   - {fileID: 574792983}
   - {fileID: 470722183}
-  - {fileID: 252292634}
+  - {fileID: 91067117}

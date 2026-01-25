@@ -839,6 +839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 886185899}
+  - component: {fileID: 886185903}
   - component: {fileID: 886185902}
   - component: {fileID: 886185901}
   - component: {fileID: 886185900}
@@ -975,6 +976,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886185898}
   m_CullTransparentMesh: 1
+--- !u!114 &886185903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886185898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f344b5b2cc79d49890c408f3ef5aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::buttonHoverEffect
+  sizeDifference: 1.15
 --- !u!1 &1002657240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,6 +1127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1026332381}
+  - component: {fileID: 1026332385}
   - component: {fileID: 1026332384}
   - component: {fileID: 1026332383}
   - component: {fileID: 1026332382}
@@ -1249,6 +1264,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026332380}
   m_CullTransparentMesh: 1
+--- !u!114 &1026332385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026332380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f344b5b2cc79d49890c408f3ef5aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::buttonHoverEffect
+  sizeDifference: 1.15
 --- !u!1 &1103690311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1103690312}
+  - component: {fileID: 1103690316}
   - component: {fileID: 1103690315}
   - component: {fileID: 1103690314}
   - component: {fileID: 1103690313}
@@ -1394,6 +1423,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103690311}
   m_CullTransparentMesh: 1
+--- !u!114 &1103690316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103690311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f344b5b2cc79d49890c408f3ef5aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::buttonHoverEffect
+  sizeDifference: 1.15
 --- !u!1 &1280405974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,6 +1445,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1280405975}
+  - component: {fileID: 1280405979}
   - component: {fileID: 1280405978}
   - component: {fileID: 1280405977}
   - component: {fileID: 1280405976}
@@ -1539,6 +1582,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280405974}
   m_CullTransparentMesh: 1
+--- !u!114 &1280405979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280405974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f344b5b2cc79d49890c408f3ef5aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::buttonHoverEffect
+  sizeDifference: 1.15
 --- !u!1 &1365018867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088425869}
+  - component: {fileID: 2088425873}
   - component: {fileID: 2088425872}
   - component: {fileID: 2088425871}
   - component: {fileID: 2088425870}
@@ -2433,6 +2490,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088425868}
   m_CullTransparentMesh: 1
+--- !u!114 &2088425873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088425868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f344b5b2cc79d49890c408f3ef5aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::buttonHoverEffect
+  sizeDifference: 1.15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

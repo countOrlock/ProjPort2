@@ -23,6 +23,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     [SerializeField] GameObject dropItem;
 
     [Header("----- Toggles -----")]
+    [SerializeField] bool isWarden;
     [SerializeField] bool scaredOfPlayer;
     [SerializeField] bool shootsProjectile;
     [SerializeField] bool attacksMelee;
@@ -445,7 +446,13 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             isDying = true;
             agent.isStopped = true;
             anim.SetFloat("Speed", 0);
-            enemyDeathCleanup.Die();
+            anim.SetTrigger("Die");
+            //enemyDeathCleanup.Die();
+
+            if(isWarden)
+            {
+                NPCManager.instance.WardenDeathEvent();
+            }
 
             //if (dropItem != null)
             //{
@@ -492,6 +499,8 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             gameManager.instance.hunterAmountCurr--;
 
         NPCManager.instance.UpdateNPCCount(gameObject, -1);
+
+        Destroy(gameObject);
     }
 
     IEnumerator flashRed()

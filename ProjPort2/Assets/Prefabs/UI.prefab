@@ -5214,7 +5214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 6492617403688338510}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!114 &2375621268393514379
@@ -8938,10 +8938,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 3325663526226664662}
+    m_SelectOnDown: {fileID: 5726311833774406846}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -10173,7 +10173,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 27.5, y: -63.25}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4894507876120639831
 CanvasRenderer:
@@ -13052,7 +13052,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 27.5, y: -242.75}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7662988774378852553
 CanvasRenderer:
@@ -14473,17 +14473,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCManager
   smallGame1: {fileID: 3285567043007469565, guid: 5bd17f7165a7cf74a95ca20c19ed55a5, type: 3}
-  smallGame2: {fileID: 5693768469468200881, guid: b3d348117dd1fc1488a62c9079cef40a, type: 3}
-  mediumGame1: {fileID: 210026739007158227, guid: 52e1195249875d24b94551e9c1162122, type: 3}
-  mediumGame2: {fileID: 5648286772186859958, guid: ca2478e90e85b1943b5feadc32a292c1, type: 3}
-  mediumGameHostile: {fileID: 2536236743819561474, guid: ebca76b9fc0a9a24e912a22fd3f8636c, type: 3}
+  smallGame2: {fileID: 2536236743819561474, guid: ebca76b9fc0a9a24e912a22fd3f8636c, type: 3}
+  mediumGame1: {fileID: 5693768469468200881, guid: b3d348117dd1fc1488a62c9079cef40a, type: 3}
+  mediumGame2: {fileID: 210026739007158227, guid: 52e1195249875d24b94551e9c1162122, type: 3}
+  mediumGameHostile: {fileID: 5648286772186859958, guid: ca2478e90e85b1943b5feadc32a292c1, type: 3}
   bigGame: {fileID: 3617165509172582398, guid: 84c1e8026c4e78b4099b2ef3b0fc06d3, type: 3}
+  warden: {fileID: 7458136239459263457, guid: 75aea8638e8732a4ea20e1dbca580429, type: 3}
+  alien: {fileID: 6492172947260861254, guid: 507fbd73eb9952f43b79af912d189ef3, type: 3}
   smallGame1Spawner: {fileID: 0}
   smallGame2Spawner: {fileID: 0}
   mediumGame1Spawner: {fileID: 0}
   mediumGame2Spawner: {fileID: 0}
   mediumGameHostileSpawner: {fileID: 0}
   bigGameSpawner: {fileID: 0}
+  wardenSpawner: {fileID: 0}
+  alienSpawner: {fileID: 0}
   smallGame1SpawnMinimum: 40
   smallGame2SpawnMinimum: 20
   mediumGame1SpawnMinimum: 15
@@ -20366,10 +20370,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 2373532263247997282}
+    m_SelectOnDown: {fileID: 3813610190560158891}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -20426,7 +20430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7606343671267234731
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23849,17 +23853,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::questManager
   defaultQuest: {fileID: 11400000, guid: 071ff50321f7f3a4cbcf85ae1cd8e1bf, type: 2}
-  unavailableQuests: []
+  unavailableQuests:
+  - {fileID: 11400000, guid: 98f827b2c10dad34b833df7b3e608a8e, type: 2}
+  - {fileID: 11400000, guid: 6c85be1330e74c940a7a91ae075a1f22, type: 2}
+  - {fileID: 11400000, guid: 78192f0e8c40f55459d026aba617c029, type: 2}
+  - {fileID: 11400000, guid: 7a1acde62b9662648920c736cc7394a6, type: 2}
+  - {fileID: 11400000, guid: 79f75ee2b4fc7064792372c874351526, type: 2}
+  - {fileID: 11400000, guid: 5842621133879424294391e058a3eddd, type: 2}
+  - {fileID: 11400000, guid: bff1fbc0af310a3459690b6639a920e9, type: 2}
+  - {fileID: 11400000, guid: 5f0f330b856e83f4a95ac23c564568c7, type: 2}
+  - {fileID: 11400000, guid: 67e116d0bc0c65942a0b0631e068d157, type: 2}
+  - {fileID: 11400000, guid: 2ef1d32b0f05ec14696b5a0258deab43, type: 2}
+  - {fileID: 11400000, guid: a4208fe26fa3e1b4dbc531ce8a7b0581, type: 2}
+  - {fileID: 11400000, guid: 6665e09959244ed45a0f6e466e8b875e, type: 2}
+  - {fileID: 11400000, guid: 29dc27d9878b4e148bbceb5f07220e45, type: 2}
+  - {fileID: 11400000, guid: 831ddf60ae2a556439672d66534a3c74, type: 2}
+  - {fileID: 11400000, guid: 3c32c1d91403e0c49b22267c9942602c, type: 2}
+  - {fileID: 11400000, guid: 10358b30e3fc8f54c917d22ac83e3aa3, type: 2}
   availableQuests:
-  - {fileID: 11400000, guid: 813ab640808c3cc4aa26170f03b33267, type: 2}
-  - {fileID: 11400000, guid: a8eecbafa646ef14ab27861ce6675e00, type: 2}
-  - {fileID: 11400000, guid: 224d2280812c62846a32e349ebad919a, type: 2}
-  - {fileID: 11400000, guid: 98bba4f51b5a1ed43b44c01ecf3cbf08, type: 2}
-  activeQuest1: {fileID: 11400000, guid: 224d2280812c62846a32e349ebad919a, type: 2}
-  activeQuest2: {fileID: 0}
+  - {fileID: 11400000, guid: 00aed26455639aa44b32a27ce1ee3a9c, type: 2}
+  - {fileID: 11400000, guid: e3f6c2a5f400ef744b900b912f460f8f, type: 2}
+  activeQuest1: {fileID: 11400000, guid: 380a3a23def1bb54e8cf59da631bce2e, type: 2}
+  activeQuest2: {fileID: 11400000, guid: 666db632d638520478a579c7059f83d3, type: 2}
   completeQuests: []
   dayLengthInMinutes: 10
-  rentAmountDue: 20
+  rentAmountDue: 1000
 --- !u!1 &7593094001649255755
 GameObject:
   m_ObjectHideFlags: 0

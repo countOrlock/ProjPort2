@@ -12,6 +12,8 @@ public class NPCManager : MonoBehaviour
     [SerializeField] GameObject mediumGame2;
     [SerializeField] GameObject mediumGameHostile;
     [SerializeField] GameObject bigGame;
+    [SerializeField] GameObject warden;
+    [SerializeField] GameObject alien;
 
     [Header("-----Spawners-----")]
     [SerializeField] spawner smallGame1Spawner;
@@ -20,6 +22,8 @@ public class NPCManager : MonoBehaviour
     [SerializeField] spawner mediumGame2Spawner;
     [SerializeField] spawner mediumGameHostileSpawner;
     [SerializeField] spawner bigGameSpawner;
+    [SerializeField] spawner wardenSpawner;
+    [SerializeField] spawner alienSpawner;
 
     [Header("-----Min-----")]
     [SerializeField] int smallGame1SpawnMinimum;
@@ -116,6 +120,10 @@ public class NPCManager : MonoBehaviour
         random = Random.Range(bigGameSpawnMinimum, bigGameSpawnLimit);
         bigGameSpawner.spawnAssign(bigGame, random);
         UpdateNPCCount(bigGame, random);
+
+        wardenSpawner.spawnAssign(warden, 1);
+
+        alienSpawner.spawnAssign(alien, 0);
     }
 
     // Update is called once per frame
@@ -292,5 +300,15 @@ public class NPCManager : MonoBehaviour
         }
 
         return min;
+    }
+
+    public void AlienSpawnEvent()
+    {
+        alienSpawner.spawn(1);
+    }
+
+    public void WardenDeathEvent()
+    {
+        wardenSpawner.spawn(1);
     }
 }

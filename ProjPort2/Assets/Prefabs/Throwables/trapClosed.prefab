@@ -49,11 +49,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::damage
   type: 5
   rb: {fileID: 7501360041874877903}
-  createdObject: {fileID: 4055013577771258833, guid: a32639d5958e2ea408309ab23da33b6c, type: 3}
+  createdObject: {fileID: 1138774544176488403, guid: 57799585130c93041b10fa1c861c6f67, type: 3}
   damageAmount: 0
   damageRate: 0
   speed: 0
   destroyTime: 5
+  groundCheck: 0
+  groundObject: {fileID: 0}
   fire: 0
   fireDamage: 0
   fireTime: 0

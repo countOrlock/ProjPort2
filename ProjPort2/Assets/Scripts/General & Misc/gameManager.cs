@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEditor;
+using UnityEngine.Audio;
 
 public class gameManager : MonoBehaviour
 {
@@ -60,6 +61,8 @@ public class gameManager : MonoBehaviour
 
     [Header("===Misc Variables===")]
     [SerializeField] AudioClip DefaultInGameMusic;
+    [SerializeField] GameObject volumeManagerToEnable;
+    [SerializeField] AudioMixer mixer;
     public GameObject player;
     public playerController playerScript;
     public GameObject playerSpawnPos;
@@ -78,7 +81,10 @@ public class gameManager : MonoBehaviour
     int totalMagCount;
     int itemCount;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public const string MASTER_KEY = "masterVolume";
+    public const string MUSIC_KEY  = "musicVolume";
+    public const string SFX_KEY    = "sfxVolume";
+
     void Awake()
     {
         instance = this;
@@ -90,14 +96,21 @@ public class gameManager : MonoBehaviour
 
         hunterSpawner = GameObject.FindWithTag("Hunter Spawner");
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+
     }
 
     private void Start()
     {
+        if (volumeManagerToEnable != null)
+        {
+           // volumeManagerToEnable.SetActive(true);
+        }
         checkHunters();
         gameGoalCount = 0;
         MusicManager.instance.defaultTrack = DefaultInGameMusic;
         MusicManager.instance.ReturnToDefaultTrack();
+        LoadVolume();
+
     }
 
     // Update is called once per frame
@@ -137,6 +150,17 @@ public class gameManager : MonoBehaviour
                 stateUnpause();
             }
         }
+    }
+
+    void LoadVolume()
+    {
+        float masterVolume = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
+        float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
+        float sfxVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
+
+        mixer.SetFloat("MasterVolume", Mathf.Log10(masterVolume) * 20);
+        mixer.SetFloat("MusicVolume", Mathf.Log10(musicVolume) * 20);
+        mixer.SetFloat("SFXVolume", Mathf.Log10(sfxVolume) * 20);
     }
 
     public void statePause()

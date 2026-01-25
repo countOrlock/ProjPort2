@@ -1971,12 +1971,10 @@ GameObject:
   - component: {fileID: 8587972904475850819}
   - component: {fileID: 7236920042421892072}
   - component: {fileID: 1118460603569394733}
-  - component: {fileID: -7902797618602889838}
   - component: {fileID: 3051702144706895166}
   - component: {fileID: 3757167915713247813}
   - component: {fileID: 4989797328604271375}
   - component: {fileID: 3293581511059203598}
-  - component: {fileID: 8099669516266652188}
   m_Layer: 0
   m_Name: Game Warden
   m_TagString: Untagged
@@ -2106,21 +2104,6 @@ MonoBehaviour:
   resumePatrolTime: 5
   roamDist: 5
   roamPauseTimer: 3
---- !u!114 &-7902797618602889838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7458136239459263457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c413b49026afab849957f52de1612811, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DeathCleanup
-  timeBeforeFade: 3
-  fadeDuration: 2
-  sinkSpeed: 0.5
 --- !u!195 &3051702144706895166
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2293,33 +2276,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!54 &8099669516266652188
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7458136239459263457}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &7536714199767445136
 GameObject:
   m_ObjectHideFlags: 0

@@ -723,7 +723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -59.603386
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.y
@@ -731,7 +731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 59.00171
+      value: 38.3
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalRotation.w
@@ -866,7 +866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -99.277115
+      value: 57.2
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.y
@@ -874,7 +874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -56.48996
+      value: 40.2
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1070,7 +1070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -60.4
+      value: 9.2
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1078,7 +1078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.751873
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1288,6 +1288,10 @@ PrefabInstance:
       propertyPath: playerSpawnPos
       value: 
       objectReference: {fileID: 807941853}
+    - target: {fileID: 4169530406586745595, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 5133888021578418263, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1301,13 +1305,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: smallGame2
+      value: 
+      objectReference: {fileID: 2536236743819561474, guid: ebca76b9fc0a9a24e912a22fd3f8636c, type: 3}
+    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: mediumGame1
+      value: 
+      objectReference: {fileID: 5693768469468200881, guid: b3d348117dd1fc1488a62c9079cef40a, type: 3}
+    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: mediumGame2
+      value: 
+      objectReference: {fileID: 210026739007158227, guid: 52e1195249875d24b94551e9c1162122, type: 3}
+    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: bigGameSpawner
       value: 
       objectReference: {fileID: 600939576}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: bigGameSpawnLimit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: mediumGameHostile
+      value: 
+      objectReference: {fileID: 5648286772186859958, guid: ca2478e90e85b1943b5feadc32a292c1, type: 3}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: smallGame1Spawner
       value: 
@@ -1326,7 +1346,7 @@ PrefabInstance:
       objectReference: {fileID: 624924302}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: bigGameSpawnMinimum
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: smallGame1SpawnLimit
@@ -1334,15 +1354,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: smallGame2SpawnLimit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: mediumGame1SpawnLimit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: mediumGame2SpawnLimit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: smallGame1SpawnMinimum
@@ -1350,15 +1370,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: smallGame2SpawnMinimum
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: mediumGame1SpawnMinimum
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: mediumGame2SpawnMinimum
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: mediumGameHostileSpawner
@@ -1366,12 +1386,108 @@ PrefabInstance:
       objectReference: {fileID: 958504843}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: mediumGameHostileSpawnLimit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6860638825665318161, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: mediumGameHostileSpawnMinimum
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7210595581761204332, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: activeQuest1
+      value: 
+      objectReference: {fileID: 11400000, guid: 380a3a23def1bb54e8cf59da631bce2e, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: activeQuest2
+      value: 
+      objectReference: {fileID: 11400000, guid: 666db632d638520478a579c7059f83d3, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: rentAmountDue
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: availableQuests.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: unavailableQuests.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'availableQuests.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 00aed26455639aa44b32a27ce1ee3a9c, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'availableQuests.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e3f6c2a5f400ef744b900b912f460f8f, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 98f827b2c10dad34b833df7b3e608a8e, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c85be1330e74c940a7a91ae075a1f22, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 78192f0e8c40f55459d026aba617c029, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7a1acde62b9662648920c736cc7394a6, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 79f75ee2b4fc7064792372c874351526, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5842621133879424294391e058a3eddd, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bff1fbc0af310a3459690b6639a920e9, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f0f330b856e83f4a95ac23c564568c7, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 67e116d0bc0c65942a0b0631e068d157, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ef1d32b0f05ec14696b5a0258deab43, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a4208fe26fa3e1b4dbc531ce8a7b0581, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[11]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6665e09959244ed45a0f6e466e8b875e, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[12]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 29dc27d9878b4e148bbceb5f07220e45, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[13]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 831ddf60ae2a556439672d66534a3c74, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[14]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c32c1d91403e0c49b22267c9942602c, type: 2}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[15]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 10358b30e3fc8f54c917d22ac83e3aa3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1605,7 +1721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -49.533867
+      value: 31.4
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1613,7 +1729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.3004227
+      value: -24.1
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1782,7 +1898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -69.3
+      value: 66.9
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1790,7 +1906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -44.35299
+      value: -21.8
       objectReference: {fileID: 0}
     - target: {fileID: 6866193427499468504, guid: 1779c22600e9c674085f11c565dc8235, type: 3}
       propertyPath: m_LocalRotation.w

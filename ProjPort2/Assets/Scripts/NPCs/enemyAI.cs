@@ -446,7 +446,8 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             isDying = true;
             agent.isStopped = true;
             anim.SetFloat("Speed", 0);
-            enemyDeathCleanup.Die();
+            anim.SetTrigger("Die");
+            //enemyDeathCleanup.Die();
 
             if(isWarden)
             {
@@ -498,6 +499,8 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             gameManager.instance.hunterAmountCurr--;
 
         NPCManager.instance.UpdateNPCCount(gameObject, -1);
+
+        Destroy(gameObject);
     }
 
     IEnumerator flashRed()

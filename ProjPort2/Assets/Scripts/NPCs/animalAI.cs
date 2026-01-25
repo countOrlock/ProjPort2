@@ -376,7 +376,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
             isDying = true;
             agent.isStopped = true;
             anim.SetFloat("Speed", 0);
-            enemyDeathCleanup.Die();
+            //enemyDeathCleanup.Die();
 
             if (dropItem != null)
             {
@@ -386,7 +386,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
             NPCManager.instance.UpdateNPCCount(gameObject, -1);
 
             playDeathSound();
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
         else
         {

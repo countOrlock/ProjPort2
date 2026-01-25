@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2efd9659cdf87946bfb03a61ecca9c7, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  gunMesh: {fileID: 1306348278173090972, guid: 4257c05f1e9c18c4caaa8365a26f4305, type: 3}
-  slideMesh: {fileID: 3621378711772768652, guid: 4257c05f1e9c18c4caaa8365a26f4305, type: 3}
+  gunMesh: {fileID: 1306348278173090972, guid: 5b393ff96dcd75b46a0822513dee7237, type: 3}
+  slideMesh: {fileID: 3621378711772768652, guid: 5b393ff96dcd75b46a0822513dee7237, type: 3}
   hammerMesh: {fileID: -6375221166581548128, guid: 9265c2e0c599b9145a93f8c84f140ed3, type: 3}
   magMesh: {fileID: -6375221166581548128, guid: 9265c2e0c599b9145a93f8c84f140ed3, type: 3}
   gunMaterial: {fileID: 2100000, guid: 2a461ee17a7f0b8449bd2c6e34b0e286, type: 2}
@@ -24,7 +24,7 @@ MonoBehaviour:
   shootRate: 1
   reloadRate: 5
   recoil: 5
-  ammoCur: 0
+  ammoCur: 2
   ammoMax: 2
   magsCur: 19
   magsMax: 20

@@ -823,7 +823,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -346, y: 460}
+  m_AnchoredPosition: {x: -346, y: 512}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &950293782
@@ -846,7 +846,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Assests used: \nAlien Toys by Serhat Yucekaya at unity asset store\r\nLow
+  m_text: "Assests used: \n\nAlien Toys by Serhat Yucekaya at unity asset store\r\nLow
     Poly Shotgun by Castle Bravo at unity asset store\r\nUFO by FlexUnit at unity
     asset store\r\nStylized Bear by Blink at unity asset store\r\nM40A3 Sniper Rifle
     by Game Stuff Studio at unity asset store\r\nFarm Ranch Low Poly by Pandazole
@@ -861,7 +861,17 @@ MonoBehaviour:
     Fahrezi https://www.vecteezy.com/vector-art/44444595-flat-landscape-illustration-of-pine-forest-silhouette-in-the-morning\nForest
     on mountains river landscape background by wisnu pramono jati https://www.vecteezy.com/vector-art/14016004-forest-on-mountains-river-landscape-background-vector-poster-bright-sunny-day-in-green-mountain-calm-lake-valley-cartoon-illustration-summer-season-alpine-wild-nature-outdoor-hand-drawn-scenic-view\nWooden
     Sign Cartoon Hanging Board by Belebella https://pngtree.com/freepng/wooden-sign-cartoon-hanging-board_6073437.html\nBrown
-    Wooden Signpost by Unknown https://pngtree.com/freepng/brown-wooden-signpost_5425372.html\r\n\r\n"
+    Wooden Signpost by Unknown https://pngtree.com/freepng/brown-wooden-signpost_5425372.html\nLowpoly
+    BountyHunter RIO by VertexModeler Team from https://assetstore.unity.com/packages/3d/characters/humanoids/lowpoly-bountyhunter-rio-287267
+    \nHyenas A1 Free 3D model by animated3d-us from https://www.cgtrader.com/free-3d-models/animal/other/hyenas-a2\nAnimals
+    FREE - Animated Low Poly 3D Models by ithappy from https://assetstore.unity.com/packages/3d/characters/animals/animals-free-animated-low-poly-3d-models-260727\nFlock
+    of Birds Sound Effects by Sound Ideas from https://soundideas.sourceaudio.com/album/12414851\nHuman
+    Footsteps by Soundstorm from https://soundideas.sourceaudio.com/track/27298577\nReaction
+    Voices by Sound Ideas from https://soundideas.sourceaudio.com/album/2017967\nSerafine
+    Guns of Cinema by Sound Ideas from https://soundideas.sourceaudio.com/album/3290990\nEfforts
+    Voices by Sound Ideas from https://soundideas.sourceaudio.com/track/15674050\nHit
+    the Ground Running by John Montagnino from https://westarmusic.sourceaudio.com/track/6847885\nMountain
+    Bluegrass by Kelly Richmond from https://westarmusic.sourceaudio.com/track/6847912"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -888,8 +898,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -926,7 +936,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -91.996216, y: 0, z: -1203.0391, w: -965.41943}
+  m_margin: {x: -91.996216, y: 0, z: -1203.0391, w: -1022.93335}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

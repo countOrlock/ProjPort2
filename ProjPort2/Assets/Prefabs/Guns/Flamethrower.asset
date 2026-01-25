@@ -32,7 +32,7 @@ MonoBehaviour:
   hitEffect: {fileID: 0}
   shootEffect: {fileID: 2971711294078377837, guid: eb3a73de6048d2140af52b313cb7b681, type: 3}
   shootSound:
-  - {fileID: 8300000, guid: b3778e711d8380c45a9d067f1d5a2d85, type: 3}
+  - {fileID: 8300000, guid: c0b6eefc31a5b5c4f809c328403c5b8a, type: 3}
   missFireSound:
   - {fileID: 8300000, guid: 7742fd2ca2be66447b9e7ff580559a9a, type: 3}
   reloadSound:

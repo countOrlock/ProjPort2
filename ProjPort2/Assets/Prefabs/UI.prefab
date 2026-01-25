@@ -2022,7 +2022,7 @@ MonoBehaviour:
   targetGold: 0
   DefaultInGameMusic: {fileID: 8300000, guid: 87a1025d5413e6641837288228e66b92, type: 3}
   volumeManagerToEnable: {fileID: 0}
-  mixer: {fileID: 0}
+  mixer: {fileID: 24100000, guid: 26a0b8bc6ea9e11499a094f2c55947b7, type: 2}
   player: {fileID: 0}
   playerScript: {fileID: 0}
   playerSpawnPos: {fileID: 0}

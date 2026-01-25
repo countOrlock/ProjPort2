@@ -528,55 +528,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162094667}
   m_CullTransparentMesh: 1
---- !u!1 &194888708
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 194888710}
-  - component: {fileID: 194888709}
-  m_Layer: 0
-  m_Name: Menu Vol Settings
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &194888709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194888708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5384ea6dfa74b2b429c72f640ae6b1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::volumeManager
-  volumeParameter: MasterVolume
-  mixer: {fileID: 24100000, guid: 26a0b8bc6ea9e11499a094f2c55947b7, type: 2}
-  volumeSlider: {fileID: 47905109}
-  multiplier: 20
-  toggle: {fileID: 1800903418}
---- !u!4 &194888710
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194888708}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1102.5287, y: 684.88367, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &252292632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4570,5 +4521,4 @@ SceneRoots:
   - {fileID: 1640023220}
   - {fileID: 574792983}
   - {fileID: 470722183}
-  - {fileID: 194888710}
   - {fileID: 252292634}

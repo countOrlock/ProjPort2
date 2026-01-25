@@ -55,6 +55,7 @@ MonoBehaviour:
   track01AudioSource: {fileID: 8744742006431913356}
   track02AudioSource: {fileID: 5688126968327514264}
   track1Playing: 0
+  mixer: {fileID: 24100000, guid: 26a0b8bc6ea9e11499a094f2c55947b7, type: 2}
 --- !u!82 &8744742006431913356
 AudioSource:
   m_ObjectHideFlags: 0

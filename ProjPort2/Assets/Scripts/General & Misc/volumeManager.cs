@@ -88,16 +88,16 @@ public class volumeManager : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerPrefs.SetFloat(gameManager.MASTER_KEY, masterSlider.value);
-        PlayerPrefs.SetFloat(gameManager.MUSIC_KEY, musicSlider.value);
-        PlayerPrefs.SetFloat(gameManager.SFX_KEY, sfxSlider.value);
+        PlayerPrefs.SetFloat(MusicManager.MASTER_KEY, masterSlider.value);
+        PlayerPrefs.SetFloat(MusicManager.MUSIC_KEY, musicSlider.value);
+        PlayerPrefs.SetFloat(MusicManager.SFX_KEY, sfxSlider.value);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        masterSlider.value = PlayerPrefs.GetFloat(gameManager.MASTER_KEY, 1f);
-        musicSlider.value  = PlayerPrefs.GetFloat(gameManager.MUSIC_KEY, 1f);
-        sfxSlider.value    = PlayerPrefs.GetFloat(gameManager.SFX_KEY, 1f);
+        masterSlider.value = PlayerPrefs.GetFloat(MusicManager.MASTER_KEY, 1f);
+        musicSlider.value  = PlayerPrefs.GetFloat(MusicManager.MUSIC_KEY, 1f);
+        sfxSlider.value    = PlayerPrefs.GetFloat(MusicManager.SFX_KEY, 1f);
     }
 }

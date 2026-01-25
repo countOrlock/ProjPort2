@@ -14648,18 +14648,18 @@ MonoBehaviour:
   bigGameSpawner: {fileID: 0}
   wardenSpawner: {fileID: 0}
   alienSpawner: {fileID: 0}
-  smallGame1SpawnMinimum: 40
-  smallGame2SpawnMinimum: 20
-  mediumGame1SpawnMinimum: 15
-  mediumGame2SpawnMinimum: 4
-  mediumGameHostileSpawnMinimum: 3
+  smallGame1SpawnMinimum: 1
+  smallGame2SpawnMinimum: 1
+  mediumGame1SpawnMinimum: 1
+  mediumGame2SpawnMinimum: 1
+  mediumGameHostileSpawnMinimum: 1
   bigGameSpawnMinimum: 1
-  smallGame1SpawnLimit: 50
-  smallGame2SpawnLimit: 30
-  mediumGame1SpawnLimit: 20
-  mediumGame2SpawnLimit: 8
-  mediumGameHostileSpawnLimit: 5
-  bigGameSpawnLimit: 2
+  smallGame1SpawnLimit: 1
+  smallGame2SpawnLimit: 1
+  mediumGame1SpawnLimit: 1
+  mediumGame2SpawnLimit: 1
+  mediumGameHostileSpawnLimit: 1
+  bigGameSpawnLimit: 1
 --- !u!1 &4722197264221851325
 GameObject:
   m_ObjectHideFlags: 0

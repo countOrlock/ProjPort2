@@ -4,57 +4,100 @@ using UnityEngine.UI;
 
 public class volumeManager : MonoBehaviour
 {
-    [SerializeField] string volumeParameter = "MasterVolume";
     [SerializeField] AudioMixer mixer;
-    [SerializeField] Slider volumeSlider;
-    [SerializeField] float multiplier = 20f;
-    [SerializeField] private Toggle toggle;
 
     private bool disableToggleEvent;
 
+    [SerializeField] Slider masterSlider;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider sfxSlider;
+
+    public const string MIXER_MASTER = "MasterVolume";
+    public const string MIXER_MUSIC  = "MusicVolume";
+    public const string MIXER_SFX    = "SFXVolume";
+
+    [SerializeField] private Toggle masterToggle;
+    [SerializeField] private Toggle musicToggle;
+    [SerializeField] private Toggle sfxToggle;
+
     private void Awake()
     {
-        volumeSlider.onValueChanged.AddListener(HandleSliderValueChanged);
-        toggle.onValueChanged.AddListener(HandleToggleValueChanged);
+        masterSlider.onValueChanged.AddListener(SetMasterVolume);
+        musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+
+        masterToggle.onValueChanged.AddListener(SetMasterToggle);
+        musicToggle.onValueChanged.AddListener(SetMusicToggle);
+        sfxToggle.onValueChanged.AddListener(SetSFXToggle);
     }
 
-    private void HandleToggleValueChanged(bool toggleSound)
+    void SetMasterVolume(float value)
+    {
+        mixer.SetFloat(MIXER_MASTER, Mathf.Log10(value) * 20);
+    }
+
+    void SetMusicVolume(float value)
+    {
+        mixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20);
+    }
+
+    void SetSFXVolume(float value)
+    {
+        mixer.SetFloat(MIXER_SFX, Mathf.Log10(value) * 20);
+    }
+
+    private void SetMasterToggle(bool toggleSound)
     {
         if (disableToggleEvent) return;
 
         if (toggleSound)
         {
-            volumeSlider.value = volumeSlider.maxValue;
+            masterSlider.value = masterSlider.maxValue;
         }
         else
         {
-            volumeSlider.value = volumeSlider.minValue;
+            masterSlider.value = masterSlider.minValue;
+        }
+    }
+    private void SetMusicToggle(bool toggleSound)
+    {
+        if (disableToggleEvent) return;
+
+        if (toggleSound)
+        {
+            musicSlider.value = musicSlider.maxValue;
+        }
+        else
+        {
+            musicSlider.value = musicSlider.minValue;
+        }
+    }
+    private void SetSFXToggle(bool toggleSound)
+    {
+        if (disableToggleEvent) return;
+
+        if (toggleSound)
+        {
+            sfxSlider.value = sfxSlider.maxValue;
+        }
+        else
+        {
+            sfxSlider.value = sfxSlider.minValue;
         }
     }
 
     private void OnDisable()
     {
-        PlayerPrefs.SetFloat(volumeParameter, volumeSlider.value);
-    }
-
-    private void HandleSliderValueChanged(float value)
-    {
-        mixer.SetFloat(volumeParameter, Mathf.Log10(value) * multiplier);
-
-        disableToggleEvent = true;
-        toggle.isOn = volumeSlider.value > volumeSlider.minValue;
-        disableToggleEvent = false;
+        PlayerPrefs.SetFloat(gameManager.MASTER_KEY, masterSlider.value);
+        PlayerPrefs.SetFloat(gameManager.MUSIC_KEY, musicSlider.value);
+        PlayerPrefs.SetFloat(gameManager.SFX_KEY, sfxSlider.value);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat(volumeParameter, volumeSlider.value);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        masterSlider.value = PlayerPrefs.GetFloat(gameManager.MASTER_KEY, 1f);
+        musicSlider.value  = PlayerPrefs.GetFloat(gameManager.MUSIC_KEY, 1f);
+        sfxSlider.value    = PlayerPrefs.GetFloat(gameManager.SFX_KEY, 1f);
     }
 }

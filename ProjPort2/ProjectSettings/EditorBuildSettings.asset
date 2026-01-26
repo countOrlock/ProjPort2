@@ -18,26 +18,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Loading Screen.unity
     guid: e2db56403bd41c84599dcfada2b57abf
   - enabled: 1
-    path: Assets/Scenes/ForestLevel.unity
-    guid: 5c7a0b8617673b54d8a97ddd86a524af
-  - enabled: 0
-    path: Assets/Scenes/ZachTerrainTest.unity
-    guid: 2c040d20b0dfeb54484f5dc3e983297e
-  - enabled: 0
-    path: Assets/Scenes/Level001.unity
-    guid: ad70aec9f456b4d408eef879be1b12f8
-  - enabled: 1
-    path: Assets/Scenes/Alpha/DevTestLevel.unity
-    guid: 8e5bece0da53cba4da77c892ca013d63
-  - enabled: 1
-    path: Assets/Scenes/Option Menu.unity
-    guid: b709209661ddc9341bb08851348ae81f
-  - enabled: 1
-    path: Assets/Scenes/ForestLevel.unity
-    guid: 5c7a0b8617673b54d8a97ddd86a524af
-  - enabled: 1
     path: Assets/Scenes/Credits Screen.unity
     guid: d453acee10b68344eae87941568062a9
+  - enabled: 1
+    path: Assets/Scenes/ForestLevel.unity
+    guid: 5c7a0b8617673b54d8a97ddd86a524af
+  - enabled: 0
+    path: Assets/Scenes/Option Menu.unity
+    guid: b709209661ddc9341bb08851348ae81f
+  - enabled: 0
+    path: Assets/Scenes/ForestLevel.unity
+    guid: 5c7a0b8617673b54d8a97ddd86a524af
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

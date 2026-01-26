@@ -115,10 +115,16 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             currentWaypoint = startingWaypoint;
             speedOrig = agent.speed;
         }
+        else
+        {
+            startingWaypoint = GameObject.FindGameObjectWithTag("Starting Waypoint").GetComponent<Waypoint>();
+            waypointPos = startingWaypoint.transform.position;
+            currentWaypoint = startingWaypoint;
+            speedOrig = agent.speed;
+        }
         colorOrig = model.material.color;
         isDying = false;
         enemyDeathCleanup = GetComponent<DeathCleanup>();
-        startingWaypoint = GameObject.FindGameObjectWithTag("Starting Waypoint").GetComponent<Waypoint>();
     }
 
     // Update is called once per frame

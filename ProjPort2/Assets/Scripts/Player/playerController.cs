@@ -724,7 +724,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
     {
         gameManager.instance.playerDamageScreen.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        gameManager.instance.playerDamageScreen.SetActive(false);
+        if (stance != stanceType.dead)
+        {
+            gameManager.instance.playerDamageScreen.SetActive(false);
+        }
     }
 
     //IEnumerator Reload()

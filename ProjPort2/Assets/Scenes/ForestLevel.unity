@@ -10702,6 +10702,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6347007707358890277, guid: 2e8412a9d5db69249b678506b7227d61, type: 3}
   m_PrefabInstance: {fileID: 2088881696}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2061124905 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 230709153086965666, guid: 2e8412a9d5db69249b678506b7227d61, type: 3}
+  m_PrefabInstance: {fileID: 2088881696}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e75341a95af0984c8bf217a7369aac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Waypoint
 --- !u!4 &2074614805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2314420984316199405, guid: cc894c3a9e615b747a7f155e4db32bd6, type: 3}
@@ -11692,6 +11703,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 431733266}
     m_Modifications:
+    - target: {fileID: 944172571653315199, guid: 4ce214d3ce419404d8557c70bc19751d, type: 3}
+      propertyPath: nextWaypoint
+      value: 
+      objectReference: {fileID: 2061124905}
     - target: {fileID: 7646628356101121023, guid: 4ce214d3ce419404d8557c70bc19751d, type: 3}
       propertyPath: m_Name
       value: StartingWaypoint

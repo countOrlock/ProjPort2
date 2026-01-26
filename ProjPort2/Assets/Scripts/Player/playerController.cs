@@ -489,7 +489,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
                 if(gunList[gunListPos].shootLaser == true)
                 {
-                    Laser.SetPosition(0, Vector3.zero);
+                    //Laser.SetPosition(0, Vector3.zero);
                     if (hit.distance <= gunList[gunListPos].shootDist)
                     {
                         Laser.SetPosition(1, new Vector3(0, 0, hit.distance));

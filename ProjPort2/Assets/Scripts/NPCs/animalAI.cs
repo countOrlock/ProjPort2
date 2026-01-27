@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -68,6 +69,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     DeathCleanup enemyDeathCleanup;
     npcMode mode;
     bool isDying;
+    bool isAttacking;
 
     float distToTarget;
 
@@ -161,6 +163,16 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
                     break;
                 }
 
+                if (aggressive)
+                {
+                    agent.SetDestination(gameManager.instance.player.transform.position);
+                    if (!isAttacking)
+                    {
+                        playAttackSound();
+                        isAttacking = true;
+                    }
+                }
+
                 if (playerInRange && !canSeePlayer())
                 {
                     playIdleSound();
@@ -198,12 +210,17 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
 
     public void playAttackSound()
     {
-        aud.PlayOneShot(attackSound[Random.Range(0, attackSound.Length)], attackVol);
+        if (attackSound.Any())
+        {
+            aud.PlayOneShot(attackSound[Random.Range(0, attackSound.Length)], attackVol);
+        }
     }
 
-    public void playDeathSound()
+    public AudioClip playDeathSound()
     {
-        aud.PlayOneShot(deathSound[Random.Range(0, deathSound.Length)], deathVol);
+        AudioClip dsound = deathSound[Random.Range(0, deathSound.Length)];
+        aud.PlayOneShot(dsound, deathVol);
+        return dsound;
     }
 
     public void playIdleSound()
@@ -364,34 +381,46 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     public void takeDamage(int amount)
     {
         HP -= amount;
-        playHurtSound();
-
-        if (aggressive)
+        if (!playingHurtSound)
         {
-            agent.SetDestination(gameManager.instance.player.transform.position);
+            StartCoroutine(playHurtSound());
         }
 
         if (HP <= 0)
         {
+            mode = npcMode.Dying;
             isDying = true;
             agent.isStopped = true;
             anim.SetFloat("Speed", 0);
             //enemyDeathCleanup.Die();
-
-            if (dropItem != null)
-            {
-                Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-            }
-
-            NPCManager.instance.UpdateNPCCount(gameObject, -1);
-
-            playDeathSound();
-            Destroy(gameObject);
+            StartCoroutine(die());
         }
         else
         {
             StartCoroutine(flashRed());
         }
+
+        if (mode != npcMode.Dying)
+        {
+            if (mode != npcMode.Attack)
+            {
+                mode = npcMode.Attack;
+            }
+        }
+    }
+
+    IEnumerator die()
+    {
+        AudioClip dsound = playDeathSound();
+        yield return new WaitForSeconds(dsound.length);
+        if (dropItem != null)
+        {
+            Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        }
+
+        NPCManager.instance.UpdateNPCCount(gameObject, -1);
+
+        Destroy(gameObject);
     }
 
     IEnumerator flashRed()

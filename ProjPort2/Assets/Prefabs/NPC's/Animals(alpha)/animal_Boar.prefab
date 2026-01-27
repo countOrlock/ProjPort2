@@ -123,7 +123,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1bfafd020bd0ca0489cf98dfa0ec2635, type: 3}
   - {fileID: 8300000, guid: bc7be4b9ae8a84742babd6adc524a2e5, type: 3}
   hurtVol: 0.5
-  attackSound: []
+  attackSound:
+  - {fileID: 8300000, guid: 148ce71213418504e83f7d91f206983d, type: 3}
   attackVol: 0.5
   deathSound:
   - {fileID: 8300000, guid: 148ce71213418504e83f7d91f206983d, type: 3}

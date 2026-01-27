@@ -130,20 +130,20 @@ public class gameManager : MonoBehaviour
             }
         }
 
-        // For Quest Menu
-        if (Input.GetButtonDown("Quests"))
-        {
-            if (menuActive == null)
-            {
-                statePause();
-                menuActive = menuQuests;
-                menuActive.SetActive(true);
-            }
-            else if (menuActive == menuQuests)
-            {
-                stateUnpause();
-            }
-        }
+        // For Quest Menu (REMOVED)
+        //if (Input.GetButtonDown("Quests"))
+        //{
+        //    if (menuActive == null)
+        //    {
+        //        statePause();
+        //        menuActive = menuQuests;
+        //        menuActive.SetActive(true);
+        //    }
+        //    else if (menuActive == menuQuests)
+        //    {
+        //        stateUnpause();
+        //    }
+        //}
     }
 
 

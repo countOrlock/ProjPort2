@@ -1091,6 +1091,7 @@ MonoBehaviour:
   debugHasMeleeAnim: 1
   roamDist: 5
   roamPauseTimer: 10
+  roamResetTime: 5
   targetPos: {x: 0, y: 0, z: 0}
   maxDistFromTarget: 30
   aud: {fileID: 790730970465176057}

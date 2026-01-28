@@ -84,9 +84,11 @@ public class spawner : MonoBehaviour
 
     private IEnumerator spawnWithDelay(Vector3 point)
     {
-        Instantiate(enemySpawnEffect, point, Quaternion.identity);
+        Vector3 newPoint = point + new Vector3(Random.insideUnitSphere.x * 10 + 1, 0, Random.insideUnitSphere.z * 10 + 1);
+
+        Instantiate(enemySpawnEffect, newPoint, Quaternion.identity);
         yield return new WaitForSeconds(0.5f);
-        Instantiate(objectToSpawn, point, Quaternion.identity);
+        Instantiate(objectToSpawn, newPoint, Quaternion.identity);
     }
     //private void OnTriggerEnter(Collider other)
     //{

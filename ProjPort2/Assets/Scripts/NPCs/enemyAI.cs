@@ -117,10 +117,13 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         }
         else
         {
-            startingWaypoint = GameObject.FindGameObjectWithTag("Starting Waypoint").GetComponent<Waypoint>();
-            waypointPos = startingWaypoint.transform.position;
-            currentWaypoint = startingWaypoint;
-            speedOrig = agent.speed;
+            if (GameObject.FindGameObjectWithTag("Starting Waypoint") != null)
+            {
+                startingWaypoint = GameObject.FindGameObjectWithTag("Starting Waypoint").GetComponent<Waypoint>(); 
+                waypointPos = startingWaypoint.transform.position;
+                currentWaypoint = startingWaypoint;
+                speedOrig = agent.speed;
+            }
         }
         colorOrig = model.material.color;
         isDying = false;

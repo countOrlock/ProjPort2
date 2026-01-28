@@ -38,6 +38,10 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     [Header("----- Roaming -----")]
     [SerializeField] int roamDist;
     [SerializeField] int roamPauseTimer;
+    float roamTimer;
+    [SerializeField] int roamResetTime;
+    float roamResetTimer;
+
     float stoppingDistOrig;
 
     [Header("----- Move To Target -----")]
@@ -70,13 +74,13 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     npcMode mode;
     bool isDying;
     bool isAttacking;
+    bool isRoaming;
 
     float distToTarget;
 
     Color colorOrig;
     float speedOrig;
 
-    float roamTimer;
     float meleeTimer;
 
     float angleToPlayer;
@@ -125,9 +129,11 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         if (agent.remainingDistance < 0.01)
         {
             roamTimer += Time.deltaTime;
+            roamResetTimer = 0f;
         }
         else
         {
+            roamResetTimer += Time.deltaTime;
             roamTimer = 0.0f;
         }
 
@@ -136,6 +142,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         {
             // Basic Roam mode
             case npcMode.Roam:
+                isRoaming = true;
 
                 if (isDying)
                 {
@@ -148,6 +155,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
                 if (aggressive && playerInRange && canSeePlayer())
                 {
                     mode = npcMode.Attack;
+                    isRoaming = false;
                 }
                 else if (canSeePlayer() && !playingHurtSound)
                 {
@@ -346,6 +354,10 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         if (roamDist > 0 && agent.remainingDistance < 0.01f && roamTimer >= roamPauseTimer)
         {
             roam();
+        }
+        else if (roamResetTimer >= roamResetTime)
+        {
+            agent.SetDestination(transform.position);
         }
     }
 

@@ -445,16 +445,15 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
     {
 
         HP -= amount;
-        if (!scaredOfPlayer)
+        if (!scaredOfPlayer && mode != npcMode.Dying)
         {
-            agent.SetDestination(gameManager.instance.player.transform.position);
-            aud.PlayOneShot(hurtSound[Random.Range(0, hurtSound.Length)], hurtVol);
+            mode = npcMode.Attack;
         }
 
         if (HP <= 0)
         {
+            mode = npcMode.Dying;
             isDying = true;
-            agent.isStopped = true;
             anim.SetFloat("Speed", 0);
             anim.SetTrigger("Die");
             //enemyDeathCleanup.Die();
@@ -476,6 +475,17 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
         else
         {
             StartCoroutine(flashRed());
+        }
+
+        if (mode == npcMode.Dying)
+        {
+            agent.isStopped = true;
+        }
+
+        if (mode == npcMode.Attack)
+        {
+            agent.SetDestination(gameManager.instance.player.transform.position);
+            aud.PlayOneShot(hurtSound[Random.Range(0, hurtSound.Length)], hurtVol);
         }
     }
 

@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Assests used: \n\nAlien Toys by Serhat Yucekaya at unity asset store\n\r\nLow
+  m_text: "Assets used: \n\nAlien Toys by Serhat Yucekaya at unity asset store\n\r\nLow
     Poly Shotgun by Castle Bravo at unity asset store\n\r\nUFO by FlexUnit at unity
     asset store\n\r\nStylized Bear by Blink at unity asset store\n\r\nM40A3 Sniper
     Rifle by Game Stuff Studio at unity asset store\n\r\nFarm Ranch Low Poly by Pandazole

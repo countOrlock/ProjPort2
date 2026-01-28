@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::loadingManager
   progressBar: {fileID: 1785889507}
   loadingText: {fileID: 1485424291}
-  fakeLoadingDelay: 4
+  fakeLoadingDelay: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

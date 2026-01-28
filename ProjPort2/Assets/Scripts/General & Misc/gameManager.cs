@@ -73,7 +73,7 @@ public class gameManager : MonoBehaviour
 
     public bool isPaused;
 
-    float timeScaleOrig;
+    public float timeScaleOrig;
     int gameGoalCount;
     int currentAmmoCount;
     int maxAmmoCount;

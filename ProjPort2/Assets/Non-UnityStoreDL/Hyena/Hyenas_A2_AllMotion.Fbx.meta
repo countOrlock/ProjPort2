@@ -3,7 +3,22 @@ guid: 1d76fc9466c4ec94ca03e77baa3a93dc
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Hyenas_A2_Diffuse
+    second: {fileID: 2800000, guid: 94ed3cef8359c754c8a86defaf39df97, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Hyenas_A2_Normal
+    second: {fileID: 2800000, guid: d24761828c1958c4ea20adce9caafaf3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Hyenas_A2_Opacity
+    second: {fileID: 2800000, guid: a00ec7ec97afa1b4d88547dd56b0b0d0, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

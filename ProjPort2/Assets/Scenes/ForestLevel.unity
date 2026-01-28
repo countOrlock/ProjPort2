@@ -686,34 +686,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5204850062451281523, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
-      propertyPath: m_Positions.Array.data[0].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5204850062451281523, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
-      propertyPath: m_Positions.Array.data[0].y
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 5204850062451281523, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
-      propertyPath: m_Positions.Array.data[0].z
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5204850062451281523, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
-      propertyPath: m_Positions.Array.data[1].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5204850062451281523, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
-      propertyPath: m_Positions.Array.data[1].y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5204850062451281523, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
-      propertyPath: m_Positions.Array.data[1].z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5204850062451281523, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 6503316508990841740, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 386.66
@@ -753,14 +725,6 @@ PrefabInstance:
     - target: {fileID: 6503316508990841740, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6733809912943536547, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7384246297117356534, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8726352775847767780, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
       propertyPath: m_Name

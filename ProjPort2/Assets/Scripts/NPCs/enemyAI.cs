@@ -459,10 +459,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             anim.SetTrigger("Die");
             //enemyDeathCleanup.Die();
 
-            if(isWarden)
-            {
-                NPCManager.instance.WardenDeathEvent();
-            }
+            
 
             //if (dropItem != null)
             //{
@@ -505,10 +502,10 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
             Instantiate(dropItem, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         }
 
-        if (shootsProjectile)
-            gameManager.instance.hunterAmountCurr--;
-
-        NPCManager.instance.UpdateNPCCount(gameObject, -1);
+        if (isWarden)
+        {
+            NPCManager.instance.WardenDeathEvent();
+        }
 
         Destroy(gameObject);
     }

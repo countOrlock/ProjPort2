@@ -297,10 +297,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                 Laser.enabled = true;
             }
 
-            if (shootTimer >= gunList[gunListPos].shootRate2)
-            {
-                shoot2();
-            }
+            //if (shootTimer >= gunList[gunListPos].shootRate2)
+            //{
+            //    shoot2();
+            //}
         }
         else
         {
@@ -477,7 +477,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
 
         recoilSpeed = -Camera.main.transform.forward * gunList[gunListPos].recoil;
 
-        if (gunList[gunListPos].Bullet == null)
+        if (gunList[gunListPos].Bullet == null || gunList[gunListPos].shootLaser == true)
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunList[gunListPos].shootDist, ~ignoreLayer))
@@ -497,6 +497,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                     else
                     {
                         Laser.SetPosition(1, new Vector3(0, 0, gunList[gunListPos].shootDist));
+                    }
+
+                    if (gunList[gunListPos].Bullet != null)
+                    {
+                        Instantiate(gunList[gunListPos].Bullet, hit.point, Quaternion.identity);
                     }
                 }
                 Debug.Log(hit.collider.name);
@@ -525,64 +530,64 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         }
     }
 
-    void shoot2()
-    {
-        shootTimer = 0;
+    //void shoot2()
+    //{
+    //    shootTimer = 0;
 
-        gunList[gunListPos].ammoCur--;
-        gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
+    //    gunList[gunListPos].ammoCur--;
+    //    gameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur, gunList[gunListPos].ammoMax);
 
-        if (gunList[gunListPos].shootSound2.Length > 0)
-            aud.PlayOneShot(gunList[gunListPos].shootSound2[Random.Range(0, gunList[gunListPos].shootSound2.Length)], gunList[gunListPos].shootSoundVol2);
+    //    if (gunList[gunListPos].shootSound2.Length > 0)
+    //        aud.PlayOneShot(gunList[gunListPos].shootSound2[Random.Range(0, gunList[gunListPos].shootSound2.Length)], gunList[gunListPos].shootSoundVol2);
 
-        recoilSpeed += -Camera.main.transform.forward * gunList[gunListPos].recoil;
+    //    recoilSpeed += -Camera.main.transform.forward * gunList[gunListPos].recoil;
 
-        if (gunList[gunListPos].Bullet2 == null || gunList[gunListPos].shootLaser2 == true)
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunList[gunListPos].shootDist2, ~ignoreLayer))
-            {
-                if (gunList[gunListPos].shootEffect2 != null)
-                {
-                    Instantiate(gunList[gunListPos].shootEffect2, gunModel.transform.position, playerCam.transform.rotation);
-                }
+    //    if (gunList[gunListPos].Bullet2 == null || gunList[gunListPos].shootLaser2 == true)
+    //    {
+    //        RaycastHit hit;
+    //        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunList[gunListPos].shootDist2, ~ignoreLayer))
+    //        {
+    //            if (gunList[gunListPos].shootEffect2 != null)
+    //            {
+    //                Instantiate(gunList[gunListPos].shootEffect2, gunModel.transform.position, playerCam.transform.rotation);
+    //            }
 
 
-                if (gunList[gunListPos].hitEffect2 != null)
-                {
-                    Instantiate(gunList[gunListPos].hitEffect2, hit.point, Quaternion.identity);
-                }
+    //            if (gunList[gunListPos].hitEffect2 != null)
+    //            {
+    //                Instantiate(gunList[gunListPos].hitEffect2, hit.point, Quaternion.identity);
+    //            }
 
-                if (gunList[gunListPos].shootLaser2 == true)
-                {
+    //            if (gunList[gunListPos].shootLaser2 == true)
+    //            {
 
-                    Laser.enabled = true;
+    //                Laser.enabled = true;
 
-                    Laser.SetPosition(0, gunModel.transform.position);
-                    Laser.SetPosition(1, hit.point);
+    //                Laser.SetPosition(0, gunModel.transform.position);
+    //                Laser.SetPosition(1, hit.point);
 
-                    if (gunList[gunListPos].Bullet2 != null)
-                    {
-                        Instantiate(gunList[gunListPos].Bullet2, hit.point, Quaternion.identity);
-                    }
-                }
+    //                if (gunList[gunListPos].Bullet2 != null)
+    //                {
+    //                    Instantiate(gunList[gunListPos].Bullet2, hit.point, Quaternion.identity);
+    //                }
+    //            }
 
-                Debug.Log(hit.collider.name);
+    //            Debug.Log(hit.collider.name);
 
-                IDamage dmg = hit.collider.GetComponent<IDamage>();
+    //            IDamage dmg = hit.collider.GetComponent<IDamage>();
 
-                if (dmg != null)
-                {
-                    dmg.takeDamage(gunList[gunListPos].shootDamage2 + damageUpAmount);
-                }
-            }
-        }
-        else
-        {
-            Instantiate(gunList[gunListPos].Bullet2, playerCam.transform.position, playerCam.transform.rotation);
-        }
+    //            if (dmg != null)
+    //            {
+    //                dmg.takeDamage(gunList[gunListPos].shootDamage2 + damageUpAmount);
+    //            }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Instantiate(gunList[gunListPos].Bullet2, playerCam.transform.position, playerCam.transform.rotation);
+    //    }
 
-    }
+    //}
 
     public void getQuestItem(GameObject quest)
     {

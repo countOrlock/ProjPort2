@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::questInfo
   animal: {fileID: 5693768469468200881, guid: b3d348117dd1fc1488a62c9079cef40a, type: 3}
   questAnimalSpawn: {fileID: 0}
-  reward: 25
+  reward: 100
   questName: Deer Quest 1
   questObjective: Hunt the Deer!
   numOfAnimalsToHunt: 3

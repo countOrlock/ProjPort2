@@ -24385,7 +24385,7 @@ MonoBehaviour:
   activeQuest1: {fileID: 11400000, guid: 380a3a23def1bb54e8cf59da631bce2e, type: 2}
   activeQuest2: {fileID: 11400000, guid: 666db632d638520478a579c7059f83d3, type: 2}
   completeQuests: []
-  dayLengthInMinutes: 10
+  dayLengthInMinutes: 5
   rentAmountDue: 1000
 --- !u!1 &7593094001649255755
 GameObject:

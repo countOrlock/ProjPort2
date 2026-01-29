@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::questInfo
   animal: {fileID: 210026739007158227, guid: 52e1195249875d24b94551e9c1162122, type: 3}
   questAnimalSpawn: {fileID: 0}
-  reward: 250
+  reward: 500
   questName: Boar Quest 4
   questObjective: Hunt the Boar!
   numOfAnimalsToHunt: 10

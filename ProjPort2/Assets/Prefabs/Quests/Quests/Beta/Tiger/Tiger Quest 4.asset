@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::questInfo
   animal: {fileID: 2536236743819561474, guid: ebca76b9fc0a9a24e912a22fd3f8636c, type: 3}
   questAnimalSpawn: {fileID: 0}
-  reward: 250
+  reward: 500
   questName: Tiger Quest 4
   questObjective: Hunt the Tigers!
-  numOfAnimalsToHunt: 15
+  numOfAnimalsToHunt: 10
   questStatus: 1

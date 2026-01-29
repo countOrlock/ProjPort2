@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::questInfo
   animal: {fileID: 3285567043007469565, guid: 5bd17f7165a7cf74a95ca20c19ed55a5, type: 3}
   questAnimalSpawn: {fileID: 0}
-  reward: 100
+  reward: 300
   questName: Chicken Quest 3
   questObjective: Hunt the Chicken!
   numOfAnimalsToHunt: 10

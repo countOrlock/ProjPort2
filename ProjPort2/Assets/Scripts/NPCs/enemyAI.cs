@@ -472,7 +472,7 @@ public class enemyAI : MonoBehaviour, IDamage, IStatEff
 
             //Destroy(gameObject);
         }
-        else
+        else if (amount > 0)
         {
             StartCoroutine(flashRed());
         }

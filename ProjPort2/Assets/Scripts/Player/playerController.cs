@@ -487,7 +487,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
                     Instantiate(gunList[gunListPos].hitEffect, hit.point, Quaternion.identity);
                 }
 
-                if(gunList[gunListPos].shootLaser == true)
+                if (gunList[gunListPos].shootLaser == true)
                 {
                     //Laser.SetPosition(0, Vector3.zero);
                     if (hit.distance <= gunList[gunListPos].shootDist)
@@ -527,6 +527,29 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
         else
         {
             Instantiate(gunList[gunListPos].Bullet, playerCam.transform.position, playerCam.transform.rotation);
+        }
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 35);
+        foreach (Collider hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject.CompareTag("Player"))
+            {
+                continue;
+            }
+
+            IDamage hit = hitCollider.gameObject.GetComponent<IDamage>();
+            if (hit != null)
+            {
+                if (hitCollider.gameObject.GetComponent<animalAI>() != null)
+                {
+                    if (hitCollider.gameObject.GetComponent<animalAI>().mode == animalAI.npcMode.Dying)
+                    {
+                        continue;
+                    }
+                }
+
+                hit.takeDamage(0);
+            }
         }
     }
 

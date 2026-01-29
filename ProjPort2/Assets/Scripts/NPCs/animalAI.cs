@@ -71,7 +71,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
 
     // AI Logic / behavior
     DeathCleanup enemyDeathCleanup;
-    npcMode mode;
+    public npcMode mode;
     bool isDying;
     bool isAttacking;
     // bool isRoaming;
@@ -417,7 +417,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
             //enemyDeathCleanup.Die();
             StartCoroutine(die());
         }
-        else
+        else if (amount > 0)
         {
             StartCoroutine(flashRed());
         }

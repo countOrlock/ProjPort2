@@ -384,6 +384,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eab3c55f6e0c9241b9b89f98f579173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::spawner
+--- !u!1001 &217092496
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8603982246009519023, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 44.413918
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603982246009519023, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.73259866
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603982246009519023, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.797834
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603982246009519023, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603982246009519023, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603982246009519023, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603982246009519023, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603982246009519023, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603982246009519023, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603982246009519023, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8857141392854641044, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
+      propertyPath: m_Name
+      value: Pick Up bow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b55ad6ae8330e0f448839e4f4f8ed9be, type: 3}
 --- !u!1 &278140278 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8726352775847767780, guid: c97996270bb16d04eb3ef45bab8f6e3c, type: 3}
@@ -2007,7 +2064,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 50b5459bae9ba43489629350b95e8cfa, type: 2}
+  - {fileID: -931409612278575092, guid: 874d33713f6ae084181c8027099d0769, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2338,3 +2395,4 @@ SceneRoots:
   - {fileID: 11362783}
   - {fileID: 1891425369}
   - {fileID: 1633201256}
+  - {fileID: 217092496}

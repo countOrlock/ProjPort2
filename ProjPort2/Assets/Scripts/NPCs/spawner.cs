@@ -87,7 +87,7 @@ public class spawner : MonoBehaviour
         Vector3 newPoint = point + new Vector3(Random.insideUnitSphere.x * 10 + 1, 0, Random.insideUnitSphere.z * 10 + 1);
 
         Instantiate(enemySpawnEffect, newPoint, Quaternion.identity);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(objectToSpawn, newPoint, Quaternion.identity);
     }
     //private void OnTriggerEnter(Collider other)

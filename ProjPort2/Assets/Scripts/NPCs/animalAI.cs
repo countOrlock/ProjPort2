@@ -74,7 +74,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
     npcMode mode;
     bool isDying;
     bool isAttacking;
-    bool isRoaming;
+    // bool isRoaming;
 
     float distToTarget;
 
@@ -142,7 +142,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         {
             // Basic Roam mode
             case npcMode.Roam:
-                isRoaming = true;
+                // isRoaming = true;
 
                 if (isDying)
                 {
@@ -155,7 +155,7 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
                 if (aggressive && playerInRange && canSeePlayer())
                 {
                     mode = npcMode.Attack;
-                    isRoaming = false;
+                    // isRoaming = false;
                 }
                 else if (canSeePlayer() && !playingHurtSound)
                 {
@@ -396,6 +396,16 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
         if (!playingHurtSound)
         {
             StartCoroutine(playHurtSound());
+        }
+
+        if (!aggressive)
+        {
+            float oppositePlayerX = transform.position.x - playerDir.x;
+            float oppositePlayerZ = transform.position.z - playerDir.z;
+
+            Vector3 targetPos = new Vector3(oppositePlayerX, transform.position.y, oppositePlayerZ);
+
+            agent.SetDestination(targetPos);
         }
 
         if (HP <= 0)

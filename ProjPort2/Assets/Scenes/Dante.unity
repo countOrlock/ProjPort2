@@ -1511,6 +1511,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9099150706935086929, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
+      propertyPath: 'unavailableQuests.Array.data[15]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9158194757365446953, guid: f91c17cf00f0c694ea7ebbb242c16ed8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

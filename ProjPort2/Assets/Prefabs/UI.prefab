@@ -2030,6 +2030,7 @@ MonoBehaviour:
   hunterSpawner: {fileID: 0}
   hunterAmountCurr: 0
   isPaused: 0
+  timeScaleOrig: 0
 --- !u!1 &733846305265264805
 GameObject:
   m_ObjectHideFlags: 0
@@ -24362,7 +24363,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::questManager
   defaultQuest: {fileID: 11400000, guid: 071ff50321f7f3a4cbcf85ae1cd8e1bf, type: 2}
   unavailableQuests:
-  - {fileID: 11400000, guid: 98f827b2c10dad34b833df7b3e608a8e, type: 2}
   - {fileID: 11400000, guid: 6c85be1330e74c940a7a91ae075a1f22, type: 2}
   - {fileID: 11400000, guid: 78192f0e8c40f55459d026aba617c029, type: 2}
   - {fileID: 11400000, guid: 7a1acde62b9662648920c736cc7394a6, type: 2}
@@ -24381,6 +24381,7 @@ MonoBehaviour:
   availableQuests:
   - {fileID: 11400000, guid: 00aed26455639aa44b32a27ce1ee3a9c, type: 2}
   - {fileID: 11400000, guid: e3f6c2a5f400ef744b900b912f460f8f, type: 2}
+  - {fileID: 11400000, guid: 98f827b2c10dad34b833df7b3e608a8e, type: 2}
   activeQuest1: {fileID: 11400000, guid: 380a3a23def1bb54e8cf59da631bce2e, type: 2}
   activeQuest2: {fileID: 11400000, guid: 666db632d638520478a579c7059f83d3, type: 2}
   completeQuests: []

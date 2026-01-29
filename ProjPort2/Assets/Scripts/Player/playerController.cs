@@ -515,7 +515,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             }
             else if (gunList[gunListPos].shootLaser)
             {
-                Laser.SetPosition(0, Vector3.zero);
+                //Laser.SetPosition(0, Vector3.zero);
                 Laser.SetPosition(1, new Vector3(0, 0, gunList[gunListPos].shootDist));
             }
 

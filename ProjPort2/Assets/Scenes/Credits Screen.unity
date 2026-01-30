@@ -779,7 +779,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 38732301}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.55925804
+  m_Size: 0.32618445
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1353,7 +1353,29 @@ MonoBehaviour:
     Voices by Sound Ideas from sourceaudio.com\r\n\r\nSerafine Guns of Cinema by
     Sound Ideas from sourceaudio.com\r\n\r\nEfforts Voices by Sound Ideas from sourceaudio.com\r\n\r\nHit
     the Ground Running by John Montagnino from sourceaudio.com\r\n\r\nMountain Bluegrass
-    by Kelly Richmond from sourceaudio.com"
+    by Kelly Richmond from sourceaudio.com\n\nVarious Deer Moans by McDonough Animals
+    & Birds SFX Series from soundideas.com\r\n\r\nDeer - Fawn Bleats, Animals Other
+    Wild Animals (Vintage Recording) by The International from soundideas.com \r\n\r\nLarge
+    Boar Grunts On Farm by McDonough Animals & Birds SFX Series from soundideas.com\r\n\r\nTiger:
+    Aggressive Growls And Light Roars by Tigers Sound Effects from soundideas.com
+    \r\n\r\nTiger: Chuffing Call by Tigers Sound Effects from soundideas.com\r\n\r\nTiger:
+    Groan, Distant City Or Traffic In Background by Tigers Sound Effects from soundideas.com\r\n\r\nTiger:
+    Growling Pants by Tigers Sound Effects from soundideas.com\r\n\r\nHyena - Hyena:
+    Angry Call, Animal Other Wild Animals by Just Birds and Animals 2 from soundideas.com\r\n\r\nHyena
+    - Hyena: Various Calls, Animals Other Wild Animals by Just Birds and Animals
+    2 from soundideas.com\r\n\r\nHyena - Hyena: Short Moaning Call, Animals Other
+    Wild Animals by Just Birds and Animals 2 from soundideas.com\r\n\r\nHyena - Hyena:
+    Various Calls with Short Laugh at End, Animals Other Wild Animals by Just Birds
+    and Animals 2 from soundideas.com\r\n\r\nBear - Black Bear: Single Roar, Animal
+    Bears by Just Birds and Animals 1 from soundideas.com\r\n\r\nBear - Large Black
+    Bear: Single Roar, Animal Bears by Just Birds and Animals 1 from soundideas.com\r\n\r\nBear
+    - Large Black Bear: Foraging and Snarling, Animal Bears by Just Birds and Animals
+    1 from soundideas.com\r\n\r\nBear - Black Bear: Roar, Animal Bears by Just Birds
+    and Animals 2 from soundideas.com\r\n\r\nBear - Black Bear: Moan and Roar, Animal
+    Bears by Just Birds and Animals 2 from soundideas.com\r\n\r\nBear - Black Bear:
+    Single Whine, Animal Bears by Just Birds and Animals 2 from soundideas.com\r\n\r\nBear
+    - Bear Cub: Short Puttering Moan, Animal Bears by Just Birds and Animals 2 from
+    soundideas.com\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

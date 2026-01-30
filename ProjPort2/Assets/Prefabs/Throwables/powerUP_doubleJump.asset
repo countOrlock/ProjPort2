@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: powerUP_doubleJump
   m_EditorClassIdentifier: Assembly-CSharp::throwStats
   projectile: {fileID: 6964113444499593189, guid: e8605aee834e8964bbe883bd89a3879a, type: 3}
-  animObject: {fileID: 3482037465839035312, guid: 35b8e5bc82be3854985962e31dcd0454, type: 3}
+  mesh: {fileID: 6491907736727488973, guid: f2f378121613dc144a153addaad78074, type: 3}
+  material: {fileID: 2100000, guid: a6db594741844914bb2b5c6a8ca5961e, type: 2}
   itemName: Double Jump
   ammoCurr: 4
   ammoMax: 5

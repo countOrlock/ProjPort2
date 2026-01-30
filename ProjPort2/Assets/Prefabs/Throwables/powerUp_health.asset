@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: powerUp_health
   m_EditorClassIdentifier: Assembly-CSharp::throwStats
   projectile: {fileID: 7785747961990302374, guid: 67458d84b05577b49858c8e969d38c03, type: 3}
-  animObject: {fileID: 88699863773708027, guid: 204d0bd7d4a49a54c9235b709ac68595, type: 3}
+  mesh: {fileID: 6491907736727488973, guid: f2f378121613dc144a153addaad78074, type: 3}
+  material: {fileID: -3199540144271174651, guid: 05c44060cabcfcf46bd921a4d2f13cf5, type: 3}
   itemName: Health
   ammoCurr: 5
   ammoMax: 5

@@ -826,13 +826,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatEff
             if (throwList[throwListPos].throwSound.Length > 0)
                 aud.PlayOneShot(throwList[throwListPos].throwSound[Random.Range(0, throwList[throwListPos].throwSound.Length)], throwList[throwListPos].throwSoundVol);
 
-            if (throwList[throwListPos].animObject != null)
+            if (throwList[throwListPos].mesh != null)
             {
                 throwModel.SetActive(true);
                 if (throwList[throwListPos].isPowerUP)
                 {
-                    throwModel.GetComponent<MeshFilter>().sharedMesh = throwList[throwListPos].animObject.GetComponent<MeshFilter>().sharedMesh;
-                    throwModel.GetComponent<MeshRenderer>().sharedMaterial = throwList[throwListPos].animObject.GetComponent<MeshRenderer>().sharedMaterial;
+                    throwModel.GetComponent<MeshFilter>().mesh = throwList[throwListPos].mesh;
+                    throwModel.GetComponent<MeshRenderer>().material = throwList[throwListPos].material;
                     //add animation code here
                     anim.SetTrigger("Drink");
                 }

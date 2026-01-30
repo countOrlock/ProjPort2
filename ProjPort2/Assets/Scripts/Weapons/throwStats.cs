@@ -5,7 +5,8 @@ using UnityEngine;
 public class throwStats : ScriptableObject
 {
     public GameObject projectile = null;
-    public GameObject animObject = null;
+    public Mesh mesh;
+    public Material material;
 
     public string itemName;
 

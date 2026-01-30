@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: powerUp_jump
   m_EditorClassIdentifier: Assembly-CSharp::throwStats
   projectile: {fileID: 623802002651011522, guid: 07dc7123cde31704cb1d2fef8263d02a, type: 3}
-  animObject: {fileID: 8778393653849364059, guid: 94efce989b25d6b4ebd7f782705d0289, type: 3}
+  mesh: {fileID: 6491907736727488973, guid: f2f378121613dc144a153addaad78074, type: 3}
+  material: {fileID: 2100000, guid: adc7b4d8cddd56e40b3de1bf6144ee85, type: 2}
   itemName: JumpUP
   ammoCurr: 4
   ammoMax: 5

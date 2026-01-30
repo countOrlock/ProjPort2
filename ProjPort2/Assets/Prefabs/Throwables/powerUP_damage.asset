@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: powerUP_damage
   m_EditorClassIdentifier: Assembly-CSharp::throwStats
   projectile: {fileID: 3640271969364072350, guid: 48f1ec9e2da3ad9459d5940a301922af, type: 3}
-  animObject: {fileID: 9114675378052493106, guid: 2adbb2c3b4904db4cbfc1c7b5b1635aa, type: 3}
+  mesh: {fileID: 6491907736727488973, guid: f2f378121613dc144a153addaad78074, type: 3}
+  material: {fileID: 5793486284959142720, guid: 05c44060cabcfcf46bd921a4d2f13cf5, type: 3}
   itemName: damageUP
   ammoCurr: 4
   ammoMax: 5

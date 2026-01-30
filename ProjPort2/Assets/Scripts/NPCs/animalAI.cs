@@ -272,7 +272,10 @@ public class animalAI : MonoBehaviour, IDamage, IStatEff
                         anim.SetTrigger("Melee");
                     }
                     else
+                    {
                         meleeAttack();
+                        playAttackSound();
+                    }
                 }
 
                 agent.stoppingDistance = stoppingDistOrig;

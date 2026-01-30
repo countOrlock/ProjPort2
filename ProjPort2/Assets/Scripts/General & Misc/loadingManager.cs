@@ -7,7 +7,7 @@ public class loadingManager : MonoBehaviour
 {
     [SerializeField] private Slider progressBar;
     [SerializeField] private Text loadingText;
-    [SerializeField] private float fakeLoadingDelay = 4f;
+    [SerializeField] private float fakeLoadingDelay = 1f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

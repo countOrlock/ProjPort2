@@ -7,6 +7,7 @@ public class damage : MonoBehaviour
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject createdObject = null;
+    [SerializeField] Collider hitBox = null;
 
     [SerializeField] int damageAmount;
     [SerializeField] float damageRate;
@@ -169,6 +170,7 @@ public class damage : MonoBehaviour
 
     IEnumerator fuseTimer()
     {
+        StartCoroutine(hitbox());
         yield return new WaitForSeconds(destroyTime);
         if (createdObject != null)
             Instantiate(createdObject, gameObject.transform.position, gameObject.transform.rotation);
@@ -185,5 +187,11 @@ public class damage : MonoBehaviour
             Instantiate(groundObject, gameObject.transform.position, groundedQuat);
         }
         Destroy(gameObject);
+    }
+
+    IEnumerator hitbox()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(hitBox);
     }
 }

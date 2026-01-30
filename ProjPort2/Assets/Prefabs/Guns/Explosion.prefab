@@ -9692,6 +9692,7 @@ MonoBehaviour:
   type: 5
   rb: {fileID: 5692436798161558266}
   createdObject: {fileID: 0}
+  hitBox: {fileID: 357909637558202336}
   damageAmount: 10
   damageRate: 0
   speed: 0

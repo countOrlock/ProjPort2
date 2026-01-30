@@ -399,9 +399,9 @@ RectTransform:
   m_Children:
   - {fileID: 1035586995}
   - {fileID: 401827264}
+  - {fileID: 4059305}
   - {fileID: 950293781}
   - {fileID: 1163729032}
-  - {fileID: 4059305}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -779,7 +779,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 38732301}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.44107014
+  m_Size: 0.55925804
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1332,32 +1332,28 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Assets used: \n\nAlien Toys by Serhat Yucekaya at unity asset store\n\r\nLow
-    Poly Shotgun by Castle Bravo at unity asset store\n\r\nUFO by FlexUnit at unity
-    asset store\n\r\nStylized Bear by Blink at unity asset store\n\r\nM40A3 Sniper
-    Rifle by Game Stuff Studio at unity asset store\n\r\nFarm Ranch Low Poly by Pandazole
-    at unity asset store\n\r\nBoar by bloons at opengameart.org\n\nLow Poly Sci Fi
-    Weapons Pack (Free Sample) by Combat Labs from https://assetstore.unity.com/packages/3d/props/guns/low-poly-sci-fi-weapons-pack-free-sample-285646#publisher\n\r\nWar
-    FX by Jean Moreno from https://assetstore.unity.com/packages/vfx/particles/war-fx-5669\n\r\nSci-Fi
-    Pistol #1 by Game Stuff Studio from https://assetstore.unity.com/packages/3d/props/guns/sci-fi-pistol-1-141442#publisher\n\r\nLow
-    Poly Weapons VOL.1 by Simon Mercuzot from https://assetstore.unity.com/packages/3d/props/guns/low-poly-weapons-vol-1-151980\n\nRockWall
-    by Golem Kin Games from https://assetstore.unity.com/packages/3d/environments/landscapes/cartoon-rock-wall-285945\n\r\nM_Wood3
-    by Innovana Games from https://assetstore.unity.com/packages/2d/textures-materials/wood/hand-painted-seamless-wood-texture-vol-6-162145\n\nFlat
-    landscape illustration of pine forest silhouette in the morning by Muhammad Rafly
-    Fahrezi https://www.vecteezy.com/vector-art/44444595-flat-landscape-illustration-of-pine-forest-silhouette-in-the-morning\n\nForest
-    on mountains river landscape background by wisnu pramono jati https://www.vecteezy.com/vector-art/14016004-forest-on-mountains-river-landscape-background-vector-poster-bright-sunny-day-in-green-mountain-calm-lake-valley-cartoon-illustration-summer-season-alpine-wild-nature-outdoor-hand-drawn-scenic-view\n\nWooden
-    Sign Cartoon Hanging Board by Belebella https://pngtree.com/freepng/wooden-sign-cartoon-hanging-board_6073437.html\n\nBrown
-    Wooden Signpost by Unknown https://pngtree.com/freepng/brown-wooden-signpost_5425372.html\n\nLowpoly
-    BountyHunter RIO by VertexModeler Team from https://assetstore.unity.com/packages/3d/characters/humanoids/lowpoly-bountyhunter-rio-287267\n
-    \nHyenas A1 Free 3D model by animated3d-us from https://www.cgtrader.com/free-3d-models/animal/other/hyenas-a2\n\nAnimals
-    FREE - Animated Low Poly 3D Models by ithappy from https://assetstore.unity.com/packages/3d/characters/animals/animals-free-animated-low-poly-3d-models-260727\n\nFlock
-    of Birds Sound Effects by Sound Ideas from https://soundideas.sourceaudio.com/album/12414851\n\nHuman
-    Footsteps by Soundstorm from https://soundideas.sourceaudio.com/track/27298577\n\nReaction
-    Voices by Sound Ideas from https://soundideas.sourceaudio.com/album/2017967\n\nSerafine
-    Guns of Cinema by Sound Ideas from https://soundideas.sourceaudio.com/album/3290990\n\nEfforts
-    Voices by Sound Ideas from https://soundideas.sourceaudio.com/track/15674050\n\nHit
-    the Ground Running by John Montagnino from https://westarmusic.sourceaudio.com/track/6847885\n\nMountain
-    Bluegrass by Kelly Richmond from https://westarmusic.sourceaudio.com/track/6847912"
+  m_text: "Assets used: \r\n\r\nAlien Toys by Serhat Yucekaya at unity asset store\r\n\r\nLow
+    Poly Shotgun by Castle Bravo at unity asset store\r\n\r\nUFO by FlexUnit at unity
+    asset store\r\n\r\nStylized Bear by Blink at unity asset store\r\n\r\nM40A3 Sniper
+    Rifle by Game Stuff Studio at unity asset store\r\n\r\nFarm Ranch Low Poly by
+    Pandazole at unity asset store\r\n\r\nBoar by bloons at opengameart.org\r\n\r\nLow
+    Poly Sci Fi Weapons Pack (Free Sample) by Combat Labs from unity asset store\r\n\r\nWar
+    FX by Jean Moreno from unity asset store\r\n\r\nSci-Fi Pistol #1 by Game Stuff
+    Studio from unity asset store\r\n\r\nLow Poly Weapons VOL.1 by Simon Mercuzot
+    from unity asset store\r\n\r\nRockWall by Golem Kin Games from unity asset store\r\n\r\nM_Wood3
+    by Innovana Games from unity asset store\r\n\r\nFlat landscape illustration of
+    pine forest silhouette in the morning by Muhammad Rafly Fahrezi from vecteezy.com\r\n\r\nForest
+    on mountains river landscape background by wisnu pramono jati from www.vecteezy.com\r\n\r\nWooden
+    Sign Cartoon Hanging Board by Belebella from pngtree.com\r\n\r\nBrown Wooden
+    Signpost by Unknown from pngtree.com\r\n\r\nLowpoly BountyHunter RIO by VertexModeler
+    Team from unity asset store\r\n \r\nHyenas A1 Free 3D model by animated3d-us
+    from cgtrader.com\r\n\r\nAnimals FREE - Animated Low Poly 3D Models by ithappy
+    from unity asset store \r\n\r\nFlock of Birds Sound Effects by Sound Ideas from
+    sourceaudio.com\r\n\r\nHuman Footsteps by Soundstorm from sourceaudio.com\r\n\r\nReaction
+    Voices by Sound Ideas from sourceaudio.com\r\n\r\nSerafine Guns of Cinema by
+    Sound Ideas from sourceaudio.com\r\n\r\nEfforts Voices by Sound Ideas from sourceaudio.com\r\n\r\nHit
+    the Ground Running by John Montagnino from sourceaudio.com\r\n\r\nMountain Bluegrass
+    by Kelly Richmond from sourceaudio.com"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1470,7 +1466,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -0.00012207}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1035586996

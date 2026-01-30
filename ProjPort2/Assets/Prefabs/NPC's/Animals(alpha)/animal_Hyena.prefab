@@ -1105,26 +1105,25 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a9eaff5b063129f48bbc9c12613492c0, type: 3}
   stepVol: 0.5
   hurtSound:
-  - {fileID: 8300000, guid: f4fb816c996b6734da0f4ca87071eb84, type: 3}
-  - {fileID: 8300000, guid: bed8d49b877f9b348a975ac338b77025, type: 3}
-  - {fileID: 8300000, guid: 2b1f423c8f68c064295397ea639623d6, type: 3}
-  - {fileID: 8300000, guid: daabee1a6c4ab674fad4fdfb7b214e45, type: 3}
-  - {fileID: 8300000, guid: 185d3ebefb8d1c048b6142c418c05f39, type: 3}
-  - {fileID: 8300000, guid: 1bfafd020bd0ca0489cf98dfa0ec2635, type: 3}
-  - {fileID: 8300000, guid: bc7be4b9ae8a84742babd6adc524a2e5, type: 3}
+  - {fileID: 8300000, guid: 9cddebe780298254bba02ab133864ff1, type: 3}
+  - {fileID: 8300000, guid: 77c98c9d0f9e3214c9b87543241c6543, type: 3}
+  - {fileID: 8300000, guid: 75ee4a4a3601ce44f843d400508e2d5a, type: 3}
   hurtVol: 0.5
   attackSound:
-  - {fileID: 8300000, guid: 148ce71213418504e83f7d91f206983d, type: 3}
+  - {fileID: 8300000, guid: 8e05c39e9460ed645a409c248babefd5, type: 3}
+  - {fileID: 8300000, guid: 301732984e939ca4ca035239ecbd6fb0, type: 3}
   attackVol: 0.5
   deathSound:
-  - {fileID: 8300000, guid: 148ce71213418504e83f7d91f206983d, type: 3}
+  - {fileID: 8300000, guid: 3bd3d21761b9bbd4fb002b0165770372, type: 3}
   deathVol: 0.5
   idleSound:
-  - {fileID: 8300000, guid: 1326054e19317bc468b8451206507cd9, type: 3}
-  - {fileID: 8300000, guid: ab01165f85f82fe4db697ac8d4c24062, type: 3}
+  - {fileID: 8300000, guid: b0f31b3a57be4d048881b38904c6d2b5, type: 3}
+  - {fileID: 8300000, guid: 23006309b4f3f2d4cb711076f4ebb021, type: 3}
+  - {fileID: 8300000, guid: d0a813512c62d53429b07b048a9fcbe9, type: 3}
   idleVol: 0.5
   isBurning: 0
   isSlow: 0
+  mode: 0
 --- !u!195 &7579537676640334968
 NavMeshAgent:
   m_ObjectHideFlags: 0

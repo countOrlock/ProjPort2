@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,17 @@ public class buttonFunctions : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
         Time.timeScale = gameManager.instance.timeScaleOrig;
+    }
+
+    public void StartGameBuildVariable()
+    {
+#if UNITY_WEBGL
+        SceneManager.LoadScene("ForestLevel");
+        Time.timeScale = 1;
+#else
+        SceneManager.LoadScene("Loading Screen");
+        Time.timeScale = gameManager.instance.timeScaleOrig;
+#endif
     }
 
     public void resume()
@@ -27,11 +39,13 @@ public class buttonFunctions : MonoBehaviour
 
     public void quit()
     {
+#if !UNITY_WEBGL
     #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+                UnityEditor.EditorApplication.isPlaying = false;
     #else
-        Application.Quit();
+                Application.Quit();
     #endif
+#endif
     }
 
     public void SelectQuest1()
